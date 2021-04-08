@@ -6,17 +6,17 @@ export default function Header() {
   return (
     <ul>
       <li>
-        <NavLink exact activeClassName='active' to='/'>
+        <NavLink exact activeClassName="active" to="/">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink exact activeClassName='active' to='/movies'>
+        <NavLink exact activeClassName="active" to="/movies">
           Movies
         </NavLink>
       </li>
       <li>
-        <NavLink exact activeClassName='active' to='/favorites'>
+        <NavLink exact activeClassName="active" to="/favorites">
           Favorites
         </NavLink>
       </li>
