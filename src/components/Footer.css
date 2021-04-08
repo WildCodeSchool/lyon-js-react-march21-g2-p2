@@ -1,0 +1,12 @@
+footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background-color: beige;
+  background-color: var(--bg-secondary);
+
+  color: #141414;
+  color: var(--text-primary);
+}
