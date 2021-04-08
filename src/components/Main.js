@@ -1,5 +1,5 @@
 import './Main.css';
-import { Switch, Route } from 'react-dom';
+import { Switch, Route } from 'react-router';
 import HomePage from './HomePage';
 import MoviesPage from './MoviesPage';
 import FavoritesPage from './FavoritesPage';
