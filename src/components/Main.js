@@ -1,5 +1,8 @@
 import './Main.css';
 import { Switch, Route } from 'react-dom';
+import HomePage from './HomePage';
+import MoviesPage from './MoviesPage';
+import FavoritesPage from './FavoritesPage';
 
 export default function Main() {
   return (
