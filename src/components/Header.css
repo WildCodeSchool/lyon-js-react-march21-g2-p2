@@ -2,31 +2,25 @@
   margin: 0;
   padding: 0;
 }
-nav {
-  height: 50px;
-  background-color: rgb(65, 64, 64);
-  text-decoration: none;
-}
 
 ul {
-  display: flex;
-  height: 100%;
-  justify-content: space-around;
-  align-items: center;
-}
-
-li {
-  display: flex;
   list-style: none;
 }
+li {
+  display: inline-flex;
+}
 
-li a {
-  font-size: 1.5em;
-  color: rgb(199, 86, 44);
+a {
+  display: flex;
+  color: white;
   text-decoration: none;
+  padding: 13px;
 }
 
 a:hover {
-  color: white;
-  font-size: 1.7em;
+  cursor: pointer;
+  color: black;
+  font-size: 1.1em;
+  background-color: #ffb74d;
+  border-radius: 20px;
 }
