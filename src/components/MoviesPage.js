@@ -10,9 +10,16 @@ export default function MoviesPage() {
     { title: 'Moonlight', genre: 'drama', date: 2016 },
   ]);
 
+  const [filterValues, setFilterValues] = useState({
+    genre: '',
+    date: '',
+  });
+
   function handleFilter() {
     // Toggle the criteria list
     console.log('toggle');
+    console.log(filterValues.genre);
+    console.log(filterValues.date);
   }
   return (
     <>
@@ -21,11 +28,17 @@ export default function MoviesPage() {
         <FilterListTwoToneIcon className="filter-icon" />
       </button>
       <ul>
-        {movieList.map(({ title, date }) => (
-          <li className="movie-list" key={title}>
-            {title} ({date}){' '}
-          </li>
-        ))}
+        {/* TODO put a condition here from a state... */}
+        {movieList
+          .filter(({ date }) => !filterValues.date || date >= filterValues.date)
+          .filter(
+            ({ genre }) => !filterValues.genre || genre === filterValues.genre
+          )
+          .map(({ title, date }) => (
+            <li className="movie-list" key={title}>
+              {title} ({date}){' '}
+            </li>
+          ))}
       </ul>
     </>
   );
