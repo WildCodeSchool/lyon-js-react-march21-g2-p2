@@ -9,8 +9,8 @@ const movieInfos = {
 export default function HomePage() {
   return (
     <>
-  <div>Welcome Home</div>
-  <Card movie={movieInfos}/>
-  </>
-  )
-};
+      <div>Welcome Home</div>
+      <Card movie={movieInfos} />
+    </>
+  );
+}
