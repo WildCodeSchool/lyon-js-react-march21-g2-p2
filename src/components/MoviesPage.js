@@ -20,6 +20,13 @@ export default function MoviesPage() {
       <button type="button" onClick={handleFilter}>
         <FilterListTwoToneIcon className="filter-icon" />
       </button>
+      <ul>
+        {movieList.map(({ title, date }) => (
+          <li className="movie-list" key={title}>
+            {title} ({date}){' '}
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
