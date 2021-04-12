@@ -15,8 +15,6 @@
 .Card .cover {
   width: 100%;
   border-radius: 0.25em;
-  background-color: blue;
-  height: 10 rem;
 }
 
 .Card h4 {
