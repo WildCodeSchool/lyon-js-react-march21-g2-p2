@@ -12,15 +12,6 @@ li {
 
 a {
   display: flex;
-  color: white;
-  text-decoration: none;
-  padding: 13px;
-}
-
-a:hover {
-  cursor: pointer;
   color: black;
-  font-size: 1.1em;
-  background-color: #ffb74d;
-  border-radius: 20px;
+  text-decoration: none;
 }
