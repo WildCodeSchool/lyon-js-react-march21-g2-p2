@@ -1,7 +1,7 @@
 import './HomePage.css';
-import Card from './card';
+/*import Card from './card';
 import axios from 'axios';
-/*import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 const getPopularMovies = () => {
   axios
