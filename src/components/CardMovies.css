@@ -1,0 +1,28 @@
+.Card {
+  width: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 1em;
+}
+
+.Card > * {
+  margin: 0;
+  padding: 0;
+}
+
+.Card .cover {
+  width: 100%;
+  border-radius: 0.25em;
+}
+
+.Card h4 {
+  margin: 0.5em 0;
+  color: var(--text-primary);
+}
+
+.Card h5 {
+  margin: 0.25em 0;
+  color: var(--text-secondary);
+}
