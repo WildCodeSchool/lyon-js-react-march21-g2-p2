@@ -46,7 +46,7 @@ function MovieList() {
           key={index}
           title={movie.title}
           date={movie.date}
-          gender={movie.genre}
+          genre={movie.genre}
           img={movie.img}
         />
       ))}
