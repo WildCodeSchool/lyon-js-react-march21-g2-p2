@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
+    backgroundColor: '#ff8f00',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -107,7 +108,6 @@ export default function Header() {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        style={{ backgroundColor: 'orange' }}
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
