@@ -1,4 +1,4 @@
-.card {
+.Card {
   width: 10em;
   display: flex;
   flex-direction: column;
@@ -7,22 +7,24 @@
   margin: 1em;
 }
 
-.card > * {
+.Card > * {
   margin: 0;
   padding: 0;
 }
 
-.card .cover {
+.Card .cover {
   width: 100%;
   border-radius: 0.25em;
+  background-color: blue;
+  height: 10 rem;
 }
 
-.card h4 {
+.Card h4 {
   margin: 0.5em 0;
   color: var(--text-primary);
 }
 
-.card h5 {
+.Card h5 {
   margin: 0.25em 0;
   color: var(--text-secondary);
 }
