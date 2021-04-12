@@ -1,7 +1,7 @@
 import React from 'react';
-import './CardMovies.css';
+import './MovieCard.css';
 
-function CardMovies({img, date, title, genre}) {
+function MovieCard({img, date, title, genre}) {
   return (
     <div className="Card">
       <img className="cover" src={img} alt={title} />
@@ -12,4 +12,4 @@ function CardMovies({img, date, title, genre}) {
   );
 }
 
-export default CardMovies;
+export default MovieCard;

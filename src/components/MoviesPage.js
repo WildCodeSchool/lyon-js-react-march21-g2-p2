@@ -1,5 +1,5 @@
 import './MoviesPage.css';
-import CardMovies from './CardMovies';
+import MovieCard from './MovieCard';
 
 const movies = [
   {
@@ -42,7 +42,7 @@ function MovieList() {
   return (
     <div>
       {movies.map((movie, index) => (
-        <CardMovies
+        <MovieCard
           key={index}
           title={movie.title}
           date={movie.date}
