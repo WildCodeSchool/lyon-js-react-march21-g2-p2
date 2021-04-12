@@ -1,6 +1,6 @@
 import './card.css';
 
-export default function Card({ title, year }) {
+export default function Card(props) {
   return (
     <div className="card">
       <img
@@ -8,8 +8,8 @@ export default function Card({ title, year }) {
         alt="cover"
         className="cover"
       />
-      <h4 className="title">{title}</h4>
-      <h5 className="year">{year}</h5>
+      <h4 className="title">{props.movie.title}</h4>
+      <h5 className="year">{props.movie.year}</h5>
     </div>
   );
 }
