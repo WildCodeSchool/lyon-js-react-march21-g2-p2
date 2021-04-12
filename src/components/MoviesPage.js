@@ -15,9 +15,12 @@ export default function MoviesPage() {
     date: '',
   });
 
+  const [isFilterToggled, setIsFilterToggled] = useState(false);
+
   function handleFilter() {
     // Toggle the criteria list
-    console.log('toggle');
+    setIsFilterToggled(!isFilterToggled);
+    console.log(isFilterToggled);
     console.log(filterValues.genre);
     console.log(filterValues.date);
   }
