@@ -29,7 +29,7 @@ export default function Card(props) {
             height="150px"
             alt=""
           />
-          <p>{movie.title}</p>
+          <p className="movie-title">{movie.title}</p>
         </div>
       ))}
     </div>

@@ -9,10 +9,12 @@
   flex-wrap: wrap;
   list-style-type: none;
 }
-.card .movie p {
+.card .movie .movie-title {
   border: 2px solid black;
   text-align: center;
   margin: 10px;
+  width: 150px;
+  height: auto;
 }
 .movie {
   border: 2px solid black;
