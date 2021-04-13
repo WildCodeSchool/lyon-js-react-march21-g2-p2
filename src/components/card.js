@@ -23,8 +23,13 @@ export default function Card(props) {
     <div className="card">
       {popularMovie.map((movie) => (
         <div className="movie">
-        <img src="https://image.tmdb.org/t/p/w200/uuvSvLb3ntGA9B0wx2JskVDSuWi.jpg" width="150px" height="150px" alt=""/>
-        <p>{movie.title}</p>
+          <img
+            src="https://image.tmdb.org/t/p/w200/uuvSvLb3ntGA9B0wx2JskVDSuWi.jpg"
+            width="150px"
+            height="150px"
+            alt=""
+          />
+          <p>{movie.title}</p>
         </div>
       ))}
     </div>
