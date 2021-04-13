@@ -4,10 +4,11 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 export default function MovieHomeCard(props) {
-  
   const [popularMovie, setPopularMovie] = useState([]);
 
-  {/*Récupération des données Moviedb*/}
+  {
+    /*Récupération des données Moviedb*/
+  }
 
   useEffect(() => {
     axios
@@ -23,19 +24,23 @@ export default function MovieHomeCard(props) {
       });
   }, []);
 
-  {/*Affichage des films*/}
+  {
+    /*Affichage des films*/
+  }
 
   const moviePoster = (resultId) => {
-    const movieSrc = "https://image.tmdb.org/t/p/w200";
+    const movieSrc = 'https://image.tmdb.org/t/p/w200';
 
-    const selectedMovie = popularMovie.filter(movie => movie.id === parseInt(resultId));
+    const selectedMovie = popularMovie.filter(
+      (movie) => movie.id === parseInt(resultId)
+    );
     const newMovie = selectedMovie[0];
     const newMoviePath = newMovie.poster_path;
     let movieLink = movieSrc + newMoviePath;
 
-    return movieLink
-};
-    
+    return movieLink;
+  };
+
   return (
     <div className="card">
       {popularMovie.map((movie) => (
