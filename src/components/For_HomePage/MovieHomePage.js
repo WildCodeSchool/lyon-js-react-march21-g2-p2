@@ -45,16 +45,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-
-
-  export const MovieHomeCard = React.memo(function GalaxyCard() {
+export const MovieHomeCard = React.memo(function GalaxyCard() {
   const [popularMovie, setPopularMovie] = useState([]);
-  
-    const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'top' });
-    const styles = useStyles();
 
+  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'top' });
+  const styles = useStyles();
 
-    /*Récupération des données Moviedb*/
+  /*Récupération des données Moviedb*/
   useEffect(() => {
     axios
 
@@ -75,7 +72,7 @@ const useStyles = makeStyles(() => ({
       });
   }, []);
 
-    /*Fonction pour les affiches des films*/
+  /*Fonction pour les affiches des films*/
 
   const moviePoster = (resultId) => {
     const movieSrc = 'https://image.tmdb.org/t/p/w200';
@@ -90,37 +87,32 @@ const useStyles = makeStyles(() => ({
     return movieLink;
   };
 
-/*JSX a retourner*/
+  /*JSX a retourner*/
 
   return (
     <div className="card">
       <NoSsr>
         <GoogleFontLoader
           fonts={[
-              { font: 'Spartan', weights: [30] },
-              { font: 'Montserrat', weights: [20, 40, 70] },
+            { font: 'Spartan', weights: [30] },
+            { font: 'Montserrat', weights: [20, 40, 70] },
           ]}
-          />
+        />
       </NoSsr>
       {popularMovie.map((movie) => (
-      <Card key={movie.id} className={styles.card}>  
-        <CardMedia
-          classes={mediaStyles}
-          image={moviePoster(movie.id)}
-        />
-        <Box py={3} px={2} className={styles.content}>
-          <Info useStyles={useGalaxyInfoStyles}>
-            <InfoSubtitle>Movie</InfoSubtitle>
-            <InfoTitle>{movie.title}</InfoTitle>
-            <InfoCaption>Note : {movie.vote_average}/10</InfoCaption>
-          </Info>
-        </Box>
-      </Card>
+        <Card key={movie.id} className={styles.card}>
+          <CardMedia classes={mediaStyles} image={moviePoster(movie.id)} />
+          <Box py={3} px={2} className={styles.content}>
+            <Info useStyles={useGalaxyInfoStyles}>
+              <InfoSubtitle>Movie</InfoSubtitle>
+              <InfoTitle>{movie.title}</InfoTitle>
+              <InfoCaption>Note : {movie.vote_average}/10</InfoCaption>
+            </Info>
+          </Box>
+        </Card>
       ))}
     </div>
   );
 });
 
-export default MovieHomeCard
-
-
+export default MovieHomeCard;
