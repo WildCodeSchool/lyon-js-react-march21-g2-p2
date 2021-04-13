@@ -3,13 +3,58 @@ import './MovieHomePage.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-export default function MovieHomeCard(props) {
+/*Material UI*/
+import React from 'react';
+import GoogleFontLoader from 'react-google-font-loader';
+import NoSsr from '@material-ui/core/NoSsr';
+import { makeStyles } from '@material-ui/core/styles';
+import { flexbox } from '@material-ui/system';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import {
+  Info,
+  InfoCaption,
+  InfoSubtitle,
+  InfoTitle,
+} from '@mui-treasury/components/info';
+import { useGalaxyInfoStyles } from '@mui-treasury/styles/info/galaxy';
+import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
+
+/* modele card Material UI */
+const useStyles = makeStyles(() => ({
+  card: {
+    borderRadius: '1rem',
+    boxShadow: 'none',
+    position: 'relative',
+    margin: 10,
+    minWidth: 259,
+    minHeight: 259,
+    '&:after': {
+      content: '""',
+      bottom: 0,
+      zIndex: 1,
+      background: 'linear-gradient(to top, #000, rgba(0,0,0,0))',
+    },
+  },
+  content: {
+    position: 'absolute',
+    zIndex: 2,
+    bottom: 0,
+    width: '100%',
+  },
+}));
+
+
+
+  export const MovieHomeCard = React.memo(function GalaxyCard() {
   const [popularMovie, setPopularMovie] = useState([]);
+  
+    const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'top' });
+    const styles = useStyles();
 
-  {
+
     /*Récupération des données Moviedb*/
-  }
-
   useEffect(() => {
     axios
 
@@ -21,18 +66,16 @@ export default function MovieHomeCard(props) {
 
       .then((data) => {
         const mostPopularMovies = data.results;
-        const moviesToShow = []; 
+        const moviesToShow = [];
 
-        for (let i = 0; i <= 9; i+=1) {
+        for (let i = 0; i <= 9; i += 1) {
           moviesToShow.push(mostPopularMovies[i]);
-          
-        } return setPopularMovie(moviesToShow)
+        }
+        return setPopularMovie(moviesToShow);
       });
   }, []);
 
-  {
-    /*Affichage des films*/
-  }
+    /*Fonction pour les affiches des films*/
 
   const moviePoster = (resultId) => {
     const movieSrc = 'https://image.tmdb.org/t/p/w200';
@@ -47,20 +90,37 @@ export default function MovieHomeCard(props) {
     return movieLink;
   };
 
+/*JSX a retourner*/
+
   return (
     <div className="card">
-      {popularMovie.map((movie) => (
-        <div key={movie.id} className="movie">
-          <img
-            src={moviePoster(movie.id)}
-            width="150px"
-            height="150px"
-            alt=""
+      <NoSsr>
+        <GoogleFontLoader
+          fonts={[
+              { font: 'Spartan', weights: [30] },
+              { font: 'Montserrat', weights: [20, 40, 70] },
+          ]}
           />
-          <h3 className="movie-title">{movie.title}</h3>
-          <p>Note : {movie.vote_average}/10</p>
-        </div>
+      </NoSsr>
+      {popularMovie.map((movie) => (
+      <Card key={movie.id} className={styles.card}>  
+        <CardMedia
+          classes={mediaStyles}
+          image={moviePoster(movie.id)}
+        />
+        <Box py={3} px={2} className={styles.content}>
+          <Info useStyles={useGalaxyInfoStyles}>
+            <InfoSubtitle>Movie</InfoSubtitle>
+            <InfoTitle>{movie.title}</InfoTitle>
+            <InfoCaption>Note : {movie.vote_average}/10</InfoCaption>
+          </Info>
+        </Box>
+      </Card>
       ))}
     </div>
   );
-}
+});
+
+export default MovieHomeCard
+
+
