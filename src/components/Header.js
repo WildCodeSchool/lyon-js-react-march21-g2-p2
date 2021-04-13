@@ -26,6 +26,7 @@ import MovieIcon from '@material-ui/icons/Movie';
 import MailIcon from '@material-ui/icons/Mail';
 import StarsIcon from '@material-ui/icons/Stars';
 import StyleIcon from '@material-ui/icons/Style';
+import logo from "./logo.png";
 const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
   },
   hide: {
     display: 'none',
+  },
+  logo: {
+    maxWidth: 70,
+    marginRight: '10px'
   },
   drawer: {
     width: drawerWidth,
@@ -125,6 +130,7 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
+            <img src={logo} alt="Logo" className={classes.logo} />
           <Typography variant="h6" noWrap>
             Dollix
           </Typography>
