@@ -1,28 +1,28 @@
 .card {
-  width: 10em;
+  border: 2px solid black;
+  width: auto;
+  height: auto;
+  margin: auto;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+.card .movie p {
+  border: 2px solid black;
+  text-align: center;
+  margin: 10px;
+}
+.movie {
+  border: 2px solid black;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  margin: 1em;
+  align-items: center;
+  margin: 30px;
+  width: 200px;
 }
-
-.card > * {
-  margin: 0;
-  padding: 0;
-}
-
 .card .cover {
   width: 100%;
   border-radius: 0.25em;
-}
-
-.card h4 {
-  margin: 0.5em 0;
-  color: var(--text-primary);
-}
-
-.card h5 {
-  margin: 0.25em 0;
-  color: var(--text-secondary);
 }
