@@ -1,7 +1,7 @@
 import React from 'react';
 import './MovieCard.css';
 
-function MovieCard({img, date, title, genre}) {
+function MovieCard({ img, date, title, genre }) {
   return (
     <div className="Card">
       <img className="cover" src={img} alt={title} />
