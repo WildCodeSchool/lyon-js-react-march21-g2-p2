@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
-    backgroundColor: '#ff8f00',
+    background: 'linear-gradient(to right bottom, #d84315, #ffeb3b)',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -107,12 +107,14 @@ export default function Header() {
   return (
     <div className={classes.root}>
       <CssBaseline />
+      {/*Creation de la barre de nav*/}
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
+        {/*Creation ToolBar*/}
         <Toolbar>
           <IconButton
             color="inherit"
@@ -153,6 +155,7 @@ export default function Header() {
           </IconButton>
         </div>
         <Divider />
+        {/*insertion des routes et association avec les icones*/}
         <List>
           <NavLink exact activeClassName="active" to="/">
             <ListItem button>
