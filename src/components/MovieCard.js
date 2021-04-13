@@ -36,34 +36,30 @@ const useStyles = makeStyles({
 export default function MovieCard({ title, img, id }) {
   const classes = useStyles();
   return (
-    <div>
-      <Container>
-        <Grid container spacing={3} className={classes.gridContainer}>
-          <Grid item xs={6} sm={3} md={2} key={id}>
-            <Card className={classes.Card}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.Media}
-                  component="img"
-                  alt={title}
-                  height="200"
-                  image={img}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="subtitle2" component="h2">
-                    {title}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
-    </div>
+    <Grid container spacing={3} className={classes.gridContainer}>
+      <Grid item xs={6} sm={2} md={3} key={id}>
+        <Card className={classes.Card}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.Media}
+              component="img"
+              alt={title}
+              height="200"
+              image={img}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="subtitle2" component="h2">
+                {title}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+          </CardActions>
+        </Card>
+      </Grid>
+    </Grid>
   );
 }
