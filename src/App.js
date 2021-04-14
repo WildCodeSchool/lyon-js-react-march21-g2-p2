@@ -15,12 +15,14 @@ function App() {
   const classes = useStyles();
 
   return (
+    <>
     <div className={classes.root}>
       <Header />
       <Main />
-      <Footer />
     </div>
+      <Footer />
+    </>
   );
 }
-  
+
 export default App;
