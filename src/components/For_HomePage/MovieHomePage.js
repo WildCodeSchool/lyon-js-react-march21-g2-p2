@@ -36,12 +36,12 @@ const useStyles = makeStyles(() => ({
       background: 'linear-gradient(to top, #000, rgba(0,0,0,0))',
     },
   },
-    content: {
-      position: 'absolute',
-      zIndex: 2,
-      bottom: 0,
-      width: '100%',
-    }
+  content: {
+    position: 'absolute',
+    zIndex: 2,
+    bottom: 0,
+    width: '100%',
+  },
 }));
 
 export const MovieHomeCard = React.memo(function HomeCard() {
@@ -98,26 +98,29 @@ export const MovieHomeCard = React.memo(function HomeCard() {
           ]}
         />
       </NoSsr>
-      <Grid container spacing={6} justify="center"
-  alignItems="center" direction="row">
-      
-      {popularMovie.map((movie) => (
-        <Grid item  key={movie.id} >
-        <Card className={styles.card}>
-          <CardMedia classes={mediaStyles} image={moviePoster(movie.id)} />
-          <Box py={3} px={2} className={styles.content}>
-            <Info useStyles={useGalaxyInfoStyles}>
-              <InfoSubtitle>Movie</InfoSubtitle>
-              <InfoTitle>{movie.title}</InfoTitle>
-              <InfoCaption>Note : {movie.vote_average}/10</InfoCaption>
-            </Info>
-          </Box>
-        </Card>
-        </Grid>
-      ))}
-
-    </Grid>
-  </>
+      <Grid
+        container
+        spacing={6}
+        justify="space-around"
+        alignItems="center"
+        direction="row"
+      >
+        {popularMovie.map((movie) => (
+          <Grid item key={movie.id}>
+            <Card className={styles.card}>
+              <CardMedia classes={mediaStyles} image={moviePoster(movie.id)} />
+              <Box py={3} px={2} className={styles.content}>
+                <Info useStyles={useGalaxyInfoStyles}>
+                  <InfoSubtitle>Movie</InfoSubtitle>
+                  <InfoTitle>{movie.title}</InfoTitle>
+                  <InfoCaption>Note : {movie.vote_average}/10</InfoCaption>
+                </Info>
+              </Box>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </>
   );
 });
 
