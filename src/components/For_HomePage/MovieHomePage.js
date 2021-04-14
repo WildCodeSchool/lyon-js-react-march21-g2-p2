@@ -102,7 +102,7 @@ export const MovieHomeCard = React.memo(function GalaxyCard() {
         <Card key={movie.id} className={styles.card}>
           <CardMedia classes={mediaStyles} image={moviePoster(movie.id)} />
           <Box py={3} px={2} className={styles.content}>
-            <Info useStyles={useGalaxyInfoStyles}>
+            <Info className="movie-info" useStyles={useGalaxyInfoStyles}>
               <InfoSubtitle>Movie</InfoSubtitle>
               <InfoTitle>{movie.title}</InfoTitle>
               <InfoCaption>Note : {movie.vote_average}/10</InfoCaption>
