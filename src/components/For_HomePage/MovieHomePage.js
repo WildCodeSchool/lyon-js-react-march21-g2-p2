@@ -1,12 +1,13 @@
 /* eslint-disable no-lone-blocks */
 import './MovieHomePage.css';
 import axios from 'axios';
+import clsx from 'clsx';
 import { useState, useEffect } from 'react';
 
 /*Material UI*/
 import React from 'react';
-import GoogleFontLoader from 'react-google-font-loader';
-import NoSsr from '@material-ui/core/NoSsr';
+//import GoogleFontLoader from 'react-google-font-loader';
+//import NoSsr from '@material-ui/core/NoSsr';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
@@ -19,7 +20,8 @@ import {
 } from '@mui-treasury/components/info';
 import { useGalaxyInfoStyles } from '@mui-treasury/styles/info/galaxy';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
-import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 /* modele card Material UI */
 const useStyles = makeStyles(() => ({
   card: {
@@ -33,21 +35,41 @@ const useStyles = makeStyles(() => ({
       content: '""',
       bottom: 0,
       zIndex: 1,
-      background: 'linear-gradient(to top, #000, rgba(0,0,0,0))',
     },
   },
+
   content: {
+    opacity: 0,
     position: 'absolute',
     zIndex: 2,
     bottom: 0,
     width: '100%',
+    '&:hover': {
+      cursor: 'pointer',
+      visibility: 'visible',
+      zIndex: 2,
+      bottom: 0,
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      background: 'black',
+      opacity: 0.5,
+      alignItems: 'flex-end',
+      justifyContent: 'flex-start',
+    },
+  },
+
+  favoriteIcon: {
+    color: 'white',
+    display: 'flex',
+    alignItems: 'flex-start',
   },
 }));
 
-export const MovieHomeCard = React.memo(function HomeCard() {
+export const MovieHomeCard = React.memo(function GalaxyCard() {
   const [popularMovie, setPopularMovie] = useState([]);
 
-  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
+  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'top' });
   const styles = useStyles();
 
   /*Récupération des données Moviedb*/
@@ -89,38 +111,43 @@ export const MovieHomeCard = React.memo(function HomeCard() {
   /*JSX a retourner*/
 
   return (
-    <>
-      <NoSsr>
+    <div className="cards">
+      {/*<NoSsr>
         <GoogleFontLoader
           fonts={[
             { font: 'Spartan', weights: [30] },
             { font: 'Montserrat', weights: [20, 40, 70] },
           ]}
         />
-      </NoSsr>
-      <Grid
-        container
-        spacing={6}
-        justify="space-around"
-        alignItems="center"
-        direction="row"
-      >
-        {popularMovie.map((movie) => (
-          <Grid item key={movie.id}>
-            <Card className={styles.card}>
-              <CardMedia classes={mediaStyles} image={moviePoster(movie.id)} />
-              <Box py={3} px={2} className={styles.content}>
-                <Info useStyles={useGalaxyInfoStyles}>
-                  <InfoSubtitle>Movie</InfoSubtitle>
-                  <InfoTitle>{movie.title}</InfoTitle>
-                  <InfoCaption>Note : {movie.vote_average}/10</InfoCaption>
-                </Info>
+        </NoSsr>*/}
+      {popularMovie.map((movie) => (
+        <div className="card-info">
+          <Card key={movie.id} className={clsx(styles.card)}>
+            <CardMedia
+              className={clsx(styles.cardStyle)}
+              classes={mediaStyles}
+              image={moviePoster(movie.id)}
+            />
+
+            <Box py={3} className={clsx(styles.content)}>
+              <Box py={40} className={clsx(styles.favorite)}>
+                <IconButton>
+                  <FavoriteIcon className={clsx(styles.favoriteIcon)} />
+                </IconButton>
               </Box>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </>
+              <Info
+                className={clsx(styles.movieInfo)}
+                useStyles={useGalaxyInfoStyles}
+              >
+                <InfoSubtitle>Movie</InfoSubtitle>
+                <InfoTitle>{movie.title}</InfoTitle>
+                <InfoCaption>Note : {movie.vote_average}/10</InfoCaption>
+              </Info>
+            </Box>
+          </Card>
+        </div>
+      ))}
+    </div>
   );
 });
 
