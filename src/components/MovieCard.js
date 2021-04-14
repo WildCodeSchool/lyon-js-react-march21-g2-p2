@@ -14,28 +14,7 @@ import {
   Container,
 } from '@material-ui/core';
 
-const useStyles = makeStyles({
-  gridContainer: {
-    paddingLeft: '20px',
-    paddingRight: '20px',
-    minWidth: 200,
-    display: 'flex',
-    direction: 'row',
-    justify: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  Card: {
-    width: 200,
-    textAlign: 'center',
-    boxShadow: '0 5px 8px 0 rgba(0, 0, 0, 0.3)',
-  },
-  Media: {
-    height: 300,
-  },
-});
-
-export default function MovieCard({ title, img, id }) {
-  const classes = useStyles();
+function MovieCard({ img, date, title, genre, classes, id }) {
   return (
     <div>
       <Container>
