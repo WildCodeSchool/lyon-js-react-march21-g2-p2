@@ -26,6 +26,7 @@ import MovieIcon from '@material-ui/icons/Movie';
 import MailIcon from '@material-ui/icons/Mail';
 import StarsIcon from '@material-ui/icons/Stars';
 import StyleIcon from '@material-ui/icons/Style';
+
 const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
@@ -58,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
+    padding: theme.spacing(4),
   },
   drawerOpen: {
     width: drawerWidth,
@@ -105,7 +107,7 @@ export default function Header() {
   };
 
   return (
-    <div className={classes.root}>
+    <>
       <CssBaseline />
       {/*Creation de la barre de nav*/}
       <AppBar
@@ -206,9 +208,6 @@ export default function Header() {
           </ListItem>
         </List>
       </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-      </main>
-    </div>
+    </>
   );
 }
