@@ -1,5 +1,7 @@
 import './MoviesPage.css';
 import MovieCard from './MovieCard';
+import React, { Fragment } from 'react';
+import { Grid } from '@material-ui/core';
 
 const movies = [
   {
@@ -45,17 +47,19 @@ const movies = [
 
 function MovieList() {
   return (
-    <div>
-      {movies.map((movie, index) => (
-        <MovieCard
-          key={index}
-          title={movie.title}
-          date={movie.date}
-          genre={movie.genre}
-          img={movie.img}
-        />
-      ))}
-    </div>
+    <Fragment>
+      <Grid container spacing={24} justify="center">
+        {movies.map((movie, index) => (
+          <MovieCard
+            key={index}
+            title={movie.title}
+            date={movie.date}
+            genre={movie.genre}
+            img={movie.img}
+          />
+        ))}
+      </Grid>
+    </Fragment>
   );
 }
 export default MovieList;
