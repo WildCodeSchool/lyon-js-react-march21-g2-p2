@@ -56,6 +56,7 @@ function MovieList() {
             date={movie.date}
             genre={movie.genre}
             img={movie.img}
+            n
           />
         ))}
       </Grid>
