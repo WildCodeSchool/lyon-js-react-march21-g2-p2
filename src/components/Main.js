@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router';
 import HomePage from './HomePage';
 import MoviesPage from './MoviesPage';
 import FavoritesPage from './FavoritesPage';
-import { makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -19,8 +19,6 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
   },
 }));
-
-
 
 export default function Main() {
   const classes = useStyles();

@@ -27,7 +27,6 @@ import MailIcon from '@material-ui/icons/Mail';
 import StarsIcon from '@material-ui/icons/Stars';
 import StyleIcon from '@material-ui/icons/Style';
 
-
 const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
@@ -60,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
-    padding: theme.spacing(4)
+    padding: theme.spacing(4),
   },
   drawerOpen: {
     width: drawerWidth,
