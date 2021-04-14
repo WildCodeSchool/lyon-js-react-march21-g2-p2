@@ -16,10 +16,10 @@ function App() {
 
   return (
     <>
-    <div className={classes.root}>
-      <Header />
-      <Main />
-    </div>
+      <div className={classes.root}>
+        <Header />
+        <Main />
+      </div>
       <Footer />
     </>
   );
