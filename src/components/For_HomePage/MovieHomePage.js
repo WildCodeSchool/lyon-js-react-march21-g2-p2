@@ -19,7 +19,7 @@ import {
 } from '@mui-treasury/components/info';
 import { useGalaxyInfoStyles } from '@mui-treasury/styles/info/galaxy';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
-
+import Grid from '@material-ui/core/Grid';
 /* modele card Material UI */
 const useStyles = makeStyles(() => ({
   card: {
@@ -36,15 +36,15 @@ const useStyles = makeStyles(() => ({
       background: 'linear-gradient(to top, #000, rgba(0,0,0,0))',
     },
   },
-  content: {
-    position: 'absolute',
-    zIndex: 2,
-    bottom: 0,
-    width: '100%',
-  },
+    content: {
+      position: 'absolute',
+      zIndex: 2,
+      bottom: 0,
+      width: '100%',
+    }
 }));
 
-export const MovieHomeCard = React.memo(function GalaxyCard() {
+export const MovieHomeCard = React.memo(function HomeCard() {
   const [popularMovie, setPopularMovie] = useState([]);
 
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'top' });
@@ -89,7 +89,7 @@ export const MovieHomeCard = React.memo(function GalaxyCard() {
   /*JSX a retourner*/
 
   return (
-    <div className="card">
+    <>
       <NoSsr>
         <GoogleFontLoader
           fonts={[
@@ -98,19 +98,26 @@ export const MovieHomeCard = React.memo(function GalaxyCard() {
           ]}
         />
       </NoSsr>
+      <Grid container spacing={6} justify="center"
+  alignItems="center" direction="row">
+      
       {popularMovie.map((movie) => (
-        <Card key={movie.id} className={styles.card}>
+        <Grid item  key={movie.id} >
+        <Card className={styles.card}>
           <CardMedia classes={mediaStyles} image={moviePoster(movie.id)} />
           <Box py={3} px={2} className={styles.content}>
-            <Info className="movie-info" useStyles={useGalaxyInfoStyles}>
+            <Info useStyles={useGalaxyInfoStyles}>
               <InfoSubtitle>Movie</InfoSubtitle>
               <InfoTitle>{movie.title}</InfoTitle>
               <InfoCaption>Note : {movie.vote_average}/10</InfoCaption>
             </Info>
           </Box>
         </Card>
+        </Grid>
       ))}
-    </div>
+
+    </Grid>
+  </>
   );
 });
 
