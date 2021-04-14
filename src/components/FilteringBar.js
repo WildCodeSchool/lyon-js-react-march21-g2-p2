@@ -25,7 +25,6 @@ export default function FilteringBar(props) {
           name="criteria"
           id="criteria"
           onChange={handleSelection}
-          option={Object.keys(criteriaList)}
         >
           {Object.keys(criteriaList).map((criteria) => (
             <option key={criteria} value={criteria}>
