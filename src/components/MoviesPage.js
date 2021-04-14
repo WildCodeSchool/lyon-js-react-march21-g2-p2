@@ -1,6 +1,6 @@
 import './MoviesPage.css';
 import { useState, useEffect } from 'react';
-import FilterListTwoToneIcon from '@material-ui/icons/FilterListTwoTone';
+import FilterListIcon from '@material-ui/icons/FilterListTwoTone';
 import FilteringBar from './FilteringBar';
 
 export default function MoviesPage() {
@@ -18,7 +18,6 @@ export default function MoviesPage() {
 
   const [selectedCriteria, setSelectedCriteria] = useState('');
   const [selectedValue, setSelectedValue] = useState('');
-
   const [isFilterToggled, setIsFilterToggled] = useState(true);
 
   useEffect(() => {
@@ -28,20 +27,22 @@ export default function MoviesPage() {
       date: [...new Set(movieList.map(({ date }) => date))],
     });
 
-    // return () => {
-    //   cleanup
-    // }
+    // Cleanup the request for when we switch to API requests (use with axios and  { cancelToken: source.token })
+    // return function cleanup() {
+    //   cancels the previous request on unmount or query update :
+    //   source.cancel('Api is being canceled');
+    // };
   }, []);
 
+  // Toggle the criteria list
   function handleFilter() {
-    // Toggle the criteria list
     setIsFilterToggled(!isFilterToggled);
   }
   return (
     <>
       <h3 className="page-title">Movie list</h3>
       <button type="button" onClick={handleFilter}>
-        <FilterListTwoToneIcon className="filter-icon" />
+        <FilterListIcon className="filter-icon" />
       </button>
 
       {!isFilterToggled || (
