@@ -44,28 +44,24 @@ export default function MoviesPage() {
       <button type="button" onClick={handleFilter}>
         <FilterListIcon className="filter-icon" />
       </button>
-
+      {/* Show the filter bar only when the state of the button is true */}
       {!isFilterToggled || (
         <FilteringBar
           criteriaList={criteriaList}
           setSelectedCriteria={setSelectedCriteria}
           selectedCriteria={selectedCriteria}
-          setMovieList={setMovieList}
-          movieList={movieList}
-          selectedValue={selectedValue}
           setSelectedValue={setSelectedValue}
         />
       )}
-
       <br />
       <ul>
+        {/* Filter the movies only when both criteria and value are selected (truthy) */}
         {movieList
           .filter((movie) =>
             selectedCriteria && selectedValue
               ? movie[selectedCriteria].toString() === selectedValue
               : true
           )
-
           .map(({ title, date }) => (
             <li className="movie-list" key={title}>
               {title} ({date}){' '}
