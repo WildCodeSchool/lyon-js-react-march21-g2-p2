@@ -12,6 +12,7 @@ export default function MoviesPage() {
   ]);
 
   const [criteriaList, setCriteriaList] = useState({
+    All: ['      '],
     genre: [],
     date: [],
   });
@@ -23,8 +24,8 @@ export default function MoviesPage() {
   useEffect(() => {
     setCriteriaList({
       ...criteriaList,
-      genre: [...new Set(movieList.map(({ genre }) => genre))],
-      date: [...new Set(movieList.map(({ date }) => date))],
+      genre: ['All', ...new Set(movieList.map(({ genre }) => genre))],
+      date: ['All', ...new Set(movieList.map(({ date }) => date))],
     });
 
     // Cleanup the request for when we switch to API requests (use with axios and  { cancelToken: source.token })
@@ -58,7 +59,10 @@ export default function MoviesPage() {
         {/* Filter the movies only when both criteria and value are selected (truthy) */}
         {movieList
           .filter((movie) =>
-            selectedCriteria && selectedValue
+            selectedCriteria &&
+            selectedValue &&
+            selectedCriteria !== 'All' &&
+            selectedValue !== 'All'
               ? movie[selectedCriteria].toString() === selectedValue
               : true
           )
