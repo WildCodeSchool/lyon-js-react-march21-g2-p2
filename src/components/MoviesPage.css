@@ -1,0 +1,15 @@
+.card {
+  border: 2px solid black;
+  width: 80%;
+  height: auto;
+  margin: auto;
+  padding: 40px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.movie-info:hover {
+  background-color: rgb(52, 53, 53);
+}

@@ -47,7 +47,7 @@ const useStyles = makeStyles(() => ({
 export const MovieHomeCard = React.memo(function HomeCard() {
   const [popularMovie, setPopularMovie] = useState([]);
 
-  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'top' });
+  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
   const styles = useStyles();
 
   /*Récupération des données Moviedb*/
