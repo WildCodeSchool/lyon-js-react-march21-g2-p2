@@ -10,11 +10,9 @@ export default function FilteringBar(props) {
   } = props;
 
   function handleSelection({ target }) {
-    if (target.id === 'criteria') {
-      setSelectedCriteria(target.value);
-    } else {
-      setSelectedValue(target.value);
-    }
+    target.id === 'criteria'
+      ? setSelectedCriteria(target.value)
+      : setSelectedValue(target.value);
   }
 
   return (
