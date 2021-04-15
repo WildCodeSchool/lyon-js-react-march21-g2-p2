@@ -1,4 +1,4 @@
-.card {
+.cards {
   border: 2px solid black;
   width: 80%;
   height: auto;
@@ -8,8 +8,4 @@
   justify-content: space-around;
   flex-wrap: wrap;
   list-style-type: none;
-}
-
-.movie-info:hover {
-  background-color: rgb(52, 53, 53);
 }
