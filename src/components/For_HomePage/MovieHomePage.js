@@ -13,6 +13,7 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import {
+
   Info,
   InfoCaption,
   InfoSubtitle,
@@ -22,6 +23,7 @@ import { useGalaxyInfoStyles } from '@mui-treasury/styles/info/galaxy';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import Grid from '@material-ui/core/Grid';
 /* modele card Material UI */
 const useStyles = makeStyles(() => ({
   card: {
@@ -111,7 +113,10 @@ export const MovieHomeCard = React.memo(function GalaxyCard() {
   /*JSX a retourner*/
 
   return (
-    <div className="cards">
+    <>
+    <Grid container spacing={3} direction="row"
+        justify="center"
+        alignItems="baseline">
       {/*<NoSsr>
         <GoogleFontLoader
           fonts={[
@@ -121,7 +126,7 @@ export const MovieHomeCard = React.memo(function GalaxyCard() {
         />
         </NoSsr>*/}
       {popularMovie.map((movie) => (
-        <div className="card-info">
+        <Grid items>
           <Card key={movie.id} className={clsx(styles.card)}>
             <CardMedia
               className={clsx(styles.cardStyle)}
@@ -145,9 +150,10 @@ export const MovieHomeCard = React.memo(function GalaxyCard() {
               </Info>
             </Box>
           </Card>
-        </div>
+          </Grid>
       ))}
-    </div>
+    </Grid>
+    </>
   );
 });
 
