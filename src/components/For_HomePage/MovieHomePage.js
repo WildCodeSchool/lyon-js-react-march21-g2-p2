@@ -73,13 +73,12 @@ const useStyles = makeStyles(() => ({
     textAlign: 'start',
     width: '100%',
     height: '100%',
-    
   },
   media: {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-  }
+  },
 }));
 
 export const MovieHomeCard = React.memo(function GalaxyCard() {
@@ -134,11 +133,10 @@ export const MovieHomeCard = React.memo(function GalaxyCard() {
         direction="row"
         justify="center"
         alignItems="center"
-        
       >
         {popularMovie.map((movie) => (
           <Grid item key={movie.id} xs={10} sm={6} md={4} lg={3} xl={2}>
-            <Card  className={clsx(styles.card)}>
+            <Card className={clsx(styles.card)}>
               <CardMedia
                 className={styles.media}
                 classes={mediaStyles}

@@ -5,7 +5,6 @@ import MoviesPage from './MoviesPage';
 import FavoritesPage from './FavoritesPage';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
