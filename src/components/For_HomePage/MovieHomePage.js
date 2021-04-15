@@ -46,6 +46,7 @@ const useStyles = makeStyles(() => ({
     zIndex: 2,
     bottom: 0,
     width: '100%',
+    margin: 0,
     '&:hover': {
       cursor: 'pointer',
       visibility: 'visible',
@@ -65,6 +66,13 @@ const useStyles = makeStyles(() => ({
     color: 'white',
     display: 'flex',
     alignItems: 'flex-start',
+  },
+  movieInfo: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    marginRight: 20,
+    textAlign: "start"
   },
 }));
 
