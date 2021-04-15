@@ -13,7 +13,6 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import {
-
   Info,
   InfoCaption,
   InfoSubtitle,
@@ -31,8 +30,8 @@ const useStyles = makeStyles(() => ({
     boxShadow: 'none',
     position: 'relative',
     margin: 10,
-    minWidth: 300,
-    minHeight: 400,
+    width: 250,
+    height: 400,
     '&:after': {
       content: '""',
       bottom: 0,
@@ -72,8 +71,13 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     marginRight: 20,
-    textAlign: "start"
+    textAlign: 'start',
   },
+  media: {
+    width: 250,
+    height: 400,
+    objectFit: 'cover',
+  }
 }));
 
 export const MovieHomeCard = React.memo(function GalaxyCard() {
@@ -122,10 +126,15 @@ export const MovieHomeCard = React.memo(function GalaxyCard() {
 
   return (
     <>
-    <Grid container spacing={3} direction="row"
+      <Grid
+        container
+        spacing={3}
+        direction="row"
         justify="center"
-        alignItems="baseline">
-      {/*<NoSsr>
+        alignItems="center"
+        
+      >
+        {/*<NoSsr>
         <GoogleFontLoader
           fonts={[
             { font: 'Spartan', weights: [30] },
@@ -133,34 +142,35 @@ export const MovieHomeCard = React.memo(function GalaxyCard() {
           ]}
         />
         </NoSsr>*/}
-      {popularMovie.map((movie) => (
-        <Grid items>
-          <Card key={movie.id} className={clsx(styles.card)}>
-            <CardMedia
-              className={clsx(styles.cardStyle)}
-              classes={mediaStyles}
-              image={moviePoster(movie.id)}
-            />
+        {popularMovie.map((movie) => (
+          <Grid item key={movie.id} xs={10} sm={6} md={4} lg={3} xl={2}>
+            <Card  className={clsx(styles.card)}>
+              <CardMedia
+                className={styles.media}
+                /*className={clsx(styles.cardStyle)}*/
+                classes={mediaStyles}
+                image={moviePoster(movie.id)}
+              />
 
-            <Box py={3} className={clsx(styles.content)}>
-              <Box py={40} className={clsx(styles.favorite)}>
-                <IconButton>
-                  <FavoriteIcon className={clsx(styles.favoriteIcon)} />
-                </IconButton>
+              <Box py={3} className={clsx(styles.content)}>
+                <Box py={40} className={clsx(styles.favorite)}>
+                  <IconButton>
+                    <FavoriteIcon className={clsx(styles.favoriteIcon)} />
+                  </IconButton>
+                </Box>
+                <Info
+                  className={clsx(styles.movieInfo)}
+                  useStyles={useGalaxyInfoStyles}
+                >
+                  <InfoSubtitle>Movie</InfoSubtitle>
+                  <InfoTitle>{movie.title}</InfoTitle>
+                  <InfoCaption>Note : {movie.vote_average}/10</InfoCaption>
+                </Info>
               </Box>
-              <Info
-                className={clsx(styles.movieInfo)}
-                useStyles={useGalaxyInfoStyles}
-              >
-                <InfoSubtitle>Movie</InfoSubtitle>
-                <InfoTitle>{movie.title}</InfoTitle>
-                <InfoCaption>Note : {movie.vote_average}/10</InfoCaption>
-              </Info>
-            </Box>
-          </Card>
+            </Card>
           </Grid>
-      ))}
-    </Grid>
+        ))}
+      </Grid>
     </>
   );
 });

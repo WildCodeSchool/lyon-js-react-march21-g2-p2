@@ -4,16 +4,17 @@ import HomePage from './HomePage';
 import MoviesPage from './MoviesPage';
 import FavoritesPage from './FavoritesPage';
 import { makeStyles } from '@material-ui/core/styles';
+// import { isExternalModuleNameRelative } from 'typescript';
 
 const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(1),
   },
   toolbar: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
