@@ -6,8 +6,6 @@ import { useState, useEffect } from 'react';
 
 /*Material UI*/
 import React from 'react';
-//import GoogleFontLoader from 'react-google-font-loader';
-//import NoSsr from '@material-ui/core/NoSsr';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
@@ -23,6 +21,7 @@ import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Grid from '@material-ui/core/Grid';
+
 /* modele card Material UI */
 const useStyles = makeStyles(() => ({
   card: {
@@ -69,15 +68,18 @@ const useStyles = makeStyles(() => ({
   movieInfo: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'flex-start',
-    marginRight: 20,
+    justifyContent: 'flex-end',
+    marginRight: 25,
     textAlign: 'start',
+    width: '100%',
+    height: '100%',
+    
   },
   media: {
-    width: 250,
-    height: 400,
+    width: '100%',
+    height: '100%',
     objectFit: 'cover',
-  },
+  }
 }));
 
 export const MovieHomeCard = React.memo(function GalaxyCard() {
@@ -122,7 +124,7 @@ export const MovieHomeCard = React.memo(function GalaxyCard() {
     return movieLink;
   };
 
-  /*JSX a retourner*/
+  /*JSX à retourner*/
 
   return (
     <>
@@ -132,21 +134,13 @@ export const MovieHomeCard = React.memo(function GalaxyCard() {
         direction="row"
         justify="center"
         alignItems="center"
+        
       >
-        {/*<NoSsr>
-        <GoogleFontLoader
-          fonts={[
-            { font: 'Spartan', weights: [30] },
-            { font: 'Montserrat', weights: [20, 40, 70] },
-          ]}
-        />
-        </NoSsr>*/}
         {popularMovie.map((movie) => (
           <Grid item key={movie.id} xs={10} sm={6} md={4} lg={3} xl={2}>
-            <Card className={clsx(styles.card)}>
+            <Card  className={clsx(styles.card)}>
               <CardMedia
                 className={styles.media}
-                /*className={clsx(styles.cardStyle)}*/
                 classes={mediaStyles}
                 image={moviePoster(movie.id)}
               />
