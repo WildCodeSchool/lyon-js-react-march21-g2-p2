@@ -1,5 +1,5 @@
-import './FavoritesPage.css';
+import './FavoritePage.css';
 
-export default function FavoritesPage() {
+export default function FavoritePage() {
   return <div>Favorites list</div>;
 }

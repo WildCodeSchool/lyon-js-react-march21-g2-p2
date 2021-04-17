@@ -26,7 +26,7 @@ import MovieIcon from '@material-ui/icons/Movie';
 import MailIcon from '@material-ui/icons/Mail';
 import StarsIcon from '@material-ui/icons/Stars';
 import StyleIcon from '@material-ui/icons/Style';
-import logo from './logo.png';
+import logo from '../assets/logo.png';
 const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
