@@ -62,9 +62,16 @@ const useStyles = makeStyles(() => ({
   movieInfo: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'flex-start',
-    marginRight: 20,
+    justifyContent: 'flex-end',
+    marginRight: 25,
     textAlign: 'start',
+    width: '100%',
+    height: '100%',
+  },
+  media: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
   },
 }));
 
