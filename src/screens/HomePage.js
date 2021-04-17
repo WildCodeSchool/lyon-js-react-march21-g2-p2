@@ -1,14 +1,14 @@
-/*HomePage function which wil call MovieList rendering in MovieCard*/
+/*HomePage function which will call MovieList rendering in MovieCard*/
 
 /*component import*/
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './MoviesPage.css';
-import MovieList from './components/MovieList';
+import './HomePage.css';
+import MovieList from '../components/MovieList';
 
 //import MovieCard from './components/MovieCard';
 //<MovieCard /> {/*not sure how to put render MovieList with MovieCard*/}
-export const HomePage = () => {
+export default function HomePage() {
   const [popularMovie, setPopularMovie] = useState([]);
   useEffect(() => {
     axios
@@ -31,15 +31,12 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <h1>Here is the list of all movies</h1>
       {/* pass the const GeneralData as props to MovieList component, like
       <MovieList generalData={generalData}/> */}
-      <MovieList>
-        {/*not sure how to put render MovieList with MovieCard*/}
-      </MovieList>
-    </div>
+      <MovieList />
+      {/*not sure how to put render MovieList with MovieCard*/}
+    </>
   );
-};
-
-export default HomePage;
+}

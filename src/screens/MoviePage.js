@@ -2,12 +2,12 @@
 
 /*component import*/
 import React from 'react';
-import './MoviesPage.css';
-import MovieList from './components/MovieList';
+import './MoviePage.css';
+import MovieList from '../components/MovieList';
 //import MovieCard from './components/MovieCard';
 //<MovieCard /> {/*not sure how to put render MovieList with MovieCard*/}
 
-const MoviesPage = () => {
+const MoviePage = () => {
   return (
     <div>
       <h1>Here is the list of all movies</h1>
@@ -20,4 +20,4 @@ const MoviesPage = () => {
   );
 };
 
-export default MoviesPage;
+export default MoviePage;
