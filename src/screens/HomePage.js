@@ -35,7 +35,7 @@ export default function HomePage() {
       <h1>Here is the list of all movies</h1>
       {/* pass the const GeneralData as props to MovieList component, like
       <MovieList generalData={generalData}/> */}
-      <MovieList />
+      <MovieList movieItems={popularMovie} />
       {/*not sure how to put render MovieList with MovieCard*/}
     </>
   );
