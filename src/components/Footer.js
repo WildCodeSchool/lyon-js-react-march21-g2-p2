@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Footer() {
   const classes = useStyles();
-  const theme = useTheme();
   return (
     <div className={clsx(classes.Footer)}>
       <CssBaseline />
