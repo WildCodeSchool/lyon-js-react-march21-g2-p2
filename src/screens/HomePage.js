@@ -32,7 +32,7 @@ export default function HomePage() {
 
   return (
     <>
-      <h1>Here is the list of all movies</h1>
+      <h1>Popular movies</h1>
       <MovieList movieItems={popularMovie} />
     </>
   );
