@@ -87,7 +87,7 @@ const MovieCard = (props) => {
           <CardMedia
             className={clsx(styles.cardStyle)}
             classes={mediaStyles}
-            // image={props.poster}
+            image={props.poster}
           />
 
           <Box py={3} className={clsx(styles.content)}>
