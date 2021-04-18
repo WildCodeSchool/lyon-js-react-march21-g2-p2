@@ -82,8 +82,8 @@ const MovieCard = (props) => {
 
   return (
     <>
-      <Grid items>
-        <Card key={props.key} className={clsx(styles.card)}>
+      <Grid items key={props.id}>
+        <Card className={clsx(styles.card)}>
           <CardMedia
             className={clsx(styles.cardStyle)}
             classes={mediaStyles}
