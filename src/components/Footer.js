@@ -9,12 +9,11 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
+
   Footer: {
-    maxWidth: '100%',
-    margin: 'auto',
+
+    width: '100%',
+    margin: 0,
     textAlign: 'center',
     background: '#2b2b2b',
   },
@@ -32,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 function Footer() {
   const classes = useStyles();
   return (
-    <div className={clsx(classes.Footer)}>
+    <footer className={clsx(classes.Footer)}>
       <CssBaseline />
       <Typography variant="caption" className={clsx(classes.Typography)}>
         © DollyProject <br />
@@ -65,7 +64,7 @@ function Footer() {
           </Typography>
         </Grid>
       </Grid>
-    </div>
+    </footer>
   );
 }
 

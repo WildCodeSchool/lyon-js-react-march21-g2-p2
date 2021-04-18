@@ -23,8 +23,8 @@ const useStyles = makeStyles(() => ({
     boxShadow: 'none',
     position: 'relative',
     margin: 10,
-    minWidth: 300,
-    minHeight: 400,
+    width: 250,
+    height: 400,
     '&:after': {
       content: '""',
       bottom: 0,
@@ -72,7 +72,7 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-  },
+  }
 }));
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
@@ -82,7 +82,7 @@ const MovieCard = (props) => {
 
   return (
     <>
-      <Grid items key={props.id}>
+      <Grid item key={props.id} xs={10} sm={6} md={4} lg={3} xl={2}>
         <Card className={clsx(styles.card)}>
           <CardMedia
             className={clsx(styles.cardStyle)}

@@ -17,7 +17,7 @@ const MovieList = (props) => {
   };
 
   return (
-    <div>
+    <>
       <Grid
         container
         spacing={3}
@@ -36,7 +36,7 @@ const MovieList = (props) => {
           />
         ))}
       </Grid>
-    </div>
+    </>
   );
 };
 

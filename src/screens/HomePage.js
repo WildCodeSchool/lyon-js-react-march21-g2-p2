@@ -23,7 +23,7 @@ export default function HomePage() {
         const mostPopularMovies = data.results;
         const moviesToShow = [];
 
-        for (let i = 0; i <= 9; i += 1) {
+        for (let i = 0; i <= 11; i += 1) {
           moviesToShow.push(mostPopularMovies[i]);
         }
         return setPopularMovie(moviesToShow);
