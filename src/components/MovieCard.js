@@ -76,18 +76,18 @@ const useStyles = makeStyles(() => ({
 }));
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
-const MovieCard = (movieInfo) => {
+const MovieCard = (props) => {
   const styles = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'top' });
 
   return (
     <>
       <Grid items>
-        <Card key={movieInfo.id} className={clsx(styles.card)}>
+        <Card key={props.key} className={clsx(styles.card)}>
           <CardMedia
             className={clsx(styles.cardStyle)}
             classes={mediaStyles}
-            image={movieInfo.poster_url}
+            // image={props.poster}
           />
 
           <Box py={3} className={clsx(styles.content)}>
@@ -101,8 +101,8 @@ const MovieCard = (movieInfo) => {
               useStyles={useGalaxyInfoStyles}
             >
               <InfoSubtitle>Movie</InfoSubtitle>
-              <InfoTitle>{movieInfo.title}</InfoTitle>
-              <InfoCaption>Note : {movieInfo.vote_average}/10</InfoCaption>
+              <InfoTitle>{props.title}</InfoTitle>
+              <InfoCaption>Note : {props.average}/10</InfoCaption>
             </Info>
           </Box>
         </Card>

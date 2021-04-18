@@ -2,7 +2,7 @@ import React from 'react';
 import MovieCard from './MovieCard';
 import Grid from '@material-ui/core/Grid';
 
-const MovieList = ({ movieItems }) => {
+const MovieList = (props) => {
   return (
     <div>
       <Grid
@@ -12,14 +12,14 @@ const MovieList = ({ movieItems }) => {
         justify="center"
         alignItems="center"
       >
-        {movieItems.map((movie, index) => (
+        {props.movieItems.map(movie => (
           <MovieCard
-            key={index}
-            date={movie.date}
+            key={movie.id}
+            date={movie.release_date}
             title={movie.title}
-            genre={movie.genre}
+            genre={movie.genre_ids}
             average={movie.vote_average}
-            poster={movie.poster_url}
+            // poster={movie.poster_url}
           />
         ))}
       </Grid>
