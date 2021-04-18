@@ -72,7 +72,7 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-  }
+  },
 }));
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */

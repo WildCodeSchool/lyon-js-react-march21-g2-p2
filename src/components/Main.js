@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
   toolbar: {
-    
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
