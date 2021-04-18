@@ -12,7 +12,7 @@ const MovieList = (props) => {
         justify="center"
         alignItems="center"
       >
-        {props.movieItems.map(movie => (
+        {props.movieItems.map((movie) => (
           <MovieCard
             key={movie.id}
             date={movie.release_date}
