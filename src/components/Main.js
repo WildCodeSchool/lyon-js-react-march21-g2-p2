@@ -21,12 +21,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Main() {
-
   const classes = useStyles();
 
   return (
     <main className={classes.content}>
-    <div className={classes.toolbar} />
+      <div className={classes.toolbar} />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/movies" component={MoviePage} />
