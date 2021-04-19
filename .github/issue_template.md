@@ -1,9 +1,9 @@
 ---
-name: Epic Template
-about: Describe this epic template's purpose here.
-title: 'DS - '
-labels: Epic
-assignees: ''
+ name: User_story
+ about: New US
+ title: "[US] - "
+ labels: enhancement
+ assignees: ''
 ---
 
 ## Story
@@ -16,4 +16,14 @@ As a <persona> I want to <action> for <reason / need>
 
 ## Integration test scenario
 
--
+1.
+2.
+3.
+4.
+
+## Tasks
+
+- []
+- []
+- []
+- []
