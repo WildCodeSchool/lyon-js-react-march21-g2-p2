@@ -3,24 +3,12 @@
   padding: 0;
 }
 
-ul {
-  list-style: none;
-}
-li {
-  display: inline-flex;
-}
-
 a {
-  display: flex;
-  color: white;
+  color: black;
   text-decoration: none;
-  padding: 13px;
 }
 
 a:hover {
-  cursor: pointer;
-  color: black;
-  font-size: 1.1em;
-  background-color: #ffb74d;
-  border-radius: 20px;
+  display: flex;
+  font-size: 3;
 }
