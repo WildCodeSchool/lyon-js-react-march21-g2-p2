@@ -3,13 +3,25 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './components/Main';
 
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+  root: {
+    display: 'flex',
+  },
+}));
+
 function App() {
+  const classes = useStyles();
+
   return (
-    <div>
-      <Header />
-      <Main />
+    <>
+      <div className={classes.root}>
+        <Header />
+        <Main />
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }
 
