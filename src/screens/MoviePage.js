@@ -12,17 +12,13 @@ export default function MoviePage() {
   const [popularMovie, setPopularMovie] = useState([]);
   useEffect(() => {
     axios
-
       .get(
         'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=f22eb05a70b166bd4e2c1312e15d8e8b'
       )
-
       .then((response) => response.data)
-
       .then((data) => {
         const mostPopularMovies = data.results;
         const moviesToShow = [];
-
         for (let i = 0; i <= 9; i += 1) {
           moviesToShow.push(mostPopularMovies[i]);
         }
