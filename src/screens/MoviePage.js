@@ -1,35 +1,38 @@
-/*MoviePage function which will call MovieList rendering in MovieCard*/
-
 /*component import*/
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './MoviePage.css';
 import MovieList from '../components/MovieList';
+import FilteringBar from '../components/FilteringBar';
+const discoverMovieEndpoint =
+  'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
 
-//import MovieCard from './components/MovieCard';
-//<MovieCard /> {/*not sure how to put render MovieList with MovieCard*/}
 export default function MoviePage() {
-  const [popularMovie, setPopularMovie] = useState([]);
+  const [movieList, setMovieList] = useState([]);
   useEffect(() => {
     axios
-      .get(
-        'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=f22eb05a70b166bd4e2c1312e15d8e8b'
-      )
-      .then((response) => response.data)
-      .then((data) => {
-        const mostPopularMovies = data.results;
-        const moviesToShow = [];
-        for (let i = 0; i <= 9; i += 1) {
-          moviesToShow.push(mostPopularMovies[i]);
-        }
-        return setPopularMovie(moviesToShow);
-      });
+      .get(discoverMovieEndpoint)
+      .then(({ data }) => setMovieList(data.results));
   }, []);
+
+  // if(filterCriteria === 'genre' ? `&with_genres=${filterValue}`
+  const [filterCriteria, setFilterCriteria] = useState('genre');
+  const [filterValue, setFilterValue] = useState('action');
+  const [searchValue, setSearchValue] = useState('');
 
   return (
     <>
       <h1>Here is the list of all movies</h1>
-      <MovieList movieItems={popularMovie} />
+      {/* <FilteringBar 
+        movieList={movieList}
+        filterCriteria={filterCriteria}
+        setFilterCriteria={setFilterCriteria}
+        filterValue={filterValue}
+        setFilterValue={setFilterValue}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />*/}
+      <MovieList movieItems={movieList} />
     </>
   );
 }

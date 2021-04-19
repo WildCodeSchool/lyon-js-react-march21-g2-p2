@@ -25,6 +25,7 @@ const MovieList = (props) => {
       >
         {props.movieItems.map((movie) => (
           <MovieCard
+            key={movie.id}
             id={movie.id}
             date={movie.release_date}
             title={movie.title}
