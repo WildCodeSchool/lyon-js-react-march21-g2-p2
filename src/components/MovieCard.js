@@ -78,7 +78,7 @@ const useStyles = makeStyles(() => ({
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
 const MovieCard = (props) => {
   const styles = useStyles();
-  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'top' });
+  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
   return (
     <>
