@@ -1,18 +1,9 @@
-export default function FilteringBar(props) {
-  const {
-    criteriaList,
-    setSelectedCriteria,
-    selectedCriteria,
-    setSelectedValue,
-  } = props;
-
-  function handleSelection({ target }) {
-    // We need to distinguish between the input from criteria and the one from its value
-    target.id === 'criteria'
-      ? setSelectedCriteria(target.value)
-      : setSelectedValue(target.value);
-  }
-
+export default function FilteringBar({
+  criteriaList,
+  setSelectedCriteria,
+  selectedCriteria,
+  setSelectedValue,
+}) {
   return (
     <div className="filtering-bar">
       <label htmlFor="criteria">
@@ -20,7 +11,7 @@ export default function FilteringBar(props) {
           placeholder="Criteria"
           name="criteria"
           id="criteria"
-          onChange={handleSelection}
+          onChange={({ target }) => setSelectedCriteria(target.value)}
         >
           {/* We display each criteria key in the select element as an option */}
           {Object.keys(criteriaList).map((criteria) => (
@@ -35,7 +26,7 @@ export default function FilteringBar(props) {
           placeholder="Value"
           name="criteria-value"
           id="criteria-value"
-          onChange={handleSelection}
+          onChange={({ target }) => setSelectedValue(target.value)}
         >
           {/* When a criteria is selected (truthy) we display each criteria value in the select element as an option */}
           {!selectedCriteria ||
