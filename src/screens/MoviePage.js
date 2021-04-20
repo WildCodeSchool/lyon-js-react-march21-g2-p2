@@ -5,12 +5,32 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './MoviePage.css';
 import MovieList from '../components/MovieList';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
 
-//import MovieCard from './components/MovieCard';
-//<MovieCard /> {/*not sure how to put render MovieList with MovieCard*/}
+//style of the Search input
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '30ch',
+  },
+  input: {
+    marginLeft: theme.spacing(2),
+  },
+  iconButton: {
+    padding: 10,
+  },
+}));
+
 export default function MoviePage() {
-  const [searchResults, setSearchResults] = useState([]);
+  const classes = useStyles();
   const [popularMovie, setPopularMovie] = useState([]);
+
+  //state for the SearchResults
+  const [searchResults, setSearchResults] = useState([]);
+
   useEffect(() => {
     axios
 
@@ -34,7 +54,23 @@ export default function MoviePage() {
   return (
     <>
       <h1>Here is the list of all movies</h1>
-      <input type="text" />
+      <Paper component="form" className={classes.root}>
+        <InputBase
+          type="text"
+          className={classes.input}
+          placeholder="Search for a movie"
+          inputProps={{ 'aria-label': 'Search for a movie' }}
+          onChange={(e) => setSearchResults(e.target.value)}
+        />
+        <IconButton
+          type="submit"
+          className={classes.iconButton}
+          aria-label="search"
+        >
+          <SearchIcon />
+        </IconButton>
+      </Paper>
+
       <MovieList movieItems={popularMovie} />
     </>
   );

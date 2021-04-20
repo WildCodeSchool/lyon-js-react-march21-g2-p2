@@ -1,21 +1,6 @@
 import React from 'react';
 import MovieCard from './MovieCard';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-
-const useStyles = makeStyles((theme) => ({
-  input: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
-  },
-  iconButton: {
-    padding: 10,
-  },
-}));
 
 const MovieList = (props) => {
   const moviePoster = (movieId) => {
@@ -30,7 +15,7 @@ const MovieList = (props) => {
 
     return movieLink;
   };
-  const classes = useStyles();
+
   return (
     <>
       <Grid
@@ -40,20 +25,6 @@ const MovieList = (props) => {
         justify="center"
         alignItems="center"
       >
-        <Paper component="form" className={classes.root}>
-          <InputBase
-            className={classes.input}
-            placeholder="Search for a movie"
-            inputProps={{ 'aria-label': 'Search for a movie' }}
-          />
-          <IconButton
-            type="text"
-            className={classes.iconButton}
-            aria-label="search"
-          >
-            <SearchIcon />
-          </IconButton>
-        </Paper>
         {props.movieItems.map((movie) => (
           <MovieCard
             id={movie.id}
