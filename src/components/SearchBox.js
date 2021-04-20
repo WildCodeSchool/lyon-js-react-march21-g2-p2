@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SearchBox = () => {
   const classes = useStyles();
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchValue, setSearchValue] = useState(''); // to put in future in MoviePage
 
   return (
     <>
@@ -31,7 +31,7 @@ const SearchBox = () => {
           //value={value}
           placeholder="Search for a movie"
           inputProps={{ 'aria-label': 'Search for a movie' }}
-          onChange={(e) => setSearchResults(e.target.value)}
+          onChange={(e) => setSearchValue(e.target.value)}
         />
         <IconButton
           type="submit"
