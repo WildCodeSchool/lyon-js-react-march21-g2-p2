@@ -1,3 +1,15 @@
+/**
+ * @description A component to filter a movie list
+ * @date 20/04/2021
+ * @export
+ * @param {*} {
+ *   criteriaList,
+ *   setSelectedCriteria,
+ *   selectedCriteria,
+ *   setSelectedValue,
+ * }
+ * @return {*} a bar composed of an input to chose the criteria, one to choose its value, one to search...
+ */
 export default function FilteringBar({
   criteriaList,
   setSelectedCriteria,
