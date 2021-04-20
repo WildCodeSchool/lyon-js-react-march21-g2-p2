@@ -1,0 +1,8 @@
+.Contact{
+    display: flex;
+    margin: auto;
+    border-radius: 10px;
+    width: 300px;
+    padding: 55px;
+    background: linear-gradient(120deg,#d84315, #ffeb3b);
+}
