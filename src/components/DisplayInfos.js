@@ -19,6 +19,7 @@ export default function DisplayInfos() {
           />
         </Grid>
         <Grid item>
+        </Grid>
           <h2>Title :</h2>
           <p>Mad Max</p>
           <h2>Date :</h2>
@@ -31,7 +32,6 @@ export default function DisplayInfos() {
           <p></p>
           <h2>Synopsis :</h2>
           <p></p>
-        </Grid>
       </Grid>
     </>
   );
