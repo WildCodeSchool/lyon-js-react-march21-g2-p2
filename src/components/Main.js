@@ -3,7 +3,9 @@ import { Switch, Route } from 'react-router';
 import HomePage from '../screens/HomePage';
 import MoviePage from '../screens/MoviePage';
 import FavoritePage from '../screens/FavoritePage';
+import MovieInfos from '../screens/MovieInfos';
 import { makeStyles } from '@material-ui/core/styles';
+
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -30,6 +32,7 @@ export default function Main() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/movies" component={MoviePage} />
         <Route exact path="/favorites" component={FavoritePage} />
+        <Route exact path="/infos" component={MovieInfos}/>
       </Switch>
     </main>
   );
