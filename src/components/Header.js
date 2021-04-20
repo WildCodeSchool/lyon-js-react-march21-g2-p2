@@ -204,14 +204,14 @@ export default function Header() {
           </ListItem>
         </List>
         <List>
-          <NavLink exact activeClassName="active" to="/Contact">  
+          <NavLink exact activeClassName="active" to="/Contact">
             <ListItem button>
               <ListItemIcon>
                 <MailIcon />
               </ListItemIcon>
               <ListItemText primary="Contact Us" />
             </ListItem>
-            </NavLink>
+          </NavLink>
         </List>
       </Drawer>
     </>

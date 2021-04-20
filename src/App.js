@@ -3,7 +3,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './components/Main';
 
-
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
