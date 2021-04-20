@@ -4,6 +4,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import { useForm } from 'react-hook-form';
 import qs from 'query-string';
+import './FilteringBar.css';
 
 const localizedFormat = require('dayjs/plugin/localizedFormat');
 dayjs.extend(localizedFormat);
@@ -67,10 +68,10 @@ export default function FilteringBar({
   }, [location]);
 
   return (
-    <form>
+    <form className="filtering-bar">
       <h2>Filters</h2>
       <label>
-        year :
+        Year
         <select {...register('year')}>
           <option key={''} value={''}>
             All
@@ -88,7 +89,7 @@ export default function FilteringBar({
       <br />
       {availableGenres.length && (
         <label>
-          genres :
+          Genre
           <select {...register('with_genres')}>
             <option key={''} value={''}>
               All
