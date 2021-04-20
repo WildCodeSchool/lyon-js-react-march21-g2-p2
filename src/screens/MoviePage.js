@@ -9,6 +9,7 @@ import MovieList from '../components/MovieList';
 //import MovieCard from './components/MovieCard';
 //<MovieCard /> {/*not sure how to put render MovieList with MovieCard*/}
 export default function MoviePage() {
+  const [searchResults, setSearchResults] = useState([]);
   const [popularMovie, setPopularMovie] = useState([]);
   useEffect(() => {
     axios
@@ -33,6 +34,7 @@ export default function MoviePage() {
   return (
     <>
       <h1>Here is the list of all movies</h1>
+      <input type="text" />
       <MovieList movieItems={popularMovie} />
     </>
   );
