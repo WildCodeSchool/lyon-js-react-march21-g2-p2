@@ -6,7 +6,6 @@ import FavoritePage from '../screens/FavoritePage';
 import MovieInfos from '../screens/MovieInfos';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
@@ -32,7 +31,7 @@ export default function Main() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/movies" component={MoviePage} />
         <Route exact path="/favorites" component={FavoritePage} />
-        <Route exact path="/infos" component={MovieInfos}/>
+        <Route exact path="/infos" component={MovieInfos} />
       </Switch>
     </main>
   );
