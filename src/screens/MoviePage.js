@@ -1,11 +1,10 @@
-/*component import*/
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './MoviePage.css';
 import MovieList from '../components/MovieList';
 import FilteringBar from '../components/FilteringBar';
 const discoverMovieEndpoint =
-  'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
+  'https://api.themoviedb.org/3/movie/popular?api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
 
 export default function MoviePage() {
   const [movieList, setMovieList] = useState([]);
@@ -22,8 +21,8 @@ export default function MoviePage() {
 
   return (
     <>
-      <h1>Here is the list of all movies</h1>
-      {/* <FilteringBar 
+      <h1>Here is a list of popular movies</h1>
+      <FilteringBar
         movieList={movieList}
         filterCriteria={filterCriteria}
         setFilterCriteria={setFilterCriteria}
@@ -31,7 +30,7 @@ export default function MoviePage() {
         setFilterValue={setFilterValue}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
-      />*/}
+      />
       <MovieList movieItems={movieList} />
     </>
   );
