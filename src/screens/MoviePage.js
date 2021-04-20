@@ -14,24 +14,31 @@ export default function MoviePage() {
       .then(({ data }) => setMovieList(data.results));
   }, []);
 
-  // if(filterCriteria === 'genre' ? `&with_genres=${filterValue}`
-  const [filterCriteria, setFilterCriteria] = useState('genre');
-  const [filterValue, setFilterValue] = useState('action');
+  const criteriaList = ['Genre', 'Date'];
+
+  const [filterValueList, setFilterValueList] = useState([]);
+
+  const [filterCriteria, setFilterCriteria] = useState('');
+  const [filterValue, setFilterValue] = useState('');
   const [searchValue, setSearchValue] = useState('');
 
   return (
     <>
       <h1>Here is a list of popular movies</h1>
       <FilteringBar
-        movieList={movieList}
         filterCriteria={filterCriteria}
         setFilterCriteria={setFilterCriteria}
         filterValue={filterValue}
         setFilterValue={setFilterValue}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
+        criteriaList={criteriaList}
+        filterValueList={filterValueList}
+        setFilterValueList={setFilterValueList}
+        movieList={movieList}
+        setMovieList={setMovieList}
       />
-      <MovieList movieItems={movieList} />
+      <MovieList movieList={movieList} />
     </>
   );
 }
