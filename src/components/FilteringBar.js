@@ -18,26 +18,22 @@ const yearsOfCinema = new Array(dayjs().year() - 1893)
  * @date 20/04/2021
  * @export
  * @param {*} {
- *   criteriaList,
- *   setFilterCriteria,
- *   filterCriteria,
- *   setSelectedValue,
- *   searchValue,
- *   setSearchValue,
- *   filterValueList,
- *   setFilterValueList,
- *   setMovieList
+ *  setMovieList,
+ *  location,
+ *  history,
+ *  availableGenres,
+ *  apiUrl,
  * }
  * @return {*} a bar composed of an input to chose the criteria, one to choose its value, one to search...
  */
 export default function FilteringBar({
-  movieList,
   setMovieList,
   location,
   history,
   availableGenres,
-  setAvailableGenres,
   apiUrl,
+  apiPopularRoute,
+  apiKey,
 }) {
   // the default values of the filters come from the querystring in the URL
   const { register, watch } = useForm({
@@ -63,11 +59,7 @@ export default function FilteringBar({
   useEffect(() => {
     const queryString = location.search;
     axios
-      .get(
-        apiUrl +
-          '/discover/movie?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&' +
-          queryString.substring(1)
-      )
+      .get(apiUrl + apiPopularRoute + apiKey + '&' + queryString.substring(1))
       .then((res) => {
         //console.log(res.data.results);
         setMovieList(res.data.results);
