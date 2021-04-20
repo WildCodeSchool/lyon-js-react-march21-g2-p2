@@ -2,7 +2,7 @@ import React from 'react';
 import MovieCard from './MovieCard';
 import Grid from '@material-ui/core/Grid';
 
-const MovieList = ({ movieList }) => {
+const MovieList = ({ movieList, imgUrl }) => {
   return (
     <>
       <Grid
@@ -28,7 +28,7 @@ const MovieList = ({ movieList }) => {
               title={title}
               genre={genre_ids}
               average={vote_average}
-              poster={`https://image.tmdb.org/t/p/w200${poster_path}`}
+              poster={imgUrl + poster_path}
             />
           )
         )}
