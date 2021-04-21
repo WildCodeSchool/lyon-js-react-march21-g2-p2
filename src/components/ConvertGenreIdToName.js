@@ -1,10 +1,8 @@
 import axios from 'axios';
 // Replace this hardcoded list with a API call to the following endpoint (using the API key)
-const genreListEndpoint =
-  'https://api.themoviedb.org/3/genre/movie/list?api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
+const genreListEndpoint = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
 // Replace this hardcoded list with a API call to the following endpoint (using the API key)
-const discoverMovieListEndpoint =
-  'https://api.themoviedb.org/3/discover/movie?api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
+const discoverMovieListEndpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
 // [REACT] Once the list is retrieved set it to a state with useState() to be able to used
 
 /* 

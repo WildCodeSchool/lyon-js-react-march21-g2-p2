@@ -81,7 +81,14 @@ export default function FilteringBar({
   useEffect(() => {
     const queryString = location.search;
     axios
-      .get(apiUrl + apiPopularRoute + apiKey + '&' + queryString.substring(1))
+      .get(
+        apiUrl +
+          apiPopularRoute +
+          'api_key=' +
+          apiKey +
+          '&' +
+          queryString.substring(1)
+      )
       .then((res) => {
         setMovieList(res.data.results);
       });
