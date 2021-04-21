@@ -19,7 +19,13 @@ export default function MovieInfos() {
 
   return (
     <>
-      <DisplayInfos currentMovie={movie} />
+      <DisplayInfos 
+        poster={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+        title={movie.title}
+        date ={movie.release_date}
+        synopsis={movie.overview}
+
+      />
     </>
   );
 }
