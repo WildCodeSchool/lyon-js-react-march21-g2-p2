@@ -25,7 +25,7 @@ export default function DisplayInfos(props) {
             {props.director
               .filter((crew) => crew.job === 'Director')
               .map((crew) => (
-                <li>{crew.name}</li>
+                <li key={crew.id}>{crew.name}</li>
               ))}
           </ul>
           <h2>Actors :</h2>
