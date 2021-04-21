@@ -3,8 +3,6 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
 export default function DisplayInfos(props) {
-
-    
   return (
     <>
       <Grid
@@ -24,14 +22,11 @@ export default function DisplayInfos(props) {
           <p>{props.date}</p>
           <h2>Director :</h2>
           <ul>
-              {props.director
-              .filter((crew) => 
-              crew.job === 'Director'
-              )
-              .map((crew) => 
+            {props.director
+              .filter((crew) => crew.job === 'Director')
+              .map((crew) => (
                 <li>{crew.name}</li>
- 
-              )}
+              ))}
           </ul>
           <h2>Actors :</h2>
           {/* <ul>

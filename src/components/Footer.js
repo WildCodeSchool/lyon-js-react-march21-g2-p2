@@ -9,7 +9,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
-
   Footer: {
     width: '100%',
     margin: 0,
