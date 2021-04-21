@@ -9,7 +9,7 @@ const imgUrl = 'https://image.tmdb.org/t/p/w200';
 const apiUrl = 'https://api.themoviedb.org/3';
 const apiPopularRoute = '/movie/popular?';
 const apiGenreListRoute = '/genre/movie/list?';
-const apiKey = 'api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
+const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 
 export default function MoviePage() {
   const [availableGenres, setAvailableGenres] = useState([]);
@@ -20,11 +20,11 @@ export default function MoviePage() {
   // Get the movies & all the genres available in TMDB
   useEffect(() => {
     axios
-      .get(apiUrl + apiPopularRoute + apiKey)
+      .get(apiUrl + apiPopularRoute + 'api_key=' + apiKey)
       .then(({ data }) => setMovieList(data.results));
 
     axios
-      .get(apiUrl + apiGenreListRoute + apiKey)
+      .get(apiUrl + apiGenreListRoute + 'api_key=' + apiKey)
       .then((res) => setAvailableGenres(res.data.genres));
   }, []);
 
