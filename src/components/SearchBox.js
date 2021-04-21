@@ -9,7 +9,7 @@ import axios from 'axios';
 //style of the Search input
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '30ch',
+    width: '35ch',
   },
   input: {
     marginLeft: theme.spacing(2),
