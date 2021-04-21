@@ -9,6 +9,7 @@ import SearchBox from '../components/SearchBox';
 
 export default function MoviePage() {
   const [popularMovie, setPopularMovie] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     axios
@@ -33,8 +34,8 @@ export default function MoviePage() {
   return (
     <>
       <h1>Here is the list of all movies</h1>
-      <SearchBox />
-      <MovieList movieItems={popularMovie} />
+      <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+      <MovieList movieItems={popularMovie} searchValue={searchValue} />
     </>
   );
 }

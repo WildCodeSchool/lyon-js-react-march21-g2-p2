@@ -3,7 +3,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 //style of the Search input
 const useStyles = makeStyles((theme) => ({
@@ -18,9 +19,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBox = () => {
+const apiUrl = 'https://api.themoviedb.org/3';
+const apiPopularRoute = '/movie/popular?';
+const apiKey = 'api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
+
+const SearchBox = ({ searchValue, setSearchValue }) => {
+  const [movieList, setMovieList] = useState([]);
+
+  // Get the movies & all the genres available in TMDB
+  useEffect(() => {
+    axios
+      .get(apiUrl + apiPopularRoute + apiKey)
+      .then(({ data }) => setMovieList(data.results));
+  }, []);
+
   const { root, input, iconButton } = useStyles();
-  const [searchValue, setSearchValue] = useState(''); // to put in future in MoviePage
 
   return (
     <>
