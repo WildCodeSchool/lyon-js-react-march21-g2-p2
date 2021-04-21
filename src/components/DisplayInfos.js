@@ -21,13 +21,13 @@ export default function DisplayInfos(props) {
           <h2>Date :</h2>
           <p>{props.date}</p>
           <h2>Director :</h2>
-          <ul>
+          <div>
             {props.director
               .filter((crew) => crew.job === 'Director')
               .map((crew) => (
-                <li key={crew.id}>{crew.name}</li>
+                <p key={crew.id}>{crew.name}</p>
               ))}
-          </ul>
+          </div>
           <h2>Actors :</h2>
           {/* <ul>
             {props.actors.map((actor) => (
