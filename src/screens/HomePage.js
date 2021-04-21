@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './HomePage.css';
 import MovieList from '../components/MovieList';
-
+import MovieCarousel from '../components/MovieCarousel';
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 
 //import MovieCard from './components/MovieCard';
@@ -31,6 +31,10 @@ export default function HomePage() {
 
   return (
     <>
+      <h1 className="recentMovie">Recent Movie</h1>
+      <div className="container">
+        <MovieCarousel movieList={popularMovie} />
+      </div>
       <h1>Popular movies</h1>
       <MovieList movieList={popularMovie} imgUrl={imgUrl} />
     </>
