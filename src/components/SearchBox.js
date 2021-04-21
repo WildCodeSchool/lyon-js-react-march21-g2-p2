@@ -19,25 +19,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SearchBox = () => {
-  const classes = useStyles();
+  const { root, input, iconButton } = useStyles();
   const [searchValue, setSearchValue] = useState(''); // to put in future in MoviePage
 
   return (
     <>
-      <Paper component="form" className={classes.root}>
+      <Paper
+        component="form"
+        className={root}
+        onSubmit={(e) => e.preventDefault()}
+      >
         <InputBase
           type="text"
-          className={classes.input}
-          //value={value}
+          className={input}
+          value={searchValue}
           placeholder="Search for a movie"
           inputProps={{ 'aria-label': 'Search for a movie' }}
           onChange={(e) => setSearchValue(e.target.value)}
         />
-        <IconButton
-          type="submit"
-          className={classes.iconButton}
-          aria-label="search"
-        >
+        <IconButton type="submit" className={iconButton} aria-label="search">
           <SearchIcon />
         </IconButton>
       </Paper>
