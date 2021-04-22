@@ -10,7 +10,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import SearchBox from './SearchBox';
 
 const localizedFormat = require('dayjs/plugin/localizedFormat');
 dayjs.extend(localizedFormat);
@@ -56,8 +55,6 @@ export default function FilteringBar({
   apiUrl,
   apiPopularRoute,
   apiKey,
-  searchValue,
-  setSearchValue,
 }) {
   // the default values of the filters come from the querystring in the URL
   const { register, watch } = useForm({
@@ -152,7 +149,6 @@ export default function FilteringBar({
           </Select>
         </FormControl>
       )}
-      <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
     </div>
   );
 }
