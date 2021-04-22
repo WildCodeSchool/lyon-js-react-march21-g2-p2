@@ -54,8 +54,10 @@ const MovieCarousel = (props) => {
   return (
     <Carousel className={clsx(styles.carousel)}>
       {props.movieList.map((movie) => (
-        <Box className={clsx(styles.movieBox)}>
+        <Box className={clsx(styles.movieBox)}
+          key={movie.id}>
           <CardMedia
+
             className={clsx(styles.carouselStyle)}
             classes={mediaStyles}
             image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
