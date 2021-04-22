@@ -78,30 +78,28 @@ const MovieCard = (props) => {
   };
 
   return (
-    <>
-      <Grid item key={props.id} xs={10} sm={6} md={4} lg={3} xl={2}>
-        <Card className={clsx(card)}>
-          <CardMedia classes={mediaStyles} image={props.poster} />
+    <Grid item key={props.id} xs={10} sm={6} md={4} lg={3} xl={2}>
+      <Card className={clsx(card)}>
+        <CardMedia classes={mediaStyles} image={props.poster} />
 
-          <Box py={3} className={clsx(content)}>
-            <Box py={40}>
-              <IconButton>
-                <FavoriteIcon
-                  onClick={handleToggleFavorite}
-                  variant="contained"
-                  color={isFavoriteMovie ? 'primary' : 'secondary'}
-                />
-              </IconButton>
-            </Box>
-            <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
-              <InfoSubtitle>Movie</InfoSubtitle>
-              <InfoTitle>{props.title}</InfoTitle>
-              <InfoCaption>Note : {props.average}/10</InfoCaption>
-            </Info>
+        <Box py={3} className={clsx(content)}>
+          <Box py={40}>
+            <IconButton>
+              <FavoriteIcon
+                onClick={handleToggleFavorite}
+                variant="contained"
+                color={isFavoriteMovie ? 'primary' : 'secondary'}
+              />
+            </IconButton>
           </Box>
-        </Card>
-      </Grid>
-    </>
+          <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
+            <InfoSubtitle>Movie</InfoSubtitle>
+            <InfoTitle>{props.title}</InfoTitle>
+            <InfoCaption>Note : {props.average}/10</InfoCaption>
+          </Info>
+        </Box>
+      </Card>
+    </Grid>
   );
 };
 
