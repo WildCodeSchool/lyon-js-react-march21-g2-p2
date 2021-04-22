@@ -84,9 +84,8 @@ const MovieCard = (props) => {
 
         <Box py={3} className={clsx(content)}>
           <Box py={40}>
-            <IconButton>
+            <IconButton onClick={handleToggleFavorite}>
               <FavoriteIcon
-                onClick={handleToggleFavorite}
                 variant="contained"
                 color={isFavoriteMovie ? 'primary' : 'secondary'}
               />
