@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react'
+import { useState } from 'react';
 import './MovieCard.css';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -69,58 +69,50 @@ const useStyles = makeStyles(() => ({
     height: '100%',
     objectFit: 'cover',
   },
-  favorite: {
+  isFav: {
     color: "red",
   },
-  notFavorite: {
+  notFav: {
     color: "white",
   }
-
 }));
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
 const MovieCard = (props) => {
-  const styles = useStyles();
+  const { card, content, movieInfo, favorite, isFav, notFav } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
-  const [isFavorite, setFavoriteMovies] = useState({})
+  const [isFavoriteMovie, setIsFavoriteMovie] = useState(false);
 
   const handleToggleFavorite = () => {
-    setFavoriteMovies(!isFavorite);
-  }
+    setIsFavoriteMovie(!isFavoriteMovie);
+  };
 
   return (
-    <>
-      <Grid item key={props.id} xs={10} sm={6} md={4} lg={3} xl={2}>
-        <Card className={clsx(styles.card)}>
-          <CardMedia
-            className={clsx(styles.cardStyle)}
-            classes={mediaStyles}
-            image={props.poster}
-          />
-
-          <Box py={3} className={clsx(styles.content)}>
-            <Box py={40} className={clsx(styles.favorite)}>
-              <IconButton>
-                <FavoriteIcon
-                  onClick={handleToggleFavorite}
-                  variant="contained"
-                  className={clsx(isFavorite ? styles.favorite : styles.notFavorite)}
-                />
-              </IconButton>
-            </Box>
-            <Info
-              className={clsx(styles.movieInfo)}
-              useStyles={useGalaxyInfoStyles}
-            >
-              <InfoSubtitle>Movie</InfoSubtitle>
-              <InfoTitle>{props.title}</InfoTitle>
-              <InfoCaption>Note : {props.average}/10</InfoCaption>
-            </Info>
+    <Grid item key={props.id} xs={10} sm={6} md={4} lg={3} xl={2}>
+      <Card className={clsx(card)}>
+        <CardMedia classes={mediaStyles} image={props.poster} />
+        <Box py={3} className={clsx(content)}>
+          <Box py={40} className={clsx(favorite)}>
+            <IconButton>
+              <FavoriteIcon
+                onClick={handleToggleFavorite}
+                variant="contained"
+                className={clsx(isFavoriteMovie ? isFav : notFav)}
+              />
+            </IconButton>
           </Box>
-        </Card>
-      </Grid>
-    </>
+          <Info
+            className={clsx(movieInfo)}
+            useStyles={useGalaxyInfoStyles}
+          >
+            <InfoSubtitle>Movie</InfoSubtitle>
+            <InfoTitle>{props.title}</InfoTitle>
+            <InfoCaption>Note : {props.average}/10</InfoCaption>
+          </Info>
+        </Box>
+      </Card>
+    </Grid >
   );
 };
 
