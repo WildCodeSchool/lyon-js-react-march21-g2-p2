@@ -14,6 +14,23 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: 12,
     },
   },
+  Message:{
+    padding:20,
+  },
+  form: {
+    padding: 18,
+    width: '40ch',
+    margin: 'auto',
+    borderRadius: '1rem',
+    background: '#E2DFDB',
+  },
+  TextField: {
+    paddingTop: 15,
+    width: '35ch',
+    margin: 'auto',
+    display: 'flex',
+    position: 'relative',
+  },
   Button: {
     padding: 10,
     marginTop: 15,
@@ -22,35 +39,25 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  TextField: {
-    paddingTop: 15,
-    width: '35ch',
-    margin: 'auto',
-    display: 'flex',
-    position: 'relative',
-    
-  },
-  form: {
-    padding:18,
-    width: '40ch',
-    margin: 'auto',
-    borderRadius: '1rem',
-    background: '#E2DFDB',
-  }
 }));
 //--------------------------- FONCTION CONTACT --------------------------//
 
 export default function Contact() {
   const { register, handleSubmit } = useForm();
-  const classes = useStyles()
+  const classes = useStyles();
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   };
 
   return (
+
+    <div>
+      <h1 className={classes.Message}>
+        Des conseils? Des suggestions? N'hésitez pas à nous le faire savoir !
+      </h1>
     <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-      <TextField 
-        className={classes.TextField} 
+      <TextField
+        className={classes.TextField}
         id="filled-basic"
         label="firstname"
         variant="filled"
@@ -81,13 +88,12 @@ export default function Contact() {
         variant="filled"
         {...register('text')}
       />
-      <Button
-        className={classes.Button} 
-        variant="outlined"
-        type="submit">Send
+      <Button className={classes.Button} variant="outlined" type="submit">
+        Send
       </Button>
     </form>
+    </div>
   );
-}
 
- 
+  
+}
