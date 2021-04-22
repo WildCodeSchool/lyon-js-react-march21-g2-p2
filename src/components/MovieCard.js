@@ -71,10 +71,10 @@ const MovieCard = (props) => {
   const { card, content, movieInfo } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
-  const [isFavorite, setFavoriteMovies] = useState({});
+  const [isFavoriteMovie, setIsFavoriteMovie] = useState(false);
 
   const handleToggleFavorite = () => {
-    setFavoriteMovies(!isFavorite);
+    setIsFavoriteMovie(!isFavoriteMovie);
   };
 
   return (
@@ -89,7 +89,7 @@ const MovieCard = (props) => {
                 <FavoriteIcon
                   onClick={handleToggleFavorite}
                   variant="contained"
-                  color={isFavorite ? 'primary' : 'secondary'}
+                  color={isFavoriteMovie ? 'primary' : 'secondary'}
                 />
               </IconButton>
             </Box>
