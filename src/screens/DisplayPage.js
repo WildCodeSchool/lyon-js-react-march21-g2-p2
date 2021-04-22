@@ -1,11 +1,11 @@
 /* eslint-disable no-lone-blocks */
 /*component import*/
-import DisplayInfos from '../components/DisplayInfos';
+import MovieInfos from '../components/MovieInfos';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function MovieInfos() {
+export default function DisplayPage() {
   {
     /*Use states we need to store the APIs call */
   }
@@ -48,7 +48,7 @@ export default function MovieInfos() {
   }
   return (
     <>
-      <DisplayInfos
+      <MovieInfos
         poster={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
         title={movie.title}
         date={movie.release_date}

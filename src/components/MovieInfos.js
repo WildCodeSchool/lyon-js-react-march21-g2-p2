@@ -32,7 +32,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function DisplayInfos(props) {
+export default function MovieInfos(props) {
   const styles = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
