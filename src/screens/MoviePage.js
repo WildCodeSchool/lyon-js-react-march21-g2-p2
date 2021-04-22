@@ -4,7 +4,6 @@ import './MoviePage.css';
 import MovieList from '../components/MovieList';
 import FilteringBar from '../components/FilteringBar';
 import { useLocation, useHistory } from 'react-router';
-import SearchBox from '../components/SearchBox';
 
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 const apiUrl = 'https://api.themoviedb.org/3';
@@ -19,7 +18,7 @@ export default function MoviePage() {
   const location = useLocation();
 
   // Get the movies & all the genres available in TMDB
-  const [popularMovie, setPopularMovie] = useState([]);
+  // const [popularMovie, setPopularMovie] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {

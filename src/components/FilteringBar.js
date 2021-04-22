@@ -94,6 +94,7 @@ export default function FilteringBar({
       .then((res) => {
         setMovieList(res.data.results);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   return (
@@ -107,7 +108,6 @@ export default function FilteringBar({
           labelId="year"
           id="year"
           displayEmpty
-          value={year}
           autoWidth
           className={selectEmpty}
           {...register('year')}
@@ -132,7 +132,6 @@ export default function FilteringBar({
           <Select
             labelId="genre"
             id="genre"
-            value={with_genres}
             displayEmpty
             autoWidth
             className={selectEmpty}
