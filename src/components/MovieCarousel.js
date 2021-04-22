@@ -54,8 +54,7 @@ const MovieCarousel = (props) => {
   return (
     <Carousel className={clsx(styles.carousel)}>
       {props.movieList.map((movie) => (
-        <Box className={clsx(styles.movieBox)}
-          key={movie.id}>
+        <Box className={clsx(styles.movieBox)} key={movie.id}>
           <CardMedia
             className={clsx(styles.carouselStyle)}
             classes={mediaStyles}

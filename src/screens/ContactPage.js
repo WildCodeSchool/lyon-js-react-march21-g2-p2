@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: 12,
     },
   },
-  Message:{
-    padding:20,
+  Message: {
+    padding: 20,
   },
   form: {
     padding: 18,
@@ -50,50 +50,47 @@ export default function Contact() {
   };
 
   return (
-
     <div>
       <h1 className={classes.Message}>
         Des conseils? Des suggestions? N'hésitez pas à nous le faire savoir !
       </h1>
-    <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-      <TextField
-        className={classes.TextField}
-        id="filled-basic"
-        label="firstname"
-        variant="filled"
-        {...register('firstName')}
-      />
-      <TextField
-        className={classes.TextField}
-        id="filled"
-        label="Lastname"
-        variant="filled"
-        {...register('lastName')}
-      />
-      <TextField
-        className={classes.TextField}
-        id="filled"
-        label="Email"
-        variant="filled"
-        type="email"
-        {...register('email')}
-      />
-      <TextField
-        className={classes.TextField}
-        id="filled-multiline-static"
-        label="Text here"
-        multiline
-        rows={6}
-        defaultValue=""
-        variant="filled"
-        {...register('text')}
-      />
-      <Button className={classes.Button} variant="outlined" type="submit">
-        Send
-      </Button>
-    </form>
+      <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+        <TextField
+          className={classes.TextField}
+          id="filled-basic"
+          label="firstname"
+          variant="filled"
+          {...register('firstName')}
+        />
+        <TextField
+          className={classes.TextField}
+          id="filled"
+          label="Lastname"
+          variant="filled"
+          {...register('lastName')}
+        />
+        <TextField
+          className={classes.TextField}
+          id="filled"
+          label="Email"
+          variant="filled"
+          type="email"
+          {...register('email')}
+        />
+        <TextField
+          className={classes.TextField}
+          id="filled-multiline-static"
+          label="Text here"
+          multiline
+          rows={6}
+          defaultValue=""
+          variant="filled"
+          {...register('text')}
+        />
+        <Button className={classes.Button} variant="outlined" type="submit">
+          Send
+        </Button>
+      </form>
     </div>
   );
-
-  
 }
