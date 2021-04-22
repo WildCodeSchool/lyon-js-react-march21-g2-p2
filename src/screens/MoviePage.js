@@ -4,6 +4,7 @@ import './MoviePage.css';
 import MovieList from '../components/MovieList';
 import FilteringBar from '../components/FilteringBar';
 import { useLocation, useHistory } from 'react-router';
+import SearchBox from '../components/SearchBox';
 
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 const apiUrl = 'https://api.themoviedb.org/3';
@@ -18,6 +19,9 @@ export default function MoviePage() {
   const location = useLocation();
 
   // Get the movies & all the genres available in TMDB
+  const [popularMovie, setPopularMovie] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+
   useEffect(() => {
     axios
       .get(apiUrl + apiPopularRoute + 'api_key=' + apiKey)
@@ -27,8 +31,6 @@ export default function MoviePage() {
       .get(apiUrl + apiGenreListRoute + 'api_key=' + apiKey)
       .then((res) => setAvailableGenres(res.data.genres));
   }, []);
-
-  const [searchValue, setSearchValue] = useState('');
 
   return (
     <>
@@ -41,8 +43,14 @@ export default function MoviePage() {
         apiUrl={apiUrl}
         apiKey={apiKey}
         apiPopularRoute={apiPopularRoute}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
       />
-      <MovieList movieList={movieList} imgUrl={imgUrl} />
+      <MovieList
+        movieList={movieList}
+        imgUrl={imgUrl}
+        searchValue={searchValue}
+      />
     </>
   );
 }
