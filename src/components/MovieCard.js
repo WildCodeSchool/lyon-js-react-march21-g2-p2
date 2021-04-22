@@ -69,6 +69,12 @@ const useStyles = makeStyles(() => ({
     height: '100%',
     objectFit: 'cover',
   },
+  favorite: {
+    color: "red",
+  },
+  notFavorite: {
+    color: "white",
+  }
 
 }));
 
@@ -99,7 +105,7 @@ const MovieCard = (props) => {
                 <FavoriteIcon
                   onClick={handleToggleFavorite}
                   variant="contained"
-                  color={isFavorite ? 'primary' : 'secondary'}
+                  className={clsx(isFavorite ? styles.favorite : styles.notFavorite)}
                 />
               </IconButton>
             </Box>
