@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react'
 import './MovieCard.css';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -54,11 +55,6 @@ const useStyles = makeStyles(() => ({
     },
   },
 
-  favoriteIcon: {
-    color: 'white',
-    display: 'flex',
-    alignItems: 'flex-start',
-  },
   movieInfo: {
     display: 'flex',
     flexDirection: 'column',
@@ -73,12 +69,19 @@ const useStyles = makeStyles(() => ({
     height: '100%',
     objectFit: 'cover',
   },
+
 }));
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
 const MovieCard = (props) => {
   const styles = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
+
+  const [isFavorite, setFavoriteMovies] = useState({})
+
+  const handleToggleFavorite = () => {
+    setFavoriteMovies(!isFavorite);
+  }
 
   return (
     <>
@@ -93,7 +96,11 @@ const MovieCard = (props) => {
           <Box py={3} className={clsx(styles.content)}>
             <Box py={40} className={clsx(styles.favorite)}>
               <IconButton>
-                <FavoriteIcon className={clsx(styles.favoriteIcon)} />
+                <FavoriteIcon
+                  onClick={handleToggleFavorite}
+                  variant="contained"
+                  color={isFavorite ? 'primary' : 'secondary'}
+                />
               </IconButton>
             </Box>
             <Info
