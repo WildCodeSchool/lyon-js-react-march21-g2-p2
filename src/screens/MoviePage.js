@@ -17,17 +17,13 @@ export default function MoviePage() {
   const apiKey = '&api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
 
   useEffect(() => {
-    if (searchValue !== '') {
-      axios
-        .get(apiUrl + apiSearchRoute + searchValue + apiKey)
-        .then((response) => response.data)
-        .then((data) => setMovieList(data.results));
-    } else {
-      axios
-        .get(apiUrl + apiPopularRoute + apiKey)
-        .then((response) => response.data)
-        .then((data) => setMovieList(data.results));
-    }
+    axios
+      .get(
+        `${apiUrl}${
+          searchValue !== '' ? apiSearchRoute + searchValue : apiPopularRoute
+        }${apiKey}`
+      )
+      .then((response) => setMovieList(response.data.results));
   }, [searchValue]);
 
   return (
