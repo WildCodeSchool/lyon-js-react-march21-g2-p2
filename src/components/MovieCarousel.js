@@ -1,5 +1,5 @@
 import React from 'react';
-import Carousel from 'git ';
+import Carousel from 'react-material-ui-carousel';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
@@ -54,7 +54,8 @@ const MovieCarousel = (props) => {
   return (
     <Carousel className={clsx(styles.carousel)}>
       {props.movieList.map((movie) => (
-        <Box className={clsx(styles.movieBox)}>
+        <Box className={clsx(styles.movieBox)}
+          key={movie.id}>
           <CardMedia
             className={clsx(styles.carouselStyle)}
             classes={mediaStyles}
@@ -66,7 +67,7 @@ const MovieCarousel = (props) => {
                   {movie.title}
                 </InfoTitle>
                 <InfoCaption className={clsx(styles.movieAverage)}>
-                  {movie.average}/10
+                  {movie.vote_average}/10
                 </InfoCaption>
               </Info>
             </Box>
