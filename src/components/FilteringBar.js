@@ -105,6 +105,7 @@ export default function FilteringBar({
           labelId="year"
           id="year"
           displayEmpty
+          value={year}
           autoWidth
           className={selectEmpty}
           {...register('year')}
@@ -129,6 +130,7 @@ export default function FilteringBar({
           <Select
             labelId="genre"
             id="genre"
+            value={with_genres}
             displayEmpty
             autoWidth
             className={selectEmpty}
