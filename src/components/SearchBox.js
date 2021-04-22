@@ -19,19 +19,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const apiUrl = 'https://api.themoviedb.org/3';
-const apiPopularRoute = '/movie/popular?';
-const apiKey = 'api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
-
 const SearchBox = ({ searchValue, setSearchValue }) => {
-  const [movieList, setMovieList] = useState([]);
+  // const [movieList, setMovieList] = useState([]);
 
   // Get the movies & all the genres available in TMDB
-  useEffect(() => {
-    axios
-      .get(apiUrl + apiPopularRoute + apiKey)
-      .then(({ data }) => setMovieList(data.results));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(apiUrl + apiPopularRoute + apiKey)
+  //     .then(({ data }) => setMovieList(data.results));
+  // }, []);
 
   const { root, input, iconButton } = useStyles();
 
