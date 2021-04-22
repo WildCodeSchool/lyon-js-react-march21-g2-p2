@@ -54,7 +54,7 @@ export default function MovieInfos() {
         date={movie.release_date}
         synopsis={movie.overview}
         actors={movieActors}
-        director={movieProductionCrew}
+        prodCrew={movieProductionCrew}
       />
     </>
   );
