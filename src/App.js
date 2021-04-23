@@ -20,6 +20,7 @@ function App() {
         <Header />
         <Main />
       </div>
+
       <Footer />
     </>
   );

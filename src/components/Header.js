@@ -215,12 +215,14 @@ export default function Header() {
           </ListItem>
         </List>
         <List>
-          <ListItem button>
-            <ListItemIcon>
-              <MailIcon />
-            </ListItemIcon>
-            <ListItemText primary="Contact Us" />
-          </ListItem>
+          <NavLink exact activeClassName="active" to="/Contact">
+            <ListItem button>
+              <ListItemIcon>
+                <MailIcon />
+              </ListItemIcon>
+              <ListItemText primary="Contact Us" />
+            </ListItem>
+          </NavLink>
         </List>
       </Drawer>
     </>
