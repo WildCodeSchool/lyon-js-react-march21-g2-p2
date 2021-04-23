@@ -70,11 +70,11 @@ const useStyles = makeStyles(() => ({
     objectFit: 'cover',
   },
   isFav: {
-    color: "red",
+    color: 'red',
   },
   notFav: {
-    color: "white",
-  }
+    color: 'white',
+  },
 }));
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
@@ -94,25 +94,21 @@ const MovieCard = (props) => {
         <CardMedia classes={mediaStyles} image={props.poster} />
         <Box py={3} className={clsx(content)}>
           <Box py={40} className={clsx(favorite)}>
-            <IconButton>
+            <IconButton onClick={handleToggleFavorite}>
               <FavoriteIcon
-                onClick={handleToggleFavorite}
                 variant="contained"
                 className={clsx(isFavoriteMovie ? isFav : notFav)}
               />
             </IconButton>
           </Box>
-          <Info
-            className={clsx(movieInfo)}
-            useStyles={useGalaxyInfoStyles}
-          >
+          <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
             <InfoSubtitle>Movie</InfoSubtitle>
             <InfoTitle>{props.title}</InfoTitle>
             <InfoCaption>Note : {props.average}/10</InfoCaption>
           </Info>
         </Box>
       </Card>
-    </Grid >
+    </Grid>
   );
 };
 
