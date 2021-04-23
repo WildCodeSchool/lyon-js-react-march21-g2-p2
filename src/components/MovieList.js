@@ -2,20 +2,7 @@ import React from 'react';
 import MovieCard from './MovieCard';
 import Grid from '@material-ui/core/Grid';
 
-const MovieList = (props) => {
-  const moviePoster = (movieId) => {
-    const movieSrc = 'https://image.tmdb.org/t/p/w200';
-
-    const selectedMovie = props.movieItems.filter(
-      (movie) => movie.id === parseInt(movieId)
-    );
-    const newMovie = selectedMovie[0];
-    const newMoviePath = newMovie.poster_path;
-    let movieLink = movieSrc + newMoviePath;
-
-    return movieLink;
-  };
-
+const MovieList = ({ movieList, imgUrl }) => {
   return (
     <>
       <Grid
@@ -25,16 +12,26 @@ const MovieList = (props) => {
         justify="center"
         alignItems="center"
       >
-        {props.movieItems.map((movie) => (
-          <MovieCard
-            id={movie.id}
-            date={movie.release_date}
-            title={movie.title}
-            genre={movie.genre_ids}
-            average={movie.vote_average}
-            poster={moviePoster(movie.id)}
-          />
-        ))}
+        {movieList.map(
+          ({
+            id,
+            release_date,
+            vote_average,
+            genre_ids,
+            title,
+            poster_path,
+          }) => (
+            <MovieCard
+              key={id}
+              id={id}
+              date={release_date}
+              title={title}
+              genre={genre_ids}
+              average={vote_average}
+              poster={imgUrl + poster_path}
+            />
+          )
+        )}
       </Grid>
     </>
   );

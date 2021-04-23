@@ -1,0 +1,9 @@
+.filtering-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.filtering-bar label {
+  margin: 0 1em;
+}
