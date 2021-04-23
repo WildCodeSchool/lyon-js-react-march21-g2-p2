@@ -26,6 +26,7 @@ import MovieIcon from '@material-ui/icons/Movie';
 import MailIcon from '@material-ui/icons/Mail';
 import StarsIcon from '@material-ui/icons/Stars';
 import StyleIcon from '@material-ui/icons/Style';
+import MovieFilterIcon from '@material-ui/icons/MovieFilter';
 import logo from '../assets/logo.png';
 const drawerWidth = 200;
 
@@ -193,6 +194,16 @@ export default function Header() {
             </ListItem>
           </NavLink>
         </List>
+        <List>
+          <NavLink exact activeClassName="active" to="/infos">
+            <ListItem button>
+              <ListItemIcon>
+                <MovieFilterIcon />
+              </ListItemIcon>
+              <ListItemText primary="Infos" />
+            </ListItem>
+          </NavLink>
+        </List>
 
         <Divider />
         <List>
@@ -204,12 +215,14 @@ export default function Header() {
           </ListItem>
         </List>
         <List>
-          <ListItem button>
-            <ListItemIcon>
-              <MailIcon />
-            </ListItemIcon>
-            <ListItemText primary="Contact Us" />
-          </ListItem>
+          <NavLink exact activeClassName="active" to="/Contact">
+            <ListItem button>
+              <ListItemIcon>
+                <MailIcon />
+              </ListItemIcon>
+              <ListItemText primary="Contact Us" />
+            </ListItem>
+          </NavLink>
         </List>
       </Drawer>
     </>
