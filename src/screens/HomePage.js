@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './HomePage.css';
 import MovieList from '../components/MovieList';
+import MovieCarousel from '../components/MovieCarousel';
+const imgUrl = 'https://image.tmdb.org/t/p/w200';
 
 //import MovieCard from './components/MovieCard';
 //<MovieCard /> {/*not sure how to put render MovieList with MovieCard*/}
@@ -12,13 +14,10 @@ export default function HomePage() {
   const [popularMovie, setPopularMovie] = useState([]);
   useEffect(() => {
     axios
-
       .get(
         'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=f22eb05a70b166bd4e2c1312e15d8e8b'
       )
-
       .then((response) => response.data)
-
       .then((data) => {
         const mostPopularMovies = data.results;
         const moviesToShow = [];
@@ -32,8 +31,12 @@ export default function HomePage() {
 
   return (
     <>
+      <h1 className="recentMovie">Recent Movie</h1>
+      <div className="container">
+        <MovieCarousel movieList={popularMovie} />
+      </div>
       <h1>Popular movies</h1>
-      <MovieList movieItems={popularMovie} />
+      <MovieList movieList={popularMovie} imgUrl={imgUrl} />
     </>
   );
 }
