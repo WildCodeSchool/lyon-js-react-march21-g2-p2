@@ -6,9 +6,6 @@ import InputBase from '@material-ui/core/InputBase';
 
 //style of the Search input
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '35ch',
-  },
   input: {
     marginLeft: theme.spacing(2),
   },

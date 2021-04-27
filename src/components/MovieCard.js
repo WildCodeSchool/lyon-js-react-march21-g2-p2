@@ -102,7 +102,6 @@ const MovieCard = (props) => {
             </IconButton>
           </Box>
           <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
-            <InfoSubtitle>Movie</InfoSubtitle>
             <InfoTitle>{props.title}</InfoTitle>
             <InfoCaption>Note : {props.average}/10</InfoCaption>
           </Info>
