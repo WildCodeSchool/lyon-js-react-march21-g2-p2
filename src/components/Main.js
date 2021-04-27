@@ -31,7 +31,7 @@ export default function Main() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/movies" component={MoviePage} />
         <Route exact path="/favorites" component={FavoritePage} />
-        <Route exact path="/infos" component={DisplayPage} />
+        <Route exact path="/movies/:tmdb_id" component={DisplayPage} />
       </Switch>
     </main>
   );
