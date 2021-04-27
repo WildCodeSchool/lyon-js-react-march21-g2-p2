@@ -1,9 +1,4 @@
-import { useEffect } from 'react';
-// import './styles.css';
-import axios from 'axios';
 import dayjs from 'dayjs';
-import { useForm } from 'react-hook-form';
-import qs from 'query-string';
 import './FilteringBar.css';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -43,60 +38,19 @@ const useStyles = makeStyles((theme) => ({
  *  apiUrl,
  *  apiPopularRoute,
  *  apiKey,
- *  query,
- *  setQuery,
  * }
  * @return {*} a bar composed of an input to chose the criteria, one to choose its value, one to search...
  */
 export default function FilteringBar({
-  setMovieList,
-  location,
-  history,
   availableGenres,
-  apiUrl,
-  apiPopularRoute,
-  apiKey,
   query,
-  setQuery,
+  with_genres,
+  register,
+  year,
+  control,
 }) {
-  // the default values of the filters come from the querystring in the URL
-  const { register, watch } = useForm({
-    defaultValues: {
-      ...qs.parse(location.search),
-    },
-  });
-
   // Here we grab the styles needed
   const { formControl, selectEmpty } = useStyles();
-
-  // watch for input changes
-  const year = watch('year');
-  const with_genres = watch('with_genres');
-
-  // everytime the filter inputs change, update the URL
-  useEffect(() => {
-    const queryString = qs.stringify(
-      { year, with_genres },
-      { skipEmptyString: true }
-    );
-    history.push('/' + queryString ? `?${queryString}` : '');
-  }, [history, year, with_genres]);
-
-  // everytime the search params change in the URL, make a new TMDB API request in order to update search results
-  useEffect(() => {
-    const queryString = location.search;
-    axios
-      .get(
-        apiUrl +
-          apiPopularRoute +
-          queryString.substring(1) +
-          '&api_key=' +
-          apiKey
-      )
-      .then((res) => {
-        setMovieList(res.data.results);
-      });
-  }, [location]);
 
   return (
     <div className="filtering-bar">
@@ -109,6 +63,7 @@ export default function FilteringBar({
           labelId="year"
           id="year"
           displayEmpty
+          disabled={!!query}
           value={year}
           autoWidth
           className={selectEmpty}
@@ -133,6 +88,7 @@ export default function FilteringBar({
           </InputLabel>
           <Select
             labelId="genre"
+            disabled={!!query}
             id="genre"
             value={with_genres}
             displayEmpty
@@ -151,7 +107,7 @@ export default function FilteringBar({
           </Select>
         </FormControl>
       )}
-      <SearchBox query={query} setQuery={setQuery} />
+      <SearchBox control={control} year={year} with_genres={with_genres} />
     </div>
   );
 }
