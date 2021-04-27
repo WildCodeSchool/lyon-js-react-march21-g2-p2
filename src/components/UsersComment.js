@@ -58,7 +58,7 @@ export default function UserCommentsSection(props) {
 
   return (
     <>
-      <h1 className={classes.Message}>Votre avis sur ce film ?</h1>
+      <h2 className={classes.Message}>Votre avis sur ce film ?</h2>
       <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
         <TextField
           className={classes.TextField}
