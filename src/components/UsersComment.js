@@ -47,10 +47,10 @@ export default function UserCommentsSection(props) {
   const { register, handleSubmit } = useForm();
   const classes = useStyles();
 
-  const onSubmit = (data) => {
-    data.title = props.title;
+  const onSubmit = (form) => {
+    form.title = props.title;
     axios
-      .post(`http://localhost:5000/movies/${props.id}/reviews`, data)
+      .post(`http://localhost:5000/movies/${props.id}/reviews`, form)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
