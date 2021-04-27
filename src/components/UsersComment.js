@@ -44,42 +44,42 @@ const useStyles = makeStyles((theme) => ({
 //--------------------------- FONCTION CONTACT --------------------------//
 
 export default function UserCommentsSection(props) {
-    const { register, handleSubmit } = useForm();
-    const classes = useStyles();
+  const { register, handleSubmit } = useForm();
+  const classes = useStyles();
 
-    const onSubmit = (data) => {
-        data.title = props.title;
-        axios
-        .post(`http://localhost:5000/movies/${props.id}/reviews`, data)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-    };
+  const onSubmit = (data) => {
+    data.title = props.title;
+    axios
+      .post(`http://localhost:5000/movies/${props.id}/reviews`, data)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
-    return (
-        <>
-        <h1 className={classes.Message}>Votre avis sur ce film ?</h1>
-        <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-            <TextField
-            className={classes.TextField}
-            id="filled-basic"
-            label="userName"
-            variant="filled"
-            {...register('userName')}
-            />
-            <TextField
-            className={classes.TextField}
-            id="filled-multiline-static"
-            label="comment"
-            multiline
-            rows={3}
-            defaultValue=""
-            variant="filled"
-            {...register('comment')}
-            />
-            <Button className={classes.Button} variant="outlined" type="submit">
-            Send
-            </Button>
-        </form>
-        </>
-    );
+  return (
+    <>
+      <h1 className={classes.Message}>Votre avis sur ce film ?</h1>
+      <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+        <TextField
+          className={classes.TextField}
+          id="filled-basic"
+          label="userName"
+          variant="filled"
+          {...register('userName')}
+        />
+        <TextField
+          className={classes.TextField}
+          id="filled-multiline-static"
+          label="comment"
+          multiline
+          rows={3}
+          defaultValue=""
+          variant="filled"
+          {...register('comment')}
+        />
+        <Button className={classes.Button} variant="outlined" type="submit">
+          Send
+        </Button>
+      </form>
+    </>
+  );
 }
