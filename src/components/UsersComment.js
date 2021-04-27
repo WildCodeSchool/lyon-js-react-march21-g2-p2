@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   Button: {
     padding: 5,
     marginTop: 15,
-    width: '10ch',
+    width: '11ch',
   },
 }));
 
