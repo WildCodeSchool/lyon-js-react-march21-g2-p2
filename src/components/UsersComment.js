@@ -47,20 +47,17 @@ export default function UserCommentsSection(props) {
   const { register, handleSubmit } = useForm();
   const classes = useStyles();
   const onSubmit = (data) => {
-
-
-    axios.post(`http://localhost:5000/movies/${props.id}/reviews`, data)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err))
-};
+    axios
+      .post(`http://localhost:5000/movies/${props.id}/reviews`, data)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
-      <h1 className={classes.Message}>
-        Votre avis sur ce film ? 
-      </h1>
+      <h1 className={classes.Message}>Votre avis sur ce film ?</h1>
       <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-      <TextField
+        <TextField
           className={classes.TextField}
           id="filled-basic"
           label="title"
@@ -89,5 +86,5 @@ export default function UserCommentsSection(props) {
         </Button>
       </form>
     </>
-  )
+  );
 }
