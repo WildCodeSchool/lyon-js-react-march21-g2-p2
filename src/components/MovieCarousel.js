@@ -65,9 +65,6 @@ const MovieCarousel = (props) => {
                 <InfoTitle className={clsx(styles.movieName)}>
                   {movie.title}
                 </InfoTitle>
-                <InfoCaption className={clsx(styles.movieAverage)}>
-                  {movie.vote_average}/10
-                </InfoCaption>
               </Info>
             </Box>
           </CardMedia>
