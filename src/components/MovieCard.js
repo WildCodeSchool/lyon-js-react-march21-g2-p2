@@ -78,7 +78,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
-const MovieCard = (props) => {
+const MovieCard = ({ id, poster, title, average }) => {
   const { card, content, movieInfo, favorite, isFav, notFav } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
@@ -89,13 +89,13 @@ const MovieCard = (props) => {
   };
 
   return (
-    <Grid item key={props.id} xs={10} sm={6} md={4} lg={3} xl={2}>
+    <Grid item key={id} xs={10} sm={6} md={4} lg={3} xl={2}>
       <Card className={clsx(card)}>
         <CardMedia
           classes={mediaStyles}
           image={
-            props.poster
-              ? props.poster
+            poster
+              ? poster
               : 'https://images.unsplash.com/photo-1580130601254-05fa235abeab?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fG1vdmllJTIwcG9zdGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
           }
         />
@@ -109,8 +109,8 @@ const MovieCard = (props) => {
             </IconButton>
           </Box>
           <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
-            <InfoTitle>{props.title}</InfoTitle>
-            <InfoCaption>Note : {props.average}/10</InfoCaption>
+            <InfoTitle>{title}</InfoTitle>
+            <InfoCaption>Rating : {average}/10</InfoCaption>
           </Info>
         </Box>
       </Card>
