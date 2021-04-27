@@ -17,7 +17,7 @@ dayjs.extend(localizedFormat);
 
 const yearsOfCinema = new Array(dayjs().year() - 1893)
   .fill()
-  .map((el, i) => i + 1894)
+  .map((_, i) => i + 1894)
   .sort((a, b) => b - a);
 
 // Defines the styles in use for this component (MUI)
@@ -89,10 +89,9 @@ export default function FilteringBar({
       .get(
         apiUrl +
           apiPopularRoute +
-          'api_key=' +
-          apiKey +
-          '&' +
-          queryString.substring(1)
+          queryString.substring(1) +
+          '&api_key=' +
+          apiKey
       )
       .then((res) => {
         setMovieList(res.data.results);
