@@ -2,6 +2,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 import { useForm } from 'react-hook-form';
 import React from 'react';
 import axios from 'axios';
@@ -9,39 +10,29 @@ import axios from 'axios';
 //---------------------- STYLE CSS -------------------------//
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      display: 'flex',
-      paddingTop: 12,
+    root: {
+        '& > *': {
+            margin: theme.spacing(2),
+            width: '25ch',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+        }
     },
-  },
-  Message: {
-    padding: 20,
-  },
-  form: {
-    padding: 18,
-    width: '40ch',
-    margin: 'auto',
-    borderRadius: '1rem',
-    background: '#E2DFDB',
-  },
-  TextField: {
-    paddingTop: 15,
-    width: '35ch',
-    margin: 'auto',
-    display: 'flex',
-    position: 'relative',
-  },
-  Button: {
-    padding: 10,
-    marginTop: 15,
-    width: '35ch',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-}));
+    commentSection: {
+      display: 'flex',
+      flexDirection: 'column',
+      marginTop: 50,
 
+    },
+    Button: {
+      padding: 10,
+      marginTop: 15,
+      width: '10ch',
+    },
+  }));
+    
 //--------------------------- COMMENTS FUNCTION --------------------------//
 
 export default function UserCommentsSection(props) {
@@ -57,30 +48,37 @@ export default function UserCommentsSection(props) {
   };
 
   return (
-    <>
+    <div className={classes.commentSection}>
       <h1 className={classes.Message}>Votre avis sur ce film ?</h1>
-      <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+      <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
         <TextField
-          className={classes.TextField}
-          id="filled-basic"
-          label="userName"
-          variant="filled"
-          {...register('userName')}
+        required
+        size="small"
+        color="primary"
+        className="userName"
+        label="Name"
+        id="outlined-required"
+        defaultValue=""
+        variant="outlined"
+        {...register('userName')}
         />
         <TextField
-          className={classes.TextField}
-          id="filled-multiline-static"
-          label="comment"
-          multiline
-          rows={3}
-          defaultValue=""
-          variant="filled"
-          {...register('comment')}
+        required
+        multiline
+        color="primary"
+        className="comment"
+        id="outlined-required-multiline-static"
+        label="Comment"
+        rows={2}
+        defaultValue=""
+        variant="outlined"
+        {...register('comment')}
         />
-        <Button className={classes.Button} variant="outlined" type="submit">
+        <Button color="primary" className={classes.Button} variant="outlined" type="submit"
+        endIcon={<Icon>send</Icon>}>
           Send
         </Button>
       </form>
-    </>
+    </div>
   );
 }
