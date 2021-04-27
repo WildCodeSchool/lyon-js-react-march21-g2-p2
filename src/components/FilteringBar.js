@@ -43,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
  *  apiUrl,
  *  apiPopularRoute,
  *  apiKey,
- *  searchValue,
- *  setSearchValue,
+ *  query,
+ *  setQuery,
  * }
  * @return {*} a bar composed of an input to chose the criteria, one to choose its value, one to search...
  */
@@ -56,8 +56,8 @@ export default function FilteringBar({
   apiUrl,
   apiPopularRoute,
   apiKey,
-  searchValue,
-  setSearchValue,
+  query,
+  setQuery,
 }) {
   // the default values of the filters come from the querystring in the URL
   const { register, watch } = useForm({
@@ -152,7 +152,7 @@ export default function FilteringBar({
           </Select>
         </FormControl>
       )}
-      <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+      <SearchBox query={query} setQuery={setQuery} />
     </div>
   );
 }

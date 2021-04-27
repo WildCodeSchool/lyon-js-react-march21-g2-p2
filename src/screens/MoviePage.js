@@ -21,7 +21,7 @@ export default function MoviePage() {
 
   // Get the movies & all the genres available in TMDB
   const [popularMovie, setPopularMovie] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     axios
@@ -34,16 +34,16 @@ export default function MoviePage() {
   }, []);
 
   useEffect(() => {
-    if (searchValue) {
+    if (query) {
       axios
-        .get(apiUrl + apiSearchRoute + searchValue + '&api_key=' + apiKey)
+        .get(apiUrl + apiSearchRoute + query + '&api_key=' + apiKey)
         .then(({ data }) => setMovieList(data.results));
     } else {
       axios
         .get(apiUrl + apiPopularRoute + 'api_key=' + apiKey)
         .then(({ data }) => setMovieList(data.results));
     }
-  }, [searchValue]);
+  }, [query]);
 
   return (
     <>
@@ -56,8 +56,8 @@ export default function MoviePage() {
         apiUrl={apiUrl}
         apiKey={apiKey}
         apiPopularRoute={apiPopularRoute}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
+        query={query}
+        setQuery={setQuery}
       />
 
       <MovieList movieList={movieList} imgUrl={imgUrl} />

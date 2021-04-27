@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBox = ({ searchValue, setSearchValue }) => {
+const SearchBox = ({ query, setQuery }) => {
   const { root, input, iconButton } = useStyles();
 
   function handleSubmit(event) {
@@ -27,10 +27,10 @@ const SearchBox = ({ searchValue, setSearchValue }) => {
         <InputBase
           type="text"
           className={input}
-          value={searchValue}
+          value={query}
           placeholder="Search for a movie"
           inputProps={{ 'aria-label': 'Search for a movie' }}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
         />
         <IconButton type="submit" className={iconButton} aria-label="search">
           <SearchIcon />
