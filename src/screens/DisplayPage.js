@@ -45,6 +45,7 @@ export default function DisplayPage() {
       .catch((error) => {
         console.log('Error :', error);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   {
