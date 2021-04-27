@@ -34,9 +34,15 @@ export default function MoviePage() {
   }, []);
 
   useEffect(() => {
-    axios
-      .get(apiUrl + apiSearchRoute + searchValue + '&api_key=' + apiKey)
-      .then(({ data }) => setMovieList(data.results));
+    if (searchValue) {
+      axios
+        .get(apiUrl + apiSearchRoute + searchValue + '&api_key=' + apiKey)
+        .then(({ data }) => setMovieList(data.results));
+    } else {
+      axios
+        .get(apiUrl + apiPopularRoute + 'api_key=' + apiKey)
+        .then(({ data }) => setMovieList(data.results));
+    }
   }, [searchValue]);
 
   return (
