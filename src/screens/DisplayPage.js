@@ -16,31 +16,33 @@ export default function DisplayPage() {
   {
     /*API calls*/
   }
-  useEffect(() => {
-    function getMovieGeneralInfos() {
-      return axios.get(
-        'https://api.themoviedb.org/3/movie/615678?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US'
-      );
-    }
+  const urlToUse1 = 'https://api.themoviedb.org/3/movie/460465?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US';
+  const urlToUse2='https://api.themoviedb.org/3/movie/460465/credits?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US';
 
-    function getMovieCrewInfos() {
-      return axios.get(
-        'https://api.themoviedb.org/3/movie/615678/credits?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US'
-      );
-    }
+  {
+    /*use of useEffect + axios*/
+  }
+  const getMovieGeneralInfos = () => {
+    return axios.get('https://api.themoviedb.org/3/movie/460465?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US')
+  };
 
+  const getMovieCrewInfos = () => {
+    return axios.get('https://api.themoviedb.org/3/movie/460465/credits?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US')
+  };
+
+  useEffect(()=>{
     axios
-      .all([getMovieGeneralInfos(), getMovieCrewInfos()])
-      .then(
-        axios.spread(function (generalInfo, crewInfos) {
-          setMovie(generalInfo.data);
-          setMovieActors(crewInfos.data.cast);
-          setMovieProductionCrew(crewInfos.data.crew);
-        })
-      )
-      .catch((error) => {
-        console.log('Error: ', error);
-      });
+    .all([getMovieGeneralInfos(), getMovieCrewInfos()])
+    .then(
+      axios.spread((generalInfo, crewInfos)=> {
+        setMovie(generalInfo.data);
+        setMovieActors(crewInfos.data.cast);
+        setMovieProductionCrew(crewInfos.data.crew);
+      })
+    )
+    .catch((error) =>{
+      console.log('Error :', error);
+    })
   }, []);
 
   {
@@ -49,12 +51,13 @@ export default function DisplayPage() {
   return (
     <>
       <MovieInfos
-        poster={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-        title={movie.title}
-        date={movie.release_date}
-        synopsis={movie.overview}
-        actors={movieActors}
-        prodCrew={movieProductionCrew}
+      poster={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+      title={movie.title}
+      date={movie.release_date}
+      synopsis={movie.overview}
+      actors={movieActors}
+      prodCrew={movieProductionCrew}
+
       />
     </>
   );
