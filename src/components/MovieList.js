@@ -2,7 +2,7 @@ import React from 'react';
 import MovieCard from './MovieCard';
 import Grid from '@material-ui/core/Grid';
 
-const MovieList = ({ movieList, imgUrl, searchValue }) => {
+const MovieList = ({ movieList, imgUrl }) => {
   return (
     <>
       <Grid

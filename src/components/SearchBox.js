@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme) => ({
 const SearchBox = ({ searchValue, setSearchValue }) => {
   const { root, input, iconButton } = useStyles();
 
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
   return (
     <>
-      <Paper
-        component="form"
-        className={root}
-        onSubmit={(e) => e.preventDefault()}
-      >
+      <Paper component="form" className={root} onSubmit={handleSubmit}>
         <InputBase
           type="text"
           className={input}
