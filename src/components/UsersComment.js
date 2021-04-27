@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 50,
   },
   Button: {
-    padding: 10,
+    padding: 5,
     marginTop: 15,
     width: '10ch',
   },
@@ -81,7 +81,7 @@ export default function UserCommentsSection(props) {
         <Button
           color="primary"
           className={classes.Button}
-          variant="outlined"
+          variant="contained"
           type="submit"
           endIcon={<Icon>send</Icon>}
         >
