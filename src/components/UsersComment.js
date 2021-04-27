@@ -41,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
 }));
-//--------------------------- FONCTION CONTACT --------------------------//
+
+//--------------------------- COMMENTS FUNCTION --------------------------//
 
 export default function UserCommentsSection(props) {
   const { register, handleSubmit } = useForm();
