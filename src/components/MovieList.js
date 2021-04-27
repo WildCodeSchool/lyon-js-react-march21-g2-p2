@@ -1,7 +1,6 @@
 import React from 'react';
 import MovieCard from './MovieCard';
 import Grid from '@material-ui/core/Grid';
-import {Link} from 'react-router-dom';
 
 const MovieList = ({ movieList, imgUrl }) => {
   return (
@@ -22,8 +21,8 @@ const MovieList = ({ movieList, imgUrl }) => {
             title,
             poster_path,
           }) => (
-            <Link key={id} to={`/movies/${id}`}>
             <MovieCard
+              key={id}
               id={id}
               date={release_date}
               title={title}
@@ -31,7 +30,6 @@ const MovieList = ({ movieList, imgUrl }) => {
               average={vote_average}
               poster={imgUrl + poster_path}
             />
-            </Link>
           )
         )}
       </Grid>

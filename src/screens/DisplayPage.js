@@ -4,13 +4,11 @@ import MovieInfos from '../components/MovieInfos';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router';
 
 export default function DisplayPage() {
   { 
     /*Use states we need to store the APIs call */
   }
-  const {tmdb_id} = useParams(); 
   const [movie, setMovie] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
@@ -18,18 +16,16 @@ export default function DisplayPage() {
   {
     /*API calls*/
   }
-  const urlToUse1 = `https://api.themoviedb.org/3/movie/${tmdb_id}?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US`;
-  const urlToUse2= `https://api.themoviedb.org/3/movie/${tmdb_id}/credits?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US`;
 
   {
     /*use of useEffect + axios*/
   }
   const getMovieGeneralInfos = () => {
-    return axios.get(urlToUse1)
+    return axios.get('https://api.themoviedb.org/3/movie/460465?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US')
   };
 
   const getMovieCrewInfos = () => {
-    return axios.get(urlToUse2)
+    return axios.get('https://api.themoviedb.org/3/movie/460465/credits?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US')
   };
 
   useEffect(()=>{
