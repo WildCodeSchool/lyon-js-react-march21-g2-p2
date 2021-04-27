@@ -12,8 +12,8 @@ const useStyles = makeStyles(() => ({
     cursor: 'pointer',
     display: 'flex',
     justifyContent: 'center',
-    width: '55%',
-    height: 350,
+    width: 'clamp(50%, 80% , 100%)',
+    height: 400,
   },
   carouselStyle: {
     display: 'flex',
