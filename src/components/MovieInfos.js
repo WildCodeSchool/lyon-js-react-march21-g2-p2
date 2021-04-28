@@ -79,7 +79,9 @@ export default function MovieInfos(props) {
               </>
             ))}
             <h2>Genres :</h2>
-
+            {props.genreList.map((genre) => (
+              <p key={genre}>{genre}</p>
+            ))}
             <h2>Synopsis :</h2>
             <p>{props.synopsis}</p>
           </div>
