@@ -14,6 +14,7 @@ export default function DisplayPage() {
   const [movie, setMovie] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
+  const [movieGenreList, setMovieGenreList] = useState([]);
 
   /*API calls*/
   const urlToUse1 = `https://api.themoviedb.org/3/movie/${tmdb_id}?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US`;
@@ -36,6 +37,7 @@ export default function DisplayPage() {
           setMovie(generalInfo.data);
           setMovieActors(crewInfos.data.cast);
           setMovieProductionCrew(crewInfos.data.crew);
+          setMovieGenreList(generalInfo.data.genres);
         })
       )
       .catch((error) => {
@@ -53,7 +55,7 @@ export default function DisplayPage() {
         synopsis={movie.overview}
         actors={movieActors}
         prodCrew={movieProductionCrew}
-        genreList={movie.genres.map(({ name }) => name)}
+        movieGenreList={movieGenreList}
       />
       <UserCommentsSection title={movie.title} id={tmdb_id} />
     </>
