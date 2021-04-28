@@ -1,9 +1,38 @@
 import React from 'react';
 import MovieCard from './MovieCard';
+
 import Grid from '@material-ui/core/Grid';
-import { Link } from 'react-router-dom';
+
+import DisplayPage from '../screens/DisplayPage';
+import { makeStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
+
+//-----------CSS FOR POPOVER-----------//
+const useStyles = makeStyles((theme) => ({
+  typography: {
+    padding: theme.spacing(2),
+  },
+}));
 
 const MovieList = ({ movieList, imgUrl }) => {
+
+//---------POPOVER ELEMENTS----------//
+const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const style = open ? 'simple-popover' : undefined;
+
+
   return (
     <>
       <Grid
@@ -22,7 +51,7 @@ const MovieList = ({ movieList, imgUrl }) => {
             title,
             poster_path,
           }) => (
-            <Link key={id} to={`/movies/${id}`}>
+            <div aria-describedby={style} onClick={handleClick}>
               <MovieCard
                 id={id}
                 date={release_date}
@@ -31,7 +60,25 @@ const MovieList = ({ movieList, imgUrl }) => {
                 average={vote_average}
                 poster={imgUrl + poster_path}
               />
-            </Link>
+              <Popover
+                id={style}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'center',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'center',
+                  horizontal: 'left',
+                }}
+              >
+                <Typography className={classes.typography}>
+                  <DisplayPage />
+                </Typography>
+              </Popover>
+            </div>
           )
         )}
       </Grid>

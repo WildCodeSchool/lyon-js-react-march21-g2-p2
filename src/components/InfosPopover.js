@@ -3,7 +3,7 @@ import DisplayPage from '../screens/DisplayPage';
 import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimplePopover() {
+export default function InfosPopover() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(false);
 
@@ -27,34 +27,25 @@ export default function SimplePopover() {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <div>
-      <Button
-        aria-describedby={id}
-        variant="contained"
-        color="primary"
-        onClick={handleClick}
-      >
-        Open Popover
-      </Button>
-      <DisplayPage onClick={handleClick} />
+    <>
       <Popover
         id={id}
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
+          vertical: 'center',
+          horizontal: 'right',
         }}
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
+          vertical: 'center',
+          horizontal: 'left',
         }}
       >
         <Typography className={classes.typography}>
-          The content of the Popover.
+          <DisplayPage />
         </Typography>
       </Popover>
-    </div>
+    </>
   );
 }
