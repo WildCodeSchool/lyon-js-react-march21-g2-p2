@@ -1,10 +1,11 @@
 //------------------ IMPORT COMPONENTS & STYLES -------------//
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import { useForm } from 'react-hook-form';
 import React from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 //---------------------- STYLE CSS -------------------------//
 
@@ -24,11 +25,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     marginTop: 50,
   },
+  name: {
+    fontSize: 14,
+  },
 }));
 
 export default function DisplayReview({ id, userName, comment }) {
-  const { register } = useForm();
-  const { root, commentSection } = useStyles();
+  const { root, commentSection, name } = useStyles();
 
   useEffect(() => {
     //const [review, setReview ] = useState()
@@ -41,31 +44,16 @@ export default function DisplayReview({ id, userName, comment }) {
   return (
     <div className={commentSection}>
       <h1>User Reviews</h1>
-      <form className={root} noValidate autoComplete="off">
-        <TextField
-          required
-          size="small"
-          color="primary"
-          className="userName"
-          label="Name"
-          id="outlined-required"
-          defaultValue=""
-          variant="outlined"
-          {...register('userName')}
-        />
-        <TextField
-          required
-          multiline
-          color="primary"
-          className="comment"
-          id="outlined-required-multiline-static"
-          label="Comment"
-          rows={2}
-          defaultValue=""
-          variant="outlined"
-          {...register('comment')}
-        />
-      </form>
+      <Card className={root} variant="outlined">
+        <CardContent>
+          <Typography className={name} color="textSecondary" gutterBottom>
+            {userName}
+          </Typography>
+          <Typography variant="body2" component="p">
+            {comment}
+          </Typography>
+        </CardContent>
+      </Card>
     </div>
   );
 }
