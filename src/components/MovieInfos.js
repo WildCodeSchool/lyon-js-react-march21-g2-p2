@@ -2,10 +2,8 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
-import clsx from 'clsx';
+
+//----------------CSS w/ Material UI-----//
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -34,7 +32,6 @@ const useStyles = makeStyles(() => ({
 
 export default function MovieInfos(props) {
   const styles = useStyles();
-  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
   const director = props.prodCrew.filter((crew) => crew.job === 'Director');
 
@@ -49,15 +46,6 @@ export default function MovieInfos(props) {
         justify="flex-start"
         alignItems="center"
       >
-        <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
-          <Card className={clsx(styles.card)}>
-            <CardMedia
-              className={clsx(styles.cardStyle)}
-              classes={mediaStyles}
-              image={props.poster}
-            />
-          </Card>
-        </Grid>
         <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
           <div className={styles.content}>
             <h2>Title :</h2>

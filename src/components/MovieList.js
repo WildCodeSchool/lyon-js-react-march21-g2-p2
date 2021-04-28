@@ -73,7 +73,7 @@ const MovieList = ({ movieList, imgUrl }) => {
                 }}
               >
                 <Typography className={classes.typography}>
-                  <DisplayPage />
+                  <DisplayPage tmdbId={id} />
                 </Typography>
               </Popover>
             </div>
