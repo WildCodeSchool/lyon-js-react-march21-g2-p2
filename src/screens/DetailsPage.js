@@ -57,7 +57,7 @@ export default function DetailsPage() {
         movieGenreList={movieGenreList}
       />
       <UserCommentsSection title={movie.title} id={tmdb_id} />
-      <ReviewList movie_id={movie.id} />
+      <ReviewList movie_id={tmdb_id} />
     </>
   );
 }
