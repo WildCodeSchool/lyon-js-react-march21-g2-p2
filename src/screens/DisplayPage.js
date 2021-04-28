@@ -1,7 +1,6 @@
 /* eslint-disable no-lone-blocks */
 /*component import*/
 import MovieInfos from '../components/MovieInfos';
-import DisplayReview from '../components/ReviewList';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -57,7 +56,7 @@ export default function DisplayPage() {
         actors={movieActors}
         prodCrew={movieProductionCrew}
       />
-      <ReviewList movie_id={'460465'} />
+      <ReviewList movie_id={movie.id} />
     </>
   );
 }
