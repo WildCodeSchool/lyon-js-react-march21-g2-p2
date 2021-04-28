@@ -1,6 +1,7 @@
 /* eslint-disable no-lone-blocks */
 /*component import*/
 import MovieInfos from '../components/MovieInfos';
+import DisplayReview from '../components/DisplayReview';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -56,6 +57,7 @@ export default function DisplayPage() {
         actors={movieActors}
         prodCrew={movieProductionCrew}
       />
+      <DisplayReview />
     </>
   );
 }

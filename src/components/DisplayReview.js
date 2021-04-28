@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DisplayReviews({ id, userName, comment }) {
+export default function DisplayReview({ id, userName, comment }) {
   const { register } = useForm();
   const { root, commentSection } = useStyles();
 
