@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MovieList = ({ movieList, imgUrl }) => {
+const MovieList = ({Click, movieInfos, movieActorsInfos, movieProdCrew, movieList, imgUrl }) => {
   //---------POPOVER ELEMENTS----------//
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -49,7 +49,7 @@ const MovieList = ({ movieList, imgUrl }) => {
             title,
             poster_path,
           }) => (
-            <div aria-describedby={style} onClick={handleClick}>
+            <div aria-describedby={style} onClick={Click}>
               <MovieCard
                 id={id}
                 date={release_date}
