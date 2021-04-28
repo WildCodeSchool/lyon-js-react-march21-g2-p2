@@ -16,6 +16,7 @@ export default function DetailsPage() {
   const [movie, setMovie] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
+  const [movieGenreList, setMovieGenreList] = useState([]);
 
   /*To get the informations required*/
 
@@ -34,6 +35,7 @@ export default function DetailsPage() {
           setMovie(generalInfo.data);
           setMovieActors(crewInfos.data.cast);
           setMovieProductionCrew(crewInfos.data.crew);
+          setMovieGenreList(generalInfo.data.genres);
         })
       )
       .catch((error) => {
@@ -51,6 +53,7 @@ export default function DetailsPage() {
         synopsis={movie.overview}
         actors={movieActors}
         prodCrew={movieProductionCrew}
+        movieGenreList={movieGenreList}
       />
       <UserCommentsSection title={movie.title} id={tmdb_id} />
     </>
