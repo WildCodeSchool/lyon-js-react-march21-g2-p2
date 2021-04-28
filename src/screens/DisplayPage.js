@@ -8,23 +8,20 @@ import { useParams } from 'react-router';
 import UserCommentsSection from '../components/UsersComment';
 
 export default function DisplayPage() {
-  {
-    /*Use states we need to store the APIs call */
-  }
+  /*Use states we need to store the APIs call */
+
   const { tmdb_id } = useParams();
   const [movie, setMovie] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
 
-  {
-    /*API calls*/
-  }
+  /*API calls*/
+
   const urlToUse1 = `https://api.themoviedb.org/3/movie/${tmdb_id}?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US`;
   const urlToUse2 = `https://api.themoviedb.org/3/movie/${tmdb_id}/credits?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US`;
 
-  {
-    /*use of useEffect + axios*/
-  }
+  /*use of useEffect + axios*/
+
   const getMovieGeneralInfos = () => {
     return axios.get(urlToUse1);
   };
@@ -49,9 +46,8 @@ export default function DisplayPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  {
-    /*What will be shown */
-  }
+  /*What will be shown */
+
   return (
     <>
       <MovieInfos
