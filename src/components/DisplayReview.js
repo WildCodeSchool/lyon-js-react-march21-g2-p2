@@ -30,7 +30,6 @@ export default function DisplayReviews({ id, userName, comment }) {
   const { register } = useForm();
   const { root, commentSection } = useStyles();
 
-
   useEffect(() => {
     //const [review, setReview ] = useState()
     axios
