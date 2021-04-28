@@ -30,7 +30,7 @@ export default function Main() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/movies" component={MoviePage} />
-        <Route exact path="/favorites" component={FavoritePage} />
+        <Route exact path="/favorite" component={FavoritePage} />
         <Route exact path="/infos" component={DisplayPage} />
       </Switch>
     </main>
