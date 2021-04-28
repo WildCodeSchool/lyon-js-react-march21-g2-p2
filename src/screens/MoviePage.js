@@ -11,9 +11,6 @@ const apiPopularRoute = '/movie/popular?';
 const apiGenreListRoute = '/genre/movie/list?';
 const apiKey = 'api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
 
-
-
-
 export default function MoviePage() {
   const [availableGenres, setAvailableGenres] = useState([]);
   const [movieList, setMovieList] = useState([]);
@@ -27,24 +24,26 @@ export default function MoviePage() {
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
 
   // Get the movies & all the genres available in TMDB
-  
+
   useEffect(() => {
     axios
-    .get(apiUrl + apiPopularRoute + apiKey)
-    .then(({ data }) => setMovieList(data.results));
-    
+      .get(apiUrl + apiPopularRoute + apiKey)
+      .then(({ data }) => setMovieList(data.results));
+
     axios
-    .get(apiUrl + apiGenreListRoute + apiKey)
-    .then((res) => setAvailableGenres(res.data.genres));
-    
+      .get(apiUrl + apiGenreListRoute + apiKey)
+      .then((res) => setAvailableGenres(res.data.genres));
   }, []);
 
+  const handleClick = (e) => {
+    const getMovieGeneralInfos = axios.get(
+      `${apiUrl}/movie/${e.target.id}/?${apiKey}`
+    );
+    const getMovieCrewInfos = axios.get(
+      `${apiUrl}/movie/${e.target.id}/credits?${apiKey}`
+    );
 
-    const handleClick = (e) => {
-      const getMovieGeneralInfos = axios.get(`${apiUrl}/movie/${e.target.id}/?${apiKey}`);
-      const getMovieCrewInfos = axios.get(`${apiUrl}/movie/${e.target.id}/credits?${apiKey}`);
-    
-      axios
+    axios
       .all([getMovieGeneralInfos, getMovieCrewInfos])
       .then(
         axios.spread((generalInfo, crewInfos) => {
@@ -57,7 +56,6 @@ export default function MoviePage() {
         console.log('Error :', error);
       });
   };
-  
 
   const [searchValue, setSearchValue] = useState('');
 
@@ -73,7 +71,14 @@ export default function MoviePage() {
         apiKey={apiKey}
         apiPopularRoute={apiPopularRoute}
       />
-      <MovieList Click={handleClick} movieInfos={movieInfos} movieActorsInfos={movieActors} movieProdCrew={movieProductionCrew} movieList={movieList} imgUrl={imgUrl} />
+      <MovieList
+        Click={handleClick}
+        movieInfos={movieInfos}
+        movieActorsInfos={movieActors}
+        movieProdCrew={movieProductionCrew}
+        movieList={movieList}
+        imgUrl={imgUrl}
+      />
     </>
   );
 }
