@@ -8,25 +8,23 @@ import axios from 'axios';
 import { useParams } from 'react-router';
 import UserCommentsSection from '../components/UsersComment';
 
-
 export default function DetailsPage() {
+  /*Use states we need to store the APIs call*/
 
-    /*Use states we need to store the APIs call*/
-  
   const { tmdb_id } = useParams();
   const api_key = process.env.REACT_APP_TMDB_API_KEY;
   const [movie, setMovie] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
 
+  /*To get the informations required*/
 
-  
-  
-    /*To get the informations required*/
-  
-  const getMovieGeneralInfos = axios.get(`https://api.themoviedb.org/3/movie/${tmdb_id}?api_key=${api_key}&language=en-US`);
-  const getMovieCrewInfos = axios.get(`https://api.themoviedb.org/3/movie/${tmdb_id}/credits?api_key=${api_key}&language=en-US`);
-
+  const getMovieGeneralInfos = axios.get(
+    `https://api.themoviedb.org/3/movie/${tmdb_id}?api_key=${api_key}&language=en-US`
+  );
+  const getMovieCrewInfos = axios.get(
+    `https://api.themoviedb.org/3/movie/${tmdb_id}/credits?api_key=${api_key}&language=en-US`
+  );
 
   useEffect(() => {
     axios
@@ -43,7 +41,6 @@ export default function DetailsPage() {
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   return (
     <>
