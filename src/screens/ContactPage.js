@@ -70,6 +70,7 @@ export default function ContactPage() {
           id="filled-basic"
           label="firstname"
           variant="filled"
+          required="required"
           {...register('firstName')}
         />
         <TextField
@@ -77,6 +78,7 @@ export default function ContactPage() {
           id="filled"
           label="Lastname"
           variant="filled"
+          required="required"
           {...register('lastName')}
         />
         <TextField
@@ -85,6 +87,7 @@ export default function ContactPage() {
           label="Email"
           variant="filled"
           type="email"
+          required="required"
           {...register('email')}
         />
         <TextField
@@ -95,6 +98,7 @@ export default function ContactPage() {
           rows={6}
           defaultValue=""
           variant="filled"
+          required="required"
           {...register('text')}
         />
         <Button className={classes.Button} variant="outlined" type="submit">
