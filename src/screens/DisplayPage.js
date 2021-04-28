@@ -1,10 +1,11 @@
 /* eslint-disable no-lone-blocks */
 /*component import*/
 import MovieInfos from '../components/MovieInfos';
-import DisplayReview from '../components/DisplayReview';
+import DisplayReview from '../components/ReviewList';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import ReviewList from '../components/ReviewList';
 
 export default function DisplayPage() {
   {
@@ -29,7 +30,6 @@ export default function DisplayPage() {
         'https://api.themoviedb.org/3/movie/615678/credits?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US'
       );
     }
-
     axios
       .all([getMovieGeneralInfos(), getMovieCrewInfos()])
       .then(
@@ -45,7 +45,7 @@ export default function DisplayPage() {
   }, []);
 
   {
-    /*What will be shown */
+    /*What will be shown : Change the prop of reveiwlist*/
   }
   return (
     <>
@@ -57,7 +57,7 @@ export default function DisplayPage() {
         actors={movieActors}
         prodCrew={movieProductionCrew}
       />
-      <DisplayReview />
+      <ReviewList movie_id={'460465'} />
     </>
   );
 }
