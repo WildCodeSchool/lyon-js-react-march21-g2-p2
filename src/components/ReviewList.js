@@ -19,19 +19,14 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
     },
   },
-  commentSection: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginTop: 50,
-    maxWidth: '85ch',
-  },
+
   name: {
     fontSize: 14,
   },
 }));
 //---------------------- GET THE REVIEWS FROM OUR API AND DISPLAY -------------------------//
 export default function ReviewList({ movie_id }) {
-  const { card, commentSection, name } = useStyles();
+  const { card, name } = useStyles();
   const [reviewList, setReviewList] = useState([]);
 
   useEffect(() => {
@@ -41,9 +36,11 @@ export default function ReviewList({ movie_id }) {
       .catch((err) => console.log(err));
   }, []);
 
+  //To avoid error on map method "reviewList &&"" otherwise our list is undefinde
   return (
-    <div className={commentSection}>
+    <div>
       <h2>User Reviews</h2>
+
       {reviewList &&
         reviewList.map((review) => (
           <Card className={card} key={review.id} variant="outlined">
