@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useForm } from 'react-hook-form';
 import React from 'react';
+import axios from 'axios';
 
 //---------------------- STYLE CSS -------------------------//
 
@@ -42,11 +43,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 //--------------------------- FONCTION CONTACT --------------------------//
 
-export default function Contact() {
+export default function ContactPage() {
   const { register, handleSubmit } = useForm();
   const classes = useStyles();
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+  const onSubmit = (form) => {
+    alert('Votre demande a bien été prise en compte!');
+    axios
+      .post('http://localhost:5000/contact', form)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -54,7 +59,12 @@ export default function Contact() {
       <h1 className={classes.Message}>
         Des conseils? Des suggestions? N'hésitez pas à nous le faire savoir !
       </h1>
-      <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className={classes.form}
+        onSubmit={handleSubmit(onSubmit)}
+        method="POST"
+        action="send"
+      >
         <TextField
           className={classes.TextField}
           id="filled-basic"
