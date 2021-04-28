@@ -11,7 +11,7 @@ export default function DisplayPage() {
   {
     /*Use states we need to store the APIs call */
   }
-  
+
   const [movie, setMovie] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);

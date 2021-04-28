@@ -16,9 +16,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MovieList = ({ movieList, imgUrl }) => {
-
-//---------POPOVER ELEMENTS----------//
-const classes = useStyles();
+  //---------POPOVER ELEMENTS----------//
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -31,7 +30,6 @@ const classes = useStyles();
 
   const open = Boolean(anchorEl);
   const style = open ? 'simple-popover' : undefined;
-
 
   return (
     <>
