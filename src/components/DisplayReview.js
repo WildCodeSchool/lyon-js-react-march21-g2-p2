@@ -12,8 +12,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
-      margin: theme.spacing(2),
-      width: '25ch',
+      margin: theme.spacing(4),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -24,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     marginTop: 50,
+    maxWidth: '85ch',
   },
   name: {
     fontSize: 14,
@@ -43,7 +43,7 @@ export default function DisplayReview({ id, userName, comment }) {
 
   return (
     <div className={commentSection}>
-      <h1>User Reviews</h1>
+      <h2>User Reviews</h2>
       <Card className={root} variant="outlined">
         <CardContent>
           <Typography className={name} color="textSecondary" gutterBottom>
