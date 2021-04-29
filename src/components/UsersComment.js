@@ -64,7 +64,7 @@ export default function UserCommentsSection(props) {
           id="outlined-required"
           defaultValue=""
           variant="outlined"
-          {...register('userName')}
+          {...register('user_name')}
         />
         <TextField
           required
