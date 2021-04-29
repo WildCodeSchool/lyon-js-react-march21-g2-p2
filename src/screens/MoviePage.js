@@ -20,7 +20,6 @@ export default function MoviePage() {
   //-----Use states we need to store the APIs call-----//
   // const [movieId, setMovieId] = useState(false);
 
-
   // Get the movies & all the genres available in TMDB
 
   useEffect(() => {
@@ -39,7 +38,6 @@ export default function MoviePage() {
   //   return setMovieId(e.target.id)
   // };
 
-  
   const [searchValue, setSearchValue] = useState('');
 
   return (

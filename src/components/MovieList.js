@@ -26,7 +26,6 @@ const MovieList = ({
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-
   };
 
   const handleClose = () => {
@@ -79,9 +78,7 @@ const MovieList = ({
                 }}
               >
                 <Typography className={classes.typography}>
-                  <DisplayPage
-                    tmdbId={id}
-                  />
+                  <DisplayPage tmdbId={id} />
                 </Typography>
               </Popover>
             </div>

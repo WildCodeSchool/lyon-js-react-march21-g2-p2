@@ -19,16 +19,14 @@ const useStyles = makeStyles(() => ({
     margin: 0,
     width: 400,
     height: 400,
-    overflow:'scroll',
+    overflow: 'scroll',
   },
 }));
 
 const apiUrl = 'https://api.themoviedb.org/3';
 const apiKey = 'api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
 
-export default function DisplayPage(
-  {tmdbId}
-) {
+export default function DisplayPage({ tmdbId }) {
   const styles = useStyles();
 
   const [movieInfos, setMovieInfos] = useState('');
@@ -36,28 +34,26 @@ export default function DisplayPage(
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
 
   useEffect(() => {
-      const getMovieGeneralInfos = axios.get(
-        `${apiUrl}/movie/${tmdbId}?${apiKey}&language=en-US`
-      );
-      const getMovieCrewInfos = axios.get(
-        `${apiUrl}/movie/${tmdbId}/credits?${apiKey}&language=en-US`
-      );
-  
-      return axios
-        .all([getMovieGeneralInfos, getMovieCrewInfos])
-        .then(
-          axios.spread((generalInfo, crewInfos) => {
-            setMovieInfos(generalInfo.data);
-            setMovieActors(crewInfos.data.cast);
-            setMovieProductionCrew(crewInfos.data.crew);
-          })
-        )
-        .catch((error) => {
-          console.log('Error :', error);
-        });
-    },[tmdbId] ); 
-    
+    const getMovieGeneralInfos = axios.get(
+      `${apiUrl}/movie/${tmdbId}?${apiKey}&language=en-US`
+    );
+    const getMovieCrewInfos = axios.get(
+      `${apiUrl}/movie/${tmdbId}/credits?${apiKey}&language=en-US`
+    );
 
+    return axios
+      .all([getMovieGeneralInfos, getMovieCrewInfos])
+      .then(
+        axios.spread((generalInfo, crewInfos) => {
+          setMovieInfos(generalInfo.data);
+          setMovieActors(crewInfos.data.cast);
+          setMovieProductionCrew(crewInfos.data.crew);
+        })
+      )
+      .catch((error) => {
+        console.log('Error :', error);
+      });
+  }, [tmdbId]);
 
   //-----Use states we need to store the APIs call-----//
 
