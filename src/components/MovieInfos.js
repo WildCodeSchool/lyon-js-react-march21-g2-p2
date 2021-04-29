@@ -72,14 +72,14 @@ export default function MovieInfos(props) {
             </div>
             <h2>Actors :</h2>
             {mainActors.map((actor) => (
-              <>
-                <p key={actor.id}>
-                  <strong>{actor.name}</strong> - {actor.character}
-                </p>
-              </>
+              <p key={actor.id}>
+                <strong>{actor.name}</strong> - {actor.character}
+              </p>
             ))}
             <h2>Genres :</h2>
-
+            {props.movieGenreList.map(({ id, name }) => (
+              <p key={id}>{name}</p>
+            ))}
             <h2>Synopsis :</h2>
             <p>{props.synopsis}</p>
           </div>

@@ -1,4 +1,5 @@
 /* eslint-disable no-lone-blocks */
+
 /*component import*/
 import MovieInfos from '../components/MovieInfos';
 import React from 'react';
@@ -7,40 +8,34 @@ import axios from 'axios';
 import { useParams } from 'react-router';
 import UserCommentsSection from '../components/UsersComment';
 
-export default function DisplayPage() {
-  {
-    /*Use states we need to store the APIs call */
-  }
+export default function DetailsPage() {
+  /*Use states we need to store the APIs call*/
+
   const { tmdb_id } = useParams();
+  const api_key = process.env.REACT_APP_TMDB_API_KEY;
   const [movie, setMovie] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
+  const [movieGenreList, setMovieGenreList] = useState([]);
 
-  {
-    /*API calls*/
-  }
-  const urlToUse1 = `https://api.themoviedb.org/3/movie/${tmdb_id}?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US`;
-  const urlToUse2 = `https://api.themoviedb.org/3/movie/${tmdb_id}/credits?api_key=f22eb05a70b166bd4e2c1312e15d8e8b&language=en-US`;
+  /*To get the informations required*/
 
-  {
-    /*use of useEffect + axios*/
-  }
-  const getMovieGeneralInfos = () => {
-    return axios.get(urlToUse1);
-  };
-
-  const getMovieCrewInfos = () => {
-    return axios.get(urlToUse2);
-  };
+  const getMovieGeneralInfos = axios.get(
+    `https://api.themoviedb.org/3/movie/${tmdb_id}?api_key=${api_key}&language=en-US`
+  );
+  const getMovieCrewInfos = axios.get(
+    `https://api.themoviedb.org/3/movie/${tmdb_id}/credits?api_key=${api_key}&language=en-US`
+  );
 
   useEffect(() => {
     axios
-      .all([getMovieGeneralInfos(), getMovieCrewInfos()])
+      .all([getMovieGeneralInfos, getMovieCrewInfos])
       .then(
         axios.spread((generalInfo, crewInfos) => {
           setMovie(generalInfo.data);
           setMovieActors(crewInfos.data.cast);
           setMovieProductionCrew(crewInfos.data.crew);
+          setMovieGenreList(generalInfo.data.genres);
         })
       )
       .catch((error) => {
@@ -49,9 +44,6 @@ export default function DisplayPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  {
-    /*What will be shown */
-  }
   return (
     <>
       <MovieInfos
@@ -61,6 +53,7 @@ export default function DisplayPage() {
         synopsis={movie.overview}
         actors={movieActors}
         prodCrew={movieProductionCrew}
+        movieGenreList={movieGenreList}
       />
       <UserCommentsSection title={movie.title} id={tmdb_id} />
     </>

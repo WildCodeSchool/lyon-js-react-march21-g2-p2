@@ -194,16 +194,6 @@ export default function Header() {
             </ListItem>
           </NavLink>
         </List>
-        <List>
-          <NavLink exact activeClassName="active" to="/infos">
-            <ListItem button>
-              <ListItemIcon>
-                <MovieFilterIcon />
-              </ListItemIcon>
-              <ListItemText primary="Infos" />
-            </ListItem>
-          </NavLink>
-        </List>
 
         <Divider />
         <List>
