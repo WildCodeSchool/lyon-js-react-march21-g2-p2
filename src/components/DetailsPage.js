@@ -31,7 +31,9 @@ export default function DisplayPage({
 }) {
   const styles = useStyles();
 
-  const director = movieProductionCrew.filter((crew) => crew.job === 'Director');
+  const director = movieProductionCrew.filter(
+    (crew) => crew.job === 'Director'
+  );
   const mainActors = movieActors.slice(0, 5);
 
   return (

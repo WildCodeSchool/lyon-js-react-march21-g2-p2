@@ -25,7 +25,6 @@ export default function MovieInfos({
 }) {
   const styles = useStyles();
 
-
   return (
     <>
       <div className={styles.content}>
