@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieCard from './MovieCard';
 import Grid from '@material-ui/core/Grid';
+// import { Link } from 'react-router-dom';
 
 const MovieList = ({ movieList, imgUrl }) => {
   return (
@@ -22,8 +23,8 @@ const MovieList = ({ movieList, imgUrl }) => {
             poster_path,
           }) => (
             <MovieCard
-              key={id}
               id={id}
+              key={id}
               date={release_date}
               title={title}
               genre={genre_ids}

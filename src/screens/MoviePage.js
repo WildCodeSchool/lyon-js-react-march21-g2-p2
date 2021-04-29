@@ -38,7 +38,9 @@ export default function MoviePage() {
         .get(apiUrl + apiPopularRoute + 'api_key=' + apiKey)
         .then(({ data }) => setMovieList(data.results));
     }
+  }, [query]);
 
+  useEffect(() => {
     axios
       .get(apiUrl + apiGenreListRoute + 'api_key=' + apiKey)
       .then((res) => setAvailableGenres(res.data.genres));
@@ -73,7 +75,7 @@ export default function MoviePage() {
         .get(apiUrl + apiPopularRoute + 'api_key=' + apiKey)
         .then(({ data }) => setMovieList(data.results));
     }
-  }, [query, year, with_genres, history]);
+  }, [query, year, with_genres, history, location.search]);
 
   return (
     <>

@@ -8,15 +8,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-import {
-  Info,
-  InfoCaption,
-  InfoSubtitle,
-  InfoTitle,
-} from '@mui-treasury/components/info';
+import { Info, InfoCaption, InfoTitle } from '@mui-treasury/components/info';
 import { useGalaxyInfoStyles } from '@mui-treasury/styles/info/galaxy';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -84,37 +80,41 @@ const MovieCard = ({ id, poster, title, average }) => {
 
   const [isFavoriteMovie, setIsFavoriteMovie] = useState(false);
 
-  const handleToggleFavorite = () => {
+  const handleToggleFavorite = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     setIsFavoriteMovie(!isFavoriteMovie);
   };
 
   return (
-    <Grid item key={id} xs={10} sm={6} md={4} lg={3} xl={2}>
-      <Card className={clsx(card)}>
-        <CardMedia
-          classes={mediaStyles}
-          image={
-            poster
-              ? poster
-              : 'https://images.unsplash.com/photo-1580130601254-05fa235abeab?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fG1vdmllJTIwcG9zdGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-          }
-        />
-        <Box py={3} className={clsx(content)}>
-          <Box py={40} className={clsx(favorite)}>
-            <IconButton onClick={handleToggleFavorite}>
-              <FavoriteIcon
-                variant="contained"
-                className={clsx(isFavoriteMovie ? isFav : notFav)}
-              />
-            </IconButton>
+    <Link key={id} to={`/movies/${id}`}>
+      <Grid item key={id} xs={10} sm={6} md={4} lg={3} xl={2}>
+        <Card className={clsx(card)}>
+          <CardMedia
+            classes={mediaStyles}
+            image={
+              poster
+                ? poster
+                : 'https://images.unsplash.com/photo-1580130601254-05fa235abeab?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fG1vdmllJTIwcG9zdGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+            }
+          />
+          <Box py={3} className={clsx(content)}>
+            <Box py={40} className={clsx(favorite)}>
+              <IconButton onClick={handleToggleFavorite}>
+                <FavoriteIcon
+                  variant="contained"
+                  className={clsx(isFavoriteMovie ? isFav : notFav)}
+                />
+              </IconButton>
+            </Box>
+            <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
+              <InfoTitle>{title}</InfoTitle>
+              <InfoCaption>Rating : {average}/10</InfoCaption>
+            </Info>
           </Box>
-          <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
-            <InfoTitle>{title}</InfoTitle>
-            <InfoCaption>Rating : {average}/10</InfoCaption>
-          </Info>
-        </Box>
-      </Card>
-    </Grid>
+        </Card>
+      </Grid>
+    </Link>
   );
 };
 

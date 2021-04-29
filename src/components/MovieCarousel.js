@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import CardMedia from '@material-ui/core/CardMedia';
-import { Info, InfoCaption, InfoTitle } from '@mui-treasury/components/info';
+import { Info, InfoTitle } from '@mui-treasury/components/info';
 import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(() => ({
@@ -44,7 +44,15 @@ const MovieCarousel = (props) => {
   const styles = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
   return (
-    <Carousel className={clsx(styles.carousel)}>
+    <Carousel
+      className={clsx(styles.carousel)}
+      swipe={true}
+      interval={5000}
+      fullHeightHover={true}
+      animation="fade"
+      stopAutoPlayOnHover={true}
+      navButtonsAlwaysVisible={true}
+    >
       {props.movieList.map((movie) => (
         <Box className={clsx(styles.movieBox)} key={movie.id}>
           <CardMedia
