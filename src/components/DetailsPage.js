@@ -4,11 +4,9 @@
 import MovieInfos from './MovieInfos';
 import ReviewList from './ReviewList';
 import React from 'react';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import UserCommentsSection from './UsersComment';
+import UserComments from './UsersComment';
 import clsx from 'clsx';
 
 //----------------CSS w/ Material UI-----//
@@ -22,6 +20,7 @@ const useStyles = makeStyles(() => ({
     width: 400,
     height: 400,
     overflow: 'scroll',
+    padding: '1em',
   },
 }));
 
@@ -29,9 +28,11 @@ export default function DisplayPage({
   movieInfos,
   movieActors,
   movieProductionCrew,
-  tmdbId,
 }) {
   const styles = useStyles();
+
+  const director = movieProductionCrew.filter((crew) => crew.job === 'Director');
+  const mainActors = movieActors.slice(0, 5);
 
   return (
     <div>
@@ -40,10 +41,10 @@ export default function DisplayPage({
           title={movieInfos.title}
           date={movieInfos.date}
           synopsis={movieInfos.synopsis}
-          actors={movieActors}
-          prodCrew={movieProductionCrew}
+          actors={mainActors}
+          director={director}
         />
-        <UserCommentsSection title={movieInfos.title} id={movieInfos.id} />
+        <UserComments title={movieInfos.title} id={movieInfos.id} />
         <ReviewList movie_id={movieInfos.id} />
       </Card>
     </div>

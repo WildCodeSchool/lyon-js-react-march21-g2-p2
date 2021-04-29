@@ -1,6 +1,5 @@
 /*component import*/
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
 //----------------CSS w/ Material UI-----//
@@ -22,13 +21,10 @@ export default function MovieInfos({
   date,
   synopsis,
   actors,
-  prodCrew,
+  director,
 }) {
   const styles = useStyles();
 
-  const director = prodCrew.filter((crew) => crew.job === 'Director');
-
-  const mainActors = actors.slice(0, 5);
 
   return (
     <>
@@ -44,15 +40,13 @@ export default function MovieInfos({
           ))}
         </div>
         <h2>Actors :</h2>
-        {mainActors.map((actor) => (
+        {actors.map((actor) => (
           <>
             <p key={actor.id}>
               <strong>{actor.name}</strong> - {actor.character}
             </p>
           </>
         ))}
-        <h2>Genres :</h2>
-
         <h2>Synopsis :</h2>
         <p>{synopsis}</p>
       </div>

@@ -181,12 +181,11 @@ const MovieCard = ({ id, poster, title, average, date, synopsis, genre }) => {
           horizontal: 'left',
         }}
       >
-        <Typography className={classes.typography}>
+        <Typography key={id} className={classes.typography}>
           <DetailsPage
             movieInfos={movieInfos}
             movieActors={movieActors}
             movieProductionCrew={movieProductionCrew}
-            tmdbId={id}
           />
         </Typography>
       </Popover>

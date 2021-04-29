@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'flex-start',
       justifyContent: 'center',
       marginTop: 20,
-      width: '85ch',
+      width: 'auto',
+      margin: 15,
     },
   },
 

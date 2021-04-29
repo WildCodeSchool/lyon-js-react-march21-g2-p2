@@ -9,20 +9,26 @@ import axios from 'axios';
 
 //---------------------- STYLE CSS -------------------------//
 
-const useStyles = makeStyles((theme) => ({
-  root: {
+const useStyles = makeStyles(() => ({
+  form: {
     '& > *': {
-      margin: theme.spacing(2),
+      margin: 15,
       width: '25ch',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
+      borderRadius: '1rem',
     },
   },
   commentSection: {
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'flex-start',
+    zIndex: 2,
+    bottom: 0,
+    width: 'auto',
+    margin: 15,
     marginTop: 50,
   },
   Button: {
@@ -34,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 //--------------------------- COMMENTS FUNCTION --------------------------//
 
-export default function UserCommentsSection({ title, id }) {
+export default function UserComments({ title, id }) {
   const { register, handleSubmit } = useForm();
   const classes = useStyles();
 
@@ -48,9 +54,9 @@ export default function UserCommentsSection({ title, id }) {
 
   return (
     <div className={classes.commentSection}>
-      <h1 className={classes.Message}>Any comments about the movie ? </h1>
+      <h2>Any comments about the movie ? </h2>
       <form
-        className={classes.root}
+        className={classes.form}
         noValidate
         autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
