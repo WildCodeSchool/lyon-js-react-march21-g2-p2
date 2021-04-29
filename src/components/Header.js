@@ -135,7 +135,7 @@ export default function Header() {
           </IconButton>
           <img src={logo} alt="Logo" className={classes.logo} />
           <Typography variant="h6" noWrap>
-            Dollix
+            Dolly
           </Typography>
         </Toolbar>
       </AppBar>
