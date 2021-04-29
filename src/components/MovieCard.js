@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import './MovieCard.css';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -12,6 +11,7 @@ import { Info, InfoCaption, InfoTitle } from '@mui-treasury/components/info';
 import { useGalaxyInfoStyles } from '@mui-treasury/styles/info/galaxy';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import clsx from 'clsx';
+import createPersistedState from 'use-persisted-state';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
@@ -74,21 +74,36 @@ const useStyles = makeStyles(() => ({
 }));
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
-const MovieCard = ({ id, poster, title, average }) => {
+const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
   const { card, content, movieInfo, favorite, isFav, notFav } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
-  const [isFavoriteMovie, setIsFavoriteMovie] = useState(false);
+  const useFavoriteMoviesState = createPersistedState('favoriteMovies');
+  const [favoriteMovies, setFavoriteMovies] = useFavoriteMoviesState({});
 
+  const isFavorite = !!favoriteMovies[movieId];
+  // function to handle the toggling of a movie's favorite state and adding it using localStorage
   const handleToggleFavorite = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    setIsFavoriteMovie(!isFavoriteMovie);
+    setFavoriteMovies((favoriteMovies) => {
+      return {
+        ...favoriteMovies,
+        [movieId]: isFavorite
+          ? false
+          : {
+              id: movieId,
+              title: title,
+              genre: genre,
+              poster_path: poster,
+            },
+      };
+    });
   };
 
   return (
-    <Link key={id} to={`/movies/${id}`}>
-      <Grid item key={id} xs={10} sm={6} md={4} lg={3} xl={2}>
+    <Link key={movieId} to={`/movies/${movieId}`}>
+      <Grid item key={movieId} xs={10} sm={6} md={4} lg={3} xl={2}>
         <Card className={clsx(card)}>
           <CardMedia
             classes={mediaStyles}
@@ -103,13 +118,13 @@ const MovieCard = ({ id, poster, title, average }) => {
               <IconButton onClick={handleToggleFavorite}>
                 <FavoriteIcon
                   variant="contained"
-                  className={clsx(isFavoriteMovie ? isFav : notFav)}
+                  className={clsx(isFavorite ? isFav : notFav)}
                 />
               </IconButton>
             </Box>
             <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
               <InfoTitle>{title}</InfoTitle>
-              <InfoCaption>Rating : {average}/10</InfoCaption>
+              <InfoCaption>Rating: {average}/10</InfoCaption>
             </Info>
           </Box>
         </Card>
