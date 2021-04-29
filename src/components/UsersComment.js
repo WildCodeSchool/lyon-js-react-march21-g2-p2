@@ -34,14 +34,14 @@ const useStyles = makeStyles((theme) => ({
 
 //--------------------------- COMMENTS FUNCTION --------------------------//
 
-export default function UserCommentsSection(props) {
+export default function UserCommentsSection({title, id}) {
   const { register, handleSubmit } = useForm();
   const classes = useStyles();
 
   const onSubmit = (form) => {
-    form.title = props.title;
+    form.title = title;
     axios
-      .post(`http://localhost:5000/movies/${props.id}/reviews`, form)
+      .post('http://localhost:5000/movies/' + id + '/reviews', form)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };

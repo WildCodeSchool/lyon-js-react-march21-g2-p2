@@ -32,7 +32,7 @@ export default function ReviewList({ movie_id }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/movies/${movie_id}/reviews`)
+      .get('http://localhost:5000/movies/' + movie_id + '/reviews')
       .then((res) => setReviewList(res.data))
       .catch((err) => console.log(err));
   }, []);

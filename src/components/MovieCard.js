@@ -1,5 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import './MovieCard.css';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -12,7 +13,11 @@ import { Info, InfoCaption, InfoTitle } from '@mui-treasury/components/info';
 import { useGalaxyInfoStyles } from '@mui-treasury/styles/info/galaxy';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+
+import DetailsPage from './DetailsPage';
+
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -73,8 +78,14 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const apiUrl = 'https://api.themoviedb.org/3';
+const apiKey = process.env.REACT_APP_TMDB_API_KEY;
+
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
-const MovieCard = ({ id, poster, title, average }) => {
+const MovieCard = ({ id, poster, title, average, date, synopsis, genre }) => {
+
+  const movieInfos = {id, title, average, date, synopsis, genre };
+
   const { card, content, movieInfo, favorite, isFav, notFav } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
@@ -86,9 +97,47 @@ const MovieCard = ({ id, poster, title, average }) => {
     setIsFavoriteMovie(!isFavoriteMovie);
   };
 
+  //----------GET DETAILED INFOS------//
+
+
+  const [movieActors, setMovieActors] = useState([]);
+  const [movieProductionCrew, setMovieProductionCrew] = useState([]);
+
+  //---------POPOVER ELEMENTS----------//
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const style = open ? 'simple-popover' : undefined;
+
+  
+  useEffect(() => {
+    if(anchorEl){
+      axios
+      .get(apiUrl + '/movie/' + id + '/credits?api_key=' + apiKey + '&language=en-US')
+      .then((crewInfos) => {
+            setMovieActors(crewInfos.data.cast);
+            setMovieProductionCrew(crewInfos.data.crew);
+          })
+      .catch((error) => {
+          console.log('Error :', error);
+        });
+      }
+    },[anchorEl]);
+    
+
+
   return (
     <Grid item key={id} xs={10} sm={6} md={4} lg={3} xl={2}>
-      <Card className={clsx(card)}>
+      <Card className={clsx(card)} aria-describedby={style} onClick={handleClick}>
         <CardMedia
           classes={mediaStyles}
           image={
@@ -112,6 +161,24 @@ const MovieCard = ({ id, poster, title, average }) => {
           </Info>
         </Box>
       </Card>
+      <Popover
+                id={style}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'center',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'center',
+                  horizontal: 'left',
+                }}
+              >
+                <Typography className={classes.typography}>
+                  <DetailsPage movieInfos={movieInfos} movieActors={movieActors} movieProductionCrew={movieProductionCrew} tmdbId={id} />
+                </Typography>
+            </Popover>
     </Grid>
   );
 };

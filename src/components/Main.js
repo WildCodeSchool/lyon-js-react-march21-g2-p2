@@ -4,7 +4,6 @@ import HomePage from '../screens/HomePage';
 import MoviePage from '../screens/MoviePage';
 import FavoritePage from '../screens/FavoritePage';
 import ContactPage from '../screens/ContactPage';
-import DetailsPage from '../screens/DetailsPage';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -33,7 +32,6 @@ export default function Main() {
         <Route exact path="/movies" component={MoviePage} />
         <Route exact path="/favorites" component={FavoritePage} />
         <Route exact path="/contact" component={ContactPage} />
-        <Route exact path="/movies/:tmdb_id" component={DetailsPage} />
       </Switch>
     </main>
   );
