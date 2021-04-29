@@ -17,7 +17,6 @@ export default function MoviePage() {
   const history = useHistory();
   const location = useLocation();
 
-
   // Get the movies & all the genres available in TMDB
 
   useEffect(() => {
@@ -44,10 +43,7 @@ export default function MoviePage() {
         apiKey={apiKey}
         apiPopularRoute={apiPopularRoute}
       />
-      <MovieList
-        movieList={movieList}
-        imgUrl={imgUrl}
-      />
+      <MovieList movieList={movieList} imgUrl={imgUrl} />
     </>
   );
 }

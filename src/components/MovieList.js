@@ -15,10 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MovieList = ({
-  movieList,
-  imgUrl,
-}) => {
+const MovieList = ({ movieList, imgUrl }) => {
   //---------POPOVER ELEMENTS----------//
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);

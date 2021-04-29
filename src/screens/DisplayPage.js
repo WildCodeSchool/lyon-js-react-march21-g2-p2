@@ -55,7 +55,6 @@ export default function DisplayPage({ tmdbId }) {
       });
   }, [tmdbId]);
 
-  
   {
     /*What will be shown */
   }
