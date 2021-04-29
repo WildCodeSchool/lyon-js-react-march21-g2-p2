@@ -3,7 +3,7 @@ import MovieCard from './MovieCard';
 
 import Grid from '@material-ui/core/Grid';
 
-import DisplayPage from '../screens/DisplayPage';
+import DetailsPage from '../screens/DetailsPage';
 import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
@@ -74,7 +74,7 @@ const MovieList = ({ movieList, imgUrl }) => {
                 }}
               >
                 <Typography className={classes.typography}>
-                  <DisplayPage tmdbId={id} />
+                  <DetailsPage tmdbId={id} />
                 </Typography>
               </Popover>
             </div>
