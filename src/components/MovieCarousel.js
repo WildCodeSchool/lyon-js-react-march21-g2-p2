@@ -52,7 +52,14 @@ const MovieCarousel = (props) => {
   const styles = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
   return (
-    <Carousel className={clsx(styles.carousel)}>
+    <Carousel className={clsx(styles.carousel)}
+      swipe={true}
+      interval={5000}
+      fullHeightHover={true}
+      animation="fade"
+      stopAutoPlayOnHover={true}
+      navButtonsAlwaysVisible={true}
+    >
       {props.movieList.map((movie) => (
         <Box className={clsx(styles.movieBox)} key={movie.id}>
           <CardMedia

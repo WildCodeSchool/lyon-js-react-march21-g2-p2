@@ -8,12 +8,14 @@ import PaymentIcon from '@material-ui/icons/Payment';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
 
+
 const useStyles = makeStyles((theme) => ({
   Footer: {
     width: '100%',
     margin: 0,
     textAlign: 'center',
     background: '#2b2b2b',
+    padding: "1em"
 
   },
   Typography: {
