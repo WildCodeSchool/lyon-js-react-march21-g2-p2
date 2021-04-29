@@ -51,13 +51,13 @@ const MovieList = ({ movieList, imgUrl }) => {
           }) => (
             <div aria-describedby={style} onClick={handleClick}>
               <MovieCard
-              key={id}
-              id={id}
-              date={release_date}
-              title={title}
-              genre={genre_ids}
-              average={vote_average}
-              poster={poster_path ? imgUrl + poster_path : null}
+                key={id}
+                id={id}
+                date={release_date}
+                title={title}
+                genre={genre_ids}
+                average={vote_average}
+                poster={poster_path ? imgUrl + poster_path : null}
               />
               <Popover
                 id={style}

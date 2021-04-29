@@ -87,32 +87,32 @@ const MovieCard = ({ id, poster, title, average }) => {
   };
 
   return (
-      <Grid item key={id} xs={10} sm={6} md={4} lg={3} xl={2}>
-        <Card className={clsx(card)}>
-          <CardMedia
-            classes={mediaStyles}
-            image={
-              poster
-                ? poster
-                : 'https://images.unsplash.com/photo-1580130601254-05fa235abeab?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fG1vdmllJTIwcG9zdGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-            }
-          />
-          <Box py={3} className={clsx(content)}>
-            <Box py={40} className={clsx(favorite)}>
-              <IconButton onClick={handleToggleFavorite}>
-                <FavoriteIcon
-                  variant="contained"
-                  className={clsx(isFavoriteMovie ? isFav : notFav)}
-                />
-              </IconButton>
-            </Box>
-            <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
-              <InfoTitle>{title}</InfoTitle>
-              <InfoCaption>Rating : {average}/10</InfoCaption>
-            </Info>
+    <Grid item key={id} xs={10} sm={6} md={4} lg={3} xl={2}>
+      <Card className={clsx(card)}>
+        <CardMedia
+          classes={mediaStyles}
+          image={
+            poster
+              ? poster
+              : 'https://images.unsplash.com/photo-1580130601254-05fa235abeab?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fG1vdmllJTIwcG9zdGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+          }
+        />
+        <Box py={3} className={clsx(content)}>
+          <Box py={40} className={clsx(favorite)}>
+            <IconButton onClick={handleToggleFavorite}>
+              <FavoriteIcon
+                variant="contained"
+                className={clsx(isFavoriteMovie ? isFav : notFav)}
+              />
+            </IconButton>
           </Box>
-        </Card>
-      </Grid>
+          <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
+            <InfoTitle>{title}</InfoTitle>
+            <InfoCaption>Rating : {average}/10</InfoCaption>
+          </Info>
+        </Box>
+      </Card>
+    </Grid>
   );
 };
 

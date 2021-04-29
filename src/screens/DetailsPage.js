@@ -25,18 +25,16 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-
 export default function DisplayPage({ tmdbId }) {
   const styles = useStyles();
-  
-  
+
   const [movieInfos, setMovieInfos] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
-  
+
   const apiUrl = 'https://api.themoviedb.org/3';
   const apiKey = process.env.REACT_APP_TMDB_API_KEY;
-  
+
   const getMovieGeneralInfos = axios.get(
     `${apiUrl}/movie/${tmdbId}?${apiKey}&language=en-US`
   );
@@ -45,7 +43,6 @@ export default function DisplayPage({ tmdbId }) {
   );
 
   useEffect(() => {
-
     axios
       .all([getMovieGeneralInfos, getMovieCrewInfos])
       .then(
