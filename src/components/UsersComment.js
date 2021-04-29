@@ -48,7 +48,7 @@ export default function UserCommentsSection(props) {
 
   return (
     <div className={classes.commentSection}>
-      <h1 className={classes.Message}>Votre avis sur ce film ?</h1>
+      <h1 className={classes.Message}>Any comments about the movie ? </h1>
       <form
         className={classes.root}
         noValidate
@@ -64,7 +64,7 @@ export default function UserCommentsSection(props) {
           id="outlined-required"
           defaultValue=""
           variant="outlined"
-          {...register('userName')}
+          {...register('user_name')}
         />
         <TextField
           required

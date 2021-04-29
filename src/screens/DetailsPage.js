@@ -1,6 +1,8 @@
 /* eslint-disable no-lone-blocks */
+
 /*component import*/
 import MovieInfos from '../components/MovieInfos';
+import ReviewList from '../components/ReviewList';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -23,25 +25,28 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const apiUrl = 'https://api.themoviedb.org/3';
-const apiKey = 'api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
 
 export default function DisplayPage({ tmdbId }) {
   const styles = useStyles();
-
+  
+  
   const [movieInfos, setMovieInfos] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
+  
+  const apiUrl = 'https://api.themoviedb.org/3';
+  const apiKey = process.env.REACT_APP_TMDB_API_KEY;
+  
+  const getMovieGeneralInfos = axios.get(
+    `${apiUrl}/movie/${tmdbId}?${apiKey}&language=en-US`
+  );
+  const getMovieCrewInfos = axios.get(
+    `${apiUrl}/movie/${tmdbId}/credits?${apiKey}&language=en-US`
+  );
 
   useEffect(() => {
-    const getMovieGeneralInfos = axios.get(
-      `${apiUrl}/movie/${tmdbId}?${apiKey}&language=en-US`
-    );
-    const getMovieCrewInfos = axios.get(
-      `${apiUrl}/movie/${tmdbId}/credits?${apiKey}&language=en-US`
-    );
 
-    return axios
+    axios
       .all([getMovieGeneralInfos, getMovieCrewInfos])
       .then(
         axios.spread((generalInfo, crewInfos) => {
@@ -53,11 +58,8 @@ export default function DisplayPage({ tmdbId }) {
       .catch((error) => {
         console.log('Error :', error);
       });
-  }, [tmdbId]);
+  }, [getMovieGeneralInfos, getMovieCrewInfos]);
 
-  {
-    /*What will be shown */
-  }
   return (
     <div>
       <Card className={clsx(styles.card)}>
@@ -69,6 +71,7 @@ export default function DisplayPage({ tmdbId }) {
           prodCrew={movieProductionCrew}
         />
         <UserCommentsSection title={movieInfos.title} id={tmdbId} />
+        <ReviewList movie_id={tmdbId} />
       </Card>
     </div>
   );
