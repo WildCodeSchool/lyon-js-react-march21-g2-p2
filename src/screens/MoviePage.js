@@ -18,7 +18,7 @@ export default function MoviePage() {
   const location = useLocation();
 
   //-----Use states we need to store the APIs call-----//
-  const [movieId, setMovieId] = useState('');
+  // const [movieId, setMovieId] = useState(false);
   const [movieInfos, setMovieInfos] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
@@ -38,11 +38,11 @@ export default function MoviePage() {
   //------to get the id of the movie card----//
   const handleClick = (e) => {
     e.preventDefault();
-    return setMovieId(e.currentTarget.id);
+    return PopUp(e.target.id);
   };
 
   const PopUp = (movieId) => {
-    if (movieId.length != 0) {
+
       const getMovieGeneralInfos = axios.get(
         `${apiUrl}/movie/${movieId}?${apiKey}&language=en-US`
       );
@@ -62,8 +62,7 @@ export default function MoviePage() {
         .catch((error) => {
           console.log('Error :', error);
         });
-    }
-  };
+    };
 
   const [searchValue, setSearchValue] = useState('');
 
@@ -80,7 +79,7 @@ export default function MoviePage() {
         apiPopularRoute={apiPopularRoute}
       />
       <MovieList
-        getIdOnClick={handleClick}
+        popUpHandler={handleClick}
         movieInfos={movieInfos}
         movieActorsInfos={movieActors}
         movieProdCrew={movieProductionCrew}

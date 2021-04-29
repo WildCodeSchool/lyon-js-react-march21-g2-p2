@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MovieList = ({
-  getIdOnClick,
+  popUpHandler,
   movieInfos,
   movieActorsInfos,
   movieProdCrew,
@@ -64,7 +64,7 @@ const MovieList = ({
                 genre={genre_ids}
                 average={vote_average}
                 poster={imgUrl + poster_path}
-                getIdOnClick={getIdOnClick}
+                popUpHandler={popUpHandler}
               />
               <Popover
                 id={style}
