@@ -1,7 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
 import './MovieCard.css';
-import useLocalStorage from '../hooks/useLocalStorage'
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Grid from '@material-ui/core/Grid';
@@ -18,7 +16,7 @@ import {
 import { useGalaxyInfoStyles } from '@mui-treasury/styles/info/galaxy';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import clsx from 'clsx';
-import { set } from 'react-hook-form';
+import createPersistedState from 'use-persisted-state';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -80,31 +78,38 @@ const useStyles = makeStyles(() => ({
 }));
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
-const MovieCard = (props) => {
+const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
   const { card, content, movieInfo, favorite, isFav, notFav } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
+  //--------------------- fonction add to favorites using localStorage ----------------//
 
-//--------------------- fonction add to favorite for localstorage ----------------//
+  const useFavoriteMoviesState = createPersistedState('favoriteMovies');
+  const [favoriteMovies, setFavoriteMovies] = useFavoriteMoviesState({});
 
-  const [favoriteMovieById, setFavoriteMovieById] = useLocalStorage("isFavoriteMovie",
-  {});
-  const isFavorite = !!favoriteMovieById[props.id];
+  const isFavorite = !!favoriteMovies[movieId];
+
   const handleToggleFavorite = () => {
-    setFavoriteMovieById((isFavoriteMovie) =>{
-      return{
-        ...isFavoriteMovie,
-        [props.id]: isFavorite
-         ? false 
-         : {id:props.id, title:props.title, genre:props.genre, poster_path:props.poster}
+    setFavoriteMovies((favoriteMovies) => {
+      console.log(favoriteMovies);
+      return {
+        ...favoriteMovies,
+        [movieId]: isFavorite
+          ? false
+          : {
+              id: movieId,
+              title: title,
+              genre: genre,
+              poster_path: poster,
+            },
       };
     });
   };
 
   return (
-    <Grid item key={props.id} xs={10} sm={6} md={4} lg={3} xl={2}>
+    <Grid item key={movieId} xs={10} sm={6} md={4} lg={3} xl={2}>
       <Card className={clsx(card)}>
-        <CardMedia classes={mediaStyles} image={props.poster} />
+        <CardMedia classes={mediaStyles} image={poster} />
         <Box py={3} className={clsx(content)}>
           <Box py={40} className={clsx(favorite)}>
             <IconButton onClick={handleToggleFavorite}>
@@ -116,17 +121,13 @@ const MovieCard = (props) => {
           </Box>
           <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
             <InfoSubtitle>Movie</InfoSubtitle>
-            <InfoTitle>{props.title}</InfoTitle>
-            <InfoCaption>Note : {props.average}/10</InfoCaption>
+            <InfoTitle>{title}</InfoTitle>
+            <InfoCaption>Note : {average}/10</InfoCaption>
           </Info>
         </Box>
       </Card>
     </Grid>
   );
-
-
-
-  
 };
 
 export default MovieCard;
