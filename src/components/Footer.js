@@ -8,12 +8,15 @@ import PaymentIcon from '@material-ui/icons/Payment';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
 
+
 const useStyles = makeStyles((theme) => ({
   Footer: {
     width: '100%',
     margin: 0,
     textAlign: 'center',
     background: '#2b2b2b',
+    padding: "1em"
+
   },
   Typography: {
     textAlign: 'center',
@@ -36,7 +39,7 @@ function Footer() {
         Copyrigth 2021
       </Typography>
       <Divider className={clsx(classes.Divider)} />
-      <Grid container justify={'center'} spacing={2}>
+      <Grid container justify={'center'} >
         <Grid item xs={12} sm={6} md={3}>
           <a
             href={

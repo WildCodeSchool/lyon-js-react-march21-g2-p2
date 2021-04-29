@@ -17,6 +17,7 @@ import {
 import { useGalaxyInfoStyles } from '@mui-treasury/styles/info/galaxy';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -84,31 +85,35 @@ const MovieCard = (props) => {
 
   const [isFavoriteMovie, setIsFavoriteMovie] = useState(false);
 
-  const handleToggleFavorite = () => {
+  const handleToggleFavorite = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     setIsFavoriteMovie(!isFavoriteMovie);
   };
 
   return (
-    <Grid item key={props.id} xs={10} sm={6} md={4} lg={3} xl={2}>
-      <Card className={clsx(card)}>
-        <CardMedia classes={mediaStyles} image={props.poster} />
-        <Box py={3} className={clsx(content)}>
-          <Box py={40} className={clsx(favorite)}>
-            <IconButton onClick={handleToggleFavorite}>
-              <FavoriteIcon
-                variant="contained"
-                className={clsx(isFavoriteMovie ? isFav : notFav)}
-              />
-            </IconButton>
+    <Link key={props.id} to={`/movies/${props.id}`}>
+      <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
+        <Card className={clsx(card)}>
+          <CardMedia classes={mediaStyles} image={props.poster} />
+          <Box py={3} className={clsx(content)}>
+            <Box py={40} className={clsx(favorite)}>
+              <IconButton onClick={handleToggleFavorite}>
+                <FavoriteIcon
+                  variant="contained"
+                  className={clsx(isFavoriteMovie ? isFav : notFav)}
+                />
+              </IconButton>
+            </Box>
+            <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
+              <InfoSubtitle>Movie</InfoSubtitle>
+              <InfoTitle>{props.title}</InfoTitle>
+              <InfoCaption>Note : {props.average}/10</InfoCaption>
+            </Info>
           </Box>
-          <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
-            <InfoSubtitle>Movie</InfoSubtitle>
-            <InfoTitle>{props.title}</InfoTitle>
-            <InfoCaption>Note : {props.average}/10</InfoCaption>
-          </Info>
-        </Box>
-      </Card>
-    </Grid>
+        </Card>
+      </Grid>
+    </Link>
   );
 };
 
