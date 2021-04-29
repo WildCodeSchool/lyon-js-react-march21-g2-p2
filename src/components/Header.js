@@ -25,7 +25,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import MovieIcon from '@material-ui/icons/Movie';
 import MailIcon from '@material-ui/icons/Mail';
 import StarsIcon from '@material-ui/icons/Stars';
-import StyleIcon from '@material-ui/icons/Style';
 import logo from '../assets/logo.png';
 const drawerWidth = 200;
 
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(to right bottom, #d84315, #ffeb3b)',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
+      easing: theme.transitions.easing.easeInOut,
       duration: theme.transitions.duration.leavingScreen,
     }),
   },
@@ -45,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
+      easing: theme.transitions.easing.easeInOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
@@ -56,8 +55,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
   },
   logo: {
-    maxWidth: 70,
-    marginRight: '10px',
+    maxWidth: 60,
+    marginRight: '1em',
   },
   drawer: {
     width: drawerWidth,
@@ -67,13 +66,13 @@ const useStyles = makeStyles((theme) => ({
   drawerOpen: {
     width: drawerWidth,
     transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
+      easing: theme.transitions.easing.easeInOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
+      easing: theme.transitions.easing.easeInOut,
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
@@ -85,7 +84,6 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
@@ -193,17 +191,7 @@ export default function Header() {
             </ListItem>
           </NavLink>
         </List>
-
-        <Divider />
-        <List>
-          <ListItem button>
-            <ListItemIcon>
-              <StyleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Categories" />
-          </ListItem>
-        </List>
-        <List>
+        <List style={{ position: 'absolute', bottom: '0' }}>
           <NavLink exact activeClassName="active" to="/contact">
             <ListItem button>
               <ListItemIcon>

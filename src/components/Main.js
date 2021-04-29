@@ -1,4 +1,3 @@
-import './Main.css';
 import { Switch, Route } from 'react-router';
 import HomePage from '../screens/HomePage';
 import MoviePage from '../screens/MoviePage';

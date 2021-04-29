@@ -48,7 +48,7 @@ export default function DetailsPage() {
   return (
     <>
       <MovieInfos
-        poster={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+        poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         title={movie.title}
         date={movie.release_date}
         synopsis={movie.overview}
