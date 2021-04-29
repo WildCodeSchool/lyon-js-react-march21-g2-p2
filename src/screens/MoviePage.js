@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './MoviePage.css';
 import MovieList from '../components/MovieList';
+import { useForm } from 'react-hook-form';
+import qs from 'query-string';
 import FilteringBar from '../components/FilteringBar';
 import { useLocation, useHistory } from 'react-router';
 
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 const apiUrl = 'https://api.themoviedb.org/3';
 const apiPopularRoute = '/movie/popular?';
+const apiSearchRoute = '/search/movie?query=';
 const apiGenreListRoute = '/genre/movie/list?';
-const apiKey = 'api_key=f22eb05a70b166bd4e2c1312e15d8e8b';
+const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 
 export default function MoviePage() {
   const [availableGenres, setAvailableGenres] = useState([]);
@@ -17,18 +20,62 @@ export default function MoviePage() {
   const history = useHistory();
   const location = useLocation();
 
-  // Get the movies & all the genres available in TMDB
+  // the default values of the filters come from the querystring in the URL
+  const { register, watch, control } = useForm({
+    defaultValues: {
+      ...qs.parse(location.search),
+    },
+  });
+
+  // watch for input changes
+  const year = watch('year');
+  const with_genres = watch('with_genres');
+  const query = watch('query');
+
+  useEffect(() => {
+    if (!query) {
+      axios
+        .get(apiUrl + apiPopularRoute + 'api_key=' + apiKey)
+        .then(({ data }) => setMovieList(data.results));
+    }
+  }, [query]);
+
   useEffect(() => {
     axios
-      .get(apiUrl + apiPopularRoute + apiKey)
-      .then(({ data }) => setMovieList(data.results));
-
-    axios
-      .get(apiUrl + apiGenreListRoute + apiKey)
+      .get(apiUrl + apiGenreListRoute + 'api_key=' + apiKey)
       .then((res) => setAvailableGenres(res.data.genres));
   }, []);
 
-  const [searchValue, setSearchValue] = useState('');
+  useEffect(() => {
+    const queryString = qs.stringify(
+      { year, with_genres, query },
+      { skipEmptyString: true }
+    );
+    history.push('/' + queryString ? `?${queryString}` : '');
+
+    if (query) {
+      axios
+        .get(apiUrl + apiSearchRoute + query + '&api_key=' + apiKey)
+        .then(({ data }) => setMovieList(data.results));
+    } else if (year || with_genres) {
+      const queryString = location.search;
+      axios
+        .get(
+          apiUrl +
+            apiPopularRoute +
+            queryString.substring(1) +
+            '&api_key=' +
+            apiKey
+        )
+        .then((res) => {
+          setMovieList(res.data.results);
+        });
+    } else {
+      axios
+        .get(apiUrl + apiPopularRoute + 'api_key=' + apiKey)
+        .then(({ data }) => setMovieList(data.results));
+    }
+  }, [query, year, with_genres, history, location.search]);
 
   return (
     <>
@@ -41,7 +88,14 @@ export default function MoviePage() {
         apiUrl={apiUrl}
         apiKey={apiKey}
         apiPopularRoute={apiPopularRoute}
+        register={register}
+        watch={watch}
+        year={year}
+        with_genres={with_genres}
+        query={query}
+        control={control}
       />
+
       <MovieList movieList={movieList} imgUrl={imgUrl} />
     </>
   );

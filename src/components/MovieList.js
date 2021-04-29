@@ -2,6 +2,7 @@ import React from 'react';
 import MovieCard from './MovieCard';
 import Grid from '@material-ui/core/Grid';
 
+
 const MovieList = ({ movieList, imgUrl }) => {
   return (
     <>
@@ -28,7 +29,7 @@ const MovieList = ({ movieList, imgUrl }) => {
               title={title}
               genre={genre_ids}
               average={vote_average}
-              poster={imgUrl + poster_path}
+              poster={poster_path ? imgUrl + poster_path : null}
             />
           )
         )}

@@ -5,4 +5,5 @@ footer {
   justify-content: center;
   background-color: var(--bg-secondary);
   color: var(--text-primary);
+  padding: 10px;
 }
