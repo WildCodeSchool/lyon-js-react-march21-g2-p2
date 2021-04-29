@@ -91,7 +91,7 @@ export default function ContactPage() {
           id="filled"
           label="firstName"
           variant="filled"
-          required="required"
+          required={true}
           {...register('firstName')}
         />
 
@@ -103,7 +103,7 @@ export default function ContactPage() {
           label="Lastname"
           variant="filled"
 
-          required="required"
+          required={true}
           {...register('lastName')}
         />
         <TextField
@@ -112,7 +112,7 @@ export default function ContactPage() {
           label="Email"
           variant="filled"
           type="email"
-          required="required"
+          required={true}
           {...register('email')}
         />
         <TextField
@@ -123,7 +123,7 @@ export default function ContactPage() {
           rows={6}
           defaultValue=""
           variant="filled"
-          required="required"
+          required={true}
           {...register('text')}
         />
         <div>
