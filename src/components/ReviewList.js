@@ -12,11 +12,12 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
   card: {
     '& > *': {
-      margin: theme.spacing(1),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
       justifyContent: 'center',
+      marginTop: 20,
+      width: '85ch',
     },
   },
 
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 //---------------------- GET THE REVIEWS FROM OUR API AND DISPLAY -------------------------//
 export default function ReviewList({ movie_id }) {
   const { card, name } = useStyles();
-  const [reviewList, setReviewList] = useState([]);
+  const [reviewList, setReviewList] = useState(null);
 
   useEffect(() => {
     axios
@@ -36,13 +37,13 @@ export default function ReviewList({ movie_id }) {
       .catch((err) => console.log(err));
   }, []);
 
-  //To avoid error on map method "reviewList &&"" otherwise our list is undefinde
+  //si le film n'a pas de review alors rien sinon API
+  //To avoid error on map method "reviewList &&"" otherwise our list is undefined
   return (
-    <div>
-      <h2>User Reviews</h2>
-
-      {reviewList &&
-        reviewList.map((review) => (
+    reviewList && (
+      <div className={card}>
+        <h2>User Reviews</h2>
+        {reviewList.map((review) => (
           <Card className={card} key={review.id} variant="outlined">
             <CardContent>
               <Typography className={name} color="textSecondary" gutterBottom>
@@ -54,6 +55,7 @@ export default function ReviewList({ movie_id }) {
             </CardContent>
           </Card>
         ))}
-    </div>
+      </div>
+    )
   );
 }
