@@ -82,16 +82,13 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
   const { card, content, movieInfo, favorite, isFav, notFav } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
-  //--------------------- fonction add to favorites using localStorage ----------------//
-
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
   const [favoriteMovies, setFavoriteMovies] = useFavoriteMoviesState({});
 
   const isFavorite = !!favoriteMovies[movieId];
-
+  // function to handle the toggling of a movie's favorite state and adding it using localStorage
   const handleToggleFavorite = () => {
     setFavoriteMovies((favoriteMovies) => {
-      console.log(favoriteMovies);
       return {
         ...favoriteMovies,
         [movieId]: isFavorite

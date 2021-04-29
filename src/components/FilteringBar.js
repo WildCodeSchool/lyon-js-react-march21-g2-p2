@@ -62,7 +62,6 @@ export default function FilteringBar({
     axios
       .get(apiUrl + apiPopularRoute + apiKey + '&' + queryString.substring(1))
       .then((res) => {
-        //console.log(res.data.results);
         setMovieList(res.data.results);
       });
   }, [location]);
