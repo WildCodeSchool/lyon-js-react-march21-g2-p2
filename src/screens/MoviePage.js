@@ -42,27 +42,26 @@ export default function MoviePage() {
   };
 
   const PopUp = (movieId) => {
+    const getMovieGeneralInfos = axios.get(
+      `${apiUrl}/movie/${movieId}?${apiKey}&language=en-US`
+    );
+    const getMovieCrewInfos = axios.get(
+      `${apiUrl}/movie/${movieId}/credits?${apiKey}&language=en-US`
+    );
 
-      const getMovieGeneralInfos = axios.get(
-        `${apiUrl}/movie/${movieId}?${apiKey}&language=en-US`
-      );
-      const getMovieCrewInfos = axios.get(
-        `${apiUrl}/movie/${movieId}/credits?${apiKey}&language=en-US`
-      );
-
-      return axios
-        .all([getMovieGeneralInfos, getMovieCrewInfos])
-        .then(
-          axios.spread((generalInfo, crewInfos) => {
-            setMovieInfos(generalInfo.data);
-            setMovieActors(crewInfos.data.cast);
-            setMovieProductionCrew(crewInfos.data.crew);
-          })
-        )
-        .catch((error) => {
-          console.log('Error :', error);
-        });
-    };
+    return axios
+      .all([getMovieGeneralInfos, getMovieCrewInfos])
+      .then(
+        axios.spread((generalInfo, crewInfos) => {
+          setMovieInfos(generalInfo.data);
+          setMovieActors(crewInfos.data.cast);
+          setMovieProductionCrew(crewInfos.data.crew);
+        })
+      )
+      .catch((error) => {
+        console.log('Error :', error);
+      });
+  };
 
   const [searchValue, setSearchValue] = useState('');
 
