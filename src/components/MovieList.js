@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MovieList = ({
-  // getCardId,
   movieList,
   imgUrl,
 }) => {
@@ -61,7 +60,6 @@ const MovieList = ({
                 genre={genre_ids}
                 average={vote_average}
                 poster={imgUrl + poster_path}
-                // popUpHandler={popUpHandler}
               />
               <Popover
                 id={style}

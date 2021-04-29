@@ -17,8 +17,6 @@ export default function MoviePage() {
   const history = useHistory();
   const location = useLocation();
 
-  //-----Use states we need to store the APIs call-----//
-  // const [movieId, setMovieId] = useState(false);
 
   // Get the movies & all the genres available in TMDB
 
@@ -31,12 +29,6 @@ export default function MoviePage() {
       .get(apiUrl + apiGenreListRoute + apiKey)
       .then((res) => setAvailableGenres(res.data.genres));
   }, []);
-
-  //------to get the id of the movie card----//
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   return setMovieId(e.target.id)
-  // };
 
   const [searchValue, setSearchValue] = useState('');
 
@@ -53,7 +45,6 @@ export default function MoviePage() {
         apiPopularRoute={apiPopularRoute}
       />
       <MovieList
-        // getCardId={handleClick}
         movieList={movieList}
         imgUrl={imgUrl}
       />
