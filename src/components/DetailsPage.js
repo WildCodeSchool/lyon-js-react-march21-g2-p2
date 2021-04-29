@@ -25,9 +25,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function DisplayPage({ movieInfos, movieActors, movieProductionCrew, tmdbId }) {
+export default function DisplayPage({
+  movieInfos,
+  movieActors,
+  movieProductionCrew,
+  tmdbId,
+}) {
   const styles = useStyles();
-
 
   return (
     <div>

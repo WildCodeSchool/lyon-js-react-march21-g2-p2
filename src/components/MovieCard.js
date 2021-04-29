@@ -83,8 +83,7 @@ const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
 const MovieCard = ({ id, poster, title, average, date, synopsis, genre }) => {
-
-  const movieInfos = {id, title, average, date, synopsis, genre };
+  const movieInfos = { id, title, average, date, synopsis, genre };
 
   const { card, content, movieInfo, favorite, isFav, notFav } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
@@ -98,7 +97,6 @@ const MovieCard = ({ id, poster, title, average, date, synopsis, genre }) => {
   };
 
   //----------GET DETAILED INFOS------//
-
 
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
@@ -118,26 +116,34 @@ const MovieCard = ({ id, poster, title, average, date, synopsis, genre }) => {
   const open = Boolean(anchorEl);
   const style = open ? 'simple-popover' : undefined;
 
-  
   useEffect(() => {
-    if(anchorEl){
+    if (anchorEl) {
       axios
-      .get(apiUrl + '/movie/' + id + '/credits?api_key=' + apiKey + '&language=en-US')
-      .then((crewInfos) => {
-            setMovieActors(crewInfos.data.cast);
-            setMovieProductionCrew(crewInfos.data.crew);
-          })
-      .catch((error) => {
+        .get(
+          apiUrl +
+            '/movie/' +
+            id +
+            '/credits?api_key=' +
+            apiKey +
+            '&language=en-US'
+        )
+        .then((crewInfos) => {
+          setMovieActors(crewInfos.data.cast);
+          setMovieProductionCrew(crewInfos.data.crew);
+        })
+        .catch((error) => {
           console.log('Error :', error);
         });
-      }
-    },[anchorEl]);
-    
-
+    }
+  }, [anchorEl]);
 
   return (
     <Grid item key={id} xs={10} sm={6} md={4} lg={3} xl={2}>
-      <Card className={clsx(card)} aria-describedby={style} onClick={handleClick}>
+      <Card
+        className={clsx(card)}
+        aria-describedby={style}
+        onClick={handleClick}
+      >
         <CardMedia
           classes={mediaStyles}
           image={
@@ -162,23 +168,28 @@ const MovieCard = ({ id, poster, title, average, date, synopsis, genre }) => {
         </Box>
       </Card>
       <Popover
-                id={style}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                  vertical: 'center',
-                  horizontal: 'right',
-                }}
-                transformOrigin={{
-                  vertical: 'center',
-                  horizontal: 'left',
-                }}
-              >
-                <Typography className={classes.typography}>
-                  <DetailsPage movieInfos={movieInfos} movieActors={movieActors} movieProductionCrew={movieProductionCrew} tmdbId={id} />
-                </Typography>
-            </Popover>
+        id={style}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'center',
+          horizontal: 'left',
+        }}
+      >
+        <Typography className={classes.typography}>
+          <DetailsPage
+            movieInfos={movieInfos}
+            movieActors={movieActors}
+            movieProductionCrew={movieProductionCrew}
+            tmdbId={id}
+          />
+        </Typography>
+      </Popover>
     </Grid>
   );
 };

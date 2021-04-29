@@ -4,7 +4,6 @@ import MovieCard from './MovieCard';
 import Grid from '@material-ui/core/Grid';
 
 const MovieList = ({ movieList, imgUrl }) => {
- 
   return (
     <>
       <Grid
@@ -22,7 +21,7 @@ const MovieList = ({ movieList, imgUrl }) => {
             genre_ids,
             title,
             poster_path,
-            overview
+            overview,
           }) => (
             <>
               <MovieCard
@@ -36,7 +35,6 @@ const MovieList = ({ movieList, imgUrl }) => {
                 synopsis={overview}
               />
             </>
-
           )
         )}
       </Grid>

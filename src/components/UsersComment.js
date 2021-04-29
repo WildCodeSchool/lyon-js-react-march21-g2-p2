@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 //--------------------------- COMMENTS FUNCTION --------------------------//
 
-export default function UserCommentsSection({title, id}) {
+export default function UserCommentsSection({ title, id }) {
   const { register, handleSubmit } = useForm();
   const classes = useStyles();
 
