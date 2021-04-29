@@ -2,6 +2,7 @@
 
 /*component import*/
 import MovieInfos from '../components/MovieInfos';
+import ReviewList from '../components/ReviewList';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -56,6 +57,7 @@ export default function DetailsPage() {
         movieGenreList={movieGenreList}
       />
       <UserCommentsSection title={movie.title} id={tmdb_id} />
+      <ReviewList movie_id={tmdb_id} />
     </>
   );
 }
