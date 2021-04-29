@@ -26,7 +26,6 @@ import MovieIcon from '@material-ui/icons/Movie';
 import MailIcon from '@material-ui/icons/Mail';
 import StarsIcon from '@material-ui/icons/Stars';
 import StyleIcon from '@material-ui/icons/Style';
-import MovieFilterIcon from '@material-ui/icons/MovieFilter';
 import logo from '../assets/logo.png';
 const drawerWidth = 200;
 
@@ -135,7 +134,7 @@ export default function Header() {
           </IconButton>
           <img src={logo} alt="Logo" className={classes.logo} />
           <Typography variant="h6" noWrap>
-            Dollix
+            Dolly
           </Typography>
         </Toolbar>
       </AppBar>

@@ -2,7 +2,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import React from 'react';
 import axios from 'axios';
 import Modal from '@material-ui/core/Modal';
@@ -18,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   message: {
-    textAlign: "center",
-    paddingBottom: "50px"
+    textAlign: 'center',
+    paddingBottom: '50px',
   },
   form: {
     padding: 18,
@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-
   },
 }));
 //--------------------------- FONCTION CONTACT --------------------------//
@@ -95,14 +94,11 @@ export default function ContactPage() {
           {...register('firstName')}
         />
 
-
-
         <TextField
           className={textField}
           id="filled"
           label="Lastname"
           variant="filled"
-
           required={true}
           {...register('lastName')}
         />
@@ -127,9 +123,14 @@ export default function ContactPage() {
           {...register('text')}
         />
         <div>
-          <Button className={button} variant="outlined" type="submit" onClick={handleOpen} >
+          <Button
+            className={button}
+            variant="outlined"
+            type="submit"
+            onClick={handleOpen}
+          >
             Send
-      </Button>
+          </Button>
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"

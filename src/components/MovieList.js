@@ -29,7 +29,7 @@ const MovieList = ({ movieList, imgUrl }) => {
               title={title}
               genre={genre_ids}
               average={vote_average}
-              poster={imgUrl + poster_path}
+              poster={poster_path ? imgUrl + poster_path : null}
             />
           )
         )}
