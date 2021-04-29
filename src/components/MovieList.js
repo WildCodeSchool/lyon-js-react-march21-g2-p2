@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MovieList = ({
-  Click,
+  getIdOnClick,
   movieInfos,
   movieActorsInfos,
   movieProdCrew,
@@ -56,7 +56,7 @@ const MovieList = ({
             title,
             poster_path,
           }) => (
-            <div aria-describedby={style} onClick={Click}>
+            <div aria-describedby={style} onClick={handleClick}>
               <MovieCard
                 id={id}
                 date={release_date}
@@ -64,6 +64,7 @@ const MovieList = ({
                 genre={genre_ids}
                 average={vote_average}
                 poster={imgUrl + poster_path}
+                getIdOnClick={getIdOnClick}
               />
               <Popover
                 id={style}
@@ -80,7 +81,12 @@ const MovieList = ({
                 }}
               >
                 <Typography className={classes.typography}>
-                  <DisplayPage tmdbId={id} />
+                  <DisplayPage
+                    tmdbId={id}
+                    movieGeneralsInfos={movieInfos}
+                    movieActors={movieActorsInfos}
+                    movieProductionCrew={movieProdCrew}
+                  />
                 </Typography>
               </Popover>
             </div>

@@ -90,7 +90,7 @@ const MovieCard = (props) => {
 
   return (
     <Grid item key={props.id} xs={10} sm={6} md={4} lg={3} xl={2}>
-      <Card className={clsx(card)}>
+      <Card onClick={props.getIdOnClick} id={props.id} className={clsx(card)}>
         <CardMedia classes={mediaStyles} image={props.poster} />
         <Box py={3} className={clsx(content)}>
           <Box py={40} className={clsx(favorite)}>

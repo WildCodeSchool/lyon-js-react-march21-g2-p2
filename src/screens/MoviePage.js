@@ -18,7 +18,7 @@ export default function MoviePage() {
   const location = useLocation();
 
   //-----Use states we need to store the APIs call-----//
-
+  const [movieId, setMovieId] = useState('');
   const [movieInfos, setMovieInfos] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
@@ -35,26 +35,34 @@ export default function MoviePage() {
       .then((res) => setAvailableGenres(res.data.genres));
   }, []);
 
+  //------to get the id of the movie card----//
   const handleClick = (e) => {
-    const getMovieGeneralInfos = axios.get(
-      `${apiUrl}/movie/${e.target.id}/?${apiKey}`
-    );
-    const getMovieCrewInfos = axios.get(
-      `${apiUrl}/movie/${e.target.id}/credits?${apiKey}`
-    );
+    e.preventDefault();
+    return setMovieId(e.currentTarget.id);
+  };
 
-    axios
-      .all([getMovieGeneralInfos, getMovieCrewInfos])
-      .then(
-        axios.spread((generalInfo, crewInfos) => {
-          setMovieInfos(generalInfo.data);
-          setMovieActors(crewInfos.data.cast);
-          setMovieProductionCrew(crewInfos.data.crew);
-        })
-      )
-      .catch((error) => {
-        console.log('Error :', error);
-      });
+  const PopUp = (movieId) => {
+    if (movieId.length != 0) {
+      const getMovieGeneralInfos = axios.get(
+        `${apiUrl}/movie/${movieId}?${apiKey}&language=en-US`
+      );
+      const getMovieCrewInfos = axios.get(
+        `${apiUrl}/movie/${movieId}/credits?${apiKey}&language=en-US`
+      );
+
+      return axios
+        .all([getMovieGeneralInfos, getMovieCrewInfos])
+        .then(
+          axios.spread((generalInfo, crewInfos) => {
+            setMovieInfos(generalInfo.data);
+            setMovieActors(crewInfos.data.cast);
+            setMovieProductionCrew(crewInfos.data.crew);
+          })
+        )
+        .catch((error) => {
+          console.log('Error :', error);
+        });
+    }
   };
 
   const [searchValue, setSearchValue] = useState('');
@@ -72,7 +80,7 @@ export default function MoviePage() {
         apiPopularRoute={apiPopularRoute}
       />
       <MovieList
-        Click={handleClick}
+        getIdOnClick={handleClick}
         movieInfos={movieInfos}
         movieActorsInfos={movieActors}
         movieProdCrew={movieProductionCrew}

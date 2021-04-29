@@ -30,12 +30,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function MovieInfos(props) {
+export default function MovieInfos(title, date, synopsis, actors, prodCrew) {
   const styles = useStyles();
 
-  const director = props.prodCrew.filter((crew) => crew.job === 'Director');
+  const director = prodCrew.filter((crew) => crew.job === 'Director');
 
-  const mainActors = props.actors.slice(0, 5);
+  const mainActors = actors.slice(0, 5);
 
   return (
     <>
@@ -49,9 +49,9 @@ export default function MovieInfos(props) {
         <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
           <div className={styles.content}>
             <h2>Title :</h2>
-            <p>{props.title}</p>
+            <p>{title}</p>
             <h2>Date :</h2>
-            <p>{props.date}</p>
+            <p>{date}</p>
             <h2>Director :</h2>
             <div>
               {director.map((director) => (
@@ -69,7 +69,7 @@ export default function MovieInfos(props) {
             <h2>Genres :</h2>
 
             <h2>Synopsis :</h2>
-            <p>{props.synopsis}</p>
+            <p>{synopsis}</p>
           </div>
         </Grid>
       </Grid>
