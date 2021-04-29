@@ -19,9 +19,7 @@ export default function MoviePage() {
 
   //-----Use states we need to store the APIs call-----//
   // const [movieId, setMovieId] = useState(false);
-  const [movieInfos, setMovieInfos] = useState('');
-  const [movieActors, setMovieActors] = useState([]);
-  const [movieProductionCrew, setMovieProductionCrew] = useState([]);
+
 
   // Get the movies & all the genres available in TMDB
 
@@ -36,33 +34,12 @@ export default function MoviePage() {
   }, []);
 
   //------to get the id of the movie card----//
-  const handleClick = (e) => {
-    e.preventDefault();
-    return PopUp(e.target.id);
-  };
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   return setMovieId(e.target.id)
+  // };
 
-  const PopUp = (movieId) => {
-    const getMovieGeneralInfos = axios.get(
-      `${apiUrl}/movie/${movieId}?${apiKey}&language=en-US`
-    );
-    const getMovieCrewInfos = axios.get(
-      `${apiUrl}/movie/${movieId}/credits?${apiKey}&language=en-US`
-    );
-
-    return axios
-      .all([getMovieGeneralInfos, getMovieCrewInfos])
-      .then(
-        axios.spread((generalInfo, crewInfos) => {
-          setMovieInfos(generalInfo.data);
-          setMovieActors(crewInfos.data.cast);
-          setMovieProductionCrew(crewInfos.data.crew);
-        })
-      )
-      .catch((error) => {
-        console.log('Error :', error);
-      });
-  };
-
+  
   const [searchValue, setSearchValue] = useState('');
 
   return (
@@ -78,10 +55,7 @@ export default function MoviePage() {
         apiPopularRoute={apiPopularRoute}
       />
       <MovieList
-        popUpHandler={handleClick}
-        movieInfos={movieInfos}
-        movieActorsInfos={movieActors}
-        movieProdCrew={movieProductionCrew}
+        // getCardId={handleClick}
         movieList={movieList}
         imgUrl={imgUrl}
       />

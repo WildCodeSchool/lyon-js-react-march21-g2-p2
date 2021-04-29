@@ -6,31 +6,18 @@ import { makeStyles } from '@material-ui/core/styles';
 //----------------CSS w/ Material UI-----//
 
 const useStyles = makeStyles(() => ({
-  card: {
-    borderRadius: '1rem',
-    boxShadow: 'none',
-    position: 'relative',
-    margin: 0,
-    width: 300,
-    height: 500,
-  },
   content: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     zIndex: 2,
     bottom: 0,
-    width: '100%',
-    margin: 0,
-  },
-  media: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    width: 'auto',
+    margin: 15,
   },
 }));
 
-export default function MovieInfos(title, date, synopsis, actors, prodCrew) {
+export default function MovieInfos({title, date, synopsis, actors, prodCrew}) {
   const styles = useStyles();
 
   const director = prodCrew.filter((crew) => crew.job === 'Director');
@@ -39,14 +26,6 @@ export default function MovieInfos(title, date, synopsis, actors, prodCrew) {
 
   return (
     <>
-      <Grid
-        container
-        spacing={8}
-        direction="row"
-        justify="flex-start"
-        alignItems="center"
-      >
-        <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
           <div className={styles.content}>
             <h2>Title :</h2>
             <p>{title}</p>
@@ -71,8 +50,6 @@ export default function MovieInfos(title, date, synopsis, actors, prodCrew) {
             <h2>Synopsis :</h2>
             <p>{synopsis}</p>
           </div>
-        </Grid>
-      </Grid>
     </>
   );
 }

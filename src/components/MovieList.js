@@ -16,10 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MovieList = ({
-  popUpHandler,
-  movieInfos,
-  movieActorsInfos,
-  movieProdCrew,
+  // getCardId,
   movieList,
   imgUrl,
 }) => {
@@ -29,6 +26,7 @@ const MovieList = ({
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+
   };
 
   const handleClose = () => {
@@ -64,7 +62,7 @@ const MovieList = ({
                 genre={genre_ids}
                 average={vote_average}
                 poster={imgUrl + poster_path}
-                popUpHandler={popUpHandler}
+                // popUpHandler={popUpHandler}
               />
               <Popover
                 id={style}
@@ -83,9 +81,6 @@ const MovieList = ({
                 <Typography className={classes.typography}>
                   <DisplayPage
                     tmdbId={id}
-                    movieGeneralsInfos={movieInfos}
-                    movieActors={movieActorsInfos}
-                    movieProductionCrew={movieProdCrew}
                   />
                 </Typography>
               </Popover>
