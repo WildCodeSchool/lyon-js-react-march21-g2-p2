@@ -1,22 +1,18 @@
-import { useEffect } from 'react';
-// import './styles.css';
-import axios from 'axios';
-import dayjs from 'dayjs';
-import { useForm } from 'react-hook-form';
-import qs from 'query-string';
-import './FilteringBar.css';
-import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { makeStyles } from '@material-ui/core/styles';
+import dayjs from 'dayjs';
+import './FilteringBar.css';
+import SearchBox from './SearchBox';
 
 const localizedFormat = require('dayjs/plugin/localizedFormat');
 dayjs.extend(localizedFormat);
 
 const yearsOfCinema = new Array(dayjs().year() - 1893)
   .fill()
-  .map((el, i) => i + 1894)
+  .map((_, i) => i + 1894)
   .sort((a, b) => b - a);
 
 // Defines the styles in use for this component (MUI)
@@ -42,60 +38,19 @@ const useStyles = makeStyles((theme) => ({
  *  apiUrl,
  *  apiPopularRoute,
  *  apiKey,
- *  searchValue,
- *  setSearchValue,
  * }
  * @return {*} a bar composed of an input to chose the criteria, one to choose its value, one to search...
  */
 export default function FilteringBar({
-  setMovieList,
-  location,
-  history,
   availableGenres,
-  apiUrl,
-  apiPopularRoute,
-  apiKey,
+  query,
+  with_genres,
+  register,
+  year,
+  control,
 }) {
-  // the default values of the filters come from the querystring in the URL
-  const { register, watch } = useForm({
-    defaultValues: {
-      ...qs.parse(location.search),
-    },
-  });
-
   // Here we grab the styles needed
   const { formControl, selectEmpty } = useStyles();
-
-  // watch for input changes
-  const year = watch('year');
-  const with_genres = watch('with_genres');
-
-  // everytime the filter inputs change, update the URL
-  useEffect(() => {
-    const queryString = qs.stringify(
-      { year, with_genres },
-      { skipEmptyString: true }
-    );
-    history.push('/' + queryString ? `?${queryString}` : '');
-  }, [history, year, with_genres]);
-
-  // everytime the search params change in the URL, make a new TMDB API request in order to update search results
-  useEffect(() => {
-    const queryString = location.search;
-    axios
-      .get(
-        apiUrl +
-          apiPopularRoute +
-          'api_key=' +
-          apiKey +
-          '&' +
-          queryString.substring(1)
-      )
-      .then((res) => {
-        setMovieList(res.data.results);
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
 
   return (
     <div className="filtering-bar">
@@ -108,6 +63,8 @@ export default function FilteringBar({
           labelId="year"
           id="year"
           displayEmpty
+          disabled={!!query}
+          value={year}
           autoWidth
           className={selectEmpty}
           {...register('year')}
@@ -131,6 +88,7 @@ export default function FilteringBar({
           </InputLabel>
           <Select
             labelId="genre"
+            disabled={!!query}
             id="genre"
             displayEmpty
             autoWidth
@@ -148,6 +106,7 @@ export default function FilteringBar({
           </Select>
         </FormControl>
       )}
+      <SearchBox control={control} year={year} with_genres={with_genres} />
     </div>
   );
 }

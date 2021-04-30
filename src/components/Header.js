@@ -134,7 +134,7 @@ export default function Header() {
           </IconButton>
           <img src={logo} alt="Logo" className={classes.logo} />
           <Typography variant="h6" noWrap>
-            Dollix
+            Dolly
           </Typography>
         </Toolbar>
       </AppBar>
@@ -184,7 +184,7 @@ export default function Header() {
         </List>
 
         <List>
-          <NavLink exact activeClassName="active" to="/favorite">
+          <NavLink exact activeClassName="active" to="/favorites">
             <ListItem button>
               <ListItemIcon>
                 <StarsIcon />
@@ -204,12 +204,14 @@ export default function Header() {
           </ListItem>
         </List>
         <List>
-          <ListItem button>
-            <ListItemIcon>
-              <MailIcon />
-            </ListItemIcon>
-            <ListItemText primary="Contact Us" />
-          </ListItem>
+          <NavLink exact activeClassName="active" to="/contact">
+            <ListItem button>
+              <ListItemIcon>
+                <MailIcon />
+              </ListItemIcon>
+              <ListItemText primary="Contact Us" />
+            </ListItem>
+          </NavLink>
         </List>
       </Drawer>
     </>

@@ -1,19 +1,19 @@
+import Box from '@material-ui/core/Box';
+import CardMedia from '@material-ui/core/CardMedia';
+import { makeStyles } from '@material-ui/core/styles';
+import { Info, InfoTitle } from '@mui-treasury/components/info';
+import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
+import clsx from 'clsx';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
-import CardMedia from '@material-ui/core/CardMedia';
-import { Info, InfoCaption, InfoTitle } from '@mui-treasury/components/info';
-import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(() => ({
   carousel: {
     cursor: 'pointer',
     display: 'flex',
     justifyContent: 'center',
-    width: '55%',
-    height: 350,
+    width: 'clamp(50%, 80% , 100%)',
+    height: 400,
   },
   carouselStyle: {
     display: 'flex',
@@ -35,15 +35,7 @@ const useStyles = makeStyles(() => ({
     fontSize: '2em',
     display: 'flex',
     fontWeight: 'bold',
-    textShadow: '3px 1px black',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  movieAverage: {
-    textShadow: '2px 2px black',
-    fontSize: '1em',
-    display: 'flex',
-    fontWeight: 'bold',
+    textShadow: '2px 2px 5px black',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -52,7 +44,15 @@ const MovieCarousel = (props) => {
   const styles = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
   return (
-    <Carousel className={clsx(styles.carousel)}>
+    <Carousel
+      className={clsx(styles.carousel)}
+      swipe={true}
+      interval={5000}
+      fullHeightHover={true}
+      animation="fade"
+      stopAutoPlayOnHover={true}
+      navButtonsAlwaysVisible={true}
+    >
       {props.movieList.map((movie) => (
         <Box className={clsx(styles.movieBox)} key={movie.id}>
           <CardMedia
@@ -65,9 +65,6 @@ const MovieCarousel = (props) => {
                 <InfoTitle className={clsx(styles.movieName)}>
                   {movie.title}
                 </InfoTitle>
-                <InfoCaption className={clsx(styles.movieAverage)}>
-                  {movie.vote_average}/10
-                </InfoCaption>
               </Info>
             </Box>
           </CardMedia>

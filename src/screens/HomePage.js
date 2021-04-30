@@ -5,11 +5,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './HomePage.css';
 import MovieList from '../components/MovieList';
-
+import MovieCarousel from '../components/MovieCarousel';
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 
-//import MovieCard from './components/MovieCard';
-//<MovieCard /> {/*not sure how to put render MovieList with MovieCard*/}
 export default function HomePage() {
   const [popularMovie, setPopularMovie] = useState([]);
   useEffect(() => {
@@ -31,7 +29,11 @@ export default function HomePage() {
 
   return (
     <>
-      <h1>Popular movies</h1>
+      <h2 className="recentMovie">Recent Movie</h2>
+      <div className="container">
+        <MovieCarousel movieList={popularMovie} />
+      </div>
+      <h2>Popular movies</h2>
       <MovieList movieList={popularMovie} imgUrl={imgUrl} />
     </>
   );
