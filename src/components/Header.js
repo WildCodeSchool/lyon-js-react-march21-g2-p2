@@ -184,7 +184,7 @@ export default function Header() {
         </List>
 
         <List>
-          <NavLink exact activeClassName="active" to="/favorite">
+          <NavLink exact activeClassName="active" to="/favorites">
             <ListItem button>
               <ListItemIcon>
                 <StarsIcon />
