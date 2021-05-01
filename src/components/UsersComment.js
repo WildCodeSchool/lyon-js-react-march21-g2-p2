@@ -42,7 +42,7 @@ const useStyles = makeStyles(() => ({
 
 export default function UserComments({ title, id }) {
   const { register, handleSubmit } = useForm();
-  const classes = useStyles();
+  const { commentSection, form, button, } = useStyles();
 
   const onSubmit = (form) => {
     form.title = title;
@@ -53,10 +53,10 @@ export default function UserComments({ title, id }) {
   };
 
   return (
-    <div className={classes.commentSection}>
+    <div className={commentSection}>
       <h2>Any comments about the movie ? </h2>
       <form
-        className={classes.form}
+        className={form}
         noValidate
         autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
@@ -85,9 +85,8 @@ export default function UserComments({ title, id }) {
           {...register('comment')}
         />
         <Button
-          color="primary"
-          className={classes.Button}
-          variant="contained"
+          className={button}
+          variant="outlined"
           type="submit"
           endIcon={<Icon>send</Icon>}
         >
