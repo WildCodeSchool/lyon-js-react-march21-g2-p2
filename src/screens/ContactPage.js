@@ -22,22 +22,24 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: '50px',
   },
   form: {
-    padding: 18,
+    padding: 12,
     width: '40ch',
     margin: 'auto',
-    borderRadius: '1rem',
-    background: '#E2DFDB',
+    border: '1px solid #CBCBCB',
+    borderRadius: '8px',
   },
   textField: {
-    paddingTop: 15,
+    paddingTop: 14,
     width: '35ch',
     margin: 'auto',
     display: 'flex',
     position: 'relative',
   },
   button: {
-    padding: 10,
+    padding: 14,
     marginTop: 15,
+    marginBottom:12,
+    margin: 'auto',
     width: '35ch',
     display: 'flex',
     alignItems: 'center',
@@ -77,7 +79,7 @@ export default function ContactPage() {
   return (
     <div>
       <h1 className={message}>
-        Des conseils? Des suggestions? N'hésitez pas à nous le faire savoir !
+      Contact Us.
       </h1>
       <form
         className={form}
@@ -87,38 +89,38 @@ export default function ContactPage() {
       >
         <TextField
           className={textField}
-          id="filled"
-          label="firstName"
-          variant="filled"
+          id="outlined-basic"
+          label="firstname"
+          variant="outlined"
           required={true}
           {...register('firstName')}
         />
 
         <TextField
           className={textField}
-          id="filled"
+          id="outlined-basic"
           label="Lastname"
-          variant="filled"
+          variant="outlined"
           required={true}
           {...register('lastName')}
         />
         <TextField
           className={textField}
-          id="filled"
+          id="outlined-basic"
           label="Email"
-          variant="filled"
+          variant="outlined"
           type="email"
           required={true}
           {...register('email')}
         />
         <TextField
           className={textField}
-          id="filled-multiline-static"
+          id="outlined-multiline-basic"
           label="Text here"
           multiline
           rows={6}
           defaultValue=""
-          variant="filled"
+          variant="outlined"
           required={true}
           {...register('text')}
         />
