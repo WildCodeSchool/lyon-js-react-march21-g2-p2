@@ -18,11 +18,15 @@ const yearsOfCinema = new Array(dayjs().year() - 1893)
 // Defines the styles in use for this component (MUI)
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
     minWidth: 120,
+    background: 'var(--bg-secondary)',
   },
   selectEmpty: {
-    marginTop: theme.spacing(2),
+    // marginTop: theme.spacing(2),
+    color: 'var(--text-primary)',
+  },
+  label: {
+    color: 'var(--text-primary)',
   },
 }));
 
@@ -50,12 +54,12 @@ export default function FilteringBar({
   control,
 }) {
   // Here we grab the styles needed
-  const { formControl, selectEmpty } = useStyles();
+  const { formControl, selectEmpty, label } = useStyles();
 
   return (
     <div className="filtering-bar">
       <FormControl className={formControl}>
-        <InputLabel shrink id="year-label">
+        <InputLabel className={label} shrink id="year-label">
           Year
         </InputLabel>
         <Select
@@ -82,7 +86,7 @@ export default function FilteringBar({
       </FormControl>
       {availableGenres.length && (
         <FormControl className={formControl}>
-          <InputLabel shrink id="4">
+          <InputLabel className={label} shrink id="4">
             Genre
           </InputLabel>
           <Select
