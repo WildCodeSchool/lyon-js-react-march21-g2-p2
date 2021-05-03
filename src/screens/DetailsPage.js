@@ -83,10 +83,10 @@ export default function DetailsPage() {
       />
       {reviewList.length === 0 ? (
         <h3 className={classes.reviewSection}>
-          Be the first to give us your feedback
+          Be the first to write a review 🚀
         </h3>
       ) : (
-        <h3 className={classes.reviewSection}>User Reviews</h3>
+        <h3 className={classes.reviewSection}>Reviews</h3>
       )}
       <ReviewList variant="outlined" reviewList={reviewList} />
     </>
