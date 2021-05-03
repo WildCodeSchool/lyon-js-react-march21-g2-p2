@@ -22,7 +22,8 @@
   height: 100vh;
 }
 
-main {
+body {
+  margin: 0;
   background-color: var(--bg-primary);
   background: linear-gradient(
     135deg,
