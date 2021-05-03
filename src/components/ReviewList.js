@@ -31,22 +31,19 @@ export default function ReviewList({ reviewList }) {
 
   //To avoid error on map method "reviewList &&"" otherwise our list is undefined
   return (
-    reviewList && (
-      <div className={card}>
-        <h2>User Reviews</h2>
-        {reviewList.map((review) => (
-          <Card className={card} key={review.id} variant="outlined">
-            <CardContent>
-              <Typography className={name} color="textSecondary" gutterBottom>
-                {review.user_name}
-              </Typography>
-              <Typography variant="body2" component="p">
-                {review.comment}
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    )
+    <div className={card}>
+      {reviewList.map((review) => (
+        <Card className={card} key={review.id} variant="outlined">
+          <CardContent>
+            <Typography className={name} color="textSecondary" gutterBottom>
+              {review.user_name}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {review.comment}
+            </Typography>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
   );
 }
