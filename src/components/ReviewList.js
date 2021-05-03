@@ -1,11 +1,10 @@
 //------------------ IMPORT COMPONENTS & STYLES -------------//
-import { makeStyles } from '@material-ui/core/styles';
-import React from 'react';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 //---------------------- STYLE CSS -------------------------//
 
@@ -32,7 +31,7 @@ export default function ReviewList({ movie_id }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/movies/${movie_id}/reviews`)
+      .get(`${process.env.REACT_APP_API_BASE_URL}/movies/${movie_id}/reviews`)
       .then((res) => setReviewList(res.data))
       .catch((err) => console.log(err));
   }, [movie_id]);
