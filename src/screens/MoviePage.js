@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './MoviePage.css';
 import MovieList from '../components/MovieList';
 import { useForm } from 'react-hook-form';
 import qs from 'query-string';
@@ -79,7 +78,7 @@ export default function MoviePage() {
 
   return (
     <>
-      <h1>Here is a list of popular movies</h1>
+      <h2>Movies</h2>
       <FilteringBar
         availableGenres={availableGenres}
         setMovieList={setMovieList}
@@ -95,7 +94,6 @@ export default function MoviePage() {
         query={query}
         control={control}
       />
-
       <MovieList movieList={movieList} imgUrl={imgUrl} />
     </>
   );
