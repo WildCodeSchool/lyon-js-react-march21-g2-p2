@@ -46,8 +46,8 @@ export default function UsersComments(props) {
         props.setReviewList((currentReviews) => {
           return [...currentReviews, res.data];
         });
+        reset();
       })
-      .then((res) => reset())
       .catch((err) => console.log(err));
   };
 
@@ -62,11 +62,9 @@ export default function UsersComments(props) {
       >
         <TextField
           required
-          size="small"
-          color="primary"
-          className="userName"
+          className="name"
           label="Name"
-          id="outlined-required"
+          id="name"
           defaultValue=""
           variant="outlined"
           {...register('user_name')}
@@ -74,9 +72,8 @@ export default function UsersComments(props) {
         <TextField
           required
           multiline
-          color="primary"
           className="comment"
-          id="outlined-required-multiline-static"
+          id="comment"
           label="Comment"
           rows={2}
           defaultValue=""
@@ -84,9 +81,8 @@ export default function UsersComments(props) {
           {...register('comment')}
         />
         <Button
-          color="primary"
           className={classes.Button}
-          variant="contained"
+          variant="outlined"
           type="submit"
           endIcon={<Icon>send</Icon>}
         >
