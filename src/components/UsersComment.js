@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 //--------------------------- COMMENTS FUNCTION --------------------------//
 
 export default function UserCommentsSection(props) {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const classes = useStyles();
 
   const onSubmit = (form) => {
@@ -47,6 +47,7 @@ export default function UserCommentsSection(props) {
           return [...currentReviews, res.data];
         });
       })
+      .then((res) => reset())
       .catch((err) => console.log(err));
   };
 
