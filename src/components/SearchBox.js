@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     // width: '35ch',
     background: 'var(--bg-secondary)',
+    color: 'var(--text-primary)',
   },
   input: {
     marginLeft: theme.spacing(2),
