@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     marginTop: 25,
+    marginBottom: 20,
   },
 }));
 
@@ -87,7 +88,7 @@ export default function DetailsPage() {
       ) : (
         <h3 className={classes.reviewSection}>User Reviews</h3>
       )}
-      <ReviewList reviewList={reviewList} />
+      <ReviewList variant="outlined" reviewList={reviewList} />
     </>
   );
 }

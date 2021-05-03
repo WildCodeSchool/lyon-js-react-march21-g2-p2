@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       alignItems: 'flex-start',
       justifyContent: 'center',
-      marginTop: 20,
-      width: '85ch',
+      marginTop: 10,
+      width: '75ch',
     },
   },
 
