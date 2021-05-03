@@ -10,13 +10,13 @@ const useStyles = makeStyles((theme) => ({
   Footer: {
     width: '100%',
     textAlign: 'center',
-    background: '#2b2b2b',
+    background: 'var(--dark-grey)',
     padding: '1em',
   },
   Typography: {
     textAlign: 'center',
     fontWeight: 'bold',
-    color: 'white',
+    color: 'var(--text-primary)',
   },
 }));
 
@@ -39,7 +39,7 @@ function Footer() {
         </Grid>
       </Grid>
       <Typography variant="caption" className={clsx(classes.Typography)}>
-        The Dolly Project © 2021
+        © 2021 The Dolly Project
       </Typography>
     </footer>
   );

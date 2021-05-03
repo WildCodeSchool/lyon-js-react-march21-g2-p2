@@ -67,10 +67,10 @@ const useStyles = makeStyles(() => ({
     objectFit: 'cover',
   },
   isFav: {
-    color: 'red',
+    color: 'var(--accent-color-2)',
   },
   notFav: {
-    color: 'white',
+    color: 'var(--light-grey)',
   },
 }));
 
@@ -129,7 +129,6 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
             </Info>
           </Box>
         </Card>
-        {/* <h4 style={{ marginLeft: '1em' }}>{title}</h4> */}
       </Grid>
     </Link>
   );

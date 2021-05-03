@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '60ch',
     margin: '2em auto',
     borderRadius: '1rem',
-    background: '#E2DFDB',
+    background: 'var(--lighter-grey)',
   },
   textField: {
     paddingTop: '1em',
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: '2px solid var(--darker-grey)',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },

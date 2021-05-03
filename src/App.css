@@ -1,7 +1,102 @@
+:root {
+  --lighter-grey: hsl(250, 10%, 90%);
+  --light-grey: hsl(240, 10%, 80%);
+  --dark-grey: hsl(240, 13%, 30%);
+  --darker-grey: hsl(245, 30%, 8%);
+  --orange: hsl(14, 65%, 50%);
+  --yellow: hsl(54, 79%, 65%);
+
+  --text-primary: var(--lighter-grey);
+  --text-secondary: var(var(--light-grey));
+  --bg-primary: var(--darker-grey);
+  --bg-secondary: var(--dark-grey);
+  --accent-color-2: var(--orange);
+  --accent-color-1: var(--yellow);
+}
+
 #root {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   height: 100vh;
+}
+
+main {
+  background-color: var(--bg-primary);
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Create a container for the headers
+* .container{
+*   width: 90%;
+*   height: 400px;
+*   max-width: 960px;
+*   margin: 0 auto;
+*   padding: 30px;
+*   background: var(--lighter-grey);
+*   display: flex;
+*   justify-content: center;
+*   align-items: center;
+* }
+*/
+
+/* H1, H2, H3, H4 
+* Background : linear-gradient(to top left, var(--accent-color-1), var(--accent-color-2))
+* text-transform: uppercase;
+* -webkit-background-clip: text;
+* -webkit-text-fill-color: transparent; 
+*/
+
+h2,
+h3,
+h4 {
+  background: linear-gradient(
+    to top left,
+    var(--accent-color-2),
+    var(--accent-color-1)
+  );
+  text-transform: uppercase;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.title {
+  text-transform: uppercase;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  text-align: center;
+  font-size: 2em !important;
+  font-weight: bold !important;
+  color: var(--text-primary) !important;
+}
+
+p {
+  color: var(--text-primary);
+}
+
+body {
+  color: var(--text-primary);
 }

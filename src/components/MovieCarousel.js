@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
     objectFit: 'cover',
   },
   movieInformation: {
-    color: 'white',
+    color: 'var(--text-primary)',
     width: '100%',
   },
   BoxInformation: {

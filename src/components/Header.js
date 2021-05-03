@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
-    background: 'linear-gradient(to right bottom, #d84315, #ffeb3b)',
+    background:
+      'linear-gradient(to right bottom, var(--orange), var(--yellow))',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.easeInOut,
@@ -131,7 +132,7 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <img src={logo} alt="Logo" className={classes.logo} />
-          <Typography variant="h6" noWrap>
+          <Typography variant="h1" className="title" noWrap>
             Dolly
           </Typography>
         </Toolbar>
