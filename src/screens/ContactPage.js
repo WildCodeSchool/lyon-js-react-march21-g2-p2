@@ -86,41 +86,42 @@ export default function ContactPage() {
       >
         <TextField
           className={textField}
-          id="filled"
+          id="firstName"
           label="firstName"
           placeholder="Sarah"
-          variant="filled"
+          variant="outlined"
           required={true}
           {...register('firstName')}
         />
         <TextField
           className={textField}
-          id="filled"
-          label="Lastname"
+          id="lastName"
+          label="lastName"
           placeholder="Connor"
-          variant="filled"
+          variant="outlined"
           required={true}
           {...register('lastName')}
         />
         <TextField
           className={textField}
-          id="filled"
+          id="email"
+          name="email"
           label="Email"
           placeholder="sarah.connor@skynet.com"
-          variant="filled"
+          variant="outlined"
           type="email"
           required={true}
           {...register('email')}
         />
         <TextField
           className={textField}
-          id="filled-multiline-static"
-          label="Text here"
+          id="message"
+          label="Message"
           multiline
           placeholder="Great website! Keep up the good work :)"
           rows={6}
           defaultValue=""
-          variant="filled"
+          variant="outlined"
           required={true}
           {...register('text')}
         />
