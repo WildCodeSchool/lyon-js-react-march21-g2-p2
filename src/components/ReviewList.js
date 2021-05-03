@@ -9,12 +9,12 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
   card: {
+    marginTop: '1em',
     '& > *': {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
       justifyContent: 'center',
-      marginTop: 10,
       width: '75ch',
     },
   },
@@ -27,9 +27,8 @@ const useStyles = makeStyles((theme) => ({
 export default function ReviewList({ reviewList }) {
   const { card, name } = useStyles();
 
-  //To avoid error on map method "reviewList &&"" otherwise our list is undefined
   return (
-    <div className={card}>
+    <>
       {reviewList &&
         reviewList.map((review) => (
           <Card className={card} key={review.id} variant="outlined">
@@ -43,6 +42,6 @@ export default function ReviewList({ reviewList }) {
             </CardContent>
           </Card>
         ))}
-    </div>
+    </>
   );
 }
