@@ -19,26 +19,24 @@ const useStyles = makeStyles((theme) => ({
   },
   message: {
     textAlign: 'center',
-    paddingBottom: '50px',
+    marginBottom: '1em',
   },
   form: {
-    padding: 18,
-    width: '40ch',
-    margin: 'auto',
+    padding: '2em',
+    maxWidth: '60ch',
+    margin: '2em auto',
     borderRadius: '1rem',
     background: '#E2DFDB',
   },
   textField: {
-    paddingTop: 15,
-    width: '35ch',
+    paddingTop: '1em',
     margin: 'auto',
     display: 'flex',
-    position: 'relative',
   },
   button: {
-    padding: 10,
-    marginTop: 15,
-    width: '35ch',
+    padding: '1em',
+    marginTop: '1em',
+    width: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -75,10 +73,11 @@ export default function ContactPage() {
   };
 
   return (
-    <div>
-      <h1 className={message}>
-        Des conseils? Des suggestions? N'hésitez pas à nous le faire savoir !
-      </h1>
+    <>
+      <h2 className={message}>Let’s get in touch 👋</h2>
+      <p className={message}>
+        Suggestions, thanks or love notes? Let us know below 😃
+      </p>
       <form
         className={form}
         onSubmit={handleSubmit(onSubmit)}
@@ -89,15 +88,16 @@ export default function ContactPage() {
           className={textField}
           id="filled"
           label="firstName"
+          placeholder="Sarah"
           variant="filled"
           required={true}
           {...register('firstName')}
         />
-
         <TextField
           className={textField}
           id="filled"
           label="Lastname"
+          placeholder="Connor"
           variant="filled"
           required={true}
           {...register('lastName')}
@@ -106,6 +106,7 @@ export default function ContactPage() {
           className={textField}
           id="filled"
           label="Email"
+          placeholder="sarah.connor@skynet.com"
           variant="filled"
           type="email"
           required={true}
@@ -116,6 +117,7 @@ export default function ContactPage() {
           id="filled-multiline-static"
           label="Text here"
           multiline
+          placeholder="Great website! Keep up the good work :)"
           rows={6}
           defaultValue=""
           variant="filled"
@@ -151,6 +153,6 @@ export default function ContactPage() {
           </Modal>
         </div>
       </form>
-    </div>
+    </>
   );
 }

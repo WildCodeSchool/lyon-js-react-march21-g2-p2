@@ -37,6 +37,7 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     margin: 0,
     '&:hover': {
+      transition: 'opacity .3s ease-in-out',
       cursor: 'pointer',
       visibility: 'visible',
       zIndex: 2,
@@ -44,8 +45,8 @@ const useStyles = makeStyles(() => ({
       width: '100%',
       height: '100%',
       display: 'flex',
-      background: 'black',
-      opacity: 0.5,
+      background: 'hsla(0, 0%, 0%, 0.5)',
+      opacity: 1,
       alignItems: 'flex-end',
       justifyContent: 'flex-start',
     },
@@ -103,7 +104,7 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
 
   return (
     <Link key={movieId} to={`/movies/${movieId}`}>
-      <Grid item key={movieId} xs={10} sm={6} md={4} lg={3} xl={2}>
+      <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
         <Card className={clsx(card)}>
           <CardMedia
             classes={mediaStyles}
@@ -124,10 +125,11 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
             </Box>
             <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
               <InfoTitle>{title}</InfoTitle>
-              <InfoCaption>Rating: {average}/10</InfoCaption>
+              <InfoCaption>{`Rating: ${average * 10}%`}</InfoCaption>
             </Info>
           </Box>
         </Card>
+        {/* <h4 style={{ marginLeft: '1em' }}>{title}</h4> */}
       </Grid>
     </Link>
   );
