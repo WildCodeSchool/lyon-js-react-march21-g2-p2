@@ -48,7 +48,7 @@ export default function UserCommentsSection(props) {
 
   return (
     <div className={classes.commentSection}>
-      <h1 className={classes.Message}>Any comments about the movie ? </h1>
+      <h3 className={classes.Message}>What did you think about this movie?</h3>
       <form
         className={classes.root}
         noValidate

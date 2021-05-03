@@ -54,7 +54,6 @@ export default function FilteringBar({
 
   return (
     <div className="filtering-bar">
-      <h2>Filter</h2>
       <FormControl className={formControl}>
         <InputLabel shrink id="year-label">
           Year
