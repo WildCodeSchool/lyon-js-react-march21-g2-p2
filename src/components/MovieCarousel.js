@@ -1,11 +1,11 @@
+import Box from '@material-ui/core/Box';
+import CardMedia from '@material-ui/core/CardMedia';
+import { makeStyles } from '@material-ui/core/styles';
+import { Info, InfoTitle } from '@mui-treasury/components/info';
+import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
+import clsx from 'clsx';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
-import CardMedia from '@material-ui/core/CardMedia';
-import { Info, InfoTitle } from '@mui-treasury/components/info';
-import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(() => ({
   carousel: {
