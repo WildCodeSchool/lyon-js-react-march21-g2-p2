@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 
 //---------------------- STYLE CSS -------------------------//
 
@@ -18,14 +17,10 @@ const useStyles = makeStyles((theme) => ({
       width: '75ch',
     },
   },
-
-  name: {
-    fontSize: 14,
-  },
 }));
 //---------------------- GET THE REVIEWS FROM OUR API AND DISPLAY -------------------------//
 export default function ReviewList({ reviewList }) {
-  const { card, name } = useStyles();
+  const { card } = useStyles();
 
   return (
     <>
@@ -33,12 +28,8 @@ export default function ReviewList({ reviewList }) {
         reviewList.map((review) => (
           <Card className={card} key={review.id} variant="outlined">
             <CardContent>
-              <Typography className={name} color="textSecondary" gutterBottom>
-                {review.user_name}
-              </Typography>
-              <Typography variant="body2" component="p">
-                {review.comment}
-              </Typography>
+              <h4 className="userName">{review.user_name}</h4>
+              <p>{review.comment}</p>
             </CardContent>
           </Card>
         ))}
