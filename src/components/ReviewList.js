@@ -26,16 +26,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 //---------------------- GET THE REVIEWS FROM OUR API AND DISPLAY -------------------------//
-export default function ReviewList({ movie_id }) {
+export default function ReviewList({ reviewList }) {
   const { card, name } = useStyles();
-  const [reviewList, setReviewList] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/movies/${movie_id}/reviews`)
-      .then((res) => setReviewList(res.data))
-      .catch((err) => console.log(err));
-  }, [movie_id]);
 
   //To avoid error on map method "reviewList &&"" otherwise our list is undefined
   return (

@@ -42,7 +42,11 @@ export default function UserCommentsSection(props) {
     form.title = props.title;
     axios
       .post(`http://localhost:5000/movies/${props.id}/reviews`, form)
-      .then((res) => console.log(res))
+      .then((res) => {
+        props.setReviewList((currentReviews) => {
+          return [...currentReviews, res.data];
+        });
+      })
       .catch((err) => console.log(err));
   };
 

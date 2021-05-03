@@ -18,6 +18,7 @@ export default function DetailsPage() {
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
   const [movieGenreList, setMovieGenreList] = useState([]);
+  const [reviewList, setReviewList] = useState([]);
 
   /*To get the informations required*/
 
@@ -45,6 +46,13 @@ export default function DetailsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/movies/${tmdb_id}/reviews`)
+      .then((res) => setReviewList(res.data))
+      .catch((err) => console.log(err));
+  }, [tmdb_id]);
+
   return (
     <>
       <MovieInfos
@@ -56,8 +64,12 @@ export default function DetailsPage() {
         prodCrew={movieProductionCrew}
         movieGenreList={movieGenreList}
       />
-      <UserCommentsSection title={movie.title} id={tmdb_id} />
-      <ReviewList movie_id={tmdb_id} />
+      <UserCommentsSection
+        title={movie.title}
+        id={tmdb_id}
+        setReviewList={setReviewList}
+      />
+      <ReviewList reviewList={reviewList} />
     </>
   );
 }
