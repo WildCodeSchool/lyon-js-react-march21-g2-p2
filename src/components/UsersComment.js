@@ -1,11 +1,11 @@
 //------------------ IMPORT COMPONENTS & STYLES -------------//
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import { useForm } from 'react-hook-form';
-import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 //---------------------- STYLE CSS -------------------------//
 
@@ -41,7 +41,10 @@ export default function UsersComments(props) {
   const onSubmit = (form) => {
     form.title = props.title;
     axios
-      .post(`http://localhost:5000/movies/${props.id}/reviews`, form)
+      .post(
+        `${process.env.REACT_APP_API_BASE_URL}/movies/${props.id}/reviews`,
+        form
+      )
       .then((res) => {
         props.setReviewList((currentReviews) => {
           return [...currentReviews, res.data];
