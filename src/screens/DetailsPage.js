@@ -7,7 +7,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router';
-import UserCommentsSection from '../components/UsersComment';
+import UsersComments from '../components/UsersComment';
 import { makeStyles } from '@material-ui/core/styles';
 
 //---------------------- STYLE CSS -------------------------//
@@ -76,7 +76,7 @@ export default function DetailsPage() {
         prodCrew={movieProductionCrew}
         movieGenreList={movieGenreList}
       />
-      <UserCommentsSection
+      <UsersComments
         title={movie.title}
         id={tmdb_id}
         setReviewList={setReviewList}
