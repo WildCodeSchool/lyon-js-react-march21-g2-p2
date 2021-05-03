@@ -7,10 +7,10 @@ const MovieList = ({ movieList, imgUrl }) => {
     <>
       <Grid
         container
-        spacing={3}
+        spacing={2}
         direction="row"
         justify="center"
-        alignItems="center"
+        style={{ marginTop: '1em' }}
       >
         {movieList.map(
           ({

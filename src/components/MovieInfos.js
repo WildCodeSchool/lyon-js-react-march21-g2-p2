@@ -60,27 +60,25 @@ export default function MovieInfos(props) {
         </Grid>
         <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
           <div className={styles.content}>
-            <h2>Title :</h2>
-            <p>{props.title}</p>
-            <h2>Date :</h2>
-            <p>{props.date}</p>
-            <h2>Director :</h2>
+            <h2>{props.title}</h2>
+            <h3>{props.date}</h3>
+            <h3>Director :</h3>
             <div>
               {director.map((director) => (
                 <p key={director.id}>{director.name}</p>
               ))}
             </div>
-            <h2>Actors :</h2>
+            <h3>Cast:</h3>
             {mainActors.map((actor) => (
               <p key={actor.id}>
-                <strong>{actor.name}</strong> - {actor.character}
+                <strong>{actor.name}</strong> as {actor.character}
               </p>
             ))}
-            <h2>Genres :</h2>
+            <h3>Genres:</h3>
             {props.movieGenreList.map(({ id, name }) => (
               <p key={id}>{name}</p>
             ))}
-            <h2>Synopsis :</h2>
+            <h3>Synopsis:</h3>
             <p>{props.synopsis}</p>
           </div>
         </Grid>
