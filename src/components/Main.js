@@ -3,10 +3,10 @@ import HomePage from '../screens/HomePage';
 import MoviePage from '../screens/MoviePage';
 import FavoritePage from '../screens/FavoritePage';
 import ContactPage from '../screens/ContactPage';
-import DetailsPage from '../screens/DetailsPage';
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom';
-import Modal from '@material-ui/core/Modal';
+
+
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -26,14 +26,14 @@ const useStyles = makeStyles((theme) => ({
 export default function Main() {
   const classes = useStyles();
   let location = useLocation();
-  let background = location.state && location.state.background;
+  let modal = location.state && location.state.background;
 
   return (
     <main className={classes.content}>
       <div className={classes.toolbar} />
-      <Switch>
+      <Switch location={modal || location}>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/movies" component={MoviePage} />
+        <Route excat path="/movies" component={MoviePage} />
         <Route exact path="/favorites" component={FavoritePage} />
         <Route exact path="/contact" component={ContactPage} />
       </Switch>

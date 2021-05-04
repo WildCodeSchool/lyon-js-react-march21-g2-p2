@@ -13,11 +13,11 @@ const useStyles = makeStyles(() => ({
     borderRadius: '1rem',
     boxShadow: 'none',
     position: 'relative',
-    margin: "auto",
+    margin: 'auto',
     padding: '1em',
-    maxWidth: "80%",
-    maxHeight: "80%",
-
+    maxWidth: '80%',
+    maxHeight: '80%',
+    overflowY: "scroll"
   },
 }));
 
