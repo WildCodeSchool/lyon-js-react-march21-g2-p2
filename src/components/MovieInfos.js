@@ -40,7 +40,6 @@ const useStyles = makeStyles(() => ({
   contentPicture: {
     display: 'flex',
     flexDirection: 'row',
-
   },
 }));
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
@@ -98,8 +97,10 @@ export default function MovieInfos(props) {
                 <p key={id}>
                   <img
                     className={picture}
-                    src={profile_path ? imgUrl + profile_path : null} alt={name} />
-                  <strong>{name}</strong> - { character}
+                    src={profile_path ? imgUrl + profile_path : null}
+                    alt={name}
+                  />
+                  <strong>{name}</strong> - {character}
                 </p>
               ))}
             </div>

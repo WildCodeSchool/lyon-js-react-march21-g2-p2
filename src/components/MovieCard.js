@@ -79,9 +79,12 @@ const useStyles = makeStyles(() => ({
     color: 'white',
   },
   modal: {
+    margin: "auto",
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    border: "none"
+
   },
 }));
 
@@ -126,11 +129,11 @@ const MovieCard = ({
         [movieId]: isFavorite
           ? false
           : {
-              id: movieId,
-              title: title,
-              genre: genre,
-              poster_path: poster,
-            },
+            id: movieId,
+            title: title,
+            genre: genre,
+            poster_path: poster,
+          },
       };
     });
   };
@@ -155,11 +158,11 @@ const MovieCard = ({
       axios
         .get(
           apiUrl +
-            '/movie/' +
-            movieId +
-            '/credits?api_key=' +
-            apiKey +
-            '&language=en-US'
+          '/movie/' +
+          movieId +
+          '/credits?api_key=' +
+          apiKey +
+          '&language=en-US'
         )
         .then((crewInfos) => {
           setMovieActors(crewInfos.data.cast);

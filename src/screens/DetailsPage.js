@@ -13,11 +13,11 @@ const useStyles = makeStyles(() => ({
     borderRadius: '1rem',
     boxShadow: 'none',
     position: 'relative',
-    margin: 0,
+    margin: "auto",
     padding: '1em',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    maxWidth: "80%",
+    maxHeight: "80%",
+
   },
 }));
 
