@@ -19,7 +19,6 @@ const useStyles = makeStyles(() => ({
     width: '90%',
     height: '80%',
     overflowY: 'scroll',
-
   },
 }));
 

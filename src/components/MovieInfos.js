@@ -17,48 +17,44 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-
   },
   title: {
     paddingBottom: '1em',
-    borderBottom: "solid 1px"
+    borderBottom: 'solid 1px',
   },
   date: {
     paddingBottom: '1em',
-    borderBottom: "solid 1px"
+    borderBottom: 'solid 1px',
   },
   directorName: {
     paddingBottom: '1em',
-    borderBottom: "solid 1px"
+    borderBottom: 'solid 1px',
   },
   synopsisCss: {
     paddingBottom: '1em',
-    borderBottom: "solid 1px"
+    borderBottom: 'solid 1px',
   },
   actorContent: {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'row',
-    border: "solid",
-    alignItems: 'flex-end'
+    border: 'solid',
+    alignItems: 'flex-end',
   },
   actor: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   actorsPaths: {
-    height: "100px",
+    height: '100px',
     width: '100px',
-    borderRadius: '50%'
+    borderRadius: '50%',
   },
   actorName: {
-    display: 'flex'
-
-  }
-
-
+    display: 'flex',
+  },
 }));
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 
@@ -70,7 +66,11 @@ export default function MovieInfos(props) {
     details,
     actorContent,
     actorName,
-    actorsPaths, title, date, directorName, synopsisCss
+    actorsPaths,
+    title,
+    date,
+    directorName,
+    synopsisCss,
   } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
@@ -109,9 +109,11 @@ export default function MovieInfos(props) {
             {props.actors.map(({ name, character, profile_path, id }) => (
               <>
                 <div>
-                  <img className={actorsPaths}
+                  <img
+                    className={actorsPaths}
                     src={profile_path ? imgUrl + profile_path : null}
-                    alt={name} />
+                    alt={name}
+                  />
                 </div>
                 <br />
                 <div className={actorName}>
@@ -120,12 +122,10 @@ export default function MovieInfos(props) {
                   </p>
                 </div>
               </>
-
             ))}
           </div>
         </div>
       </div>
-
     </>
   );
 }
