@@ -4,20 +4,17 @@ import createPersistedState from 'use-persisted-state';
 import './FavoritePage.css';
 // Component to display the favorite movies
 
-
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   container: {
     margin: 0,
-    width: "100%"
+    width: '100%',
   },
-
-
 }));
 
-export default function FavoritePage (){
-  const {container} = useStyles();
+export default function FavoritePage() {
+  const { container } = useStyles();
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
   const [favoriteMovies] = useFavoriteMoviesState({});
 
@@ -25,16 +22,15 @@ export default function FavoritePage (){
     .filter((id) => favoriteMovies[id] !== false)
     .map((id) => favoriteMovies[id]);
 
-    console.log(favoriteMovieList);
+  console.log(favoriteMovieList);
 
   return (
     <div className={container}>
       <h2>Favorite movies</h2>
-        <FavoriteList
-          movieList={favoriteMovieList}
-          imgUrl={'https://image.tmdb.org/t/p/w200'}
-        />
+      <FavoriteList
+        movieList={favoriteMovieList}
+        imgUrl={'https://image.tmdb.org/t/p/w200'}
+      />
     </div>
   );
-};
-
+}

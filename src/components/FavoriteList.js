@@ -5,8 +5,14 @@ import FavoriteInfos from './FavoriteInfos';
 const FavoriteList = ({ movieList, imgUrl }) => {
   return (
     <>
-      <Grid container spacing={8} direction="column" justify="flex-start" align="flex-start" >
-      {movieList.map(
+      <Grid
+        container
+        spacing={8}
+        direction="column"
+        justify="flex-start"
+        align="flex-start"
+      >
+        {movieList.map(
           ({
             id,
             date,
@@ -14,7 +20,7 @@ const FavoriteList = ({ movieList, imgUrl }) => {
             genre_ids,
             title,
             poster_path,
-            synopsis
+            synopsis,
           }) => (
             <FavoriteInfos
               key={id}

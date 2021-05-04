@@ -20,7 +20,7 @@ const MovieList = ({ movieList, imgUrl }) => {
             genre_ids,
             title,
             poster_path,
-            overview
+            overview,
           }) => (
             <MovieCard
               key={id}

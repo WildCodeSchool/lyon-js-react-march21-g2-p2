@@ -75,7 +75,15 @@ const useStyles = makeStyles(() => ({
 }));
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
-const MovieCard = ({ id: movieId, title, genre, poster, average, date, synopsis }) => {
+const MovieCard = ({
+  id: movieId,
+  title,
+  genre,
+  poster,
+  average,
+  date,
+  synopsis,
+}) => {
   const { card, content, movieInfo, favorite, isFav, notFav } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
@@ -104,7 +112,7 @@ const MovieCard = ({ id: movieId, title, genre, poster, average, date, synopsis 
       };
     });
   };
-console.log(favoriteMovies);
+  console.log(favoriteMovies);
 
   return (
     <Link key={movieId} to={`/movies/${movieId}`}>

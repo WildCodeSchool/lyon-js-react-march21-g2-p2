@@ -17,17 +17,16 @@ const useStyles = makeStyles(() => ({
     height: 145,
   },
   grid: {
-    
     width: '100%',
     maxWidth: '100em',
   },
   content: {
     display: 'flex',
-    alignItems:'flex-start',
+    alignItems: 'flex-start',
     zIndex: 2,
     bottom: 0,
-  
-       margin: 0,
+
+    margin: 0,
     borderBottom: 'solid 1px',
     paddingBottom: 65,
   },
@@ -55,7 +54,7 @@ export default function FavoriteInfos({
   genre,
   average,
   poster,
-  synopsis
+  synopsis,
 }) {
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
@@ -75,7 +74,7 @@ export default function FavoriteInfos({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const styles = useStyles();
-   const director = movieProductionCrew.filter(
+  const director = movieProductionCrew.filter(
     (crew) => crew.job === 'Director'
   );
 
@@ -83,36 +82,36 @@ export default function FavoriteInfos({
 
   return (
     <>
-        <Grid key={id} className={clsx(styles.grid)} item xs={6}>
-            <div className={styles.content}>
+      <Grid key={id} className={clsx(styles.grid)} item xs={6}>
+        <div className={styles.content}>
           <div>
-          <Card className={clsx(styles.card)}>
-            <CardMedia
-              className={clsx(styles.media)}
-              classes={styles.media}
-              image={poster}
-            />
-          </Card>
+            <Card className={clsx(styles.card)}>
+              <CardMedia
+                className={clsx(styles.media)}
+                classes={styles.media}
+                image={poster}
+              />
+            </Card>
           </div>
-            <div className={styles.text}>
-              <h3>{title}</h3>
-              <h4>{date}</h4>
-              <h4>Director :</h4>
-              <div>
-                {director.map((director) => (
-                  <p key={director.id}>{director.name}</p>
-                ))}
-              </div>
-              <h4>Cast:</h4>
-              {mainActors.map((actor) => (
-                <p key={actor.id}>
-                  <strong>{actor.name}</strong> as {actor.character}
-                </p>
+          <div className={styles.text}>
+            <h3>{title}</h3>
+            <h4>{date}</h4>
+            <h4>Director :</h4>
+            <div>
+              {director.map((director) => (
+                <p key={director.id}>{director.name}</p>
               ))}
-              <h4>Synopsis:</h4>
-              <p>{synopsis}</p>
             </div>
+            <h4>Cast:</h4>
+            {mainActors.map((actor) => (
+              <p key={actor.id}>
+                <strong>{actor.name}</strong> as {actor.character}
+              </p>
+            ))}
+            <h4>Synopsis:</h4>
+            <p>{synopsis}</p>
           </div>
+        </div>
       </Grid>
     </>
   );
