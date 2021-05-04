@@ -15,9 +15,9 @@ const useStyles = makeStyles(() => ({
     margin: 0,
     width: 300,
     height: 500,
-    flexDirection: "row",
-    justify: "flex-start",
-    alignItems: "center",
+    flexDirection: 'row',
+    justify: 'flex-start',
+    alignItems: 'center',
   },
   content: {
     display: 'flex',
@@ -43,7 +43,7 @@ const useStyles = makeStyles(() => ({
   contentPicture: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: "center"
+    justifyContent: 'center',
   },
 }));
 const imgUrl = 'https://image.tmdb.org/t/p/w200';

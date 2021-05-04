@@ -84,7 +84,6 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     justifyContent: 'center',
     border: 'none',
-
   },
 }));
 
@@ -127,11 +126,11 @@ const MovieCard = ({
         [movieId]: isFavorite
           ? false
           : {
-            id: movieId,
-            title: title,
-            genre: genre,
-            poster_path: poster,
-          },
+              id: movieId,
+              title: title,
+              genre: genre,
+              poster_path: poster,
+            },
       };
     });
   };
@@ -155,11 +154,11 @@ const MovieCard = ({
       axios
         .get(
           apiUrl +
-          '/movie/' +
-          movieId +
-          '/credits?api_key=' +
-          apiKey +
-          '&language=en-US'
+            '/movie/' +
+            movieId +
+            '/credits?api_key=' +
+            apiKey +
+            '&language=en-US'
         )
         .then((crewInfos) => {
           setMovieActors(crewInfos.data.cast);
@@ -171,13 +170,16 @@ const MovieCard = ({
     }
   }, [open, movieId]);
 
-  let location = useLocation()
+  let location = useLocation();
   return (
-    <Link key={movieId} to={{
-      pathname: `/movies/${movieId}`,
+    <Link
+      key={movieId}
+      to={{
+        pathname: `/movies/${movieId}`,
 
-      state: { background: location }
-    }}>
+        state: { background: location },
+      }}
+    >
       <Grid item key={movieId} xs={10} sm={6} md={4} lg={3} xl={2}>
         <Card className={card} onClick={handleOpen}>
           <CardMedia
@@ -204,8 +206,12 @@ const MovieCard = ({
           </Box>
         </Card>
 
-        <Modal key={movieId} className={modal} open={open} onClose={handleClose}>
-
+        <Modal
+          key={movieId}
+          className={modal}
+          open={open}
+          onClose={handleClose}
+        >
           <DetailsPage
             poster={poster}
             movieInfos={movieInfos}
@@ -213,8 +219,7 @@ const MovieCard = ({
             movieProductionCrew={movieProductionCrew}
           />
         </Modal>
-
-      </Grid >
+      </Grid>
     </Link>
   );
 };

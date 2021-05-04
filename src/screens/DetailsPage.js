@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
     padding: '1em',
     maxWidth: '80%',
     maxHeight: '80%',
-    overflowY: "scroll"
+    overflowY: 'scroll',
   },
 }));
 
