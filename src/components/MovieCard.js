@@ -113,7 +113,7 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
             <Box py={40} className={clsx(favorite)}>
               <IconButton onClick={handleToggleFavorite}>
                 <FavoriteIcon
-                  variant="contained"
+                  variant="outlined"
                   className={clsx(isFavorite ? isFav : notFav)}
                 />
               </IconButton>
@@ -124,7 +124,17 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
             </Info>
           </Box>
         </Card>
-        <h4 style={{ textAlign: 'center' }}>{title}</h4>
+        <h4
+          style={{
+            textAlign: 'center',
+            maxWidth: '20ch',
+            margin: '.5em auto 1em',
+            maxHeight: '1.5em',
+            overflow: 'hidden',
+          }}
+        >
+          {title}
+        </h4>
       </Grid>
     </Link>
   );
