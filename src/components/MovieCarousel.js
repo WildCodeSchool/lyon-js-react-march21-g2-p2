@@ -6,14 +6,20 @@ import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import CardMedia from '@material-ui/core/CardMedia';
 import { Info, InfoTitle } from '@mui-treasury/components/info';
 import Box from '@material-ui/core/Box';
+import { Link } from 'react-router-dom';
+import './MovieCard.js';
 
 const useStyles = makeStyles(() => ({
   carousel: {
+    
     cursor: 'pointer',
+    objectFit: 'cover',
     display: 'flex',
     justifyContent: 'center',
-    width: 'clamp(50%, 80% , 100%)',
-    height: 400,
+    
+    width:'70vw',
+    height: 350,
+    
   },
   carouselStyle: {
     display: 'flex',
@@ -54,6 +60,7 @@ const MovieCarousel = (props) => {
       navButtonsAlwaysVisible={true}
     >
       {props.movieList.map((movie) => (
+      <Link key={movie.id} to={`/movies/${movie.id}`}>
         <Box className={clsx(styles.movieBox)} key={movie.id}>
           <CardMedia
             className={clsx(styles.carouselStyle)}
@@ -69,7 +76,8 @@ const MovieCarousel = (props) => {
             </Box>
           </CardMedia>
         </Box>
-      ))}
+      </Link>
+    ))}
     </Carousel>
   );
 };

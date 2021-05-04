@@ -25,23 +25,24 @@ const useStyles = makeStyles((theme) => ({
     padding: 12,
     width: '40ch',
     margin: 'auto',
-    border: '1px solid #CBCBCB',
     borderRadius: '8px',
+    border: '1px solid #CBCBCB',
   },
   textField: {
-    paddingTop: 14,
     width: '35ch',
+    marginTop:9,
     margin: 'auto',
+    paddingTop: 14,
     display: 'flex',
     position: 'relative',
   },
   button: {
     padding: 14,
-    marginTop: 15,
-    marginBottom:12,
-    margin: 'auto',
     width: '35ch',
+    marginTop: 22,
+    margin: 'auto',
     display: 'flex',
+    marginBottom: 12,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -78,9 +79,7 @@ export default function ContactPage() {
 
   return (
     <div>
-      <h1 className={message}>
-      Contact Us.
-      </h1>
+      <h1 className={message}>Any comments ? Contact Us.</h1>
       <form
         className={form}
         onSubmit={handleSubmit(onSubmit)}
