@@ -7,7 +7,7 @@ import InputBase from '@material-ui/core/InputBase';
 
 //style of the Search input
 const useStyles = makeStyles((theme) => ({
-  root:{
+  root: {
     display: 'flex',
     margin: theme.spacing(2),
     height: theme.spacing(4),

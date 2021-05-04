@@ -27,15 +27,14 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
-button: {
-  margin: theme.spacing(2),
-  height: theme.spacing(4),
-},
-grid: {
-  marginTop: theme.spacing(2)
-}
+  button: {
+    margin: theme.spacing(2),
+    height: theme.spacing(4),
+  },
+  grid: {
+    marginTop: theme.spacing(2),
+  },
 }));
-
 
 export default function FilteringBar({
   availableGenres,
@@ -56,77 +55,83 @@ export default function FilteringBar({
 
   return (
     <Grid
-    className={grid}
-        container
-        spacing={2}
-        direction="row"
-        justify="center"
-        alignItems="flex-start"
-      >
-        <Grid item >
-      <SearchBox control={control} year={year} with_genres={with_genres} />
+      className={grid}
+      container
+      spacing={2}
+      direction="row"
+      justify="center"
+      alignItems="flex-start"
+    >
+      <Grid item>
+        <SearchBox control={control} year={year} with_genres={with_genres} />
       </Grid>
       <Grid item>
-
-      <FormControl className={formControl}>
-        <InputLabel shrink id="year-label">
-          Year
-        </InputLabel>
-        <Select
-          labelId="year"
-          id="year"
-          displayEmpty
-          disabled={!!query}
-          value={year}
-          autoWidth
-          className={selectEmpty}
-          {...register('year')}
-        >
-          <MenuItem key="" value="">
-            <em>All</em>
-          </MenuItem>
-          {yearsOfCinema.map((year) => {
-            return (
-              <MenuItem key={year} value={year}>
-                {year}
-              </MenuItem>
-            );
-          })}
-        </Select>
-      </FormControl>
-      </Grid>
-      <Grid item >
-
-      {availableGenres.length && (
         <FormControl className={formControl}>
-          <InputLabel shrink id="4">
-            Genre
+          <InputLabel shrink id="year-label">
+            Year
           </InputLabel>
           <Select
-            labelId="genre"
-            disabled={!!query}
-            id="genre"
-            value={with_genres}
+            labelId="year"
+            id="year"
             displayEmpty
+            disabled={!!query}
+            value={year}
             autoWidth
             className={selectEmpty}
-            {...register('with_genres')}
+            {...register('year')}
           >
             <MenuItem key="" value="">
               <em>All</em>
             </MenuItem>
-            {availableGenres.map(({ id, name }) => (
-              <MenuItem key={id} value={id}>
-                {name}
-              </MenuItem>
-            ))}
+            {yearsOfCinema.map((year) => {
+              return (
+                <MenuItem key={year} value={year}>
+                  {year}
+                </MenuItem>
+              );
+            })}
           </Select>
         </FormControl>
-      )}
       </Grid>
       <Grid item>
-      <Button className={button} size="small" variant="outlined" color="primary" onClick={handleClear}>Clear</Button>
+        {availableGenres.length && (
+          <FormControl className={formControl}>
+            <InputLabel shrink id="4">
+              Genre
+            </InputLabel>
+            <Select
+              labelId="genre"
+              disabled={!!query}
+              id="genre"
+              value={with_genres}
+              displayEmpty
+              autoWidth
+              className={selectEmpty}
+              {...register('with_genres')}
+            >
+              <MenuItem key="" value="">
+                <em>All</em>
+              </MenuItem>
+              {availableGenres.map(({ id, name }) => (
+                <MenuItem key={id} value={id}>
+                  {name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        )}
       </Grid>
-        </Grid>
+      <Grid item>
+        <Button
+          className={button}
+          size="small"
+          variant="outlined"
+          color="primary"
+          onClick={handleClear}
+        >
+          Clear
+        </Button>
+      </Grid>
+    </Grid>
   );
 }
