@@ -70,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.easeInOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
+    background: 'var(--bg-secondary)',
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
@@ -81,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9) + 1,
     },
+    background: 'var(--bg-secondary)',
   },
   toolbar: {
     display: 'flex',
@@ -92,6 +94,12 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+  },
+  listItemText: {
+    color: 'var(--text-primary)',
+  },
+  navIcon: {
+    color: 'var(--text-primary)',
   },
 }));
 
@@ -165,40 +173,39 @@ export default function Header() {
           <NavLink exact activeClassName="active" to="/">
             <ListItem button>
               <ListItemIcon>
-                <HomeIcon />
+                <HomeIcon className={classes.navIcon} />
               </ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText primary="Home" className={classes.listItemText} />
             </ListItem>
           </NavLink>
-        </List>
-        <List>
           <NavLink exact activeClassName="active" to="/movies">
             <ListItem button>
               <ListItemIcon>
-                <MovieIcon />
+                <MovieIcon className={classes.navIcon} />
               </ListItemIcon>
-              <ListItemText primary="Movie" />
+              <ListItemText primary="Movie" className={classes.listItemText} />
             </ListItem>
           </NavLink>
-        </List>
-
-        <List>
           <NavLink exact activeClassName="active" to="/favorites">
             <ListItem button>
               <ListItemIcon>
-                <StarsIcon />
+                <StarsIcon className={classes.navIcon} />
               </ListItemIcon>
-              <ListItemText primary="Favorites" />
+              <ListItemText
+                primary="Favorites"
+                className={classes.listItemText}
+              />
             </ListItem>
           </NavLink>
-        </List>
-        <List style={{ position: 'absolute', bottom: '0' }}>
           <NavLink exact activeClassName="active" to="/contact">
             <ListItem button>
               <ListItemIcon>
-                <MailIcon />
+                <MailIcon className={classes.navIcon} />
               </ListItemIcon>
-              <ListItemText primary="Contact Us" />
+              <ListItemText
+                primary="Contact Us"
+                className={classes.listItemText}
+              />
             </ListItem>
           </NavLink>
         </List>
