@@ -20,7 +20,7 @@ export default function MoviePage() {
   const location = useLocation();
 
   // the default values of the filters come from the querystring in the URL
-  const { register, watch, control } = useForm({
+  const { register, watch, control, reset} = useForm({
     defaultValues: {
       ...qs.parse(location.search),
     },
@@ -29,7 +29,8 @@ export default function MoviePage() {
   // watch for input changes
   const year = watch('year');
   const with_genres = watch('with_genres');
-  const query = watch('query');
+  let query = watch('query');
+  const clear = reset();
 
   useEffect(() => {
     if (!query) {
@@ -37,7 +38,7 @@ export default function MoviePage() {
         .get(apiUrl + apiPopularRoute + 'api_key=' + apiKey)
         .then(({ data }) => setMovieList(data.results));
     }
-  }, [query]);
+  }, [query, clear]);
 
   useEffect(() => {
     axios
@@ -76,23 +77,28 @@ export default function MoviePage() {
     }
   }, [query, year, with_genres, history, location.search]);
 
+  
+
+
+
   return (
     <>
       <h2>Movies</h2>
       <FilteringBar
         availableGenres={availableGenres}
-        setMovieList={setMovieList}
-        history={history}
-        location={location}
-        apiUrl={apiUrl}
-        apiKey={apiKey}
-        apiPopularRoute={apiPopularRoute}
+        // setMovieList={setMovieList}
+        // history={history}
+        // location={location}
+        // apiUrl={apiUrl}
+        // apiKey={apiKey}
+        // apiPopularRoute={apiPopularRoute}
         register={register}
-        watch={watch}
+        // watch={watch}
         year={year}
         with_genres={with_genres}
         query={query}
         control={control}
+        clear={reset}
       />
       <MovieList movieList={movieList} imgUrl={imgUrl} />
     </>

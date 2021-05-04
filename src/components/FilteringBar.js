@@ -6,11 +6,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import SearchBox from './SearchBox';
+import Button from '@material-ui/core/Button';
+// import { YoutubeSearchedForOutlined } from '@material-ui/icons';
 
 const localizedFormat = require('dayjs/plugin/localizedFormat');
 dayjs.extend(localizedFormat);
 
-const yearsOfCinema = new Array(dayjs().year() - 1893)
+let yearsOfCinema = new Array(dayjs().year() - 1893)
   .fill()
   .map((_, i) => i + 1894)
   .sort((a, b) => b - a);
@@ -48,10 +50,13 @@ export default function FilteringBar({
   register,
   year,
   control,
+  clear,
 }) {
   // Here we grab the styles needed
   const { formControl, selectEmpty } = useStyles();
-
+  
+ const handleClear = () => clear;
+  
   return (
     <div className="filtering-bar">
       <FormControl className={formControl}>
@@ -107,6 +112,7 @@ export default function FilteringBar({
         </FormControl>
       )}
       <SearchBox control={control} year={year} with_genres={with_genres} />
+    <Button onClick={handleClear}>Clear</Button>
     </div>
   );
 }
