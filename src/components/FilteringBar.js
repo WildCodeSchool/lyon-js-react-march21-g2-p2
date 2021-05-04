@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 import './FilteringBar.css';
 import { makeStyles } from '@material-ui/core/styles';
-import { Controller } from 'react-hook-form';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -67,20 +66,15 @@ export default function FilteringBar({
         <InputLabel shrink id="year-label">
           Year
         </InputLabel>
-        <Controller
-          name="year"
-          control={control}
-          render={({ field }) => {
-            return (
               <Select
                 labelId="year"
                 id="year"
                 displayEmpty
-                // disabled={!!query}
-                // value={year}
+                disabled={!!query}
+                value={year}
                 autoWidth
                 className={selectEmpty}
-                {...field}
+                {...register('year')}
               >
                 <MenuItem key="" value="">
                   <em>All</em>
@@ -93,16 +87,6 @@ export default function FilteringBar({
                   );
                 })}
               </Select>
-              // <InputBase
-              //   type="text"
-              //   disabled={!!year || !!with_genres}
-              //   className={input}
-              //   placeholder="Search for a movie"
-              //   inputProps={{ 'aria-label': 'Search for a movie', ...field }}
-              // />
-            );
-          }}
-        />
       </FormControl>
       {availableGenres.length && (
         <FormControl className={formControl}>

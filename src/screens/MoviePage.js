@@ -30,7 +30,6 @@ export default function MoviePage() {
       year: defaultYear,
       with_genres: defaultWith_genres,
       query: defaultQuery,
-      // ...qs.parse(location.search),
     },
   });
 
