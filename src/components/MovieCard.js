@@ -99,7 +99,7 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
 
   return (
     <Link key={movieId} to={`/movies/${movieId}`}>
-      <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
+      <Grid item>
         <Card className={clsx(card)}>
           <CardMedia
             classes={mediaStyles}
