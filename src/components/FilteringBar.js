@@ -64,45 +64,45 @@ export default function FilteringBar({
   return (
     <div className="filtering-bar">
       <FormControl className={formControl}>
-        {/* <Controller
-        name="query"
-        control={control}
-        render={({ field }) => {
-          return (
-            <InputBase
-              type="text"
-              disabled={!!year || !!with_genres}
-              className={input}
-              placeholder="Search for a movie"
-              inputProps={{ 'aria-label': 'Search for a movie', ...field }}
-            />
-          );
-        }}
-      /> */}
         <InputLabel shrink id="year-label">
           Year
         </InputLabel>
-        <Select
-          labelId="year"
-          id="year"
-          displayEmpty
-          disabled={!!query}
-          value={year}
-          autoWidth
-          className={selectEmpty}
-          {...register('year')}
-        >
-          <MenuItem key="" value="">
-            <em>All</em>
-          </MenuItem>
-          {yearsOfCinema.map((year) => {
+        <Controller
+          name="year"
+          control={control}
+          render={({ field }) => {
             return (
-              <MenuItem key={year} value={year}>
-                {year}
-              </MenuItem>
+              <Select
+                labelId="year"
+                id="year"
+                displayEmpty
+                // disabled={!!query}
+                // value={year}
+                autoWidth
+                className={selectEmpty}
+                {...field}
+              >
+                <MenuItem key="" value="">
+                  <em>All</em>
+                </MenuItem>
+                {yearsOfCinema.map((year) => {
+                  return (
+                    <MenuItem key={year} value={year}>
+                      {year}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+              // <InputBase
+              //   type="text"
+              //   disabled={!!year || !!with_genres}
+              //   className={input}
+              //   placeholder="Search for a movie"
+              //   inputProps={{ 'aria-label': 'Search for a movie', ...field }}
+              // />
             );
-          })}
-        </Select>
+          }}
+        />
       </FormControl>
       {availableGenres.length && (
         <FormControl className={formControl}>
