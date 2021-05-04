@@ -97,6 +97,9 @@ const useStyles = makeStyles((theme) => ({
   },
   listItemText: {
     color: 'var(--text-primary)',
+    '& *': {
+      fontFamily: 'var(--sans-serif-font)',
+    },
   },
   navIcon: {
     color: 'var(--text-primary)',
