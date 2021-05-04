@@ -66,27 +66,27 @@ export default function FilteringBar({
         <InputLabel shrink id="year-label">
           Year
         </InputLabel>
-              <Select
-                labelId="year"
-                id="year"
-                displayEmpty
-                disabled={!!query}
-                value={year}
-                autoWidth
-                className={selectEmpty}
-                {...register('year')}
-              >
-                <MenuItem key="" value="">
-                  <em>All</em>
-                </MenuItem>
-                {yearsOfCinema.map((year) => {
-                  return (
-                    <MenuItem key={year} value={year}>
-                      {year}
-                    </MenuItem>
-                  );
-                })}
-              </Select>
+        <Select
+          labelId="year"
+          id="year"
+          displayEmpty
+          disabled={!!query}
+          value={year}
+          autoWidth
+          className={selectEmpty}
+          {...register('year')}
+        >
+          <MenuItem key="" value="">
+            <em>All</em>
+          </MenuItem>
+          {yearsOfCinema.map((year) => {
+            return (
+              <MenuItem key={year} value={year}>
+                {year}
+              </MenuItem>
+            );
+          })}
+        </Select>
       </FormControl>
       {availableGenres.length && (
         <FormControl className={formControl}>
