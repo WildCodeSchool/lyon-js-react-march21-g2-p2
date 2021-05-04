@@ -12,6 +12,9 @@
   --bg-secondary: var(--dark-grey);
   --accent-color-2: var(--orange);
   --accent-color-1: var(--yellow);
+
+  --serif-font: 'Cormorant Garamond', serif;
+  --sans-serif-font: 'Poppins', sans-serif;
 }
 
 #root {
@@ -82,16 +85,15 @@ h4 {
   margin-top: 0.5em;
   margin-bottom: 1em;
   text-align: center;
+  font-family: var(--sans-serif-font);
 }
 
 .title {
   text-transform: uppercase;
-  margin-top: 0.5em;
-  margin-bottom: 1em;
-  text-align: center;
-  font-size: 2em !important;
-  font-weight: bold !important;
+  font-size: 3em !important;
+  font-weight: 500 !important;
   color: var(--text-primary) !important;
+  font-family: var(--serif-font) !important;
 }
 
 p {
