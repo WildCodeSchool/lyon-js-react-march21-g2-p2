@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import MovieInfos from '../components/MovieInfos';
 import ReviewList from '../components/ReviewList';
 import React, { useEffect, useState } from 'react';
@@ -26,13 +27,9 @@ export default function DetailsPage() {
 
   useEffect(() => {
     // Get movie Id from the url
-
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/' +
-          id +
-          '/credits?' +
-          'api_key=f22eb05a70b166bd4e2c1312e15d8e8b'
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
       )
       .then(({ data }) => {
         setMovieInfo({
@@ -40,13 +37,14 @@ export default function DetailsPage() {
           actors: data.cast.slice(0, 5),
           directors: data.crew.filter(({ job }) => job === 'Director'),
         });
-      });
+        console.log(data.crew.filter(({ job }) => job === 'Director'));
+        console.log(movieInfo);
+      })
+      .catch((err) => console.error(err));
 
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/' +
-          id +
-          '?api_key=f22eb05a70b166bd4e2c1312e15d8e8b'
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
       )
       .then(({ data }) => {
         setMovieInfo({
@@ -57,7 +55,8 @@ export default function DetailsPage() {
           title: data.title,
           date: data.release_date,
         });
-      });
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   const { card } = useStyles();

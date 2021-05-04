@@ -43,7 +43,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
   },
 }));
-const imgUrl = 'https://image.tmdb.org/t/p/w200';
+const imgUrl = 'https://image.tmdb.org/t/p/w500';
 
 export default function MovieInfos({
   directors = [],
@@ -78,7 +78,7 @@ export default function MovieInfos({
             <CardMedia
               className={cardStyle}
               classes={mediaStyles}
-              image={poster}
+              image={imgUrl + poster}
             />
           </Card>
         </Grid>
