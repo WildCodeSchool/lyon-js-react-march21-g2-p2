@@ -61,11 +61,6 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     height: '100%',
   },
-  media: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  },
   isFav: {
     color: 'var(--accent-color-2)',
   },
