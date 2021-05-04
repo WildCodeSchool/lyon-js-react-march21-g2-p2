@@ -22,7 +22,6 @@ const MovieList = ({ movieList, imgUrl }) => {
             title,
             poster_path,
             overview,
-            profile_path
           }) => (
             <MovieCard
               id={id}
@@ -33,8 +32,6 @@ const MovieList = ({ movieList, imgUrl }) => {
               genre={genre_ids}
               average={vote_average}
               poster={poster_path ? imgUrl + poster_path : null}
-
-
             />
           )
         )}

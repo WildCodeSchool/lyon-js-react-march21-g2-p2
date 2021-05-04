@@ -4,7 +4,7 @@ import './MovieCard.css';
 import DetailsPage from '../screens/DetailsPage';
 import createPersistedState from 'use-persisted-state';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 //------MUI import------//
 import IconButton from '@material-ui/core/IconButton';
@@ -83,17 +83,33 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
 }));
-
 
 const apiUrl = 'https://api.themoviedb.org/3';
 const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
-const MovieCard = ({ id: movieId, title, genre, poster, average, date, synopsis, imgUrl }) => {
+const MovieCard = ({
+  id: movieId,
+  title,
+  genre,
+  poster,
+  average,
+  date,
+  synopsis,
+  imgUrl,
+}) => {
   const movieInfos = { movieId, title, average, date, synopsis, genre, imgUrl };
-  const { card, content, movieInfo, favorite, isFav, notFav, modal, typography } = useStyles();
+  const {
+    card,
+    content,
+    movieInfo,
+    favorite,
+    isFav,
+    notFav,
+    modal,
+    typography,
+  } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
@@ -110,19 +126,17 @@ const MovieCard = ({ id: movieId, title, genre, poster, average, date, synopsis,
         [movieId]: isFavorite
           ? false
           : {
-            id: movieId,
-            title: title,
-            genre: genre,
-            poster_path: poster,
-          },
+              id: movieId,
+              title: title,
+              genre: genre,
+              poster_path: poster,
+            },
       };
     });
   };
 
-
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
-
 
   /*To get the informations required*/
 
@@ -136,17 +150,16 @@ const MovieCard = ({ id: movieId, title, genre, poster, average, date, synopsis,
     setOpen(false);
   };
 
-
   useEffect(() => {
     if (open) {
       axios
         .get(
           apiUrl +
-          '/movie/' +
-          movieId +
-          '/credits?api_key=' +
-          apiKey +
-          '&language=en-US'
+            '/movie/' +
+            movieId +
+            '/credits?api_key=' +
+            apiKey +
+            '&language=en-US'
         )
         .then((crewInfos) => {
           setMovieActors(crewInfos.data.cast);
@@ -158,11 +171,8 @@ const MovieCard = ({ id: movieId, title, genre, poster, average, date, synopsis,
     }
   }, [open, movieId]);
   return (
-
     <Grid item key={movieId} xs={10} sm={6} md={4} lg={3} xl={2}>
-      <Card className={card}
-        onClick={handleOpen}
-      >
+      <Card className={card} onClick={handleOpen}>
         <CardMedia
           classes={mediaStyles}
           image={
@@ -186,10 +196,7 @@ const MovieCard = ({ id: movieId, title, genre, poster, average, date, synopsis,
           </Info>
         </Box>
       </Card>
-      <Modal
-        className={modal}
-        open={open}
-        onClose={handleClose}>
+      <Modal className={modal} open={open} onClose={handleClose}>
         <Typography key={movieId} className={typography}>
           <DetailsPage
             poster={poster}
@@ -199,10 +206,8 @@ const MovieCard = ({ id: movieId, title, genre, poster, average, date, synopsis,
           />
         </Typography>
       </Modal>
-    </Grid >
-
+    </Grid>
   );
 };
 
 export default MovieCard;
-

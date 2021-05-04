@@ -5,9 +5,8 @@ import FavoritePage from '../screens/FavoritePage';
 import ContactPage from '../screens/ContactPage';
 import DetailsPage from '../screens/DetailsPage';
 import { makeStyles } from '@material-ui/core/styles';
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 import Modal from '@material-ui/core/Modal';
-
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -28,7 +27,6 @@ export default function Main() {
   const classes = useStyles();
   let location = useLocation();
   let background = location.state && location.state.background;
-
 
   return (
     <main className={classes.content}>

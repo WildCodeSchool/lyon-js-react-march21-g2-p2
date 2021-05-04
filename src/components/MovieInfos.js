@@ -27,29 +27,34 @@ const useStyles = makeStyles(() => ({
   },
   synopsis: {
     display: 'block',
-
   },
   picture: {
-    display: "flex",
-    width: "160px",
-    height: "160px",
-    backgroundPosition: "center center",
-    backgroundRepeat: "no-repeat",
-    borderRadius: "50%",
-    flexDirection: "row"
+    display: 'flex',
+    width: '100px',
+    height: '100px',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    borderRadius: '50%',
+    flexDirection: 'row',
   },
   contentPicture: {
-    display: "flex",
-    flexDirection: "row"
-  }
+    display: 'flex',
+    flexDirection: 'row',
 
+  },
 }));
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 
 export default function MovieInfos(props) {
-  const { card, cardStyle, content, synopsis, picture, contentPicture } = useStyles();
+  const {
+    card,
+    cardStyle,
+    content,
+    synopsis,
+    picture,
+    contentPicture,
+  } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
-
 
   return (
     <>
@@ -67,7 +72,6 @@ export default function MovieInfos(props) {
               classes={mediaStyles}
               image={props.poster}
             />
-
           </Card>
         </Grid>
         <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
@@ -82,21 +86,23 @@ export default function MovieInfos(props) {
                 <p key={director.id}>{director.name}</p>
               ))}
             </div>
-            <div className={contentPicture}>
-              <h2>Actors :</h2>
-              {props.actors.map(({ name, character, profile_path, id }) => (
-                <p key={id}>
 
-                  <div className={picture} style={{ backgroundImage: `url(${profile_path ? imgUrl + profile_path : null})` }}
-                  ></div>
-                  <strong>{name}</strong> - {character}
-                </p>))}
-            </div>
             <div className={synopsis}>
               <h2>Synopsis :</h2>
-              <p >{props.synopsis}</p>
+              <p>{props.synopsis}</p>
             </div>
 
+            <h2>Actors :</h2>
+            <div className={contentPicture}>
+              {props.actors.map(({ name, character, profile_path, id }) => (
+                <p key={id}>
+                  <img
+                    className={picture}
+                    src={profile_path ? imgUrl + profile_path : null} alt={name} />
+                  <strong>{name}</strong> - { character}
+                </p>
+              ))}
+            </div>
           </div>
         </Grid>
       </Grid>

@@ -8,23 +8,31 @@ import UserCommentsSection from '../components/UsersComment';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 
-
 const useStyles = makeStyles(() => ({
   card: {
-
     borderRadius: '1rem',
     boxShadow: 'none',
     position: 'relative',
     margin: 0,
     padding: '1em',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 }));
 
-export default function DetailsPage({ movieProductionCrew, movieActors, movieInfos, poster }) {
+export default function DetailsPage({
+  movieProductionCrew,
+  movieActors,
+  movieInfos,
+  poster,
+}) {
   /*Use states we need to store the APIs call*/
 
   const { card } = useStyles();
-  const director = movieProductionCrew.filter((crew) => crew.job === 'Director');
+  const director = movieProductionCrew.filter(
+    (crew) => crew.job === 'Director'
+  );
   const mainActors = movieActors.slice(0, 5);
   /*To get the informations required*/
   return (
@@ -38,7 +46,6 @@ export default function DetailsPage({ movieProductionCrew, movieActors, movieInf
           synopsis={movieInfos.synopsis}
           actors={mainActors}
           director={director}
-
         />
         <UserCommentsSection title={movieInfos.title} id={movieInfos.movieId} />
         <ReviewList movie_id={movieInfos.movieId} />
