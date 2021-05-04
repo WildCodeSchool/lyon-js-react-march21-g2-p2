@@ -32,11 +32,13 @@ const useStyles = makeStyles(() => ({
   },
   genreList: {
     listStyle: 'none',
-    diplay: 'flex',
-    flexDirection: 'row',
     '& > li': {
       color: 'var(--text-primary)',
     },
+  },
+  genreListItem: {
+    display: 'inline-block',
+    marginRight: '1em',
   },
 }));
 
@@ -87,7 +89,9 @@ export default function MovieInfos(props) {
             <h3>Genres:</h3>
             <ul className={styles.genreList}>
               {props.movieGenreList.map(({ id, name }) => (
-                <li key={id}>{name}</li>
+                <li className={styles.genreListItem} key={id}>
+                  {name}
+                </li>
               ))}
             </ul>
             <h3>Synopsis:</h3>
