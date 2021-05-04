@@ -7,7 +7,6 @@ import DetailsPage from '../screens/DetailsPage';
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom';
 
-
 const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
@@ -33,7 +32,7 @@ export default function Main() {
       <div className={classes.toolbar} />
       <Switch location={modal || location}>
         <Route exact path="/" component={HomePage} />
-        <Route excat path="/movies" component={MoviePage} />
+        <Route exact path="/movies" component={MoviePage} />
         <Route exact path="/favorites" component={FavoritePage} />
         <Route exact path="/contact" component={ContactPage} />
         <Route exact path="/movies/:tmdb_id" component={DetailsPage} />

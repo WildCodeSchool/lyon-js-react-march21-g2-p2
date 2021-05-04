@@ -10,14 +10,16 @@ import Card from '@material-ui/core/Card';
 
 const useStyles = makeStyles(() => ({
   card: {
+    display: 'flex',
     borderRadius: '1rem',
     boxShadow: 'none',
     position: 'relative',
     margin: 'auto',
     padding: '1em',
-    maxWidth: '80%',
-    maxHeight: '80%',
+    width: '90%',
+    height: '80%',
     overflowY: 'scroll',
+
   },
 }));
 

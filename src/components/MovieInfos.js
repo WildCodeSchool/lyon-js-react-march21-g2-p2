@@ -1,7 +1,6 @@
 /*component import*/
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 
@@ -9,42 +8,57 @@ import React from 'react';
 
 const useStyles = makeStyles(() => ({
   card: {
+    display: 'flex',
     borderRadius: '1rem',
-    boxShadow: 'none',
     position: 'relative',
     margin: 0,
-    width: 300,
-    height: 500,
+    width: 200,
+    height: 300,
     flexDirection: 'row',
-    justify: 'flex-start',
+    justifyContent: 'flex-start',
     alignItems: 'center',
+
   },
-  content: {
+  title: {
+    paddingBottom: '1em',
+    borderBottom: "solid 1px"
+  },
+  date: {
+    paddingBottom: '1em',
+    borderBottom: "solid 1px"
+  },
+  directorName: {
+    paddingBottom: '1em',
+    borderBottom: "solid 1px"
+  },
+  synopsisCss: {
+    paddingBottom: '1em',
+    borderBottom: "solid 1px"
+  },
+  actorContent: {
     display: 'flex',
-    flexDirection: 'column',
     justifyContent: 'center',
-    zIndex: 2,
-    bottom: 0,
-    width: '100%',
-    margin: 0,
+    flexDirection: 'row',
+    border: "solid",
+    alignItems: 'flex-end'
   },
-  synopsis: {
-    display: 'block',
-  },
-  picture: {
+  actor: {
     display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  actorsPaths: {
+    height: "100px",
     width: '100px',
-    height: '100px',
-    backgroundPosition: 'center center',
-    backgroundRepeat: 'no-repeat',
-    borderRadius: '50%',
-    flexDirection: 'row',
+    borderRadius: '50%'
   },
-  contentPicture: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
+  actorName: {
+    display: 'flex'
+
+  }
+
+
 }));
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 
@@ -52,65 +66,66 @@ export default function MovieInfos(props) {
   const {
     card,
     cardStyle,
-    content,
-    synopsis,
-    picture,
-    contentPicture,
+    boxContent,
+    details,
+    actorContent,
+    actorName,
+    actorsPaths, title, date, directorName, synopsisCss
   } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
   return (
     <>
-      <Grid
-        container
-        spacing={8}
-        direction="row"
-        justify="flex-start"
-        alignItems="center"
-      >
-        <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
-          <Card className={card}>
-            <CardMedia
-              className={cardStyle}
-              classes={mediaStyles}
-              image={props.poster}
-            />
-          </Card>
-        </Grid>
-        <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
-          <div className={content}>
+      <Card className={card}>
+        <CardMedia
+          className={cardStyle}
+          classes={mediaStyles}
+          image={props.poster}
+        />
+      </Card>
+      <div className={boxContent}>
+        <div className={details}>
+          <div className={title}>
             <h2>Title :</h2>
             <p>{props.title}</p>
+          </div>
+          <div className={date}>
             <h2>Date :</h2>
             <p>{props.date}</p>
-            <h2>Director :</h2>
-            <div>
-              {props.director.map((director) => (
-                <p key={director.id}>{director.name}</p>
-              ))}
-            </div>
-
-            <div className={synopsis}>
-              <h2>Synopsis :</h2>
-              <p>{props.synopsis}</p>
-            </div>
-
-            <h2>Actors :</h2>
-            <div className={contentPicture}>
-              {props.actors.map(({ name, character, profile_path, id }) => (
-                <p key={id}>
-                  <img
-                    className={picture}
-                    src={profile_path ? imgUrl + profile_path : null}
-                    alt={name}
-                  />
-                  <strong>{name}</strong> - {character}
-                </p>
-              ))}
-            </div>
           </div>
-        </Grid>
-      </Grid>
+          <div className={directorName}>
+            <h2>Director :</h2>
+            {props.director.map((director) => (
+              <p key={director.id}>{director.name}</p>
+            ))}
+          </div>
+          <div className={synopsisCss}>
+            <h2>Synopsis :</h2>
+            <p>{props.synopsis}</p>
+          </div>
+
+          <h2>Casting :</h2>
+          <div className={actorContent}>
+            {props.actors.map(({ name, character, profile_path, id }) => (
+              <>
+                <div>
+                  <img className={actorsPaths}
+                    src={profile_path ? imgUrl + profile_path : null}
+                    alt={name} />
+                </div>
+                <br />
+                <div className={actorName}>
+                  <p key={id}>
+                    <strong>{name}</strong> - {character}
+                  </p>
+                </div>
+              </>
+
+            ))}
+          </div>
+        </div>
+      </div>
+
     </>
   );
 }
