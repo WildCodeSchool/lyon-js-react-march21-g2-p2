@@ -1,11 +1,8 @@
-/*component import*/
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
-
-import React from 'react';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -28,7 +25,7 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     margin: 0,
   },
-  synopsis: {
+  synopsisStyle: {
     display: 'block',
   },
   picture: {
@@ -48,12 +45,20 @@ const useStyles = makeStyles(() => ({
 }));
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 
-export default function MovieInfos(props) {
+export default function MovieInfos({
+  directors = [],
+  poster,
+  title,
+  date,
+  synopsis,
+  actors = [],
+}) {
+  // Style
   const {
     card,
     cardStyle,
     content,
-    synopsis,
+    synopsisStyle,
     picture,
     contentPicture,
   } = useStyles();
@@ -73,31 +78,29 @@ export default function MovieInfos(props) {
             <CardMedia
               className={cardStyle}
               classes={mediaStyles}
-              image={props.poster}
+              image={poster}
             />
           </Card>
         </Grid>
         <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
           <div className={content}>
             <h2>Title :</h2>
-            <p>{props.title}</p>
+            <p>{title}</p>
             <h2>Date :</h2>
-            <p>{props.date}</p>
+            <p>{date}</p>
             <h2>Director :</h2>
             <div>
-              {props.director.map((director) => (
+              {directors.map((director) => (
                 <p key={director.id}>{director.name}</p>
               ))}
             </div>
-
-            <div className={synopsis}>
+            <div className={synopsisStyle}>
               <h2>Synopsis :</h2>
-              <p>{props.synopsis}</p>
+              <p>{synopsis}</p>
             </div>
-
             <h2>Actors :</h2>
             <div className={contentPicture}>
-              {props.actors.map(({ name, character, profile_path, id }) => (
+              {actors.map(({ name, character, profile_path, id }) => (
                 <p key={id}>
                   <img
                     className={picture}
