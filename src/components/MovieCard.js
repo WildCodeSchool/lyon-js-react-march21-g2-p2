@@ -16,12 +16,11 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   card: {
-    borderRadius: '1rem',
-    boxShadow: 'none',
+    borderRadius: '1em',
     position: 'relative',
-    margin: 10,
-    width: 250,
-    height: 400,
+    margin: '1em',
+    width: 200,
+    height: 300,
     '&:after': {
       content: '""',
       bottom: 0,
@@ -56,7 +55,6 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    marginRight: 25,
     textAlign: 'start',
     width: '100%',
     height: '100%',
