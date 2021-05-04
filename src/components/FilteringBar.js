@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import './FilteringBar.css';
 import { makeStyles } from '@material-ui/core/styles';
+import { Controller } from 'react-hook-form';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -55,11 +56,28 @@ export default function FilteringBar({
   // Here we grab the styles needed
   const { formControl, selectEmpty } = useStyles();
 
-  const handleClear = () => clear;
+  const handleClear = (e) => {
+    e.preventDefault();
+    clear({year: "", with_genres: ""})};
 
   return (
     <div className="filtering-bar">
       <FormControl className={formControl}>
+      {/* <Controller
+        name="query"
+        control={control}
+        render={({ field }) => {
+          return (
+            <InputBase
+              type="text"
+              disabled={!!year || !!with_genres}
+              className={input}
+              placeholder="Search for a movie"
+              inputProps={{ 'aria-label': 'Search for a movie', ...field }}
+            />
+          );
+        }}
+      /> */}
         <InputLabel shrink id="year-label">
           Year
         </InputLabel>

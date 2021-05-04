@@ -30,7 +30,7 @@ export default function MoviePage() {
   const year = watch('year');
   const with_genres = watch('with_genres');
   let query = watch('query');
-  const clear = reset();
+ 
 
   useEffect(() => {
     if (!query) {
@@ -38,7 +38,7 @@ export default function MoviePage() {
         .get(apiUrl + apiPopularRoute + 'api_key=' + apiKey)
         .then(({ data }) => setMovieList(data.results));
     }
-  }, [query, clear]);
+  }, [query]);
 
   useEffect(() => {
     axios
