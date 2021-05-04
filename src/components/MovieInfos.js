@@ -1,11 +1,11 @@
 /*component import*/
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
-import clsx from 'clsx';
+
+import React from 'react';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -25,20 +25,31 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     margin: 0,
   },
-  media: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+  synopsis: {
+    display: 'block',
+
   },
+  picture: {
+    display: "flex",
+    width: "160px",
+    height: "160px",
+    backgroundPosition: "center center",
+    backgroundRepeat: "no-repeat",
+    borderRadius: "50%",
+    flexDirection: "row"
+  },
+  contentPicture: {
+    display: "flex",
+    flexDirection: "row"
+  }
+
 }));
+const imgUrl = 'https://image.tmdb.org/t/p/w200';
 
 export default function MovieInfos(props) {
-  const styles = useStyles();
+  const { card, cardStyle, content, synopsis, picture, contentPicture } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
-  const director = props.prodCrew.filter((crew) => crew.job === 'Director');
-
-  const mainActors = props.actors.slice(0, 5);
 
   return (
     <>
@@ -50,36 +61,42 @@ export default function MovieInfos(props) {
         alignItems="center"
       >
         <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
-          <Card className={clsx(styles.card)}>
+          <Card className={card}>
             <CardMedia
-              className={clsx(styles.cardStyle)}
+              className={cardStyle}
               classes={mediaStyles}
               image={props.poster}
             />
+
           </Card>
         </Grid>
         <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
-          <div className={styles.content}>
-            <h2>{props.title}</h2>
-            <h3>{props.date}</h3>
-            <h3>Director :</h3>
+          <div className={content}>
+            <h2>Title :</h2>
+            <p>{props.title}</p>
+            <h2>Date :</h2>
+            <p>{props.date}</p>
+            <h2>Director :</h2>
             <div>
-              {director.map((director) => (
+              {props.director.map((director) => (
                 <p key={director.id}>{director.name}</p>
               ))}
             </div>
-            <h3>Cast:</h3>
-            {mainActors.map((actor) => (
-              <p key={actor.id}>
-                <strong>{actor.name}</strong> as {actor.character}
-              </p>
-            ))}
-            <h3>Genres:</h3>
-            {props.movieGenreList.map(({ id, name }) => (
-              <p key={id}>{name}</p>
-            ))}
-            <h3>Synopsis:</h3>
-            <p>{props.synopsis}</p>
+            <div className={contentPicture}>
+              <h2>Actors :</h2>
+              {props.actors.map(({ name, character, profile_path, id }) => (
+                <p key={id}>
+
+                  <div className={picture} style={{ backgroundImage: `url(${profile_path ? imgUrl + profile_path : null})` }}
+                  ></div>
+                  <strong>{name}</strong> - {character}
+                </p>))}
+            </div>
+            <div className={synopsis}>
+              <h2>Synopsis :</h2>
+              <p >{props.synopsis}</p>
+            </div>
+
           </div>
         </Grid>
       </Grid>

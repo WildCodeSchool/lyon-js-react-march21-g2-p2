@@ -61,10 +61,10 @@ export default function MoviePage() {
       axios
         .get(
           apiUrl +
-            apiPopularRoute +
-            queryString.substring(1) +
-            '&api_key=' +
-            apiKey
+          apiPopularRoute +
+          queryString.substring(1) +
+          '&api_key=' +
+          apiKey
         )
         .then((res) => {
           setMovieList(res.data.results);

@@ -79,9 +79,8 @@ export default function UserCommentsSection(props) {
           {...register('comment')}
         />
         <Button
-          color="primary"
           className={classes.Button}
-          variant="contained"
+          variant="outlined"
           type="submit"
           endIcon={<Icon>send</Icon>}
         >
