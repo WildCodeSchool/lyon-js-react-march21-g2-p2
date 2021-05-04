@@ -20,7 +20,7 @@ export default function MoviePage() {
   const location = useLocation();
 
   // the default values of the filters come from the querystring in the URL
-  const { register, watch, control, reset} = useForm({
+  const { register, watch, control, reset } = useForm({
     defaultValues: {
       ...qs.parse(location.search),
     },
@@ -76,10 +76,6 @@ export default function MoviePage() {
         .then(({ data }) => setMovieList(data.results));
     }
   }, [query, year, with_genres, history, location.search]);
-
-  
-
-
 
   return (
     <>

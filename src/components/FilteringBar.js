@@ -54,9 +54,9 @@ export default function FilteringBar({
 }) {
   // Here we grab the styles needed
   const { formControl, selectEmpty } = useStyles();
-  
- const handleClear = () => clear;
-  
+
+  const handleClear = () => clear;
+
   return (
     <div className="filtering-bar">
       <FormControl className={formControl}>
@@ -112,7 +112,7 @@ export default function FilteringBar({
         </FormControl>
       )}
       <SearchBox control={control} year={year} with_genres={with_genres} />
-    <Button onClick={handleClear}>Clear</Button>
+      <Button onClick={handleClear}>Clear</Button>
     </div>
   );
 }
