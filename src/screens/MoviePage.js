@@ -30,7 +30,6 @@ export default function MoviePage() {
   const year = watch('year');
   const with_genres = watch('with_genres');
   let query = watch('query');
- 
 
   useEffect(() => {
     if (!query) {

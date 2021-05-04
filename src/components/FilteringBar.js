@@ -58,12 +58,13 @@ export default function FilteringBar({
 
   const handleClear = (e) => {
     e.preventDefault();
-    clear({year: "", with_genres: ""})};
+    clear({ year: '', with_genres: '' });
+  };
 
   return (
     <div className="filtering-bar">
       <FormControl className={formControl}>
-      {/* <Controller
+        {/* <Controller
         name="query"
         control={control}
         render={({ field }) => {
