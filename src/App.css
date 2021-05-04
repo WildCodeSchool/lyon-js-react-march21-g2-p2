@@ -7,7 +7,7 @@
   --yellow: hsl(54, 79%, 65%);
 
   --text-primary: var(--lighter-grey);
-  --text-secondary: var(var(--light-grey));
+  --text-secondary: var(--light-grey);
   --bg-primary: var(--darker-grey);
   --bg-secondary: var(--dark-grey);
   --accent-color-2: var(--orange);
