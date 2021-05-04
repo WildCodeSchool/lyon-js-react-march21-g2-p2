@@ -3,25 +3,11 @@ import React from 'react';
 import FavoriteInfos from './FavoriteInfos';
 
 const FavoriteList = ({ movieList, imgUrl }) => {
-  
-
   return (
     <>
-      <Grid
-        container
-        spacing={8}
-        direction="row"
-        style={{ marginTop: '2em' }}
-      >
-        {movieList.map(
-          ({
-            id,
-            release_date,
-            title,
-            poster_path,
-            overview
-          }) => (
-            <FavoriteInfos
+      <Grid container spacing={8} direction="row" style={{ marginTop: '2em' }}>
+        {movieList.map(({ id, release_date, title, poster_path, overview }) => (
+          <FavoriteInfos
             key={id}
             id={id}
             poster={imgUrl + poster_path}
@@ -29,8 +15,7 @@ const FavoriteList = ({ movieList, imgUrl }) => {
             date={release_date}
             synopsis={overview}
           />
-          )
-        )}
+        ))}
       </Grid>
     </>
   );

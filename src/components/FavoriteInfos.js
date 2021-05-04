@@ -35,26 +35,31 @@ const useStyles = makeStyles(() => ({
     // display: 'inline-block',
     // width: '100%',
     // height: '100%',
-  }
+  },
 }));
 
 const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 
-export default function FavoriteInfos({key, id, poster, title, date, synopsis}) {
-
+export default function FavoriteInfos({
+  key,
+  id,
+  poster,
+  title,
+  date,
+  synopsis,
+}) {
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
-  
+
   useEffect(() => {
-
-
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=en-US`)
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=en-US`
+      )
       .then((crewInfos) => {
-          setMovieActors(crewInfos.data.cast);
-          setMovieProductionCrew(crewInfos.data.crew);
-        })
+        setMovieActors(crewInfos.data.cast);
+        setMovieProductionCrew(crewInfos.data.crew);
+      })
       .catch((error) => {
         console.log('Error :', error);
       });
@@ -63,17 +68,15 @@ export default function FavoriteInfos({key, id, poster, title, date, synopsis}) 
   const styles = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
-  const director = movieProductionCrew.filter((crew) => crew.job === 'Director');
+  const director = movieProductionCrew.filter(
+    (crew) => crew.job === 'Director'
+  );
 
   const mainActors = movieActors.slice(0, 5);
 
   return (
     <>
-      <Grid
-        container
-        spacing={4}
-        direction="row"
-      >
+      <Grid container spacing={4} direction="row">
         <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
           <Card className={clsx(styles.card)}>
             <CardMedia
@@ -86,22 +89,22 @@ export default function FavoriteInfos({key, id, poster, title, date, synopsis}) 
         <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
           <div className={styles.content}>
             <div className={styles.text}>
-            <h2>{title}</h2>
-            <h3>{date}</h3>
-            <h3>Director :</h3>
-            <div>
-              {director.map((director) => (
-                <p key={director.id}>{director.name}</p>
+              <h2>{title}</h2>
+              <h3>{date}</h3>
+              <h3>Director :</h3>
+              <div>
+                {director.map((director) => (
+                  <p key={director.id}>{director.name}</p>
+                ))}
+              </div>
+              <h3>Cast:</h3>
+              {mainActors.map((actor) => (
+                <p key={actor.id}>
+                  <strong>{actor.name}</strong> as {actor.character}
+                </p>
               ))}
-            </div>
-            <h3>Cast:</h3>
-            {mainActors.map((actor) => (
-              <p key={actor.id}>
-                <strong>{actor.name}</strong> as {actor.character}
-              </p>
-            ))}
-            <h3>Synopsis:</h3>
-            <p>{synopsis}</p>
+              <h3>Synopsis:</h3>
+              <p>{synopsis}</p>
             </div>
           </div>
         </Grid>
