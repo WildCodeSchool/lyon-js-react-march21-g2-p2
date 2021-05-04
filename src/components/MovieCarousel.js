@@ -11,15 +11,12 @@ import './MovieCard.js';
 
 const useStyles = makeStyles(() => ({
   carousel: {
-    
     cursor: 'pointer',
     objectFit: 'cover',
     display: 'flex',
     justifyContent: 'center',
-    
     width:'70vw',
     height: 350,
-    
   },
   carouselStyle: {
     display: 'flex',

@@ -1,11 +1,11 @@
 //------------------ IMPORT COMPONENTS & STYLES -------------//
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import { useForm } from 'react-hook-form';
-import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 //---------------------- STYLE CSS -------------------------//
 
@@ -34,21 +34,29 @@ const useStyles = makeStyles((theme) => ({
 
 //--------------------------- COMMENTS FUNCTION --------------------------//
 
-export default function UserCommentsSection(props) {
-  const { register, handleSubmit } = useForm();
+export default function UsersComments(props) {
+  const { register, handleSubmit, reset } = useForm();
   const classes = useStyles();
 
   const onSubmit = (form) => {
     form.title = props.title;
     axios
-      .post(`http://localhost:5000/movies/${props.id}/reviews`, form)
-      .then((res) => console.log(res))
+      .post(
+        `${process.env.REACT_APP_API_BASE_URL}/movies/${props.id}/reviews`,
+        form
+      )
+      .then((res) => {
+        props.setReviewList((currentReviews) => {
+          return [...currentReviews, res.data];
+        });
+        reset();
+      })
       .catch((err) => console.log(err));
   };
 
   return (
     <div className={classes.commentSection}>
-      <h1 className={classes.Message}>Any comments about the movie ? </h1>
+      <h3 className={classes.Message}>What did you think about this movie?</h3>
       <form
         className={classes.root}
         noValidate
@@ -57,11 +65,9 @@ export default function UserCommentsSection(props) {
       >
         <TextField
           required
-          size="small"
-          color="primary"
-          className="userName"
+          className="name"
           label="Name"
-          id="outlined-required"
+          id="name"
           defaultValue=""
           variant="outlined"
           {...register('user_name')}
@@ -69,9 +75,8 @@ export default function UserCommentsSection(props) {
         <TextField
           required
           multiline
-          color="primary"
           className="comment"
-          id="outlined-required-multiline-static"
+          id="comment"
           label="Comment"
           rows={2}
           defaultValue=""
@@ -79,9 +84,8 @@ export default function UserCommentsSection(props) {
           {...register('comment')}
         />
         <Button
-          color="primary"
           className={classes.Button}
-          variant="contained"
+          variant="outlined"
           type="submit"
           endIcon={<Icon>send</Icon>}
         >

@@ -1,10 +1,10 @@
-import dayjs from 'dayjs';
-import './FilteringBar.css';
-import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { makeStyles } from '@material-ui/core/styles';
+import dayjs from 'dayjs';
+import './FilteringBar.css';
 import SearchBox from './SearchBox';
 
 const localizedFormat = require('dayjs/plugin/localizedFormat');
@@ -54,7 +54,6 @@ export default function FilteringBar({
 
   return (
     <div className="filtering-bar">
-      <h2>Filter</h2>
       <FormControl className={formControl}>
         <InputLabel shrink id="year-label">
           Year
@@ -90,7 +89,6 @@ export default function FilteringBar({
             labelId="genre"
             disabled={!!query}
             id="genre"
-            value={with_genres}
             displayEmpty
             autoWidth
             className={selectEmpty}

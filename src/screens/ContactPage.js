@@ -1,13 +1,13 @@
 //------------------ IMPORT COMPONENTS & STYLES -------------//
+import Backdrop from '@material-ui/core/Backdrop';
+import Button from '@material-ui/core/Button';
+import Fade from '@material-ui/core/Fade';
+import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { useForm } from 'react-hook-form';
-import React from 'react';
 import axios from 'axios';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 //---------------------- STYLE CSS -------------------------//
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   message: {
     textAlign: 'center',
-    paddingBottom: '50px',
+    marginBottom: '1em',
   },
   form: {
     padding: 12,
@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     paddingTop: 14,
     display: 'flex',
-    position: 'relative',
   },
   button: {
     padding: 14,
@@ -78,8 +77,11 @@ export default function ContactPage() {
   };
 
   return (
-    <div>
-      <h1 className={message}>Any comments ? Contact Us.</h1>
+    <>
+      <h2 className={message}>Let’s get in touch 👋</h2>
+      <p className={message}>
+        Suggestions, thanks or love notes? Let us know below 😃
+      </p>
       <form
         className={form}
         onSubmit={handleSubmit(onSubmit)}
@@ -90,15 +92,16 @@ export default function ContactPage() {
           className={textField}
           id="outlined-basic"
           label="firstname"
+          placeholder="Sarah"
           variant="outlined"
           required={true}
           {...register('firstName')}
         />
-
         <TextField
           className={textField}
           id="outlined-basic"
           label="Lastname"
+          placeholder="Connor"
           variant="outlined"
           required={true}
           {...register('lastName')}
@@ -107,6 +110,8 @@ export default function ContactPage() {
           className={textField}
           id="outlined-basic"
           label="Email"
+          name="email"
+          placeholder="sarah.connor@skynet.com"
           variant="outlined"
           type="email"
           required={true}
@@ -117,6 +122,7 @@ export default function ContactPage() {
           id="outlined-multiline-basic"
           label="Text here"
           multiline
+          placeholder="Great website! Keep up the good work :)"
           rows={6}
           defaultValue=""
           variant="outlined"
@@ -152,6 +158,6 @@ export default function ContactPage() {
           </Modal>
         </div>
       </form>
-    </div>
+    </>
   );
 }

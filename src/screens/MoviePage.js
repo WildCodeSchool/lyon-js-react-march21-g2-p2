@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './MoviePage.css';
-import MovieList from '../components/MovieList';
-import { useForm } from 'react-hook-form';
 import qs from 'query-string';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useHistory, useLocation } from 'react-router';
 import FilteringBar from '../components/FilteringBar';
-import { useLocation, useHistory } from 'react-router';
+import MovieList from '../components/MovieList';
 
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 const apiUrl = 'https://api.themoviedb.org/3';
@@ -79,7 +78,7 @@ export default function MoviePage() {
 
   return (
     <>
-      <h1>Here is a list of popular movies</h1>
+      <h2>Movies</h2>
       <FilteringBar
         availableGenres={availableGenres}
         setMovieList={setMovieList}
@@ -95,7 +94,6 @@ export default function MoviePage() {
         query={query}
         control={control}
       />
-
       <MovieList movieList={movieList} imgUrl={imgUrl} />
     </>
   );

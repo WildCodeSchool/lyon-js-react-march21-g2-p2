@@ -1,17 +1,16 @@
+import Grid from '@material-ui/core/Grid';
 import React from 'react';
 import MovieCard from './MovieCard';
-import Grid from '@material-ui/core/Grid';
-// import { Link } from 'react-router-dom';
 
 const MovieList = ({ movieList, imgUrl }) => {
   return (
     <>
       <Grid
         container
-        spacing={3}
+        spacing={2}
         direction="row"
         justify="center"
-        alignItems="center"
+        style={{ marginTop: '1em' }}
       >
         {movieList.map(
           ({
