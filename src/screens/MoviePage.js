@@ -88,14 +88,7 @@ export default function MoviePage() {
       <h2>Movies</h2>
       <FilteringBar
         availableGenres={availableGenres}
-        // setMovieList={setMovieList}
-        // history={history}
-        // location={location}
-        // apiUrl={apiUrl}
-        // apiKey={apiKey}
-        // apiPopularRoute={apiPopularRoute}
         register={register}
-        // watch={watch}
         year={year}
         with_genres={with_genres}
         query={query}

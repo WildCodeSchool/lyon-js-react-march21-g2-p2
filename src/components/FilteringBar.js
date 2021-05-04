@@ -1,5 +1,4 @@
 import dayjs from 'dayjs';
-import './FilteringBar.css';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -7,7 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import SearchBox from './SearchBox';
 import Button from '@material-ui/core/Button';
-// import { YoutubeSearchedForOutlined } from '@material-ui/icons';
+import Grid from '@material-ui/core/Grid';
 
 const localizedFormat = require('dayjs/plugin/localizedFormat');
 dayjs.extend(localizedFormat);
@@ -20,29 +19,24 @@ let yearsOfCinema = new Array(dayjs().year() - 1893)
 // Defines the styles in use for this component (MUI)
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
+    display: 'flex',
+    margin: theme.spacing(0),
     minWidth: 120,
+    height: theme.spacing(4),
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+button: {
+  margin: theme.spacing(2),
+  height: theme.spacing(4),
+},
+grid: {
+  marginTop: theme.spacing(2)
+}
 }));
 
-/**
- * @description A component to filter a movie list
- * @date 21/04/2021
- * @export
- * @param {*} {
- *    setMovieList,
- *  location,
- *  history,
- *  availableGenres,
- *  apiUrl,
- *  apiPopularRoute,
- *  apiKey,
- * }
- * @return {*} a bar composed of an input to chose the criteria, one to choose its value, one to search...
- */
+
 export default function FilteringBar({
   availableGenres,
   query,
@@ -53,7 +47,7 @@ export default function FilteringBar({
   clear,
 }) {
   // Here we grab the styles needed
-  const { formControl, selectEmpty } = useStyles();
+  const { formControl, selectEmpty, button, grid } = useStyles();
 
   const handleClear = (e) => {
     e.preventDefault();
@@ -61,7 +55,19 @@ export default function FilteringBar({
   };
 
   return (
-    <div className="filtering-bar">
+    <Grid
+    className={grid}
+        container
+        spacing={2}
+        direction="row"
+        justify="center"
+        alignItems="flex-start"
+      >
+        <Grid item >
+      <SearchBox control={control} year={year} with_genres={with_genres} />
+      </Grid>
+      <Grid item>
+
       <FormControl className={formControl}>
         <InputLabel shrink id="year-label">
           Year
@@ -88,6 +94,9 @@ export default function FilteringBar({
           })}
         </Select>
       </FormControl>
+      </Grid>
+      <Grid item >
+
       {availableGenres.length && (
         <FormControl className={formControl}>
           <InputLabel shrink id="4">
@@ -114,8 +123,10 @@ export default function FilteringBar({
           </Select>
         </FormControl>
       )}
-      <SearchBox control={control} year={year} with_genres={with_genres} />
-      <Button onClick={handleClear}>Clear</Button>
-    </div>
+      </Grid>
+      <Grid item>
+      <Button className={button} size="small" variant="outlined" color="primary" onClick={handleClear}>Clear</Button>
+      </Grid>
+        </Grid>
   );
 }
