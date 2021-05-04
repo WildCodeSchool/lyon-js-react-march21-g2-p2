@@ -12,19 +12,24 @@ import axios from 'axios';
 const useStyles = makeStyles(() => ({
   card: {
     borderRadius: '1rem',
-    boxShadow: 'none',
-    position: 'relative',
     margin: 0,
-    width: 100,
-    height: 100,
+    width: 120,
+    height: 145,
+  },
+  grid: {
+    
+    width: '100%',
+    maxWidth: '100em',
   },
   content: {
     display: 'flex',
-    flexDirection: 'column',
+    alignItems:'flex-start',
     zIndex: 2,
     bottom: 0,
-    width: '100%',
-    margin: 0,
+  
+       margin: 0,
+    borderBottom: 'solid 1px',
+    paddingBottom: 65,
   },
   media: {
     width: '100%',
@@ -32,9 +37,11 @@ const useStyles = makeStyles(() => ({
     objectFit: 'cover',
   },
   text: {
-    // display: 'inline-block',
-    // width: '100%',
-    // height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    marginLeft: 20,
+    fontSize: 10,
   },
 }));
 
@@ -43,10 +50,12 @@ const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 export default function FavoriteInfos({
   key,
   id,
-  poster,
-  title,
   date,
-  synopsis,
+  title,
+  genre,
+  average,
+  poster,
+  synopsis
 }) {
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
@@ -66,9 +75,7 @@ export default function FavoriteInfos({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const styles = useStyles();
-  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
-
-  const director = movieProductionCrew.filter(
+   const director = movieProductionCrew.filter(
     (crew) => crew.job === 'Director'
   );
 
@@ -76,38 +83,36 @@ export default function FavoriteInfos({
 
   return (
     <>
-      <Grid container spacing={4} direction="row">
-        <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
+        <Grid key={id} className={clsx(styles.grid)} item xs={6}>
+            <div className={styles.content}>
+          <div>
           <Card className={clsx(styles.card)}>
             <CardMedia
-              className={clsx(styles.cardStyle)}
-              classes={mediaStyles}
+              className={clsx(styles.media)}
+              classes={styles.media}
               image={poster}
             />
           </Card>
-        </Grid>
-        <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
-          <div className={styles.content}>
+          </div>
             <div className={styles.text}>
-              <h2>{title}</h2>
-              <h3>{date}</h3>
-              <h3>Director :</h3>
+              <h3>{title}</h3>
+              <h4>{date}</h4>
+              <h4>Director :</h4>
               <div>
                 {director.map((director) => (
                   <p key={director.id}>{director.name}</p>
                 ))}
               </div>
-              <h3>Cast:</h3>
+              <h4>Cast:</h4>
               {mainActors.map((actor) => (
                 <p key={actor.id}>
                   <strong>{actor.name}</strong> as {actor.character}
                 </p>
               ))}
-              <h3>Synopsis:</h3>
+              <h4>Synopsis:</h4>
               <p>{synopsis}</p>
             </div>
           </div>
-        </Grid>
       </Grid>
     </>
   );

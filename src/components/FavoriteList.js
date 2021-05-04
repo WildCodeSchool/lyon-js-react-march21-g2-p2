@@ -5,17 +5,29 @@ import FavoriteInfos from './FavoriteInfos';
 const FavoriteList = ({ movieList, imgUrl }) => {
   return (
     <>
-      <Grid container spacing={8} direction="row" style={{ marginTop: '2em' }}>
-        {movieList.map(({ id, release_date, title, poster_path, overview }) => (
-          <FavoriteInfos
-            key={id}
-            id={id}
-            poster={imgUrl + poster_path}
-            title={title}
-            date={release_date}
-            synopsis={overview}
-          />
-        ))}
+      <Grid container spacing={8} direction="column" justify="flex-start" align="flex-start" >
+      {movieList.map(
+          ({
+            id,
+            date,
+            vote_average,
+            genre_ids,
+            title,
+            poster_path,
+            synopsis
+          }) => (
+            <FavoriteInfos
+              key={id}
+              id={id}
+              date={date}
+              title={title}
+              genre={genre_ids}
+              average={vote_average}
+              poster={imgUrl + poster_path}
+              synopsis={synopsis}
+            />
+          )
+        )}
       </Grid>
     </>
   );

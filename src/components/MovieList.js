@@ -20,6 +20,7 @@ const MovieList = ({ movieList, imgUrl }) => {
             genre_ids,
             title,
             poster_path,
+            overview
           }) => (
             <MovieCard
               key={id}
@@ -29,6 +30,7 @@ const MovieList = ({ movieList, imgUrl }) => {
               genre={genre_ids}
               average={vote_average}
               poster={poster_path ? imgUrl + poster_path : null}
+              synopsis={overview}
             />
           )
         )}
