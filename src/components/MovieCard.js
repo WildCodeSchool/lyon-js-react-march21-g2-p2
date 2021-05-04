@@ -124,6 +124,7 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
             </Info>
           </Box>
         </Card>
+        <h4 style={{ textAlign: 'center' }}>{title}</h4>
       </Grid>
     </Link>
   );
