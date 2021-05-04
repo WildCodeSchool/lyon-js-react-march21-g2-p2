@@ -118,7 +118,7 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
             <Box py={40} className={clsx(favorite)}>
               <IconButton onClick={handleToggleFavorite}>
                 <FavoriteIcon
-                  variant="contained"
+                  variant="outlined"
                   className={clsx(isFavorite ? isFav : notFav)}
                 />
               </IconButton>
