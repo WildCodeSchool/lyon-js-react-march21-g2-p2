@@ -1,7 +1,7 @@
 import React from 'react';
-import MovieList from '../components/MovieList';
+import FavoriteList from '../components/FavoriteList';
 import createPersistedState from 'use-persisted-state';
-
+import './FavoritePage.css'
 // Component to display the favorite movies
 const FavoritePage = () => {
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
@@ -14,10 +14,12 @@ const FavoritePage = () => {
   return (
     <>
       <h2>Favorite movies</h2>
-      <MovieList
+    <div className="container">
+      <FavoriteList
         movieList={favoriteMovieList}
         imgUrl={'https://image.tmdb.org/t/p/w200'}
       />
+    </div>
     </>
   );
 };
