@@ -25,35 +25,26 @@ export default function DetailsPage() {
   const [movieInfo, setMovieInfo] = useState({});
   const { id } = useParams();
 
-  useEffect(() => {
-    // Get movie Id from the url
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-      )
-      .then(({ data }) => {
-        setMovieInfo({
-          ...movieInfo,
-          actors: data.cast.slice(0, 5),
-          directors: data.crew.filter(({ job }) => job === 'Director'),
-        });
-        console.log(data.crew.filter(({ job }) => job === 'Director'));
-        console.log(movieInfo);
-      })
-      .catch((err) => console.error(err));
+  const movieCreditsUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
+  const movieInfoUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
 
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-      )
-      .then(({ data }) => {
+  useEffect(() => {
+    const requestMovieCredits = axios.get(movieCreditsUrl);
+    const requestMovieInfo = axios.get(movieInfoUrl);
+
+    Promise.all([requestMovieCredits, requestMovieInfo])
+      .then(([responseMovieCredits, responseMovieInfo]) => {
         setMovieInfo({
           ...movieInfo,
-          poster: data.poster_path,
-          synopsis: data.overview,
-          genres: data.genres.map((genre) => genre.name),
-          title: data.title,
-          date: data.release_date,
+          actors: responseMovieCredits.data.cast.slice(0, 5),
+          directors: responseMovieCredits.data.crew.filter(
+            ({ job }) => job === 'Director'
+          ),
+          poster: responseMovieInfo.data.poster_path,
+          synopsis: responseMovieInfo.data.overview,
+          genres: responseMovieInfo.data.genres.map((genre) => genre.name),
+          title: responseMovieInfo.data.title,
+          date: responseMovieInfo.data.release_date,
         });
       })
       .catch((err) => console.error(err));
