@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       alignItems: 'flex-start',
       flexWrap: 'wrap',
-      },
+    },
   },
   media: {
     width: '100%',
@@ -51,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
       margin: 0,
-      paddingTop: 20
-      },
+      paddingTop: 20,
+    },
   },
 }));
 
@@ -94,7 +94,16 @@ export default function FavoriteInfos({
 
   return (
     <>
-      <Grid key={key} className={clsx(styles.grid)} item xs={10} sm={6} md={4} lg={3} xl={2}>
+      <Grid
+        key={key}
+        className={clsx(styles.grid)}
+        item
+        xs={10}
+        sm={6}
+        md={4}
+        lg={3}
+        xl={2}
+      >
         <div className={styles.content}>
           <div>
             <Card className={clsx(styles.card)}>

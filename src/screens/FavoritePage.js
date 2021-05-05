@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     margin: 0,
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
 }));
 
@@ -25,7 +25,6 @@ export default function FavoritePage() {
   const favoriteMovieList = Object.keys(favoriteMovies)
     .filter((id) => favoriteMovies[id] !== false)
     .map((id) => favoriteMovies[id]);
-
 
   return (
     <div className={container}>
