@@ -84,6 +84,7 @@ const MovieCard = ({
   date,
   synopsis,
 }) => {
+  
   const { card, content, movieInfo, favorite, isFav, notFav } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 

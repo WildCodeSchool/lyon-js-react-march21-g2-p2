@@ -9,6 +9,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import createPersistedState from 'use-persisted-state';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -89,7 +90,27 @@ export default function FavoriteInfos({
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
 
+  //----to handle the favorite state----//
+  const useFavoriteMoviesState = createPersistedState('favoriteMovies');
+  const [favoriteMovies, setFavoriteMovies] = useFavoriteMoviesState({});
+
+  const isFavorite = !!favoriteMovies[id]
+  // function to handle the toggling of a movie's favorite state and adding it using localStorage
+  const handleToggleFavorite = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setFavoriteMovies((favoriteMovies) => {
+    return {
+      ...favoriteMovies,
+      [id]: isFavorite
+        ? false
+        : ''
+    };
+  });
+};
+
   useEffect(() => {
+
     axios
       .get(apiUrl + '/movie/' + id + apiCreditRoute + apiKey + apiLanguage)
       .then((crewInfos) => {
@@ -121,7 +142,7 @@ export default function FavoriteInfos({
         xl={2}
       >
         <div className={clsx(styles.favorite)}>
-          <IconButton>
+          <IconButton onClick={handleToggleFavorite} >
             <FavoriteIcon variant="outlined" className={clsx(styles.isFav)} />
           </IconButton>
         </div>
