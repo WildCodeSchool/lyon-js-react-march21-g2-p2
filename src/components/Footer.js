@@ -1,10 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import PaymentIcon from '@material-ui/icons/Payment';
 import clsx from 'clsx';
+import wcs from '../assets/wcs.png';
 
 const useStyles = makeStyles((theme) => ({
   Footer: {
@@ -18,26 +17,33 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     color: 'var(--text-primary)',
   },
+  icons: {
+    display: 'flex',
+    justifyContent: 'center',
+    '& > *': {
+      margin: 'auto',
+    },
+  },
+  wild: {
+    maxWidth: '24px',
+    maxHeight: '24px',
+  },
 }));
 
 function Footer() {
   const classes = useStyles();
   return (
     <footer className={clsx(classes.Footer)}>
-      <Grid container justify={'center'}>
-        <Grid item xs={12} sm={6} md={3}>
-          <a href="https://github.com/orgs/WildCodeSchool/teams/lyon-js-march21-g2-p2/repositories">
-            <Typography className={clsx(classes.Typography)}>
-              <GitHubIcon />
-            </Typography>
-          </a>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+      <div className={classes.icons}>
+        <a href="https://github.com/orgs/WildCodeSchool/teams/lyon-js-march21-g2-p2/repositories">
           <Typography className={clsx(classes.Typography)}>
-            <PaymentIcon />
+            <GitHubIcon />
           </Typography>
-        </Grid>
-      </Grid>
+        </a>
+        <a href="https://www.wildcodeschool.com/fr-FR/formations/developpeur-web?campus=lyon">
+          <img src={wcs} alt="Wild Code School" className={classes.wild} />
+        </a>
+      </div>
       <Typography variant="caption" className={clsx(classes.Typography)}>
         © 2021 The Dolly Project
       </Typography>
