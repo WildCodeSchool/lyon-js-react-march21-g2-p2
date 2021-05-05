@@ -27,8 +27,8 @@ const useStyles = makeStyles(() => ({
     bottom: 0,
 
     margin: 0,
-    borderBottom: 'solid 1px',
-    paddingBottom: 65,
+    borderTop: 'solid 1px',
+    paddingTop: 65,
   },
   media: {
     width: '100%',
