@@ -11,6 +11,9 @@ import { useForm } from 'react-hook-form';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    background: 'var(--text-secondary)',
+    borderRadius: '1em',
+    maxWidth: '30ch',
     '& > *': {
       margin: theme.spacing(2),
       width: '25ch',
@@ -18,17 +21,19 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
+      // margin: '0 auto',
     },
   },
   commentSection: {
     display: 'flex',
     flexDirection: 'column',
     marginTop: 50,
+    alignItems: 'center',
   },
   Button: {
     padding: 5,
     marginTop: 15,
-    width: '11ch',
+    width: '25ch',
   },
 }));
 
