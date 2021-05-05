@@ -18,11 +18,18 @@ export default function MoviePage() {
   const [movieList, setMovieList] = useState([]);
   const history = useHistory();
   const location = useLocation();
+  const {
+    year: defaultYear = '',
+    with_genres: defaultWith_genres = '',
+    query: defaultQuery = '',
+  } = qs.parse(location.search);
 
   // the default values of the filters come from the querystring in the URL
-  const { register, watch, control } = useForm({
+  const { register, watch, control, reset } = useForm({
     defaultValues: {
-      ...qs.parse(location.search),
+      year: defaultYear,
+      with_genres: defaultWith_genres,
+      query: defaultQuery,
     },
   });
 
@@ -81,18 +88,12 @@ export default function MoviePage() {
       <h2>Movies</h2>
       <FilteringBar
         availableGenres={availableGenres}
-        setMovieList={setMovieList}
-        history={history}
-        location={location}
-        apiUrl={apiUrl}
-        apiKey={apiKey}
-        apiPopularRoute={apiPopularRoute}
         register={register}
-        watch={watch}
         year={year}
         with_genres={with_genres}
         query={query}
         control={control}
+        clear={reset}
       />
       <MovieList movieList={movieList} imgUrl={imgUrl} />
     </>

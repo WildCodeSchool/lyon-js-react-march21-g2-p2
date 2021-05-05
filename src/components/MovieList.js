@@ -22,8 +22,8 @@ const MovieList = ({ movieList, imgUrl }) => {
             poster_path,
           }) => (
             <MovieCard
-              id={id}
               key={id}
+              id={id}
               date={release_date}
               title={title}
               genre={genre_ids}
