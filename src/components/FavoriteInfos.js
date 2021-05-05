@@ -94,23 +94,20 @@ export default function FavoriteInfos({
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
   const [favoriteMovies, setFavoriteMovies] = useFavoriteMoviesState({});
 
-  const isFavorite = !!favoriteMovies[id]
+  const isFavorite = !!favoriteMovies[id];
   // function to handle the toggling of a movie's favorite state and adding it using localStorage
   const handleToggleFavorite = (event) => {
     event.preventDefault();
     event.stopPropagation();
     setFavoriteMovies((favoriteMovies) => {
-    return {
-      ...favoriteMovies,
-      [id]: isFavorite
-        ? false
-        : ''
-    };
-  });
-};
+      return {
+        ...favoriteMovies,
+        [id]: isFavorite ? false : '',
+      };
+    });
+  };
 
   useEffect(() => {
-
     axios
       .get(apiUrl + '/movie/' + id + apiCreditRoute + apiKey + apiLanguage)
       .then((crewInfos) => {
@@ -142,7 +139,7 @@ export default function FavoriteInfos({
         xl={2}
       >
         <div className={clsx(styles.favorite)}>
-          <IconButton onClick={handleToggleFavorite} >
+          <IconButton onClick={handleToggleFavorite}>
             <FavoriteIcon variant="outlined" className={clsx(styles.isFav)} />
           </IconButton>
         </div>
