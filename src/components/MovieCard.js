@@ -109,7 +109,7 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
         <Card className={clsx(card)}>
           <CardMedia
             classes={mediaStyles}
-            image={poster ? poster : { defaultImg }}
+            image={poster ? poster : defaultImg}
           />
           <Box py={3} className={clsx(content)}>
             <Box py={40} className={clsx(favorite)}>
