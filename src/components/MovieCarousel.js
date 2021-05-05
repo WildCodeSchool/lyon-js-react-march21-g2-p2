@@ -42,6 +42,7 @@ const useStyles = makeStyles(() => ({
 }));
 const MovieCarousel = (props) => {
   const styles = useStyles();
+  const imgUrl = process.env.REACT_APP_API_IMAGE_URL;
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
   return (
     <Carousel
@@ -58,7 +59,7 @@ const MovieCarousel = (props) => {
           <CardMedia
             className={clsx(styles.carouselStyle)}
             classes={mediaStyles}
-            image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+            image={`${imgUrl}/w500${movie.backdrop_path}`}
           >
             <Box className={clsx(styles.BoxInformation)}>
               <Info className={clsx(styles.movieInformation)}>
