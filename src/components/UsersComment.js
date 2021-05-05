@@ -25,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'flex-end',
     flexWrap: 'wrap',
-    width: "100%",
-    height: "100%"
+    width: '100%',
+    height: '100%',
   },
   Button: {
     padding: 5,

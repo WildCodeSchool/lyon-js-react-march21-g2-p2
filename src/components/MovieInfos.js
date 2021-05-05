@@ -1,36 +1,32 @@
 /*component import*/
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
+
 import { makeStyles } from '@material-ui/core/styles';
-import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 
 import React from 'react';
 
 const useStyles = makeStyles(() => ({
   cardImage: {
-    width: "100%",
-    heigth: "100%",
-    display: "flex",
-    borderRadius: "1rem"
+    width: '100%',
+    heigth: '100%',
+    display: 'flex',
+    borderRadius: '1rem',
   },
   imageContent: {
-    display: "flex",
+    display: 'flex',
     justifyContent: 'flex-start',
-    width: "200px",
-    heigth: "300px",
-    flexDirection: 'column'
-
+    width: '200px',
+    heigth: '300px',
+    flexDirection: 'column',
   },
 
   container: {
-    display: "flex",
+    display: 'flex',
     flexDirection: 'row-reverse',
     height: '100%',
-
   },
   textContent: {
-    width: "100%",
-    display: "flex",
+    width: '100%',
+    display: 'flex',
     flexDirection: 'column',
     paddingRight: '1em',
     margin: 0,
@@ -42,37 +38,36 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     textAlign: 'start',
     flexDirection: 'column',
-    paddingBottom: '1em'
-
+    paddingBottom: '1em',
   },
   date: {
     display: 'flex',
     flexDirection: 'column',
-    paddingBottom: '1em'
+    paddingBottom: '1em',
   },
   directorName: {
     display: 'flex',
     flexDirection: 'column',
-    paddingBottom: '1em'
+    paddingBottom: '1em',
   },
   synopsisContent: {
     display: 'flex',
     flexDirection: 'column',
     width: '80%',
-    paddingBottom: '1em'
+    paddingBottom: '1em',
   },
   actorContent: {
     display: 'flex',
     justifySelf: 'flex-end',
     flexDirection: 'column',
-    paddingBottom: '1em'
+    paddingBottom: '1em',
   },
   actor: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: "0 2em"
+    margin: '0 2em',
   },
   actorsPaths: {
     display: 'block',
@@ -82,10 +77,10 @@ const useStyles = makeStyles(() => ({
   },
   castingList: {
     display: 'flex',
-    justifyContent: "center",
+    justifyContent: 'center',
     flexDirection: 'Row',
-    flexWrap: "wrap",
-  }
+    flexWrap: 'wrap',
+  },
 }));
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 
@@ -103,7 +98,7 @@ export default function MovieInfos(props) {
     castingList,
     cardImage,
     imageContent,
-    textContent
+    textContent,
   } = useStyles();
   return (
     <div className={container}>
@@ -133,7 +128,6 @@ export default function MovieInfos(props) {
           <p>{props.synopsis}</p>
         </div>
         <div className={actorContent}>
-
           <h2 className={titleEx}>Casting :</h2>
           <div className={castingList}>
             {props.actors.map(({ name, character, profile_path, id }) => (
@@ -143,16 +137,12 @@ export default function MovieInfos(props) {
                   src={profile_path ? imgUrl + profile_path : null}
                   alt={name}
                 />
-                <h4 key={id}>
-                  {name}
-                </h4>
+                <h4 key={id}>{name}</h4>
                 <p>{character}</p>
               </div>
             ))}
           </div>
-
         </div>
-
       </div>
     </div>
   );

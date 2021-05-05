@@ -52,7 +52,10 @@ export default function DetailsPage({
             actors={mainActors}
             director={director}
           />
-          <UserCommentsSection title={movieInfos.title} id={movieInfos.movieId} />
+          <UserCommentsSection
+            title={movieInfos.title}
+            id={movieInfos.movieId}
+          />
           <ReviewList movie_id={movieInfos.movieId} />
         </Card>
       </div>
