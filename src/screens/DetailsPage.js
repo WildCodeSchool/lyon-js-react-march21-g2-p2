@@ -25,7 +25,11 @@ export default function DetailsPage() {
 
   const classes = useStyles();
   const { tmdb_id } = useParams();
-  const api_key = process.env.REACT_APP_TMDB_API_KEY;
+  const apiKey = process.env.REACT_APP_TMDB_API_KEY;
+  const apiUrl = process.env.REACT_APP_API_SERVICE_URL;
+  const apiBase = process.env.REACT_APP_API_BASE_URL;
+  const imgUrl = process.env.REACT_APP_API_IMAGE_URL;
+
   const [movie, setMovie] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
@@ -35,10 +39,10 @@ export default function DetailsPage() {
   /*To get the informations required*/
 
   const getMovieGeneralInfos = axios.get(
-    `https://api.themoviedb.org/3/movie/${tmdb_id}?api_key=${api_key}&language=en-US`
+    `${apiUrl}/movie/${tmdb_id}?api_key=${apiKey}&language=en-US`
   );
   const getMovieCrewInfos = axios.get(
-    `https://api.themoviedb.org/3/movie/${tmdb_id}/credits?api_key=${api_key}&language=en-US`
+    `${apiUrl}/movie/${tmdb_id}/credits?api_key=${apiKey}&language=en-US`
   );
 
   useEffect(() => {
@@ -60,7 +64,7 @@ export default function DetailsPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/movies/${tmdb_id}/reviews`)
+      .get(`${apiBase}/movies/${tmdb_id}/reviews`)
       .then((res) => setReviewList(res.data))
       .catch((err) => console.log(err));
   }, [tmdb_id]);
@@ -68,7 +72,7 @@ export default function DetailsPage() {
   return (
     <>
       <MovieInfos
-        poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        poster={`${imgUrl}/w500${movie.poster_path}`}
         title={movie.title}
         date={movie.release_date}
         synopsis={movie.overview}

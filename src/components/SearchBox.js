@@ -8,13 +8,16 @@ import { Controller } from 'react-hook-form';
 //style of the Search input
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '35ch',
+    display: 'flex',
+    margin: theme.spacing(2),
+    height: theme.spacing(4),
   },
   input: {
     marginLeft: theme.spacing(2),
+    height: theme.spacing(4),
   },
   iconButton: {
-    padding: 10,
+    padding: 2,
   },
 }));
 

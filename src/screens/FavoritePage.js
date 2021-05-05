@@ -25,7 +25,7 @@ export default function FavoritePage() {
   const { container, title } = useStyles();
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
   const [favoriteMovies] = useFavoriteMoviesState({});
-
+  const imgUrl = `${process.env.REACT_APP_API_IMAGE_URL}/w200`;
   const favoriteMovieList = Object.keys(favoriteMovies)
     .filter((id) => favoriteMovies[id] !== false)
     .map((id) => favoriteMovies[id]);
