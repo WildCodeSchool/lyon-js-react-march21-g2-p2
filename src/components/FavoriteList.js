@@ -2,12 +2,14 @@ import Grid from '@material-ui/core/Grid';
 import React from 'react';
 import FavoriteInfos from './FavoriteInfos';
 
+
 const FavoriteList = ({ movieList, imgUrl }) => {
+
   return (
     <>
       <Grid
         container
-        spacing={8}
+        spacing={0}
         direction="column"
         justify="flex-start"
         align="flex-start"
