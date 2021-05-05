@@ -9,14 +9,21 @@ import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
 import './MovieCard.js';
 
+
 const useStyles = makeStyles(() => ({
+  a:{
+
+    maxWidth:'@BoxImageWidth',
+    height: '356.25vw',
+  },
   carousel: {
     cursor: 'pointer',
     objectFit: 'cover',
     display: 'flex',
     justifyContent: 'center',
-    width:'70vw',
-    height: 350,
+    height:'auto',
+    width: 'auto',
+    
   },
   carouselStyle: {
     display: 'flex',
@@ -51,31 +58,31 @@ const MovieCarousel = (props) => {
       className={clsx(styles.carousel)}
       swipe={true}
       interval={5000}
-      fullHeightHover={true}
+      fullHeightHover={false}
       animation="fade"
       stopAutoPlayOnHover={true}
       navButtonsAlwaysVisible={true}
     >
       {props.movieList.map((movie) => (
-      <Link key={movie.id} to={`/movies/${movie.id}`}>
-        <Box className={clsx(styles.movieBox)} key={movie.id}>
-          <CardMedia
-            className={clsx(styles.carouselStyle)}
-            classes={mediaStyles}
-            image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-          >
-            <Box className={clsx(styles.BoxInformation)}>
-              <Info className={clsx(styles.movieInformation)}>
-                <InfoTitle className={clsx(styles.movieName)}>
-                  {movie.title}
-                </InfoTitle>
-              </Info>
-            </Box>
-          </CardMedia>
-        </Box>
-      </Link>
-    ))}
-    </Carousel>
+        <Link key={movie.id} to={`/movies/${movie.id}`}>
+          <Box className={clsx(styles.movieBox)} key={movie.id}>
+            <CardMedia
+              className={clsx(styles.carouselStyle)}
+              classes={mediaStyles}
+              image={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
+            >
+              <Box className={clsx(styles.BoxInformation)}>
+                <Info className={clsx(styles.movieInformation)}>
+                  <InfoTitle className={clsx(styles.movieName)}>
+                    {movie.title}
+                  </InfoTitle>
+                </Info>
+              </Box>
+            </CardMedia>
+          </Box>
+        </Link>
+      ))}
+    </Carousel>  
   );
 };
 export default MovieCarousel;
