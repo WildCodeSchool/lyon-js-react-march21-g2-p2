@@ -13,8 +13,8 @@ const useStyles = makeStyles(() => ({
   card: {
     borderRadius: '1rem',
     margin: 0,
-    width: 120,
-    height: 145,
+    width: 100,
+    height: 150,
   },
   grid: {
     width: '100%',
@@ -44,7 +44,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+
+const apiUrl = process.env.REACT_APP_API_SERVICE_URL;
+const apiCreditRoute = '/credits?api_key=';
+const apiLanguage = '&language=en-US';
+
 const apiKey = process.env.REACT_APP_TMDB_API_KEY;
+
 
 export default function FavoriteInfos({
   key,
@@ -62,7 +68,7 @@ export default function FavoriteInfos({
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=en-US`
+        apiUrl + '/movie/' + id + apiCreditRoute + apiKey + apiLanguage
       )
       .then((crewInfos) => {
         setMovieActors(crewInfos.data.cast);

@@ -1,7 +1,6 @@
 import React from 'react';
 import FavoriteList from '../components/FavoriteList';
 import createPersistedState from 'use-persisted-state';
-import './FavoritePage.css';
 // Component to display the favorite movies
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,6 +11,9 @@ const useStyles = makeStyles(() => ({
     width: '100%',
   },
 }));
+
+
+const sourceImg = process.env.REACT_APP_API_IMAGE_URL;
 
 export default function FavoritePage() {
   const { container } = useStyles();
@@ -29,7 +31,7 @@ export default function FavoritePage() {
       <h2>Favorite movies</h2>
       <FavoriteList
         movieList={favoriteMovieList}
-        imgUrl={'https://image.tmdb.org/t/p/w200'}
+        imgUrl={sourceImg + '/w1280'}
       />
     </div>
   );
