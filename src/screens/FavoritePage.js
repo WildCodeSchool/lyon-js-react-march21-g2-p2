@@ -19,7 +19,6 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-
 export default function FavoritePage() {
   const { container, title } = useStyles();
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
@@ -32,10 +31,7 @@ export default function FavoritePage() {
   return (
     <div className={container}>
       <h2 className={title}>Favorite movies</h2>
-      <FavoriteList
-        movieList={favoriteMovieList}
-        imgUrl={imgUrl}
-      />
+      <FavoriteList movieList={favoriteMovieList} imgUrl={imgUrl} />
     </div>
   );
 }
