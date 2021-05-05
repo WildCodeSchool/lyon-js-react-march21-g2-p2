@@ -19,13 +19,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const sourceImg = process.env.REACT_APP_API_IMAGE_URL;
 
 export default function FavoritePage() {
   const { container, title } = useStyles();
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
   const [favoriteMovies] = useFavoriteMoviesState({});
-  const imgUrl = `${process.env.REACT_APP_API_IMAGE_URL}/w200`;
+  const imgUrl = `${process.env.REACT_APP_API_IMAGE_URL}/w1280`;
   const favoriteMovieList = Object.keys(favoriteMovies)
     .filter((id) => favoriteMovies[id] !== false)
     .map((id) => favoriteMovies[id]);
@@ -35,7 +34,7 @@ export default function FavoritePage() {
       <h2 className={title}>Favorite movies</h2>
       <FavoriteList
         movieList={favoriteMovieList}
-        imgUrl={sourceImg + '/w1280'}
+        imgUrl={imgUrl}
       />
     </div>
   );
