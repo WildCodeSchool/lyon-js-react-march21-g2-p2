@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    width: 'calc(100vw - var(--small-drawer-width))',
+    [theme.breakpoints.up('sm')]: {
+      width: 'calc(100vw - var(--medium-drawer-width))',
+    },
   },
   toolbar: {
     display: 'flex',

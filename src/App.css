@@ -15,6 +15,9 @@
 
   --serif-font: 'Cormorant Garamond', serif;
   --sans-serif-font: 'Poppins', sans-serif;
+
+  --small-drawer-width: 3.5em;
+  --medium-drawer-width: 4.5em;
 }
 
 #root {

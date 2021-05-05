@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       display: 'flex',
-      paddingTop: 12,
+      paddingTop: '1em',
     },
   },
   message: {
