@@ -7,8 +7,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   container: {
+    display: 'flex',
+    flexDirection: 'column',
     margin: 0,
     width: '100%',
+    height: '100%'
   },
 }));
 
@@ -23,7 +26,6 @@ export default function FavoritePage() {
     .filter((id) => favoriteMovies[id] !== false)
     .map((id) => favoriteMovies[id]);
 
-  console.log(favoriteMovieList);
 
   return (
     <div className={container}>

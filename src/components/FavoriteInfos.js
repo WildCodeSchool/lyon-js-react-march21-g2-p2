@@ -9,12 +9,12 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   card: {
     borderRadius: '1rem',
     margin: 0,
-    width: 100,
-    height: 150,
+    width: 200,
+    height: 300,
   },
   grid: {
     width: '100%',
@@ -23,12 +23,16 @@ const useStyles = makeStyles(() => ({
   content: {
     display: 'flex',
     alignItems: 'flex-start',
-    zIndex: 2,
     bottom: 0,
-
     margin: 0,
     borderTop: 'solid 1px',
     paddingTop: 65,
+    paddingBottom: 30,
+    [theme.breakpoints.down('xs')]: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      flexWrap: 'wrap',
+      },
   },
   media: {
     width: '100%',
@@ -38,9 +42,17 @@ const useStyles = makeStyles(() => ({
   text: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'flex-start',
     width: '100%',
     marginLeft: 20,
-    fontSize: 10,
+    fontSize: 15,
+    [theme.breakpoints.down('xs')]: {
+      display: 'flex',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      margin: 0,
+      paddingTop: 20
+      },
   },
 }));
 
@@ -55,8 +67,6 @@ export default function FavoriteInfos({
   id,
   date,
   title,
-  genre,
-  average,
   poster,
   synopsis,
 }) {
@@ -84,7 +94,7 @@ export default function FavoriteInfos({
 
   return (
     <>
-      <Grid key={id} className={clsx(styles.grid)} item xs={6}>
+      <Grid key={key} className={clsx(styles.grid)} item xs={10} sm={6} md={4} lg={3} xl={2}>
         <div className={styles.content}>
           <div>
             <Card className={clsx(styles.card)}>

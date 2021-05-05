@@ -112,7 +112,6 @@ const MovieCard = ({
       };
     });
   };
-  console.log(favoriteMovies);
 
   return (
     <Link key={movieId} to={`/movies/${movieId}`}>

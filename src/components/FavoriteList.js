@@ -20,7 +20,7 @@ const FavoriteList = ({ movieList, imgUrl }) => {
             genre_ids,
             title,
             poster_path,
-            synopsis,
+            overview,
           }) => (
             <FavoriteInfos
               key={id}
@@ -30,7 +30,7 @@ const FavoriteList = ({ movieList, imgUrl }) => {
               genre={genre_ids}
               average={vote_average}
               poster={imgUrl + poster_path}
-              synopsis={synopsis}
+              synopsis={overview}
             />
           )
         )}
