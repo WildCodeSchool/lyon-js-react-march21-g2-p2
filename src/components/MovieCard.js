@@ -81,6 +81,7 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
 
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
   const [favoriteMovies, setFavoriteMovies] = useFavoriteMoviesState({});
+  const defaultImg = process.env.REACT_APP_DEFAULT_IMG;
 
   const isFavorite = !!favoriteMovies[movieId];
   // function to handle the toggling of a movie's favorite state and adding it using localStorage
@@ -108,11 +109,7 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
         <Card className={clsx(card)}>
           <CardMedia
             classes={mediaStyles}
-            image={
-              poster
-                ? poster
-                : 'https://images.unsplash.com/photo-1580130601254-05fa235abeab?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fG1vdmllJTIwcG9zdGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-            }
+            image={poster ? poster : defaultImg}
           />
           <Box py={3} className={clsx(content)}>
             <Box py={40} className={clsx(favorite)}>
