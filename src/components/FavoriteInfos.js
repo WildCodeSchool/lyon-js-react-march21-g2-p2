@@ -3,7 +3,6 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import clsx from 'clsx';
 import React from 'react';
 import { useEffect, useState } from 'react';
