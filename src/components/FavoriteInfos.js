@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-start',
     bottom: 0,
     margin: 0,
-   
+
     [theme.breakpoints.down('xs')]: {
       display: 'flex',
       alignItems: 'flex-start',
@@ -68,8 +68,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     [theme.breakpoints.down('xs')]: {
       position: 'absolute',
-    }
-  }
+    },
+  },
 }));
 
 const apiUrl = process.env.REACT_APP_API_SERVICE_URL;
@@ -121,17 +121,13 @@ export default function FavoriteInfos({
         xl={2}
       >
         <div className={clsx(styles.favorite)}>
-        <IconButton>
-                <FavoriteIcon
-                  variant="outlined"
-                  className={clsx(styles.isFav)}
-                />
-              </IconButton>
+          <IconButton>
+            <FavoriteIcon variant="outlined" className={clsx(styles.isFav)} />
+          </IconButton>
         </div>
         <div className={styles.content}>
-        
           <div>
-              <Card className={clsx(styles.card)}>
+            <Card className={clsx(styles.card)}>
               <CardMedia
                 className={clsx(styles.media)}
                 classes={styles.media}
