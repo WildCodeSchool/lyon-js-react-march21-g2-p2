@@ -9,16 +9,20 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 
 const useStyles = makeStyles(() => ({
+  cardContent: {
+    display: 'flex',
+    width: '90%',
+    height: '80%',
+    overflowY: 'scroll',
+  },
   card: {
     display: 'flex',
     borderRadius: '1rem',
     boxShadow: 'none',
-    position: 'relative',
     margin: 'auto',
     padding: '1em',
-    width: '90%',
-    height: '80%',
-    overflowY: 'scroll',
+    width: '100%',
+    flexDirection: 'column',
   },
 }));
 
@@ -29,8 +33,7 @@ export default function DetailsPage({
   poster,
 }) {
   /*Use states we need to store the APIs call*/
-
-  const { card } = useStyles();
+  const { card, cardContent } = useStyles();
   const director = movieProductionCrew.filter(
     (crew) => crew.job === 'Director'
   );
@@ -38,19 +41,21 @@ export default function DetailsPage({
   /*To get the informations required*/
   return (
     <>
-      <Card className={card}>
-        <MovieInfos
-          id={movieInfos.movieId}
-          poster={poster}
-          title={movieInfos.title}
-          date={movieInfos.date}
-          synopsis={movieInfos.synopsis}
-          actors={mainActors}
-          director={director}
-        />
-        <UserCommentsSection title={movieInfos.title} id={movieInfos.movieId} />
-        <ReviewList movie_id={movieInfos.movieId} />
-      </Card>
+      <div className={cardContent}>
+        <Card className={card}>
+          <MovieInfos
+            id={movieInfos.movieId}
+            poster={poster}
+            title={movieInfos.title}
+            date={movieInfos.date}
+            synopsis={movieInfos.synopsis}
+            actors={mainActors}
+            director={director}
+          />
+          <UserCommentsSection title={movieInfos.title} id={movieInfos.movieId} />
+          <ReviewList movie_id={movieInfos.movieId} />
+        </Card>
+      </div>
     </>
   );
 }

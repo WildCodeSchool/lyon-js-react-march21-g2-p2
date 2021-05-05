@@ -7,125 +7,153 @@ import { useCoverCardMediaStyles } from '@mui-treasury/styles/cardMedia/cover';
 import React from 'react';
 
 const useStyles = makeStyles(() => ({
-  card: {
-    display: 'flex',
-    borderRadius: '1rem',
-    position: 'relative',
-    margin: 0,
-    width: 200,
-    height: 300,
-    flexDirection: 'row',
+  cardImage: {
+    width: "100%",
+    heigth: "100%",
+    display: "flex",
+    borderRadius: "1rem"
+  },
+  imageContent: {
+    display: "flex",
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    width: "200px",
+    heigth: "300px",
+    flexDirection: 'column'
+
+  },
+
+  container: {
+    display: "flex",
+    flexDirection: 'row-reverse',
+    height: '100%',
+
+  },
+  textContent: {
+    width: "100%",
+    display: "flex",
+    flexDirection: 'column',
+    paddingRight: '1em',
+    margin: 0,
+  },
+  titleEx: {
+    textAlign: 'start',
   },
   title: {
-    paddingBottom: '1em',
-    borderBottom: 'solid 1px',
+    display: 'flex',
+    textAlign: 'start',
+    flexDirection: 'column',
+    paddingBottom: '1em'
+
   },
   date: {
-    paddingBottom: '1em',
-    borderBottom: 'solid 1px',
+    display: 'flex',
+    flexDirection: 'column',
+    paddingBottom: '1em'
   },
   directorName: {
-    paddingBottom: '1em',
-    borderBottom: 'solid 1px',
+    display: 'flex',
+    flexDirection: 'column',
+    paddingBottom: '1em'
   },
-  synopsisCss: {
-    paddingBottom: '1em',
-    borderBottom: 'solid 1px',
+  synopsisContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '80%',
+    paddingBottom: '1em'
   },
   actorContent: {
     display: 'flex',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    border: 'solid',
-    alignItems: 'flex-end',
+    justifySelf: 'flex-end',
+    flexDirection: 'column',
+    paddingBottom: '1em'
   },
   actor: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    margin: "0 2em"
   },
   actorsPaths: {
+    display: 'block',
     height: '100px',
     width: '100px',
     borderRadius: '50%',
   },
-  actorName: {
+  castingList: {
     display: 'flex',
-  },
+    justifyContent: "center",
+    flexDirection: 'Row',
+    flexWrap: "wrap",
+  }
 }));
 const imgUrl = 'https://image.tmdb.org/t/p/w200';
 
 export default function MovieInfos(props) {
   const {
-    card,
-    cardStyle,
-    boxContent,
-    details,
+    container,
     actorContent,
-    actorName,
+    actor,
     actorsPaths,
+    titleEx,
     title,
     date,
     directorName,
-    synopsisCss,
+    synopsisContent,
+    castingList,
+    cardImage,
+    imageContent,
+    textContent
   } = useStyles();
-  const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
-
   return (
-    <>
-      <Card className={card}>
-        <CardMedia
-          className={cardStyle}
-          classes={mediaStyles}
-          image={props.poster}
-        />
-      </Card>
-      <div className={boxContent}>
-        <div className={details}>
-          <div className={title}>
-            <h2>Title :</h2>
-            <p>{props.title}</p>
-          </div>
-          <div className={date}>
-            <h2>Date :</h2>
-            <p>{props.date}</p>
-          </div>
-          <div className={directorName}>
-            <h2>Director :</h2>
-            {props.director.map((director) => (
-              <p key={director.id}>{director.name}</p>
+    <div className={container}>
+      <div className={imageContent}>
+        <img className={cardImage} src={props.poster} />
+      </div>
+      <div className={textContent}>
+        <div className={title}>
+          <h2 className={titleEx}>Title :</h2>
+          <p>{props.title}</p>
+        </div>
+        <div className={date}>
+          <h2 className={titleEx}>Date :</h2>
+
+          <p>{props.date}</p>
+        </div>
+        <div className={directorName}>
+          <h2 className={titleEx}>Director :</h2>
+
+          {props.director.map((director) => (
+            <p key={director.id}>{director.name}</p>
+          ))}
+        </div>
+
+        <h2 className={titleEx}>Synopsis :</h2>
+        <div className={synopsisContent}>
+          <p>{props.synopsis}</p>
+        </div>
+        <div className={actorContent}>
+
+          <h2 className={titleEx}>Casting :</h2>
+          <div className={castingList}>
+            {props.actors.map(({ name, character, profile_path, id }) => (
+              <div className={actor}>
+                <img
+                  className={actorsPaths}
+                  src={profile_path ? imgUrl + profile_path : null}
+                  alt={name}
+                />
+                <h4 key={id}>
+                  {name}
+                </h4>
+                <p>{character}</p>
+              </div>
             ))}
-          </div>
-          <div className={synopsisCss}>
-            <h2>Synopsis :</h2>
-            <p>{props.synopsis}</p>
           </div>
 
-          <h2>Casting :</h2>
-          <div className={actorContent}>
-            {props.actors.map(({ name, character, profile_path, id }) => (
-              <>
-                <div>
-                  <img
-                    className={actorsPaths}
-                    src={profile_path ? imgUrl + profile_path : null}
-                    alt={name}
-                  />
-                </div>
-                <br />
-                <div className={actorName}>
-                  <p key={id}>
-                    <strong>{name}</strong> - {character}
-                  </p>
-                </div>
-              </>
-            ))}
-          </div>
         </div>
+
       </div>
-    </>
+    </div>
   );
 }

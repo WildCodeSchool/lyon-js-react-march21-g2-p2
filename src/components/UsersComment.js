@@ -23,7 +23,10 @@ const useStyles = makeStyles((theme) => ({
   commentSection: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: 50,
+    justifyContent: 'flex-end',
+    flexWrap: 'wrap',
+    width: "100%",
+    height: "100%"
   },
   Button: {
     padding: 5,
