@@ -20,12 +20,13 @@ const useStyles = makeStyles((theme) => ({
   icons: {
     display: 'flex',
     justifyContent: 'center',
-    '& > *': {
+    alignItems: 'center',
+    '& *': {
+      display: 'flex',
       margin: 'auto',
     },
   },
   wild: {
-    maxWidth: '24px',
     maxHeight: '24px',
   },
 }));
