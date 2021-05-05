@@ -36,7 +36,7 @@ body {
     var(--bg-secondary) 0%,
     var(--bg-primary) 100%
   );
-  background-size: 400% 400%;
+  background-size: 500% 500%;
   animation: gradient 20s ease infinite;
 }
 
