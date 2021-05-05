@@ -9,16 +9,14 @@ import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
 import './MovieCard.js';
 
-
 const useStyles = makeStyles(() => ({
-  
   carousel: {
     width: '60%',
     height: 400,
     display: 'flex',
     objectFit: 'cover',
     cursor: 'pointer',
-    backgroundSize:'contain',
+    backgroundSize: 'contain',
     justifyContent: 'center',
   },
   carouselStyle: {
@@ -77,7 +75,7 @@ const MovieCarousel = (props) => {
           </Box>
         </Link>
       ))}
-    </Carousel>  
+    </Carousel>
   );
 };
 export default MovieCarousel;
