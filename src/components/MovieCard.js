@@ -33,6 +33,8 @@ const useStyles = makeStyles(() => ({
     position: 'absolute',
     zIndex: 2,
     bottom: 0,
+    padding: '1em',
+    height: '100%',
     width: '100%',
     margin: 0,
     '&:hover': {
@@ -44,11 +46,15 @@ const useStyles = makeStyles(() => ({
       width: '100%',
       height: '100%',
       display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
       background: 'hsla(0, 0%, 0%, 0.5)',
       opacity: 1,
-      alignItems: 'flex-end',
-      justifyContent: 'flex-start',
     },
+  },
+  favorite: {
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
 
   movieInfo: {
@@ -107,15 +113,16 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
                 : 'https://images.unsplash.com/photo-1580130601254-05fa235abeab?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fG1vdmllJTIwcG9zdGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
             }
           />
-          <Box py={3} className={clsx(content)}>
-            <Box py={40} className={clsx(favorite)}>
-              <IconButton onClick={handleToggleFavorite}>
-                <FavoriteIcon
-                  variant="outlined"
-                  className={clsx(isFavorite ? isFav : notFav)}
-                />
-              </IconButton>
-            </Box>
+          <Box className={clsx(content)}>
+            <IconButton
+              className={clsx(favorite)}
+              onClick={handleToggleFavorite}
+            >
+              <FavoriteIcon
+                variant="outlined"
+                className={clsx(isFavorite ? isFav : notFav)}
+              />
+            </IconButton>
             <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
               <InfoTitle>{title}</InfoTitle>
               <InfoCaption>{`Rating: ${average * 10}%`}</InfoCaption>
