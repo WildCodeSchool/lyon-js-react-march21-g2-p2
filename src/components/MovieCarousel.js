@@ -11,24 +11,19 @@ import './MovieCard.js';
 
 
 const useStyles = makeStyles(() => ({
-  a:{
-
-    maxWidth:'@BoxImageWidth',
-    height: '356.25vw',
-  },
+  
   carousel: {
-    cursor: 'pointer',
-    objectFit: 'cover',
+    width: '60%',
+    height: 400,
     display: 'flex',
+    objectFit: 'cover',
+    cursor: 'pointer',
+    backgroundSize:'contain',
     justifyContent: 'center',
-    height:'auto',
-    width: 'auto',
-    
   },
   carouselStyle: {
     display: 'flex',
     width: '100%',
-    height: 350,
     objectFit: 'cover',
   },
   movieInformation: {
@@ -57,7 +52,7 @@ const MovieCarousel = (props) => {
     <Carousel
       className={clsx(styles.carousel)}
       swipe={true}
-      interval={5000}
+      interval={5000000}
       fullHeightHover={false}
       animation="fade"
       stopAutoPlayOnHover={true}
