@@ -44,13 +44,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-
 const apiUrl = process.env.REACT_APP_API_SERVICE_URL;
 const apiCreditRoute = '/credits?api_key=';
 const apiLanguage = '&language=en-US';
 
 const apiKey = process.env.REACT_APP_TMDB_API_KEY;
-
 
 export default function FavoriteInfos({
   key,
@@ -67,9 +65,7 @@ export default function FavoriteInfos({
 
   useEffect(() => {
     axios
-      .get(
-        apiUrl + '/movie/' + id + apiCreditRoute + apiKey + apiLanguage
-      )
+      .get(apiUrl + '/movie/' + id + apiCreditRoute + apiKey + apiLanguage)
       .then((crewInfos) => {
         setMovieActors(crewInfos.data.cast);
         setMovieProductionCrew(crewInfos.data.crew);

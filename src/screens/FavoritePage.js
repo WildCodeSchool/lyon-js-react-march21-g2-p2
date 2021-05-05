@@ -12,7 +12,6 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-
 const sourceImg = process.env.REACT_APP_API_IMAGE_URL;
 
 export default function FavoritePage() {
