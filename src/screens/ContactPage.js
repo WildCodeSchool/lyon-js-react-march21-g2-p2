@@ -1,13 +1,13 @@
 //------------------ IMPORT COMPONENTS & STYLES -------------//
+import Backdrop from '@material-ui/core/Backdrop';
+import Button from '@material-ui/core/Button';
+import Fade from '@material-ui/core/Fade';
+import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { useForm } from 'react-hook-form';
-import React from 'react';
 import axios from 'axios';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 //---------------------- STYLE CSS -------------------------//
 
 const useStyles = makeStyles((theme) => ({
@@ -86,41 +86,42 @@ export default function ContactPage() {
       >
         <TextField
           className={textField}
-          id="filled"
+          id="firstName"
           label="firstName"
           placeholder="Sarah"
-          variant="filled"
+          variant="outlined"
           required={true}
           {...register('firstName')}
         />
         <TextField
           className={textField}
-          id="filled"
-          label="Lastname"
+          id="lastName"
+          label="lastName"
           placeholder="Connor"
-          variant="filled"
+          variant="outlined"
           required={true}
           {...register('lastName')}
         />
         <TextField
           className={textField}
-          id="filled"
+          id="email"
+          name="email"
           label="Email"
           placeholder="sarah.connor@skynet.com"
-          variant="filled"
+          variant="outlined"
           type="email"
           required={true}
           {...register('email')}
         />
         <TextField
           className={textField}
-          id="filled-multiline-static"
-          label="Text here"
+          id="message"
+          label="Message"
           multiline
           placeholder="Great website! Keep up the good work :)"
           rows={6}
           defaultValue=""
-          variant="filled"
+          variant="outlined"
           required={true}
           {...register('text')}
         />

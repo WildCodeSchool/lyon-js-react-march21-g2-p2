@@ -1,9 +1,9 @@
 import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import { Controller } from 'react-hook-form';
 import InputBase from '@material-ui/core/InputBase';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
+import { Controller } from 'react-hook-form';
 
 //style of the Search input
 const useStyles = makeStyles((theme) => ({
