@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
       marginTop: 20,
       width: '85ch',
+      maxWidht: '100%',
     },
   },
 

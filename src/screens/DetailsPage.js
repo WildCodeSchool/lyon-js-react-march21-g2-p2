@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     width: '90%',
     height: '80%',
-    overflowY: 'scroll',
+    overflow: 'auto',
   },
   card: {
     display: 'flex',
