@@ -93,7 +93,7 @@ export default function MovieInfos(props) {
   return (
     <div className={container}>
       <div className={imageContent}>
-        <img className={cardImage} src={props.poster} alt={"img"} />
+        <img className={cardImage} src={props.poster} alt={'img'} />
       </div>
       <div className={textContent}>
         <div className={description}>
