@@ -6,7 +6,7 @@ import createPersistedState from 'use-persisted-state';
 const FavoritePage = () => {
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
   const [favoriteMovies] = useFavoriteMoviesState({});
-
+  const imgUrl = `${process.env.REACT_APP_API_IMAGE_URL}/w200`;
   const favoriteMovieList = Object.keys(favoriteMovies)
     .filter((id) => favoriteMovies[id] !== false)
     .map((id) => favoriteMovies[id]);
@@ -14,10 +14,7 @@ const FavoritePage = () => {
   return (
     <>
       <h2>Favorite movies</h2>
-      <MovieList
-        movieList={favoriteMovieList}
-        imgUrl={'https://image.tmdb.org/t/p/w200'}
-      />
+      <MovieList movieList={favoriteMovieList} imgUrl={imgUrl} />
     </>
   );
 };

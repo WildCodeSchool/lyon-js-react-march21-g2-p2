@@ -6,12 +6,12 @@ import { useHistory, useLocation } from 'react-router';
 import FilteringBar from '../components/FilteringBar';
 import MovieList from '../components/MovieList';
 
-const imgUrl = 'https://image.tmdb.org/t/p/w200';
-const apiUrl = 'https://api.themoviedb.org/3';
+const imgUrl = `${process.env.REACT_APP_API_IMAGE_URL}/w200`;
+const apiUrl = process.env.REACT_APP_API_SERVICE_URL;
+const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 const apiPopularRoute = '/movie/popular?';
 const apiSearchRoute = '/search/movie?query=';
 const apiGenreListRoute = '/genre/movie/list?';
-const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 
 export default function MoviePage() {
   const [availableGenres, setAvailableGenres] = useState([]);
