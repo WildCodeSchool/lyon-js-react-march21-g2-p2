@@ -7,17 +7,30 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router';
-import UserCommentsSection from '../components/UsersComment';
+import UsersComments from '../components/UsersComment';
+import { makeStyles } from '@material-ui/core/styles';
+
+//---------------------- STYLE CSS -------------------------//
+const useStyles = makeStyles((theme) => ({
+  reviewSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: 25,
+    marginBottom: 20,
+  },
+}));
 
 export default function DetailsPage() {
   /*Use states we need to store the APIs call*/
 
+  const classes = useStyles();
   const { tmdb_id } = useParams();
   const api_key = process.env.REACT_APP_TMDB_API_KEY;
   const [movie, setMovie] = useState('');
   const [movieActors, setMovieActors] = useState([]);
   const [movieProductionCrew, setMovieProductionCrew] = useState([]);
   const [movieGenreList, setMovieGenreList] = useState([]);
+  const [reviewList, setReviewList] = useState([]);
 
   /*To get the informations required*/
 
@@ -45,6 +58,13 @@ export default function DetailsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/movies/${tmdb_id}/reviews`)
+      .then((res) => setReviewList(res.data))
+      .catch((err) => console.log(err));
+  }, [tmdb_id]);
+
   return (
     <>
       <MovieInfos
@@ -56,8 +76,19 @@ export default function DetailsPage() {
         prodCrew={movieProductionCrew}
         movieGenreList={movieGenreList}
       />
-      <UserCommentsSection title={movie.title} id={tmdb_id} />
-      <ReviewList movie_id={tmdb_id} />
+      <UsersComments
+        title={movie.title}
+        id={tmdb_id}
+        setReviewList={setReviewList}
+      />
+      {reviewList.length === 0 ? (
+        <h3 className={classes.reviewSection}>
+          Be the first to write a review 🚀
+        </h3>
+      ) : (
+        <h3 className={classes.reviewSection}>Reviews</h3>
+      )}
+      <ReviewList variant="outlined" reviewList={reviewList} />
     </>
   );
 }
