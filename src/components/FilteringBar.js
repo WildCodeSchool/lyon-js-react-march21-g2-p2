@@ -126,7 +126,6 @@ export default function FilteringBar({
           className={button}
           size="small"
           variant="outlined"
-          color="primary"
           onClick={handleClear}
         >
           Clear
