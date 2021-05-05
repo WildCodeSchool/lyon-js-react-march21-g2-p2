@@ -7,7 +7,6 @@ import { Controller } from 'react-hook-form';
 //style of the Search input
 const useStyles = makeStyles((theme) => ({
   root: {
-    // width: '35ch',
     background: 'var(--bg-secondary)',
     color: 'var(--text-primary)',
   },
@@ -17,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   iconButton: {
     color: 'var(--text-primary)',
-    padding: 10,
+    padding: '.5em',
   },
 }));
 
@@ -29,26 +28,28 @@ const SearchBox = ({ control, year, with_genres }) => {
   }
 
   return (
-    <form className={root} onSubmit={handleSubmit}>
-      <Controller
-        name="query"
-        control={control}
-        render={({ field }) => {
-          return (
-            <InputBase
-              type="text"
-              disabled={!!year || !!with_genres}
-              className={input}
-              placeholder="Search for a movie"
-              inputProps={{ 'aria-label': 'Search for a movie', ...field }}
-            />
-          );
-        }}
-      />
-      <IconButton type="submit" className={iconButton} aria-label="search">
-        <SearchIcon />
-      </IconButton>
-    </form>
+    <div>
+      <form className={root} onSubmit={handleSubmit}>
+        <Controller
+          name="query"
+          control={control}
+          render={({ field }) => {
+            return (
+              <InputBase
+                type="text"
+                disabled={!!year || !!with_genres}
+                className={input}
+                placeholder="Search for a movie"
+                inputProps={{ 'aria-label': 'Search for a movie', ...field }}
+              />
+            );
+          }}
+        />
+        <IconButton type="submit" className={iconButton} aria-label="search">
+          <SearchIcon />
+        </IconButton>
+      </form>
+    </div>
   );
 };
 export default SearchBox;

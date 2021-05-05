@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
 //--------------------------- FONCTION CONTACT --------------------------//
 
 export default function ContactPage() {
+  const apiBase = process.env.REACT_APP_API_BASE_URL;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -67,7 +68,7 @@ export default function ContactPage() {
   const { message, form, textField, button, modal, paper } = useStyles();
   const onSubmit = (form) => {
     axios
-      .post('http://localhost:5000/contact', form)
+      .post(`${apiBase}/contact`, form)
       .then((res) => reset())
       .catch((err) => console.log(err));
   };

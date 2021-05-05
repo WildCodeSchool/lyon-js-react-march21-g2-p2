@@ -56,7 +56,11 @@ export default function UsersComments(props) {
         });
         reset();
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        alert(
+          'Required length for the name field : between 2 and 50 characters. The comment field should contains at least 2 characters'
+        )
+      );
   };
 
   return (
