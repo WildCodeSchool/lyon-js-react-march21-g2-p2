@@ -1,10 +1,16 @@
 /*component import*/
-
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import React from 'react';
-
+//------Css w/ mui------//
 const useStyles = makeStyles(() => ({
+  //------css for the container------//
+  container: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    height: '100%',
+  },
+  //------css for the poster------//
   cardImage: {
     width: '100%',
     heigth: '100%',
@@ -18,12 +24,7 @@ const useStyles = makeStyles(() => ({
     heigth: '300px',
     flexDirection: 'column',
   },
-
-  container: {
-    display: 'flex',
-    flexDirection: 'row-reverse',
-    height: '100%',
-  },
+  //------css for all part text------//
   textContent: {
     width: '100%',
     display: 'flex',
@@ -34,19 +35,9 @@ const useStyles = makeStyles(() => ({
   titleEx: {
     textAlign: 'start',
   },
-  title: {
+  description: {
     display: 'flex',
     textAlign: 'start',
-    flexDirection: 'column',
-    paddingBottom: '1em',
-  },
-  date: {
-    display: 'flex',
-    flexDirection: 'column',
-    paddingBottom: '1em',
-  },
-  directorName: {
-    display: 'flex',
     flexDirection: 'column',
     paddingBottom: '1em',
   },
@@ -56,6 +47,7 @@ const useStyles = makeStyles(() => ({
     width: '80%',
     paddingBottom: '1em',
   },
+  //------css for the actors pictures------//
   actorContent: {
     display: 'flex',
     justifySelf: 'flex-end',
@@ -91,9 +83,7 @@ export default function MovieInfos(props) {
     actor,
     actorsPaths,
     titleEx,
-    title,
-    date,
-    directorName,
+    description,
     synopsisContent,
     castingList,
     cardImage,
@@ -103,19 +93,19 @@ export default function MovieInfos(props) {
   return (
     <div className={container}>
       <div className={imageContent}>
-        <img className={cardImage} src={props.poster} />
+        <img className={cardImage} src={props.poster} alt={"img"} />
       </div>
       <div className={textContent}>
-        <div className={title}>
+        <div className={description}>
           <h2 className={titleEx}>Title :</h2>
           <p>{props.title}</p>
         </div>
-        <div className={date}>
+        <div className={description}>
           <h2 className={titleEx}>Date :</h2>
 
           <p>{props.date}</p>
         </div>
-        <div className={directorName}>
+        <div className={description}>
           <h2 className={titleEx}>Director :</h2>
 
           {props.director.map((director) => (
