@@ -4,7 +4,7 @@
 }
 
 a {
-  color: black;
+  color: var(--text-primary);
   text-decoration: none;
 }
 

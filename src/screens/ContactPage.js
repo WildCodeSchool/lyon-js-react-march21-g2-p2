@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       display: 'flex',
-      paddingTop: 12,
+      paddingTop: '1em',
     },
   },
   message: {
@@ -22,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '1em',
   },
   form: {
-    padding: 12,
-    width: '40ch',
-    margin: 'auto',
-    borderRadius: '8px',
-    border: '1px solid #CBCBCB',
+    padding: '2em',
+    maxWidth: '60ch',
+    margin: '2em auto',
+    borderRadius: '1rem',
+    background: 'var(--lighter-grey)',
   },
   textField: {
     width: '35ch',
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: '2px solid var(--darker-grey)',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },

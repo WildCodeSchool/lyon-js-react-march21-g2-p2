@@ -9,12 +9,12 @@ import React from 'react';
 
 const useStyles = makeStyles(() => ({
   card: {
-    borderRadius: '1rem',
+    borderRadius: '1em',
     boxShadow: 'none',
     position: 'relative',
-    margin: 0,
-    width: 300,
-    height: 500,
+    margin: 'auto',
+    maxWidth: 200,
+    height: 300,
   },
   content: {
     display: 'flex',
@@ -25,10 +25,20 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     margin: 0,
   },
-  media: {
+  mediaStyle: {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
+  },
+  genreList: {
+    listStyle: 'none',
+    '& > li': {
+      color: 'var(--text-primary)',
+    },
+  },
+  genreListItem: {
+    display: 'inline-block',
+    marginRight: '1em',
   },
 }));
 
@@ -44,28 +54,30 @@ export default function MovieInfos(props) {
     <>
       <Grid
         container
-        spacing={8}
+        spacing={2}
         direction="row"
         justify="flex-start"
         alignItems="center"
       >
-        <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
+        <Grid item xs={10} sm={6} md={6} lg={3} xl={2}>
           <Card className={clsx(styles.card)}>
             <CardMedia
-              className={clsx(styles.cardStyle)}
+              className={clsx(styles.mediaStyle)}
               classes={mediaStyles}
               image={props.poster}
             />
           </Card>
         </Grid>
-        <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
+        <Grid item xs={10} sm={6} md={6} lg={3} xl={2}>
           <div className={styles.content}>
             <h2>{props.title}</h2>
             <h3>{props.date}</h3>
             <h3>Director :</h3>
             <div>
               {director.map((director) => (
-                <p key={director.id}>{director.name}</p>
+                <p key={director.id}>
+                  <strong>{director.name}</strong>
+                </p>
               ))}
             </div>
             <h3>Cast:</h3>
@@ -75,9 +87,13 @@ export default function MovieInfos(props) {
               </p>
             ))}
             <h3>Genres:</h3>
-            {props.movieGenreList.map(({ id, name }) => (
-              <p key={id}>{name}</p>
-            ))}
+            <ul className={styles.genreList}>
+              {props.movieGenreList.map(({ id, name }) => (
+                <li className={styles.genreListItem} key={id}>
+                  {name}
+                </li>
+              ))}
+            </ul>
             <h3>Synopsis:</h3>
             <p>{props.synopsis}</p>
           </div>
