@@ -24,7 +24,7 @@ export default function HomePage() {
       .catch((error) => console.error(error));
   }, []);
 
-  //Call API for popular movies
+  //Call API for recent movies
   useEffect(() => {
     axios
       .get(
