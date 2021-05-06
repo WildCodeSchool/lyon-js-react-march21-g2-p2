@@ -18,10 +18,15 @@ const useStyles = makeStyles(() => ({
     marginTop: 10,
     marginBottom: 50,
   },
+
+  empty: {
+    display: 'flex',
+    justifyContent: 'center'
+  }
 }));
 
 export default function FavoritePage() {
-  const { container, title } = useStyles();
+  const { container, title, empty} = useStyles();
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
   const [favoriteMovies] = useFavoriteMoviesState({});
   const imgUrl = `${process.env.REACT_APP_API_IMAGE_URL}/w1280`;
@@ -31,18 +36,17 @@ export default function FavoritePage() {
 
   return (
     <>
-      <h2>Favorite movies</h2>
-      <MovieList
-        movieList={favoriteMovieList}
-        imgUrl={'https://image.tmdb.org/t/p/w200'}
-      />
+     <div className={container}>
+      <h2 className={title}>Favorite movies</h2>
+      <FavoriteList movieList={favoriteMovieList} imgUrl={imgUrl} />
       {favoriteMovieList.length === 0 ? (
-        <h3 className={classes.favoritesSection}>
+        <h3 className={empty}>
           You don’t have any favorites yet ¯\_(ツ)_/¯
         </h3>
       ) : (
         <></>
-      )}
+        )}
+      </div>
     </>
   );
 }
