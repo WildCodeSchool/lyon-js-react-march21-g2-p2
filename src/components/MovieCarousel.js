@@ -12,13 +12,14 @@ const useStyles = makeStyles(() => ({
     cursor: 'pointer',
     display: 'flex',
     justifyContent: 'center',
-    width: 'clamp(50%, 80% , 100%)',
-    height: 400,
+    width: '100%',
+    height: 300,
+    paddingTop: '56.25%',
   },
   carouselStyle: {
     display: 'flex',
     width: '100%',
-    height: 350,
+    height: '100%',
     objectFit: 'cover',
   },
   movieInformation: {
