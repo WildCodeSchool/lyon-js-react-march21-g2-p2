@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /*HomePage function which will call MovieList rendering in MovieCard*/
 
 /*component import*/
