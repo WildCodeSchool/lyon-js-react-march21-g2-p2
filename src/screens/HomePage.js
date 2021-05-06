@@ -4,11 +4,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './HomePage.css';
-import MovieList from '../components/MovieList';
 import MovieCarousel from '../components/MovieCarousel';
-const imgUrl = `${process.env.REACT_APP_API_IMAGE_URL}/w200`;
-const apiKey = process.env.REACT_APP_TMDB_API_KEY;
-const apiUrl = process.env.REACT_APP_API_SERVICE_URL;
 
 export default function HomePage() {
   const [popularMovie, setPopularMovie] = useState([]);
@@ -39,7 +35,7 @@ export default function HomePage() {
 
   return (
     <>
-      <h2 className="recentMovie">Recent Movie</h2>
+      <h2 className="recentMovie">Recent Movies</h2>
       <div className="container">
         <MovieCarousel movieList={popularMovie} />
       </div>

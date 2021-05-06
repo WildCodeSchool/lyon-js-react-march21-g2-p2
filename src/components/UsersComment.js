@@ -73,7 +73,7 @@ export default function UsersComments(props) {
         onSubmit={handleSubmit(onSubmit)}
       >
         <TextField
-          required
+          required={true}
           className="name"
           label="Name"
           id="name"
@@ -82,7 +82,7 @@ export default function UsersComments(props) {
           {...register('user_name')}
         />
         <TextField
-          required
+          required={true}
           multiline
           className="comment"
           id="comment"
