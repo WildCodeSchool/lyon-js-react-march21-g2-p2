@@ -9,12 +9,12 @@ const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     width: '100%',
-    height: '100%',
+    minHeight: 'calc(100vh - 5em)',
   },
   footer: {
     position: 'relative',
     bottom: 0,
-  }
+  },
 }));
 
 function App() {
