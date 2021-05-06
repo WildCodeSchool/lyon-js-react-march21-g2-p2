@@ -16,12 +16,11 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   card: {
-    borderRadius: '1rem',
-    boxShadow: 'none',
+    borderRadius: '1em',
     position: 'relative',
-    margin: 10,
-    width: 250,
-    height: 400,
+    margin: '1em',
+    width: 200,
+    height: 300,
     '&:after': {
       content: '""',
       bottom: 0,
@@ -34,6 +33,8 @@ const useStyles = makeStyles(() => ({
     position: 'absolute',
     zIndex: 2,
     bottom: 0,
+    padding: '1em',
+    height: '100%',
     width: '100%',
     margin: 0,
     '&:hover': {
@@ -45,32 +46,30 @@ const useStyles = makeStyles(() => ({
       width: '100%',
       height: '100%',
       display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
       background: 'hsla(0, 0%, 0%, 0.5)',
       opacity: 1,
-      alignItems: 'flex-end',
-      justifyContent: 'flex-start',
     },
+  },
+  favorite: {
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
 
   movieInfo: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    marginRight: 25,
     textAlign: 'start',
     width: '100%',
     height: '100%',
   },
-  media: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  },
   isFav: {
-    color: 'red',
+    color: 'var(--accent-color-2)',
   },
   notFav: {
-    color: 'white',
+    color: 'var(--light-grey)',
   },
 }));
 
@@ -116,28 +115,39 @@ const MovieCard = ({
 
   return (
     <Link key={movieId} to={`/movies/${movieId}`}>
-      <Grid item xs={10} sm={6} md={4} lg={3} xl={2}>
+      <Grid item>
         <Card className={clsx(card)}>
           <CardMedia
             classes={mediaStyles}
             image={poster ? poster : defaultImg}
           />
-          <Box py={3} className={clsx(content)}>
-            <Box py={40} className={clsx(favorite)}>
-              <IconButton onClick={handleToggleFavorite}>
-                <FavoriteIcon
-                  variant="outlined"
-                  className={clsx(isFavorite ? isFav : notFav)}
-                />
-              </IconButton>
-            </Box>
+          <Box className={clsx(content)}>
+            <IconButton
+              className={clsx(favorite)}
+              onClick={handleToggleFavorite}
+            >
+              <FavoriteIcon
+                variant="outlined"
+                className={clsx(isFavorite ? isFav : notFav)}
+              />
+            </IconButton>
             <Info className={clsx(movieInfo)} useStyles={useGalaxyInfoStyles}>
               <InfoTitle>{title}</InfoTitle>
               <InfoCaption>{`Rating: ${average * 10}%`}</InfoCaption>
             </Info>
           </Box>
         </Card>
-        {/* <h4 style={{ marginLeft: '1em' }}>{title}</h4> */}
+        <h4
+          style={{
+            textAlign: 'center',
+            maxWidth: '20ch',
+            margin: '.5em auto 1em',
+            maxHeight: '1.5em',
+            overflow: 'hidden',
+          }}
+        >
+          {title}
+        </h4>
       </Grid>
     </Link>
   );

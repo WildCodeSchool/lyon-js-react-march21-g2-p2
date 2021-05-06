@@ -17,10 +17,13 @@ const useStyles = makeStyles((theme) => ({
       width: '75ch',
     },
   },
+  paragraph: {
+    color: 'var(--dark-grey)',
+  },
 }));
 //---------------------- GET THE REVIEWS FROM OUR API AND DISPLAY -------------------------//
 export default function ReviewList({ reviewList }) {
-  const { card } = useStyles();
+  const { card, paragraph } = useStyles();
 
   return (
     <>
@@ -29,7 +32,7 @@ export default function ReviewList({ reviewList }) {
           <Card className={card} key={review.id} variant="outlined">
             <CardContent>
               <h4 className="userName">{review.user_name}</h4>
-              <p>{review.comment}</p>
+              <p className={paragraph}>{review.comment}</p>
             </CardContent>
           </Card>
         ))}

@@ -1,0 +1,90 @@
+:root {
+  --lighter-grey: hsl(250, 10%, 90%);
+  --light-grey: hsl(240, 10%, 80%);
+  --dark-grey: hsl(240, 13%, 30%);
+  --darker-grey: hsl(245, 30%, 8%);
+  --orange: hsl(14, 65%, 50%);
+  --yellow: hsl(54, 79%, 65%);
+
+  --text-primary: var(--lighter-grey);
+  --text-secondary: var(--light-grey);
+  --bg-primary: var(--darker-grey);
+  --bg-secondary: var(--dark-grey);
+  --accent-color-2: var(--orange);
+  --accent-color-1: var(--yellow);
+
+  --serif-font: 'Cormorant Garamond', serif;
+  --sans-serif-font: 'Poppins', sans-serif;
+
+  --small-drawer-width: 3.5em;
+  --medium-drawer-width: 4.5em;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
+  background-size: 500% 500%;
+  animation: gradient 20s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+h2,
+h3,
+h4 {
+  background: linear-gradient(
+    to top left,
+    var(--accent-color-2),
+    var(--accent-color-1)
+  );
+  text-transform: uppercase;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  text-align: center;
+  font-family: var(--sans-serif-font);
+}
+
+h6 {
+  margin: 0;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 3em !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+  font-family: var(--serif-font) !important;
+}
+
+p {
+  color: var(--text-primary);
+}
+
+body {
+  color: var(--text-primary);
+}

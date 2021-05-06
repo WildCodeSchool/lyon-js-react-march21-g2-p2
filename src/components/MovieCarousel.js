@@ -18,14 +18,18 @@ const useStyles = makeStyles(() => ({
     cursor: 'pointer',
     backgroundSize: 'contain',
     justifyContent: 'center',
+    width: '100%',
+    height: 300,
+    paddingTop: '56.25%',
   },
   carouselStyle: {
     display: 'flex',
     width: '100%',
+    height: '100%',
     objectFit: 'cover',
   },
   movieInformation: {
-    color: 'white',
+    color: 'var(--text-primary)',
     width: '100%',
   },
   BoxInformation: {
