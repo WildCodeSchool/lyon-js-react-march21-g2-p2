@@ -51,7 +51,7 @@ const MovieCarousel = (props) => {
     <Carousel
       className={clsx(styles.carousel)}
       swipe={true}
-      interval={5000000}
+      interval={5000}
       fullHeightHover={false}
       animation="fade"
       stopAutoPlayOnHover={true}
@@ -63,7 +63,7 @@ const MovieCarousel = (props) => {
             <CardMedia
               className={clsx(styles.carouselStyle)}
               classes={mediaStyles}
-              image={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
+              image={imgUrl + '/w1280' + movie.backdrop_path}
             >
               <Box className={clsx(styles.BoxInformation)}>
                 <Info className={clsx(styles.movieInformation)}>
