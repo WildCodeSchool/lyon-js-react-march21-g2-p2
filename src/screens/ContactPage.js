@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       display: 'flex',
-      paddingTop: 12,
+      paddingTop: '1em',
     },
   },
   message: {
@@ -26,18 +26,22 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '60ch',
     margin: '2em auto',
     borderRadius: '1rem',
-    background: '#E2DFDB',
+    background: 'var(--lighter-grey)',
   },
   textField: {
-    paddingTop: '1em',
+    width: '35ch',
+    marginTop: 9,
     margin: 'auto',
+    paddingTop: 14,
     display: 'flex',
   },
   button: {
-    padding: '1em',
-    marginTop: '1em',
-    width: '100%',
+    padding: 14,
+    width: '35ch',
+    marginTop: 22,
+    margin: 'auto',
     display: 'flex',
+    marginBottom: 12,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -48,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: '2px solid var(--darker-grey)',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -56,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 //--------------------------- FONCTION CONTACT --------------------------//
 
 export default function ContactPage() {
+  const apiBase = process.env.REACT_APP_API_BASE_URL;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -67,7 +72,7 @@ export default function ContactPage() {
   const { message, form, textField, button, modal, paper } = useStyles();
   const onSubmit = (form) => {
     axios
-      .post('http://localhost:5000/contact', form)
+      .post(`${apiBase}/contact`, form)
       .then((res) => reset())
       .catch((err) => console.log(err));
   };
@@ -86,41 +91,42 @@ export default function ContactPage() {
       >
         <TextField
           className={textField}
-          id="filled"
-          label="firstName"
+          id="outlined-basic"
+          label="firstname"
           placeholder="Sarah"
-          variant="filled"
+          variant="outlined"
           required={true}
           {...register('firstName')}
         />
         <TextField
           className={textField}
-          id="filled"
+          id="outlined-basic"
           label="Lastname"
           placeholder="Connor"
-          variant="filled"
+          variant="outlined"
           required={true}
           {...register('lastName')}
         />
         <TextField
           className={textField}
-          id="filled"
+          id="outlined-basic"
           label="Email"
+          name="email"
           placeholder="sarah.connor@skynet.com"
-          variant="filled"
+          variant="outlined"
           type="email"
           required={true}
           {...register('email')}
         />
         <TextField
           className={textField}
-          id="filled-multiline-static"
+          id="outlined-multiline-basic"
           label="Text here"
           multiline
           placeholder="Great website! Keep up the good work :)"
           rows={6}
           defaultValue=""
-          variant="filled"
+          variant="outlined"
           required={true}
           {...register('text')}
         />

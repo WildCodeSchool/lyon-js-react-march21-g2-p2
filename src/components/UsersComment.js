@@ -11,6 +11,9 @@ import { useForm } from 'react-hook-form';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    background: 'var(--text-secondary)',
+    borderRadius: '1em',
+    maxWidth: '30ch',
     '& > *': {
       margin: theme.spacing(2),
       width: '25ch',
@@ -18,24 +21,26 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
+      // margin: '0 auto',
     },
   },
   commentSection: {
     display: 'flex',
     flexDirection: 'column',
     marginTop: 50,
+    alignItems: 'center',
   },
   Button: {
     padding: 5,
     marginTop: 15,
-    width: '11ch',
+    width: '25ch',
   },
 }));
 
 //--------------------------- COMMENTS FUNCTION --------------------------//
 
-export default function UserCommentsSection(props) {
-  const { register, handleSubmit } = useForm();
+export default function UsersComments(props) {
+  const { register, handleSubmit, reset } = useForm();
   const classes = useStyles();
 
   const onSubmit = (form) => {
@@ -45,8 +50,17 @@ export default function UserCommentsSection(props) {
         `${process.env.REACT_APP_API_BASE_URL}/movies/${props.id}/reviews`,
         form
       )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        props.setReviewList((currentReviews) => {
+          return [...currentReviews, res.data];
+        });
+        reset();
+      })
+      .catch((err) =>
+        alert(
+          'Required length for the name field : between 2 and 50 characters. The comment field should contains at least 2 characters'
+        )
+      );
   };
 
   return (
@@ -59,22 +73,19 @@ export default function UserCommentsSection(props) {
         onSubmit={handleSubmit(onSubmit)}
       >
         <TextField
-          required
-          size="small"
-          color="primary"
-          className="userName"
+          required={true}
+          className="name"
           label="Name"
-          id="outlined-required"
+          id="name"
           defaultValue=""
           variant="outlined"
           {...register('user_name')}
         />
         <TextField
-          required
+          required={true}
           multiline
-          color="primary"
           className="comment"
-          id="outlined-required-multiline-static"
+          id="comment"
           label="Comment"
           rows={2}
           defaultValue=""
@@ -82,9 +93,8 @@ export default function UserCommentsSection(props) {
           {...register('comment')}
         />
         <Button
-          color="primary"
           className={classes.Button}
-          variant="contained"
+          variant="outlined"
           type="submit"
           endIcon={<Icon>send</Icon>}
         >

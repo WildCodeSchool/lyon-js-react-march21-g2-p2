@@ -1,60 +1,41 @@
 //------------------ IMPORT COMPONENTS & STYLES -------------//
+import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 
 //---------------------- STYLE CSS -------------------------//
 
 const useStyles = makeStyles((theme) => ({
   card: {
+    marginTop: '1em',
     '& > *': {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
       justifyContent: 'center',
-      marginTop: 20,
-      width: '85ch',
+      width: '75ch',
     },
   },
-
-  name: {
-    fontSize: 14,
+  paragraph: {
+    color: 'var(--dark-grey)',
   },
 }));
 //---------------------- GET THE REVIEWS FROM OUR API AND DISPLAY -------------------------//
-export default function ReviewList({ movie_id }) {
-  const { card, name } = useStyles();
-  const [reviewList, setReviewList] = useState(null);
+export default function ReviewList({ reviewList }) {
+  const { card, paragraph } = useStyles();
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_BASE_URL}/movies/${movie_id}/reviews`)
-      .then((res) => setReviewList(res.data))
-      .catch((err) => console.log(err));
-  }, [movie_id]);
-
-  //si le film n'a pas de review alors rien sinon API
-  //To avoid error on map method "reviewList &&"" otherwise our list is undefined
   return (
-    reviewList && (
-      <div className={card}>
-        <h2>User Reviews</h2>
-        {reviewList.map((review) => (
+    <>
+      {reviewList &&
+        reviewList.map((review) => (
           <Card className={card} key={review.id} variant="outlined">
             <CardContent>
-              <Typography className={name} color="textSecondary" gutterBottom>
-                {review.user_name}
-              </Typography>
-              <Typography variant="body2" component="p">
-                {review.comment}
-              </Typography>
+              <h4 className="userName">{review.user_name}</h4>
+              <p className={paragraph}>{review.comment}</p>
             </CardContent>
           </Card>
         ))}
-      </div>
-    )
+    </>
   );
 }
