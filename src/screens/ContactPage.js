@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     background: 'var(--lighter-grey)',
   },
   textField: {
+    maxWidth: '100%',
     width: '35ch',
     marginTop: 9,
     margin: 'auto',
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     padding: 14,
     width: '35ch',
+    maxWidth: '100%',
     marginTop: 22,
     margin: 'auto',
     display: 'flex',
