@@ -25,7 +25,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 100vh;
 }
 
 body {
@@ -51,27 +50,6 @@ body {
     background-position: 0% 50%;
   }
 }
-
-/* Create a container for the headers
-* .container{
-*   width: 90%;
-*   height: 400px;
-*   max-width: 960px;
-*   margin: 0 auto;
-*   padding: 30px;
-*   background: var(--lighter-grey);
-*   display: flex;
-*   justify-content: center;
-*   align-items: center;
-* }
-*/
-
-/* H1, H2, H3, H4 
-* Background : linear-gradient(to top left, var(--accent-color-1), var(--accent-color-2))
-* text-transform: uppercase;
-* -webkit-background-clip: text;
-* -webkit-text-fill-color: transparent; 
-*/
 
 h2,
 h3,

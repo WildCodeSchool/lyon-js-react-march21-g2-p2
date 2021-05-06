@@ -12,21 +12,29 @@ const apiUrl = process.env.REACT_APP_API_SERVICE_URL;
 
 export default function HomePage() {
   const [popularMovie, setPopularMovie] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_SERVICE_URL;
+
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const apiUpcomingRoute = '/movie/upcoming';
+  const apiKey = process.env.REACT_APP_TMDB_API_KEY;
+
+  //Call API for upcoming movies
+
+  useEffect(() => {
+    axios
+      .get(apiUrl + apiUpcomingRoute + '?api_key=' + apiKey + '&page=2')
+      .then((res) => setUpcomingMovies(res.data.results.slice(0, 9)))
+      .catch((error) => console.error(error));
+  }, []);
+
+  //Call API for popular movies
   useEffect(() => {
     axios
       .get(
         `${apiUrl}/discover/movie/?sort_by=popularity.desc&api_key=${apiKey}`
       )
-      .then((response) => response.data)
-      .then((data) => {
-        const mostPopularMovies = data.results;
-        const moviesToShow = [];
-
-        for (let i = 0; i <= 11; i += 1) {
-          moviesToShow.push(mostPopularMovies[i]);
-        }
-        return setPopularMovie(moviesToShow);
-      });
+      .then((res) => setPopularMovie(res.data.results.slice(0, 9)))
+      .catch((error) => console.error(error));
   }, []);
 
   return (
@@ -35,8 +43,10 @@ export default function HomePage() {
       <div className="container">
         <MovieCarousel movieList={popularMovie} />
       </div>
-      <h2>Popular movies</h2>
-      <MovieList movieList={popularMovie} imgUrl={imgUrl} />
+      <h2>Upcoming movies</h2>
+      <div className="container">
+        <MovieCarousel movieList={upcomingMovies} />
+      </div>
     </>
   );
 }

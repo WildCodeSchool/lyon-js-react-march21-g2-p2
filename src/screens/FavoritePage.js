@@ -1,22 +1,37 @@
 import React from 'react';
-import MovieList from '../components/MovieList';
+import FavoriteList from '../components/FavoriteList';
 import createPersistedState from 'use-persisted-state';
-
 // Component to display the favorite movies
-const FavoritePage = () => {
+
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: 0,
+    width: '100%',
+    height: '100%',
+  },
+  title: {
+    marginTop: 10,
+    marginBottom: 50,
+  },
+}));
+
+export default function FavoritePage() {
+  const { container, title } = useStyles();
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
   const [favoriteMovies] = useFavoriteMoviesState({});
-  const imgUrl = `${process.env.REACT_APP_API_IMAGE_URL}/w200`;
+  const imgUrl = `${process.env.REACT_APP_API_IMAGE_URL}/w1280`;
   const favoriteMovieList = Object.keys(favoriteMovies)
     .filter((id) => favoriteMovies[id] !== false)
     .map((id) => favoriteMovies[id]);
 
   return (
-    <>
-      <h2>Favorite movies</h2>
-      <MovieList movieList={favoriteMovieList} imgUrl={imgUrl} />
-    </>
+    <div className={container}>
+      <h2 className={title}>Favorite movies</h2>
+      <FavoriteList movieList={favoriteMovieList} imgUrl={imgUrl} />
+    </div>
   );
-};
-
-export default FavoritePage;
+}

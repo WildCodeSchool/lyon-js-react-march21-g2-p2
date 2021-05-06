@@ -1,35 +1,35 @@
 import Grid from '@material-ui/core/Grid';
 import React from 'react';
-import MovieCard from './MovieCard';
+import FavoriteInfos from './FavoriteInfos';
 
-const MovieList = ({ movieList, imgUrl }) => {
+const FavoriteList = ({ movieList, imgUrl }) => {
   return (
     <>
       <Grid
         container
-        spacing={2}
-        direction="row"
-        justify="center"
-        style={{ marginTop: '1em' }}
+        spacing={0}
+        direction="column"
+        justify="flex-start"
+        align="flex-start"
       >
         {movieList.map(
           ({
             id,
-            release_date,
+            date,
             vote_average,
             genre_ids,
             title,
             poster_path,
             overview,
           }) => (
-            <MovieCard
+            <FavoriteInfos
               key={id}
               id={id}
-              date={release_date}
+              date={date}
               title={title}
               genre={genre_ids}
               average={vote_average}
-              poster={poster_path ? imgUrl + poster_path : null}
+              poster={imgUrl + poster_path}
               synopsis={overview}
             />
           )
@@ -39,4 +39,4 @@ const MovieList = ({ movieList, imgUrl }) => {
   );
 };
 
-export default MovieList;
+export default FavoriteList;

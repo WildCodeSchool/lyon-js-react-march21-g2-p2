@@ -29,9 +29,6 @@ import logo from '../assets/logo.png';
 const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
   appBar: {
     background:
       'linear-gradient(to right bottom, var(--orange), var(--yellow))',
