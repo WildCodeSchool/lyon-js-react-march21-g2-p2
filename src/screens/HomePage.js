@@ -6,7 +6,6 @@ import axios from 'axios';
 import './HomePage.css';
 import MovieCarousel from '../components/MovieCarousel';
 
-
 export default function HomePage() {
   const [popularMovie, setPopularMovie] = useState([]);
   const apiUrl = process.env.REACT_APP_API_SERVICE_URL;
