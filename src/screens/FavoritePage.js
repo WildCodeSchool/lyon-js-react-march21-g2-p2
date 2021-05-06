@@ -1,6 +1,7 @@
 import React from 'react';
 import FavoriteList from '../components/FavoriteList';
 import createPersistedState from 'use-persisted-state';
+
 // Component to display the favorite movies
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -29,9 +30,19 @@ export default function FavoritePage() {
     .map((id) => favoriteMovies[id]);
 
   return (
-    <div className={container}>
-      <h2 className={title}>Favorite movies</h2>
-      <FavoriteList movieList={favoriteMovieList} imgUrl={imgUrl} />
-    </div>
+    <>
+      <h2>Favorite movies</h2>
+      <MovieList
+        movieList={favoriteMovieList}
+        imgUrl={'https://image.tmdb.org/t/p/w200'}
+      />
+      {favoriteMovieList.length === 0 ? (
+        <h3 className={classes.favoritesSection}>
+          You don’t have any favorites yet ¯\_(ツ)_/¯
+        </h3>
+      ) : (
+        <></>
+      )}
+    </>
   );
 }

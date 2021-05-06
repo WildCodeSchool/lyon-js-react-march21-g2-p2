@@ -22,22 +22,26 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '1em',
   },
   form: {
-    padding: '2em',
-    maxWidth: '60ch',
-    margin: '2em auto',
-    borderRadius: '1rem',
-    background: '#E2DFDB',
+    padding: 12,
+    width: '40ch',
+    margin: 'auto',
+    borderRadius: '8px',
+    border: '1px solid #CBCBCB',
   },
   textField: {
-    paddingTop: '1em',
+    width: '35ch',
+    marginTop: 9,
     margin: 'auto',
+    paddingTop: 14,
     display: 'flex',
   },
   button: {
-    padding: '1em',
-    marginTop: '1em',
-    width: '100%',
+    padding: 14,
+    width: '35ch',
+    marginTop: 22,
+    margin: 'auto',
     display: 'flex',
+    marginBottom: 12,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -87,8 +91,8 @@ export default function ContactPage() {
       >
         <TextField
           className={textField}
-          id="firstName"
-          label="firstName"
+          id="outlined-basic"
+          label="firstname"
           placeholder="Sarah"
           variant="outlined"
           required={true}
@@ -96,8 +100,8 @@ export default function ContactPage() {
         />
         <TextField
           className={textField}
-          id="lastName"
-          label="lastName"
+          id="outlined-basic"
+          label="Lastname"
           placeholder="Connor"
           variant="outlined"
           required={true}
@@ -105,9 +109,9 @@ export default function ContactPage() {
         />
         <TextField
           className={textField}
-          id="email"
-          name="email"
+          id="outlined-basic"
           label="Email"
+          name="email"
           placeholder="sarah.connor@skynet.com"
           variant="outlined"
           type="email"
@@ -116,8 +120,8 @@ export default function ContactPage() {
         />
         <TextField
           className={textField}
-          id="message"
-          label="Message"
+          id="outlined-multiline-basic"
+          label="Text here"
           multiline
           placeholder="Great website! Keep up the good work :)"
           rows={6}
