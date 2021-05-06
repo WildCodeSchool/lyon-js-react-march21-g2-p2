@@ -13,7 +13,6 @@ export default function HomePage() {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const apiUpcomingRoute = '/movie/upcoming';
   const apiKey = process.env.REACT_APP_TMDB_API_KEY;
-  const apiRecentRoute = process.env.REACT_APP_API_SERVICE_RECENT_MOVIES_URL;
 
   //Call API for upcoming movies
 
@@ -28,7 +27,7 @@ export default function HomePage() {
   useEffect(() => {
     axios
       .get(
-        `${apiRecentRoute}/discover/movie/?sort_by=popularity.desc&api_key=${apiKey}`
+        `${apiUrl}/discover/movie/?sort_by=popularity.desc&api_key=${apiKey}`
       )
       .then((res) => setPopularMovie(res.data.results.slice(0, 9)))
       .catch((error) => console.error(error));
