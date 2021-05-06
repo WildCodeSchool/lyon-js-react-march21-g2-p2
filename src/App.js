@@ -11,6 +11,10 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     height: '100%',
   },
+  footer: {
+    position: 'relative',
+    bottom: 0,
+  }
 }));
 
 function App() {
@@ -22,7 +26,7 @@ function App() {
         <Header />
         <Main />
       </div>
-      <Footer />
+      <Footer className={classes.footer} />
     </>
   );
 }
