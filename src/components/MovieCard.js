@@ -75,12 +75,21 @@ const useStyles = makeStyles(() => ({
 }));
 
 /* On donne les info (sous forme de props) d'UN film au composant MovieCard et on retourne une MovieCard */
-const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
+const MovieCard = ({
+  id: movieId,
+  title,
+  genre,
+  poster,
+  average,
+  date,
+  synopsis,
+}) => {
   const { card, content, movieInfo, favorite, isFav, notFav } = useStyles();
   const mediaStyles = useCoverCardMediaStyles({ bgPosition: 'center' });
 
   const useFavoriteMoviesState = createPersistedState('favoriteMovies');
   const [favoriteMovies, setFavoriteMovies] = useFavoriteMoviesState({});
+  const defaultImg = process.env.REACT_APP_DEFAULT_IMG;
 
   const isFavorite = !!favoriteMovies[movieId];
   // function to handle the toggling of a movie's favorite state and adding it using localStorage
@@ -97,6 +106,9 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
               title: title,
               genre: genre,
               poster_path: poster,
+              date: date,
+              overview: synopsis,
+              average: average,
             },
       };
     });
@@ -108,11 +120,7 @@ const MovieCard = ({ id: movieId, title, genre, poster, average }) => {
         <Card className={clsx(card)}>
           <CardMedia
             classes={mediaStyles}
-            image={
-              poster
-                ? poster
-                : 'https://images.unsplash.com/photo-1580130601254-05fa235abeab?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fG1vdmllJTIwcG9zdGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-            }
+            image={poster ? poster : defaultImg}
           />
           <Box py={3} className={clsx(content)}>
             <Box py={40} className={clsx(favorite)}>

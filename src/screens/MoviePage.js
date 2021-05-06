@@ -6,23 +6,30 @@ import { useHistory, useLocation } from 'react-router';
 import FilteringBar from '../components/FilteringBar';
 import MovieList from '../components/MovieList';
 
-const imgUrl = 'https://image.tmdb.org/t/p/w200';
-const apiUrl = 'https://api.themoviedb.org/3';
+const imgUrl = `${process.env.REACT_APP_API_IMAGE_URL}/w200`;
+const apiUrl = process.env.REACT_APP_API_SERVICE_URL;
+const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 const apiPopularRoute = '/movie/popular?';
 const apiSearchRoute = '/search/movie?query=';
 const apiGenreListRoute = '/genre/movie/list?';
-const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 
 export default function MoviePage() {
   const [availableGenres, setAvailableGenres] = useState([]);
   const [movieList, setMovieList] = useState([]);
   const history = useHistory();
   const location = useLocation();
+  const {
+    year: defaultYear = '',
+    with_genres: defaultWith_genres = '',
+    query: defaultQuery = '',
+  } = qs.parse(location.search);
 
   // the default values of the filters come from the querystring in the URL
-  const { register, watch, control } = useForm({
+  const { register, watch, control, reset } = useForm({
     defaultValues: {
-      ...qs.parse(location.search),
+      year: defaultYear,
+      with_genres: defaultWith_genres,
+      query: defaultQuery,
     },
   });
 
@@ -81,18 +88,12 @@ export default function MoviePage() {
       <h2>Movies</h2>
       <FilteringBar
         availableGenres={availableGenres}
-        setMovieList={setMovieList}
-        history={history}
-        location={location}
-        apiUrl={apiUrl}
-        apiKey={apiKey}
-        apiPopularRoute={apiPopularRoute}
         register={register}
-        watch={watch}
         year={year}
         with_genres={with_genres}
         query={query}
         control={control}
+        clear={reset}
       />
       <MovieList movieList={movieList} imgUrl={imgUrl} />
     </>
