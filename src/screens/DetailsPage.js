@@ -67,6 +67,7 @@ export default function DetailsPage() {
       .get(`${apiBase}/movies/${tmdb_id}/reviews`)
       .then((res) => setReviewList(res.data))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tmdb_id]);
 
   return (

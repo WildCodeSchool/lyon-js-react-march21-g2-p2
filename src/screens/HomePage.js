@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /*HomePage function which will call MovieList rendering in MovieCard*/
 
 /*component import*/
@@ -23,7 +24,7 @@ export default function HomePage() {
       .catch((error) => console.error(error));
   }, []);
 
-  //Call API for popular movies
+  //Call API for recent movies
   useEffect(() => {
     axios
       .get(
